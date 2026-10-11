@@ -348,15 +348,20 @@ jobs:
             exit 0
           fi
           base="https://github.com/$REPO/releases/download/$TAG"
-          python -m mxstudio.update manifest --version "$VERSION" --tag "$TAG" --base-url "$base" \
+          # every step's JSON (errors included; never key material) becomes an annotation: logs are not readable here
+          run_step() { out=$("$@" 2>&1); code=$?; echo "$out" | tail -c 900 | tr '\n' ' ' | sed "s/^/::notice title=$1 $4::/"; echo; return $code; }
+          run_step python -m mxstudio.update manifest --version "$VERSION" --tag "$TAG" --base-url "$base" \
             --online "ModuleX-MagazineStudio-Setup-$VERSION.exe" --full "ModuleX-MagazineStudio-Setup-$VERSION-Full.exe" \
-            --out "$RUNNER_TEMP/latest.unsigned.json" > /dev/null
-          python -m mxstudio.update sign --manifest "$RUNNER_TEMP/latest.unsigned.json" --out latest.json > /dev/null
+            --out "$RUNNER_TEMP/latest.unsigned.json" || { echo "::error::latest.json: building the manifest failed"; exit 1; }
+          run_step python -m mxstudio.update sign --manifest "$RUNNER_TEMP/latest.unsigned.json" --out latest.json \
+            || { echo "::error::latest.json: signing failed (is the secret exactly the one line of MXS_UPDATE_SIGNING_KEY.txt?)"; exit 1; }
           # verify with exactly what the app trusts: the committed mxstudio/update/trust.json (+ the optional variable)
           if [ -n "$MXS_UPDATE_PUBLIC_KEY" ]; then
-            python -m mxstudio.update verify --manifest latest.json --pubkey "$MXS_UPDATE_PUBLIC_KEY" --assets-dir .
+            run_step python -m mxstudio.update verify --manifest latest.json --pubkey "$MXS_UPDATE_PUBLIC_KEY" --assets-dir . \
+              || { echo "::error::latest.json does not verify with vars.MXS_UPDATE_PUBLIC_KEY"; exit 1; }
           else
-            python -m mxstudio.update verify --manifest latest.json --assets-dir .
+            run_step python -m mxstudio.update verify --manifest latest.json --assets-dir . \
+              || { echo "::error::latest.json does not verify with the key pinned in mxstudio/update/trust.json (the secret is a different key)"; exit 1; }
           fi
       - name: SHA256SUMS and release notes
         run: |
