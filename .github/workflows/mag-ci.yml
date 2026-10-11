@@ -64,6 +64,17 @@ jobs:
         run: python -m pytest tests/mag -q -rs --junitxml=workspace/test-results/mag.xml
         env:
           MXS_ALL_THEMES: ${{ matrix.python-version == '3.12' && '1' || '0' }}
+      - name: Failed tests as annotations (readable without downloading logs)
+        if: failure()
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          root = ET.parse("workspace/test-results/mag.xml").getroot()
+          for case in root.iter("testcase"):
+              for bad in list(case.findall("failure")) + list(case.findall("error")):
+                  msg = (bad.get("message") or bad.text or "")[:600].replace("\n", " | ")
+                  print(f"::error title={case.get('classname')}.{case.get('name')}::{msg}")
+          PY
       - name: Full suite
         run: python -m pytest -q
       - uses: actions/upload-artifact@v4
