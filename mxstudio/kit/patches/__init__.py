@@ -11,5 +11,6 @@ PATCHES: dict[str, Patch] = {p.PATCH.id: p.PATCH for p in (p_textfit, p_safezone
 UNWIRED_FLAGS = {
     "MODULEX_MAG_IMPOSE": "imposition/CMYK derivative patch not defined in this phase (mx_impose is vendor-ready)",
     "MODULEX_MAG_FONTCHECK": "Console export font validator hook not defined in this phase (proofs run it on device)",
-    "MODULEX_MAG_QA_GATE": "QA gate belongs to phase 9",
+    "MODULEX_MAG_QA_GATE": "mx_qagate is ready (phase 9); preflight.run() gets only the PDF, so the hook needs the "
+                           "probe to learn how OM links an order's deck, approved page count and child name",
 }

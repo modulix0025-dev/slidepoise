@@ -26,7 +26,8 @@ def app_dir() -> Path:
 
 
 def skill_dir() -> Path:
-    for candidate in (REPO / "slidepoise", REPO / "skill" / "slidepoise", app_dir() / "_internal" / "skill" / "slidepoise"):
+    candidates = (REPO / "slidepoise", REPO / "skill" / "slidepoise", app_dir() / "_internal" / "skill" / "slidepoise")
+    for candidate in candidates:
         if (candidate / "runtime" / "js" / "scene_to_pptx.mjs").is_file():
             return candidate
     return REPO / "slidepoise"

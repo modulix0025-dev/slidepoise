@@ -260,11 +260,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python -m pip install cryptography
+      - run: python -m pip install ".[runtime,studio]"
       - uses: actions/download-artifact@v4
         with:
           name: installers
           path: workspace/release
+      - name: SBOM and licence report (fails on any banned component)
+        run: python tools/mag_reports.py --out workspace/release
       - name: Stable-named copies (direct links via releases/latest/download/)
         run: |
           cd workspace/release
@@ -294,7 +296,7 @@ jobs:
         run: |
           cd workspace/release
           rm -f SHA256SUMS
-          sha256sum *.exe $( [ -f latest.json ] && echo latest.json ) > SHA256SUMS
+          sha256sum *.exe SBOM.cdx.json LICENCE_REPORT_AR_EN.md $( [ -f latest.json ] && echo latest.json ) > SHA256SUMS
           cat SHA256SUMS
           python - <<'PY'
           import os, pathlib
@@ -332,4 +334,6 @@ jobs:
             workspace/release/*.exe
             workspace/release/SHA256SUMS
             workspace/release/latest.json
+            workspace/release/SBOM.cdx.json
+            workspace/release/LICENCE_REPORT_AR_EN.md
           fail_on_unmatched_files: false

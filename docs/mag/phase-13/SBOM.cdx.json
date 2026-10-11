@@ -1,0 +1,6815 @@
+{
+ "bomFormat": "CycloneDX",
+ "specVersion": "1.5",
+ "version": 1,
+ "metadata": {
+  "component": {
+   "type": "application",
+   "name": "ModuleX Magazine Studio"
+  },
+  "properties": [
+   {
+    "name": "mxs:python",
+    "value": "3.13.16"
+   },
+   {
+    "name": "mxs:licence_policy",
+    "value": "catalog/licence_policy.json"
+   }
+  ]
+ },
+ "components": [
+  {
+   "type": "library",
+   "name": "annotated-doc",
+   "version": "0.0.5",
+   "purl": "pkg:pypi/annotated-doc@0.0.5",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "annotated-types",
+   "version": "0.8.0",
+   "purl": "pkg:pypi/annotated-types@0.8.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "anyio",
+   "version": "4.15.1",
+   "purl": "pkg:pypi/anyio@4.15.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "attrs",
+   "version": "26.1.0",
+   "purl": "pkg:pypi/attrs@26.1.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "certifi",
+   "version": "2026.7.22",
+   "purl": "pkg:pypi/certifi@2026.7.22",
+   "licenses": [
+    {
+     "license": {
+      "name": "Mozilla Public License 2.0 (MPL 2.0)"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "cffi",
+   "version": "2.1.1",
+   "purl": "pkg:pypi/cffi@2.1.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT-0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "click",
+   "version": "8.5.0",
+   "purl": "pkg:pypi/click@8.5.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "coloraide",
+   "version": "8.13",
+   "purl": "pkg:pypi/coloraide@8.13",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "cryptography",
+   "version": "50.0.2",
+   "purl": "pkg:pypi/cryptography@50.0.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache-2.0 OR BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "fastapi",
+   "version": "0.143.0",
+   "purl": "pkg:pypi/fastapi@0.143.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "fonttools",
+   "version": "4.66.1",
+   "purl": "pkg:pypi/fonttools@4.66.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "h11",
+   "version": "0.16.0",
+   "purl": "pkg:pypi/h11@0.16.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "httpcore",
+   "version": "1.0.9",
+   "purl": "pkg:pypi/httpcore@1.0.9",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "httpx",
+   "version": "0.28.1",
+   "purl": "pkg:pypi/httpx@0.28.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "idna",
+   "version": "3.20",
+   "purl": "pkg:pypi/idna@3.20",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "jsonschema",
+   "version": "4.26.0",
+   "purl": "pkg:pypi/jsonschema@4.26.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "jsonschema-specifications",
+   "version": "2025.9.1",
+   "purl": "pkg:pypi/jsonschema-specifications@2025.9.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "lxml",
+   "version": "6.1.3",
+   "purl": "pkg:pypi/lxml@6.1.3",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "numpy",
+   "version": "2.5.4",
+   "purl": "pkg:pypi/numpy@2.5.4",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "opencv-python",
+   "version": "5.0.0.93",
+   "purl": "pkg:pypi/opencv-python@5.0.0.93",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache Software License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "opentelemetry-api",
+   "version": "1.45.1",
+   "purl": "pkg:pypi/opentelemetry-api@1.45.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "packaging",
+   "version": "26.3",
+   "purl": "pkg:pypi/packaging@26.3",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache-2.0 OR BSD-2-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pikepdf",
+   "version": "10.16.0",
+   "purl": "pkg:pypi/pikepdf@10.16.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MPL-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pillow",
+   "version": "12.3.0",
+   "purl": "pkg:pypi/pillow@12.3.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT-CMU"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pyclipper",
+   "version": "1.4.0",
+   "purl": "pkg:pypi/pyclipper@1.4.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License / OSI Approved"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pycparser",
+   "version": "3.11",
+   "purl": "pkg:pypi/pycparser@3.11",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pydantic",
+   "version": "2.14.0",
+   "purl": "pkg:pypi/pydantic@2.14.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pydantic_core",
+   "version": "2.50.0",
+   "purl": "pkg:pypi/pydantic_core@2.50.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pypdf",
+   "version": "6.20.0",
+   "purl": "pkg:pypi/pypdf@6.20.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pypdfium2",
+   "version": "5.14.0",
+   "purl": "pkg:pypi/pypdfium2@5.14.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause, Apache-2.0, dependency licenses"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "python-pptx",
+   "version": "1.0.2",
+   "purl": "pkg:pypi/python-pptx@1.0.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "qrcode",
+   "version": "8.2",
+   "purl": "pkg:pypi/qrcode@8.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD License / Other/Proprietary License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "referencing",
+   "version": "0.37.0",
+   "purl": "pkg:pypi/referencing@0.37.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "resvg_py",
+   "version": "0.5.0",
+   "purl": "pkg:pypi/resvg_py@0.5.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "UNKNOWN"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "rpds-py",
+   "version": "2026.9.1",
+   "purl": "pkg:pypi/rpds-py@2026.9.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "starlette",
+   "version": "1.7.0",
+   "purl": "pkg:pypi/starlette@1.7.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "svgelements",
+   "version": "1.9.6",
+   "purl": "pkg:pypi/svgelements@1.9.6",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "typing_extensions",
+   "version": "4.16.0",
+   "purl": "pkg:pypi/typing_extensions@4.16.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "PSF-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "typing-inspection",
+   "version": "0.4.4",
+   "purl": "pkg:pypi/typing-inspection@0.4.4",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "uharfbuzz",
+   "version": "0.56.3",
+   "purl": "pkg:pypi/uharfbuzz@0.56.3",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache License 2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "uvicorn",
+   "version": "0.54.0",
+   "purl": "pkg:pypi/uvicorn@0.54.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "vtracer",
+   "version": "0.6.15",
+   "purl": "pkg:pypi/vtracer@0.6.15",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "xlsxwriter",
+   "version": "3.2.9",
+   "purl": "pkg:pypi/xlsxwriter@3.2.9",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "@types/node",
+   "version": "22.20.1",
+   "purl": "pkg:npm/@types/node@22.20.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "core-util-is",
+   "version": "1.0.3",
+   "purl": "pkg:npm/core-util-is@1.0.3",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "https",
+   "version": "1.0.0",
+   "purl": "pkg:npm/https@1.0.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "ISC"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "immediate",
+   "version": "3.0.6",
+   "purl": "pkg:npm/immediate@3.0.6",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "inherits",
+   "version": "2.0.4",
+   "purl": "pkg:npm/inherits@2.0.4",
+   "licenses": [
+    {
+     "license": {
+      "name": "ISC"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "isarray",
+   "version": "1.0.0",
+   "purl": "pkg:npm/isarray@1.0.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "jszip",
+   "version": "3.10.1",
+   "purl": "pkg:npm/jszip@3.10.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "(MIT OR GPL-3.0-or-later)"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "lie",
+   "version": "3.3.0",
+   "purl": "pkg:npm/lie@3.3.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pako",
+   "version": "1.0.11",
+   "purl": "pkg:npm/pako@1.0.11",
+   "licenses": [
+    {
+     "license": {
+      "name": "(MIT AND Zlib)"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "playwright",
+   "version": "1.63.0",
+   "purl": "pkg:npm/playwright@1.63.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "True"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "playwright-core",
+   "version": "1.63.0",
+   "purl": "pkg:npm/playwright-core@1.63.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "True"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "pptxgenjs",
+   "version": "4.0.1",
+   "purl": "pkg:npm/pptxgenjs@4.0.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "image-size",
+   "version": "1.2.1",
+   "purl": "pkg:npm/image-size@1.2.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "process-nextick-args",
+   "version": "2.0.1",
+   "purl": "pkg:npm/process-nextick-args@2.0.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "queue",
+   "version": "6.0.2",
+   "purl": "pkg:npm/queue@6.0.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "readable-stream",
+   "version": "2.3.8",
+   "purl": "pkg:npm/readable-stream@2.3.8",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "safe-buffer",
+   "version": "5.1.2",
+   "purl": "pkg:npm/safe-buffer@5.1.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "setimmediate",
+   "version": "1.0.5",
+   "purl": "pkg:npm/setimmediate@1.0.5",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "string_decoder",
+   "version": "1.1.1",
+   "purl": "pkg:npm/string_decoder@1.1.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "undici-types",
+   "version": "6.21.0",
+   "purl": "pkg:npm/undici-types@6.21.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "util-deprecate",
+   "version": "1.0.2",
+   "purl": "pkg:npm/util-deprecate@1.0.2",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "npm"
+    },
+    {
+     "name": "mxs:dev",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "vendor/modulex/modulex_signing.py",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "a2f1db607288413e6e631dca8f63e523e6916612d6ec97af55906dfe509d347e"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:rule",
+     "value": "byte-identical copy of the operator's file"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "vendor/modulex/pptx_to_pdf.py",
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "2920eb32048e286604a60fe98229763f3932898b3c8150f08f3cd2b1539d7eee"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:rule",
+     "value": "byte-identical copy of the operator's file"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Baloo Bhaijaan 2",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lemonada",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Marhey",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Cairo Play",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Cairo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Jomhuria",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lalezar",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rakkas",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Katibeh",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Blaka",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Blaka Hollow",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Blaka Ink",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Badeen Display",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Handjet",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Vibes",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Oi",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Playpen Sans Arabic",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Reem Kufi Fun",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Reem Kufi",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Reem Kufi Ink",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "El Messiri",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mada",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Harmattan",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Zain",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Almarai",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Beiruti",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Qahiri",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Tajawal",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Estedad",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Noto Sans Arabic",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Noto Kufi Arabic",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Alexandria",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Readex Pro",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Changa",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Vazirmatn",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fustat",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "IBM Plex Sans Arabic",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Kufam",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Alan Sans",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Thabit",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Ruwudu",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Scheherazade New",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Noto Naskh Arabic",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Aref Ruqaa",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Aref Ruqaa Ink",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Amiri",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lateef",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mirza",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Gulzar",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Alyamama",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Alkalami",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Markazi Text",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Parastoo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Andika",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lexend",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Atkinson Hyperlegible",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Comic Neue",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Edu SA Beginner",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Edu NSW ACT Foundation",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Edu QLD Beginner",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Edu VIC WA NT Beginner",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Edu TAS Beginner",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Nunito",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Quicksand",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Varela Round",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fredoka",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Baloo 2",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Balsamiq Sans",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mali",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Itim",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Sour Gummy",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Playpen Sans",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Shantell Sans",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Short Stack",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Comfortaa",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Delius",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Delius Swash Caps",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Delius Unicase",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Patrick Hand",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Patrick Hand SC",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Handlee",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Pangolin",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Neucha",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mouse Memoirs",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Gochi Hand",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Schoolbell",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Coming Soon",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Indie Flower",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Shadows Into Light",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Amatic SC",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Caveat",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Caveat Brush",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Kalam",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Gloria Hallelujah",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Architects Daughter",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rock Salt",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Permanent Marker",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Sue Ellen Francisco",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Walter Turncoat",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Covered By Your Grace",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Just Another Hand",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mansalva",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Crafty Girls",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Annie Use Your Telescope",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Reenie Beanie",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Waiting for the Sunrise",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fuzzy Bubbles",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Dekko",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Grape Nuts",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Sunshiney",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Butterfly Kids",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Princess Sofia",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Ruge Boogie",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fuggles",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Grechen Fuemen",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Felipa",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mynerve",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Pacifico",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bubblegum Sans",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Chewy",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Luckiest Guy",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bangers",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Grandstander",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Sniglet",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Gluten",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lilita One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Titan One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Bubbles",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Puddles",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Doodle Shadow",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Wet Paint",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Moonrocks",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Beastly",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Spray Paint",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rubik Gemstones",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bungee",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bungee Shade",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bungee Inline",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bungee Outline",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bungee Spice",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fascinate",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Sigmar",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Modak",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Knewave",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Boogaloo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Love Ya Like A Sister",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Henny Penny",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mountains of Christmas",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Emilys Candy",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Griffy",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Spicy Rice",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Happy Monkey",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Freckle Face",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Gorditas",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Original Surfer",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Wendy One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Galindo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Ribeye",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Ribeye Marrow",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Snowburst One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Kavoon",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Margarine",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Paytone One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "DynaPuff",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Cherry Cream Soda",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fontdiner Swanky",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Rammetto One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Chicle",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lobster",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Kranky",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bagel Fat One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Londrina Solid",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Londrina Shadow",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Londrina Sketch",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Irish Grover",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Jolly Lodger",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Mystery Quest",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Piedra",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Underdog",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Barriecito",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Barrio",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Chela One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Concert One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fresca",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Life Savers",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Oregano",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Salsa",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Slackey",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Unkempt",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Ranchers",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Lacquer",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Coiny",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Chango",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Frijole",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Flavors",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Combo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Aladin",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Almendra Display",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Pirata One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Uncial Antiqua",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "MedievalSharp",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Cinzel Decorative",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Fondamento",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Macondo",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Macondo Swash Caps",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Bowlby One SC",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Atomic Age",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Monoton",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Faster One",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Jersey 10",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Micro 5",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "certified_print"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Honk",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "file",
+   "name": "Nabla",
+   "licenses": [
+    {
+     "license": {
+      "id": "OFL-1.1"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "font"
+    },
+    {
+     "name": "mxs:qa_status",
+     "value": "screen_only"
+    },
+    {
+     "name": "mxs:source",
+     "value": "google/fonts@bd8f81dd"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "font_vault",
+   "version": "TO-PIN",
+   "licenses": [
+    {
+     "license": {
+      "name": "OFL-1.1 / Apache-2.0 (per-font provenance inside the zip)"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:sha256",
+     "value": "TO-PIN"
+    },
+    {
+     "name": "mxs:pinned",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "libreoffice_msi",
+   "version": "TO-PIN",
+   "licenses": [
+    {
+     "license": {
+      "name": "MPL-2.0"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:sha256",
+     "value": "TO-PIN"
+    },
+    {
+     "name": "mxs:pinned",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "node_runtime",
+   "version": "22.23.3",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:sha256",
+     "value": "2b0ff57b049cda1bbcea2240eec20467018713c1efe1f7360c2681859b90ed71"
+    },
+    {
+     "name": "mxs:pinned",
+     "value": "True"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "shape_packs",
+   "version": "TO-PIN",
+   "licenses": [
+    {
+     "license": {
+      "name": "per-shape provenance inside the zip (print allowlist only)"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:sha256",
+     "value": "TO-PIN"
+    },
+    {
+     "name": "mxs:pinned",
+     "value": "False"
+    }
+   ]
+  },
+  {
+   "type": "application",
+   "name": "webview2_bootstrapper",
+   "version": "evergreen",
+   "licenses": [
+    {
+     "license": {
+      "name": "UNKNOWN"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:sha256",
+     "value": "NOT-PINNABLE"
+    },
+    {
+     "name": "mxs:pinned",
+     "value": "True"
+    }
+   ]
+  }
+ ]
+}
