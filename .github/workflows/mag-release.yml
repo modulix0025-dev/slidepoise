@@ -342,6 +342,7 @@ jobs:
           MXS_UPDATE_SIGNING_KEY: ${{ secrets.MXS_UPDATE_SIGNING_KEY }}
           MXS_UPDATE_PUBLIC_KEY: ${{ vars.MXS_UPDATE_PUBLIC_KEY }}
         run: |
+          export PYTHONPATH="$GITHUB_WORKSPACE${PYTHONPATH:+:$PYTHONPATH}"  # mxstudio is a source tree, not an installed package
           cd workspace/release
           if [ -z "$MXS_UPDATE_SIGNING_KEY" ]; then
             echo "::warning::MXS_UPDATE_SIGNING_KEY is not set: no latest.json is published, so installed apps will not auto-update."
