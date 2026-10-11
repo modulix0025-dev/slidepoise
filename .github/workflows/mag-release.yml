@@ -295,7 +295,7 @@ jobs:
           if (Test-Path $j) { Write-Host "::notice title=standard-user-proof result::$((Get-Content -Raw $j | ConvertFrom-Json | ConvertTo-Json -Depth 6 -Compress))" }
           $d = Join-Path $p.OutDir "doctor-standard-user.json"
           if (Test-Path $d) {
-            $bad = (Get-Content -Raw $d | ConvertFrom-Json).checks | Where-Object { $_.level -ne "green" } | ForEach-Object { "$($_.id)=$($_.level)" }
+            $bad = (Get-Content -Raw $d | ConvertFrom-Json).checks | Where-Object { $_.level -in @("warn", "red") } | ForEach-Object { "$($_.id)=$($_.level)" }
             if ($bad) { Write-Host "::notice title=doctor as standard user::$($bad -join ', ')" }
           }
           exit $code
