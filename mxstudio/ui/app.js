@@ -278,12 +278,14 @@ async function boot() {
   work.lang = lang;
   work.panes = { ask: document.getElementById("pane-ask"), edit: document.getElementById("pane-edit"), approve: document.getElementById("pane-approve") };
   work.stage = window.MXS_STAGE;
-  await window.MXS_STAGE.init({
+  // the work panel takes its context before the first page card exists: a click on a page can never
+  // land while «عدّل» has nothing to render into
+  const started = window.MXS_START(work);
+  await Promise.all([started, window.MXS_STAGE.init({
     api, esc, lang: () => lang,
     onSelect: () => { setWork("edit"); window.MXS_START.renderEdit(); },
     onChange: () => window.MXS_START.renderEdit(),
-  });
-  await window.MXS_START(work);
+  })]);
 }
 
 if (typeof window !== "undefined" && typeof document !== "undefined") boot();

@@ -51,7 +51,13 @@ jobs:
         env:
           SLIDEPOISE_FONT_DIRS: ${{ github.workspace }}/tests/mag/fixtures/fonts
       - name: Studio UI in Chromium
-        run: npx playwright install --with-deps chromium && npm run test:mag-browser
+        run: |
+          npx playwright install --with-deps chromium
+          set -o pipefail
+          npm run test:mag-browser 2>&1 | tee workspace-browser.log || {
+            grep -E "not ok|Error|expected|actual|Timeout|at .*studio_ui" workspace-browser.log | head -12 | while IFS= read -r line; do echo "::error title=Studio UI in Chromium::$line"; done
+            exit 1
+          }
         env:
           PYTHON: python
       - uses: actions/cache@v4

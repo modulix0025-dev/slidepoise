@@ -38,25 +38,27 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     const page = await browser.newPage();
     const errors = [];
     page.on("pageerror", (error) => errors.push(String(error)));
+    // a slow work-panel start must not swallow an early click on a page (the 3.10 CI race)
+    await page.route("**/api/agent/model-check", async (route) => { await new Promise((r) => setTimeout(r, 2500)); await route.continue(); });
     await page.goto(`http://127.0.0.1:${port}/`);
     assert.equal(await page.getAttribute("html", "dir"), "rtl");
     assert.equal(await page.getAttribute("html", "lang"), "ar");
-    // the pages are the stage; «التنفيذ والتعديل» floats beside them on «اطلب»; the control centre is closed
-    await page.waitForSelector("#chat-text");
-    assert.equal(await page.evaluate(() => document.body.classList.contains("control-open")), false);
-    assert.equal(await page.getAttribute("#control", "aria-hidden"), "true");
-    assert.equal(await page.getAttribute('#work-tabs [data-work="ask"]', "aria-selected"), "true");
+    // the pages are the stage; a click on a page opens «عدّل» on it even while the work panel is still starting
     await page.waitForSelector("#pages .mx-page");
-    assert.equal(await page.locator("#pages .mx-page").count(), 3);
-    assert.equal(await page.textContent("#current-title"), "رحلة البحر");
-    assert.ok((await page.textContent("#stage-facts")).includes("2/2"));
-    // clicking a page selects it and opens «عدّل» on that page
     await page.click('#pages .mx-page[data-index="1"]');
     assert.equal(await page.getAttribute('#pages .mx-page[data-index="1"]', "aria-pressed"), "true");
     assert.equal(await page.getAttribute('#work-tabs [data-work="edit"]', "aria-selected"), "true");
     await page.waitForSelector("#pane-edit.is-on #edit-text");
+    // «التنفيذ والتعديل» floats beside them; the control centre is closed
+    await page.waitForSelector("#chat-text", { state: "attached" });
+    assert.equal(await page.evaluate(() => document.body.classList.contains("control-open")), false);
+    assert.equal(await page.getAttribute("#control", "aria-hidden"), "true");
+    assert.equal(await page.locator("#pages .mx-page").count(), 3);
+    assert.equal(await page.textContent("#current-title"), "رحلة البحر");
+    assert.ok((await page.textContent("#stage-facts")).includes("2/2"));
     await page.click('#work-tabs [data-work="ask"]');
     await page.waitForSelector("#pane-ask.is-on");
+    assert.equal(await page.getAttribute('#work-tabs [data-work="ask"]', "aria-selected"), "true");
     const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAFElEQVR4nGP8tNiKARtgwio6aCUAbekB3/mw8Q8AAAAASUVORK5CYII=", "base64");
     await page.setInputFiles("#chat-files", { name: "design.png", mimeType: "image/png", buffer: png });
     await page.waitForSelector("#attached .thumb img");
