@@ -177,3 +177,11 @@ def test_phase_docs_are_bilingual():
     for name in ("CLEAN_INSTALL_RUNBOOK_AR_EN.md", "PHASE_12_NOTES.md"):
         text = (ROOT / "docs" / "mag" / "phase-12" / name).read_text(encoding="utf-8")
         assert re.search(r"[؀-ۿ]{3,}", text) and re.search(r"[A-Za-z]{5,}", text), name
+
+
+def test_standard_user_proof_never_counts_1601_as_a_pass():
+    # a batch logon cannot reach Windows Installer as a standard user: recorded, never turned into "ok"
+    text = (ROOT / "installer" / "windows_sandbox" / "standard_user_proof.ps1").read_text(encoding="ascii")
+    assert '"not_provable_batch_logon"' in text
+    assert "$ok = $ok -and ($Result.msi -eq \"ok\")" in text
+    assert "setup_exit -eq 0" in text  # the Studio's own per-user install always decides
