@@ -1,0 +1,6 @@
+c4164a8aa0cee7a02082450104e821af76a2e7d6  ./MAG_FONT_LICENCE_INVENTORY.md
+ec909849f91d23e7d4603fd54677a124de337dd9  ./MAG_PHASE_0_REPORT_AR_EN.md
+79aebff011a8ed2589ed8f8483e7de9f411220f3  ./MAG_SCOPE_MATRIX_AR_EN.md
+44e69a26b5abcb9cb2e0fb1d6166a15b0745ffcf  ./MAG_UPSTREAM_MAP.md
+c317737b4881bee63ca0eb41ef1bb95bcc7d0ad0  ./tools/mag_template_anatomy.py
+67dfb48ca3048a11c42f82831fa978dc85eb3b5a  ./tools/tests/test_mag_template_anatomy.py
