@@ -305,3 +305,18 @@ def install_name_map(builds_path: Path | None = None) -> dict[str, str]:
     from mxstudio.fonts.paths import OFFICE_BUILDS_JSON
     data = json.loads(Path(builds_path or OFFICE_BUILDS_JSON).read_text(encoding="utf-8"))
     return {plan["family"]: plan["install_family"] for plan in data["families"] if plan.get("install_family")}
+
+
+_DECK_NAMES: dict[str, str] | None = None
+
+
+def deck_family(family: str) -> str:
+    """The family name a deck must use so the INSTALLED font is found: an Office build renamed for an OFL Reserved
+    Font Name is installed as «MX Kids F076 …», never under the catalog name (which would be substituted)."""
+    global _DECK_NAMES
+    if _DECK_NAMES is None:
+        try:
+            _DECK_NAMES = install_name_map()
+        except (OSError, ValueError, KeyError):
+            _DECK_NAMES = {}
+    return _DECK_NAMES.get(family) or family

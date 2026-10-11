@@ -216,9 +216,62 @@ def build_tree(name: str, target: Path, *, cache_dir: Path | None = None, transp
             _write(target, rel, blob)
             files.append({"path": rel, "sha256": hashlib.sha256(blob).hexdigest(), "source": item.url,
                           "source_sha256": item.sha256, "licence": item.licence, "set": item.note})
+    if name == "font_vault":
+        files += office_builds(target, files)
     manifest = {"schema": "mxs-asset-bundle/1", "recipe": name, "version": version(name), "files": files}
     _write(target, MANIFEST, (json.dumps(manifest, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
     return {"recipe": name, "version": manifest["version"], "files": len(files), "inputs": len(items)}
+
+
+def office_builds(target: Path, files: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Office-safe static instances of every certified VARIABLE family (catalog/fonts/office_builds.json), built
+    deterministically from the pinned upstream file now in `target` and checked byte-for-byte against the committed
+    sha256. PowerPoint (and LibreOffice) only see a variable font's default instance — «Marhey Light», not «Marhey» —
+    and substitute another font; the statics carry the plain family name with Regular/Bold members. The variable
+    file they replace is marked ``superseded_by`` and is not installed."""
+    from mxstudio.fonts.office_build import build_family  # noqa: PLC0415
+
+    cat = _catalog_dir() / "fonts"
+    plans = [p for p in _json(cat / "office_builds.json")["families"] if p.get("source") == "office_build"]
+    catalog = {f["id"]: f for f in _json(cat / "catalog.json")["families"]}
+    by_path = {f["path"]: f for f in files}
+    added: list[dict[str, Any]] = []
+    for plan in plans:
+        fam = catalog.get(plan["id"])
+        if fam is None:
+            continue
+        source_rel = f"{fam['repo_dir']}/{plan['from_file']}"
+        source = Path(target) / source_rel
+        if source_rel not in by_path or not source.is_file():
+            continue  # family not bundled (licence) or not in this vault
+        out_rel = f"office/{plan['id']}"
+        built = build_family(source, Path(target) / out_rel, font_id=plan["id"], family=fam["family"],
+                             rfns=fam.get("reserved_font_names", []), roles=fam["roles"], weights=plan["weights"])
+        expected = {f["file"]: f["sha256"] for f in plan["files"]}
+        for item in built:
+            if expected.get(item.file) != item.sha256:
+                raise UpdateError("office_build_mismatch", f"نسخة الأوفيس من خط {fam['family']} طلعت مختلفة عن المثبّتة.",
+                                  f"office build {item.file} differs from the pinned sha256")
+            added.append({"path": f"{out_rel}/{item.file}", "sha256": item.sha256, "source": "office_build",
+                          "from": source_rel, "licence": by_path[source_rel]["licence"], "family": plan["install_family"],
+                          "catalog_family": fam["family"]})
+        by_path[source_rel]["superseded_by"] = out_rel
+    return added
+
+
+def superseded_files(folders: list[Path]) -> set[str]:
+    """Names of vault files replaced by Office builds (read from each folder's MANIFEST.json)."""
+    names: set[str] = set()
+    for folder in folders:
+        manifest = Path(folder) / MANIFEST
+        if not manifest.is_file():
+            continue
+        try:
+            items = json.loads(manifest.read_text(encoding="utf-8")).get("files", [])
+        except ValueError:
+            continue
+        names |= {Path(item["path"]).name.casefold() for item in items if item.get("superseded_by")}
+    return names
 
 
 def tree_status(folder: Path) -> dict[str, Any]:
@@ -248,8 +301,9 @@ def bundle_dirs(name: str, *, app_dir: Path, home: Path) -> list[Path]:
 
 
 def font_files(folders: list[Path]) -> list[Path]:
+    """Every installable vault font: Office builds instead of the variable files they replace."""
     out: list[Path] = []
-    seen: set[str] = set()
+    seen: set[str] = superseded_files(folders)
     for folder in folders:
         if not folder.is_dir():
             continue
@@ -260,7 +314,24 @@ def font_files(folders: list[Path]) -> list[Path]:
     return out
 
 
-def install_vault_fonts(files: list[Path], backend=None) -> dict[str, Any]:
+def retire_superseded(backend, names: set[str]) -> list[str]:
+    """Unregister variable files an Office build replaced (an older install registered «Marhey Light» etc.)."""
+    if not names or not hasattr(backend, "registry_delete"):
+        return []
+    retired = []
+    for value, data in backend.registry_values("user").items():
+        if Path(str(data)).name.casefold() in names:
+            try:
+                if hasattr(backend, "remove_font_resource"):
+                    backend.remove_font_resource(Path(str(data)))
+                backend.registry_delete("user", value)
+                retired.append(value)
+            except OSError:
+                continue
+    return retired
+
+
+def install_vault_fonts(files: list[Path], backend=None, superseded_names: set[str] | None = None) -> dict[str, Any]:
     """Install vault fonts for the current Windows user (no admin): copy + HKCU registry + AddFontResourceExW +
     WM_FONTCHANGE. File by file: one failure never stops the others; identical files are not copied again."""
     from mxstudio.fonts.install import install_fonts_each  # noqa: PLC0415
@@ -272,13 +343,14 @@ def install_vault_fonts(files: list[Path], backend=None) -> dict[str, Any]:
         backend = WindowsBackend()
     outcome = install_fonts_each(files, "user", backend)
     failed = outcome["failed"]
+    retired = retire_superseded(backend, superseded_names)
     powerpoint_running = False
     try:
         powerpoint_running = bool(backend.process_running("POWERPNT.EXE"))
     except Exception:  # noqa: BLE001 - only a hint
         pass
     import time  # noqa: PLC0415
-    return {"ok": not failed, "installed": len(outcome["results"]), "files": len(files),
+    return {"ok": not failed, "installed": len(outcome["results"]), "files": len(files), "retired_variable": retired,
             "identical_skipped": outcome["identical_skipped"], "failed": failed[:20], "failed_count": len(failed),
             "registered": sorted({r.registry_value for r in outcome["results"]})[:2000],
             "installed_at": time.time(), "powerpoint_running_at_install": powerpoint_running}
@@ -324,7 +396,8 @@ def main(argv: list[str] | None = None, *, emit: Callable[[dict], None] | None =
             target = bundle_dirs(name, app_dir=app_dir, home=home)[1]
             result = {"ok": True, **build_tree(name, target, cache_dir=home / "downloads" / "assets")}
         else:
-            result = install_vault_fonts(font_files(bundle_dirs("font_vault", app_dir=app_dir, home=home)))
+            folders = bundle_dirs("font_vault", app_dir=app_dir, home=home)
+            result = install_vault_fonts(font_files(folders), superseded_names=superseded_files(folders))
     except UpdateError as err:
         result = {"ok": False, "code": err.code, "ar": err.ar, "en": err.en}
     emit(result)

@@ -42,8 +42,15 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     await page.setInputFiles("#chat-files", { name: "design.png", mimeType: "image/png", buffer: png });
     await page.waitForSelector("#attached .thumb img");
     await page.fill("#chat-text", "قصة عن البحر بألوان الصورة دي");
+    // no model configured: not a red NO_MODEL error but «prepare a request for Claude Desktop» (phase 16)
+    assert.ok((await page.textContent("#prep-note")).includes("Claude Desktop"));
+    await page.waitForFunction(() => document.querySelector("#inbox-list").textContent.includes("design"));
     await page.click("#chat-send");
-    await page.waitForFunction(() => document.querySelector("#chat-status").textContent.includes("NO_MODEL"));
+    await page.waitForFunction(() => document.querySelector("#chat-status").textContent.includes("نفّذ طلبات الاستوديو"));
+    await page.waitForFunction(() => document.querySelector("#requests").textContent.includes("قصة عن البحر"));
+    const saved = await page.evaluate(async () => (await fetch("/api/requests")).json());
+    assert.equal(saved.requests[0].status, "new");
+    assert.equal(saved.requests[0].image_shas.length, 1);
     // «توصيل Claude Desktop» at the bottom of the menu: status, steps, config snippet, self-test of the real command
     await page.click('#nav a[href="#mcp"]');
     await page.waitForSelector("#mcp-snippet");

@@ -166,6 +166,13 @@ class MemoryBackend:
         self.resources.append(str(path))
         return 1
 
+    def registry_delete(self, scope: str, name: str) -> None:
+        self.registry[scope].pop(name, None)
+
+    def remove_font_resource(self, path: Path) -> int:
+        self.removed = [*getattr(self, "removed", []), str(path)]
+        return 1
+
     def broadcast_font_change(self) -> None:
         self.broadcasts += 1
 
@@ -237,6 +244,13 @@ class WindowsBackend:  # pragma: no cover - exercised only on Windows (pending o
 
     def add_font_resource(self, path: Path) -> int:
         return int(self.ctypes.windll.gdi32.AddFontResourceExW(str(path), 0, None))
+
+    def registry_delete(self, scope: str, name: str) -> None:
+        with self.winreg.OpenKey(self._hive(scope), FONTS_KEY, 0, self.winreg.KEY_SET_VALUE) as key:
+            self.winreg.DeleteValue(key, name)
+
+    def remove_font_resource(self, path: Path) -> int:
+        return int(self.ctypes.windll.gdi32.RemoveFontResourceExW(str(path), 0, None))
 
     def broadcast_font_change(self) -> None:
         from ctypes import wintypes  # noqa: PLC0415

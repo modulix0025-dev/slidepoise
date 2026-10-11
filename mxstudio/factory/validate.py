@@ -17,7 +17,8 @@ from slidepoise.arabic.fit import fit_text
 from slidepoise.arabic.fonts import FontRegistry, default_registry
 
 VENDOR = Path(__file__).resolve().parents[2] / "vendor" / "modulex"
-LONGEST_NAMES = {"ar": "عبد الرحمن محمود", "en": "Abdelrahman Ali"}  # 14 letters each (brief §6.2 default)
+from mxstudio.factory.names import HAMZA_NAMES, LONGEST_NAMES  # noqa: E402,F401 - re-exported
+
 MESSAGES = {
     "replacements": ("عدد استبدالات الاسم مش مظبوط — القالب هيطلع باسم غلط.",
                      "name replacement count differs from the expected count"),
@@ -29,6 +30,8 @@ MESSAGES = {
     "pages": ("عدد صفحات الـPDF غير عدد الشرائح.", "PDF page count differs from the slides"),
     "text_proof": ("الكلام اللي في الـPDF مش هو اللي في القالب.", "the PDF words differ from the deck"),
     "fonts": ("فيه خط مش متسطّب على الجهاز.", "a font used by the deck is not installed"),
+    "font_substituted": ("الـPDF اتطبع بخط بديل مكان خط القالب — الخط مش متسجّل في ويندوز أو PowerPoint مفتوح من قبل "
+                         "تسطيبه.", "the PDF uses a substitute font instead of a deck typeface"),
 }
 
 
@@ -127,11 +130,16 @@ def validate_variant(entry: dict, out_dir: Path, registry: FontRegistry | None =
                 findings.append(_finding("pages", {"pdf": record["pages"], "slides": len(spec["slides"])}))
             texts = ["".join(run["text"] for run in obj.get("runs", [])) for slide in spec["slides"]
                      for obj in slide["objects"] if obj.get("kind") == "textbox"]
-            proof = text_proof(texts, pdf)
+            proof = text_proof(texts, pdf, names=[entry["base_name"], LONGEST_NAMES[language], *HAMZA_NAMES])
             facts["text_proof"] = proof
             if not proof["ok"]:
                 findings.append(_finding("text_proof", proof))
             facts["pdf"] = str(pdf)
+            from mxstudio.validators.pdf_fonts import check_pdf  # noqa: PLC0415
+            fonts = check_pdf(pdf, deck_typefaces(spec))
+            facts["pdf_fonts"] = fonts
+            if not fonts["ok"]:
+                findings.append(_finding("font_substituted", {k: fonts[k] for k in ("missing", "unexpected")}))
             if record["engine"] != "powerpoint":
                 facts["powerpoint_proof"] = "pending on device (On-Device Proof Runner)"
     return {"variant": entry["variant"], "size": entry["size"], "file": entry["file"], "ok": not findings,

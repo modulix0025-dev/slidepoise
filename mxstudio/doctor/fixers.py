@@ -62,8 +62,8 @@ def fix_fetch_fonts(ctx: DoctorContext, *, progress=None, **_: Any) -> dict[str,
     result = _build_bundle(ctx, "font_vault", progress)
     if result.get("ok") and ctx.is_windows:
         from mxstudio.update import assets  # noqa: PLC0415
-        files = assets.font_files(assets.bundle_dirs("font_vault", app_dir=Path(ctx.app_dir), home=Path(ctx.home)))
-        installed = assets.install_vault_fonts(files)
+        folders = assets.bundle_dirs("font_vault", app_dir=Path(ctx.app_dir), home=Path(ctx.home))
+        installed = assets.install_vault_fonts(assets.font_files(folders), superseded_names=assets.superseded_files(folders))
         result["installed"] = installed
         result["ar"] += f" واتسطّب {installed['installed']} خط لحسابك."
         result["en"] += f" {installed['installed']} fonts installed for this user."

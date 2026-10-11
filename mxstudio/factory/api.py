@@ -30,7 +30,9 @@ def resolve_theme(spec: dict | None, registry=None) -> dict | None:
         if found is None:
             raise ToolError("UNKNOWN_TYPE_THEME", "ثيم الخطوط ده مش موجود — شوف fonts.list_themes.",
                             "unknown type theme; see fonts.list_themes")
-        theme["name"], theme["fonts"] = found["name_ar"], {"title": found["ar_title"], "body": found["ar_body"]}
+        from mxstudio.fonts.office_build import deck_family  # noqa: PLC0415 - RFN-renamed Office builds
+        theme["name"], theme["fonts"] = found["name_ar"], {"title": deck_family(found["ar_title"]),
+                                                           "body": deck_family(found["ar_body"])}
     theme["colours"].update(spec.get("colours") or {})
     if registry is None:
         from slidepoise.arabic.fonts import default_registry  # noqa: PLC0415

@@ -16,6 +16,7 @@ import math
 from pathlib import Path
 
 from mxstudio.factory.layouts import DEFAULT_THEME, MIN_SIZES_PT, layout_page
+from mxstudio.factory.names import LONGEST_NAMES, language_of
 from mxstudio.factory.payloads import VARIANTS, resolve_spec
 from mxstudio.factory.story import Story, runs_for
 from slidepoise.arabic.fit import fit_text
@@ -118,6 +119,12 @@ def fit_spec(spec: dict, registry: FontRegistry | None = None) -> tuple[dict, li
             if obj.get("kind") != "textbox":
                 continue
             text = "".join(run["text"] for run in obj.get("runs", [])) or obj.get("text", "")
+            if any(run.get("role") == "child_name" for run in obj.get("runs", [])):
+                # sized for the LONGEST expected name, not the sample one: OM drops any child's name in here
+                language = language_of(text)
+                longest = "".join(LONGEST_NAMES[language] if run.get("role") == "child_name" else run["text"]
+                                  for run in obj["runs"])
+                text = max((text, longest), key=len)
             style = obj["style"]
             _, _, w_mm, h_mm = obj["box_mm"]
             minimum = MIN_SIZES_PT[size].get(obj.get("text_role", "body"), 8.0)

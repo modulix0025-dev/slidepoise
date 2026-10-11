@@ -54,8 +54,16 @@ jobs:
         run: npx playwright install --with-deps chromium && npm run test:mag-browser
         env:
           PYTHON: python
+      - uses: actions/cache@v4
+        with:
+          path: workspace/test-fonts
+          key: mxs-test-fonts-${{ hashFiles('catalog/fonts/catalog.json', 'catalog/fonts/type_themes.json') }}
+      - name: Theme fonts for the hamza-name and no-substitute proofs (pinned sha256, google/fonts)
+        run: python tools/fetch_test_fonts.py --all
       - name: Studio suites (no skips allowed on Linux)
         run: python -m pytest tests/mag -q -rs --junitxml=workspace/test-results/mag.xml
+        env:
+          MXS_ALL_THEMES: ${{ matrix.python-version == '3.12' && '1' || '0' }}
       - name: Full suite
         run: python -m pytest -q
       - uses: actions/upload-artifact@v4
