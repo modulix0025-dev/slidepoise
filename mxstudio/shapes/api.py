@@ -35,6 +35,8 @@ def register(app, state) -> None:
 
     service = build_service(state)
     app.state.mxs_shapes = service
+    if hasattr(state, "closers"):
+        state.closers.append(service.library.close)
 
     def make(method_name: str, http: str):
         handler = getattr(service, method_name)

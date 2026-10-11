@@ -14,7 +14,6 @@ import hashlib
 import hmac
 import json
 import secrets
-import sqlite3
 import threading
 import time
 from collections.abc import Callable
@@ -73,10 +72,9 @@ class _Store:
                                                 args TEXT, outcome TEXT, code TEXT, token TEXT, summary TEXT);
             """)
 
-    def db(self) -> sqlite3.Connection:
-        db = sqlite3.connect(self.path, timeout=30)
-        db.execute("PRAGMA journal_mode=WAL")
-        return db
+    def db(self):
+        from mxstudio.sqlite_util import connect  # noqa: PLC0415
+        return connect(self.path)
 
 
 class ConfirmationTokens:

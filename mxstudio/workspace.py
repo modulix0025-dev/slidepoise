@@ -38,11 +38,9 @@ class Workspace:
         with self._connect() as db:
             db.executescript(SCHEMA)
 
-    def _connect(self) -> sqlite3.Connection:
-        db = sqlite3.connect(self._db_path, timeout=30)
-        db.execute("PRAGMA journal_mode=WAL")
-        db.row_factory = sqlite3.Row
-        return db
+    def _connect(self):
+        from mxstudio.sqlite_util import connect  # noqa: PLC0415
+        return connect(self._db_path, rows=True)
 
     # -- blobs -------------------------------------------------------------
     def put_bytes(self, data: bytes) -> str:

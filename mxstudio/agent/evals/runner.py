@@ -225,6 +225,8 @@ def run_scenario(scenario: dict, policy: str = "scripted", provider=None, fixtur
                 checks.append({"type": check["type"], "passed": passed, "detail": detail})
         except Exception as exc:  # noqa: BLE001 - a crash is a failed scenario, reported
             checks, error = [{"type": "crash", "passed": False, "detail": f"{type(exc).__name__}: {exc}"}], str(exc)
+        finally:
+            state.close()  # Windows cannot delete the temp folder while a SQLite handle is open
         return {"id": scenario["id"], "kind": scenario["kind"], "family": scenario["family"], "policy": policy,
                 "passed": all(c["passed"] for c in checks), "checks": checks, "error": error,
                 "seconds": round(time.time() - started, 2)}

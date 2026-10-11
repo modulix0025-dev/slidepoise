@@ -35,11 +35,9 @@ class JobQueue:
         with self._db() as db:
             db.executescript(SCHEMA)
 
-    def _db(self) -> sqlite3.Connection:
-        db = sqlite3.connect(self.path, timeout=30, isolation_level=None)
-        db.execute("PRAGMA journal_mode=WAL")
-        db.row_factory = sqlite3.Row
-        return db
+    def _db(self):
+        from mxstudio.sqlite_util import connect  # noqa: PLC0415
+        return connect(self.path, rows=True, autocommit=True)
 
     def enqueue(self, kind: str, payload: dict[str, Any], idempotency_key: str | None = None,
                 max_attempts: int = 3) -> dict:

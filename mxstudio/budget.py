@@ -5,7 +5,6 @@ operator can set a GPU-hour price so rented-GPU time is still counted.
 """
 from __future__ import annotations
 
-import sqlite3
 import threading
 import time
 from dataclasses import dataclass
@@ -38,9 +37,8 @@ class BudgetGuard:
             db.execute("CREATE TABLE IF NOT EXISTS spend (ts REAL, job TEXT, provider TEXT, usd REAL, kind TEXT)")
 
     def _db(self):
-        db = sqlite3.connect(self.path, timeout=30)
-        db.execute("PRAGMA journal_mode=WAL")
-        return db
+        from mxstudio.sqlite_util import connect  # noqa: PLC0415
+        return connect(self.path)
 
     @staticmethod
     def estimate(prices: Prices, input_tokens: int = 0, output_tokens: int = 0, images: int = 0,

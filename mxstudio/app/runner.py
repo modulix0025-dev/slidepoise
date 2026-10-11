@@ -86,6 +86,7 @@ def serve(home: Path | None = None, port: int | None = None, block: bool = True)
         try:
             server.run()
         finally:
+            state.close()
             remove_lock()
 
     threading.Thread(target=watch, daemon=True).start()

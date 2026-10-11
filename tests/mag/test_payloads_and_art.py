@@ -6,7 +6,7 @@ from pathlib import Path
 import cv2
 import numpy as np
 import pytest
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, features
 
 from mxstudio.factory.payloads import coverage_findings, name_token_findings, resolve_spec
 from mxstudio.validators.art_text import FINDING, inspect_slot, inspect_target
@@ -62,8 +62,9 @@ def _scene(draw_text: bool):
     draw.ellipse((40, 330, 860, 580), fill=(250, 250, 245))
     if draw_text:
         font = ImageFont.truetype(str(FONT), 44)
-        draw.text((820, 380), "كان يا ما كان ولد اسمه إياد", font=font, fill=(30, 30, 30), direction="rtl", anchor="ra")
-        draw.text((820, 450), "يحب البحر كثيرا ويحلم بسمكة", font=font, fill=(30, 30, 30), direction="rtl", anchor="ra")
+        rtl = "rtl" if features.check("raqm") else None  # Windows Pillow wheels have no libraqm; glyphs still land
+        draw.text((820, 380), "كان يا ما كان ولد اسمه إياد", font=font, fill=(30, 30, 30), direction=rtl, anchor="ra")
+        draw.text((820, 450), "يحب البحر كثيرا ويحلم بسمكة", font=font, fill=(30, 30, 30), direction=rtl, anchor="ra")
     return np.ascontiguousarray(np.array(image)[:, :, ::-1])
 
 

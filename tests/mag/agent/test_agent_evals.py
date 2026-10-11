@@ -104,3 +104,35 @@ def test_manual_is_generated_deterministically_and_retrievable(tmp_path, monkeyp
     changed = dict(second, sections=[dict(s, text=s["text"] + " x") if s["id"] == "rules" else s
                                      for s in second["sections"]])
     assert diff_manuals(first, changed)["changed"] == ["rules"]
+
+
+def _open_files_under(fragment: str) -> list[str]:
+    import os
+    found = []
+    for fd in os.listdir("/proc/self/fd"):
+        try:
+            target = os.readlink(f"/proc/self/fd/{fd}")
+        except OSError:
+            continue
+        if fragment in target:
+            found.append(target)
+    return found
+
+
+@pytest.mark.skipif(not __import__("os").path.isdir("/proc/self/fd"), reason="needs /proc (Linux); Windows CI "
+                    "proves the same thing by deleting the temp folder")
+def test_a_scenario_leaves_no_open_file_in_its_temp_workspace(monkeypatch):
+    """On Windows an open SQLite handle makes the temp folder undeletable (WinError 32)."""
+    import gc
+    gc.disable()  # an unclosed connection must not be rescued by the garbage collector
+    try:
+        scenario = next(s for s in all_scenarios() if s["family"] == "approve_without_token")
+        assert runner.run_scenario(scenario)["passed"]
+        assert _open_files_under("mxs-eval-") == []
+        from mxstudio.app.state import AppState
+        monkeypatch.setattr(AppState, "close", lambda self: None)  # negative control: no closing ⇒ handles stay
+        runner.run_scenario(scenario)
+        assert _open_files_under("mxs-eval-")
+    finally:
+        gc.enable()
+        gc.collect()

@@ -24,6 +24,15 @@ class AppState:
     tools: ToolRegistry
     shutdown_token: str = field(default_factory=lambda: secrets.token_urlsafe(24))
     sessions: dict[str, str] = field(default_factory=dict)  # session id -> csrf token
+    closers: list = field(default_factory=list)  # long-lived handles (e.g. the shape library) closed by close()
+
+    def close(self) -> None:
+        """Release open files: on Windows an open SQLite handle blocks deleting or moving the workspace."""
+        while self.closers:
+            try:
+                self.closers.pop()()
+            except Exception:  # noqa: BLE001 - closing is best effort
+                pass
 
     @classmethod
     def create(cls, home: Path | None = None) -> "AppState":

@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 
+from PIL import features as _pil_features
+
 from mxlibs.mx_textfit import (
     FontResolver,
     ParagraphNotFound,
@@ -18,6 +20,10 @@ from mxlibs.mx_textfit import (
     paragraph_box,
 )
 from mxlibs.mx_textfit import measure as tf_measure
+
+# Pillow wheels for Windows ship without libraqm; the library then measures with HarfBuzz or,
+# failing that, flags an approximate measurement. The raqm path is checked where raqm exists.
+HAVE_RAQM = bool(_pil_features.check("raqm"))
 
 FONTS = Path(__file__).resolve().parents[1] / "fixtures" / "fonts"
 BODY = "كان يا ما كان، ولد اسمه إياد يحب البحر كثيرًا، ويحلم كل ليلة بسمكة ذهبية تكلّمه."
@@ -200,12 +206,13 @@ def test_negative_control_missing_glyphs(tmp_path, resolver):
     latin = tmp_path / "LatinOnly.ttf"
     font.save(str(latin))
     only = FontResolver(directories=[], files=[latin])
-    for method in ("harfbuzz", "pillow_raqm", "approximate"):
+    for method in ("harfbuzz", "pillow_raqm", "approximate") if HAVE_RAQM else ("harfbuzz", "approximate"):
         result = fit("إياد", (int(6 * CM), int(3 * CM)), tajawal(16), resolver=only, method=method)
         assert result["verdict"] == "missing_glyphs" and result["notdef"] == 4, method
 
 
 # --------------------------------------------------------------------------- backends
+@pytest.mark.skipif(not HAVE_RAQM, reason="this Pillow build has no libraqm (Windows wheels); Linux CI runs it")
 def test_harfbuzz_and_raqm_agree(resolver):
     box = (int(6 * CM), int(3 * CM))
     rules = {"allow_shrink": True, "min_size_pt": 8}
@@ -218,9 +225,10 @@ def test_harfbuzz_and_raqm_agree(resolver):
 def test_falls_back_when_uharfbuzz_is_missing(resolver, monkeypatch):
     monkeypatch.setitem(sys.modules, "uharfbuzz", None)  # import now raises ImportError
     face = resolver.resolve("Tajawal")
-    assert measurer_for(face).method == "pillow_raqm"
+    expected = "pillow_raqm" if HAVE_RAQM else "approximate"  # without raqm the fallback is flagged approximate
+    assert measurer_for(face).method == expected
     result = fit(BODY, (int(6 * CM), int(3 * CM)), tajawal(16), resolver=resolver)
-    assert result["method"] == "pillow_raqm"
+    assert result["method"] == expected and result["approximate"] is (not HAVE_RAQM)
 
 
 def test_approximate_fallback_is_flagged(resolver, monkeypatch):

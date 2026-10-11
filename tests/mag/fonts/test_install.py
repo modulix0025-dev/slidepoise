@@ -2,11 +2,22 @@
 from __future__ import annotations
 
 import sys
+from pathlib import Path
 
 import pytest
 
-from mxstudio.fonts.install import (Account, MemoryBackend, NeedsElevation, WindowsBackend, after_install,
-                                    choose_scope, install_fonts, plan_install, verify_installed, wait_for_idle)
+from mxstudio.fonts.install import (
+    Account,
+    MemoryBackend,
+    NeedsElevation,
+    WindowsBackend,
+    after_install,
+    choose_scope,
+    install_fonts,
+    plan_install,
+    verify_installed,
+    wait_for_idle,
+)
 
 OPERATOR = Account("operator", "S-1-5-21-1-1001", session_id=1)
 OTHER = Account("printer", "S-1-5-21-1-1002", session_id=2)
@@ -27,7 +38,8 @@ def test_per_user_install_registers_full_path_and_broadcasts(fonts, tmp_path):
     results = install_fonts([fonts["tajawal"], fonts["tajawal_bold"]], "user", backend)
     assert [r.windows_reported_name for r in results] == ["Tajawal", "Tajawal Bold"]  # Tajawal's own ID4 says «Tajawal»
     values = backend.registry_values("user")
-    assert values["Tajawal (TrueType)"].endswith("LocalAppData/Microsoft/Windows/Fonts/Tajawal-Regular.ttf")
+    assert Path(values["Tajawal (TrueType)"]).parts[-5:] == ("LocalAppData", "Microsoft", "Windows", "Fonts",
+                                                             "Tajawal-Regular.ttf")  # full path, any separator
     assert backend.broadcasts == 1 and len(backend.resources) == 2
     assert verify_installed(results, backend) == []
     assert results[0].as_ack() == {"file": "Tajawal-Regular.ttf", "windows_reported_name": "Tajawal",
