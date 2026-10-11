@@ -1,0 +1,190 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "mag/v1/m1_template_set",
+ "title": "M1 template-set candidate (Studio -> OM)",
+ "type": "object",
+ "required": [
+  "contract",
+  "schema_version",
+  "produced_by",
+  "created_at",
+  "story_key",
+  "display_name",
+  "variants",
+  "validator_report_sha256"
+ ],
+ "additionalProperties": false,
+ "properties": {
+  "contract": {
+   "const": "mag/v1/m1"
+  },
+  "schema_version": {
+   "type": "integer",
+   "minimum": 1,
+   "maximum": 1
+  },
+  "produced_by": {
+   "$ref": "#/$defs/produced_by"
+  },
+  "created_at": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+  },
+  "story_key": {
+   "type": "string",
+   "pattern": "^[a-z0-9_]{2,48}$"
+  },
+  "display_name": {
+   "type": "string",
+   "minLength": 1,
+   "maxLength": 120
+  },
+  "mode": {
+   "enum": [
+    "add",
+    "update"
+   ]
+  },
+  "variants": {
+   "type": "object",
+   "minProperties": 1,
+   "additionalProperties": false,
+   "properties": {
+    "A4": {
+     "$ref": "#/$defs/size"
+    },
+    "A5": {
+     "$ref": "#/$defs/size"
+    }
+   }
+  },
+  "characters_count": {
+   "type": "integer",
+   "minimum": 0,
+   "maximum": 20
+  },
+  "extra_characters": {
+   "type": "array",
+   "maxItems": 20,
+   "items": {
+    "type": "string",
+    "maxLength": 80
+   }
+  },
+  "figure_prompt_male": {
+   "type": "string",
+   "maxLength": 4000
+  },
+  "figure_prompt_female": {
+   "type": "string",
+   "maxLength": 4000
+  },
+  "logo_config": {
+   "type": "object"
+  },
+  "replacements_additions": {
+   "type": "object",
+   "maxProperties": 50,
+   "additionalProperties": {
+    "type": "string",
+    "maxLength": 400
+   }
+  },
+  "validator_report_sha256": {
+   "$ref": "#/$defs/sha256"
+  },
+  "files": {
+   "type": "object",
+   "maxProperties": 16,
+   "patternProperties": {
+    "^[A-Za-z0-9_.\\- ]{1,120}\\.pptx$": {
+     "$ref": "#/$defs/b64"
+    }
+   },
+   "additionalProperties": false
+  }
+ },
+ "$defs": {
+  "sha256": {
+   "type": "string",
+   "pattern": "^[0-9a-f]{64}$"
+  },
+  "produced_by": {
+   "type": "object",
+   "required": [
+    "app",
+    "version"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "app": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 80
+    },
+    "version": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 40
+    },
+    "git_sha": {
+     "type": "string",
+     "pattern": "^[0-9a-f]{7,40}$"
+    }
+   }
+  },
+  "b64": {
+   "type": "string",
+   "pattern": "^[A-Za-z0-9+/=\\s]*$"
+  },
+  "variant": {
+   "type": "object",
+   "required": [
+    "file",
+    "sha256",
+    "base_name"
+   ],
+   "additionalProperties": false,
+   "properties": {
+    "file": {
+     "type": "string",
+     "pattern": "^[A-Za-z0-9_.\\- ]{1,120}\\.pptx$"
+    },
+    "sha256": {
+     "$ref": "#/$defs/sha256"
+    },
+    "base_name": {
+     "type": "string",
+     "minLength": 1,
+     "maxLength": 40
+    }
+   }
+  },
+  "gender": {
+   "type": "object",
+   "minProperties": 1,
+   "additionalProperties": false,
+   "properties": {
+    "male": {
+     "$ref": "#/$defs/variant"
+    },
+    "female": {
+     "$ref": "#/$defs/variant"
+    }
+   }
+  },
+  "size": {
+   "type": "object",
+   "minProperties": 1,
+   "additionalProperties": false,
+   "properties": {
+    "ar": {
+     "$ref": "#/$defs/gender"
+    },
+    "en": {
+     "$ref": "#/$defs/gender"
+    }
+   }
+  }
+ }
+}
