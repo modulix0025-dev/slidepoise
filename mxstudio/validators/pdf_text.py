@@ -5,11 +5,14 @@ bidi controls, break lines where the layout wrapped, and may move a haraka
 before its base letter (measured: «كثيرًا» extracts as «كثيًر ا»). The proof
 therefore compares two things that extraction cannot legitimately change:
 
-* the sequence of base characters (letters, digits, punctuation) with marks,
-  whitespace, tatweel and bidi controls removed, after NFC; and
-* the multiset of marks (harakat, shadda, sukun, tanween).
+* the sequence of letters and digits, with marks, whitespace, tatweel and bidi
+  controls removed, after NFC;
+* the multiset of marks (harakat, shadda, sukun, tanween); and
+* the multiset of punctuation — neutral punctuation («» : ، .) next to a
+  direction change is emitted in visual order by extractors, so only its count
+  is comparable, not its position.
 
-Equal on both ⇒ every word and every haraka of the deck is in the PDF.
+Equal on all three ⇒ every word, haraka and punctuation mark of the deck is in the PDF.
 """
 from __future__ import annotations
 
@@ -36,27 +39,36 @@ def extract_text(pdf: Path) -> str:
         document.close()
 
 
-def normalize_for_proof(text: str) -> tuple[str, Counter]:
+def normalize_for_proof(text: str) -> tuple[str, Counter, Counter]:
     text = unicodedata.normalize("NFC", (text or "").translate(BIDI_CONTROLS))
     decomposed = unicodedata.normalize("NFD", text)
-    base, marks = [], Counter()
+    base, marks, punct = [], Counter(), Counter()
     for char in decomposed:
-        if unicodedata.category(char) == "Mn":
+        category = unicodedata.category(char)
+        if category == "Mn":
             marks[char] += 1
-        elif not char.isspace() and char != TATWEEL:
+        elif char.isspace() or char == TATWEEL:
+            continue
+        elif category[0] in "LN":
             base.append(char)
-    return unicodedata.normalize("NFC", "".join(base)), marks
+        else:
+            punct[char] += 1
+    return unicodedata.normalize("NFC", "".join(base)), marks, punct
 
 
 def text_proof(expected_texts: list[str], pdf: Path) -> dict:
-    expected_base, expected_marks = normalize_for_proof("".join(expected_texts))
-    actual_base, actual_marks = normalize_for_proof(extract_text(pdf))
-    return {
+    expected_base, expected_marks, expected_punct = normalize_for_proof("".join(expected_texts))
+    actual_base, actual_marks, actual_punct = normalize_for_proof(extract_text(pdf))
+    result = {
         "base_equal": expected_base == actual_base,
         "marks_equal": expected_marks == actual_marks,
-        "ok": expected_base == actual_base and expected_marks == actual_marks,
+        "punct_equal": expected_punct == actual_punct,
         "expected_chars": len(expected_base),
         "actual_chars": len(actual_base),
         "missing_marks": dict(expected_marks - actual_marks),
         "extra_marks": dict(actual_marks - expected_marks),
+        "missing_punct": dict(expected_punct - actual_punct),
+        "extra_punct": dict(actual_punct - expected_punct),
     }
+    result["ok"] = result["base_equal"] and result["marks_equal"] and result["punct_equal"]
+    return result
