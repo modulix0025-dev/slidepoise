@@ -26,7 +26,7 @@ html, body { margin: 0; background: var(--xb-paper); color: var(--xb-ink); font-
 body { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
 header.xb-hd { background: var(--xb-hd-bg); color: var(--xb-hd-fg); display: flex; align-items: center; gap: 14px;
   padding: 10px 18px; }
-header .logo { width: 38px; height: 38px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+header .logo { width: 38px; height: 38px; display: grid; place-items: center; }
 header .title { font-weight: 800; letter-spacing: .2px; }
 header .sub { color: var(--xb-hd-mute); font-size: 12px; }
 header .spacer { flex: 1; }

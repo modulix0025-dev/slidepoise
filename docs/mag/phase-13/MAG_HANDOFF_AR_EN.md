@@ -172,7 +172,7 @@ Negative controls (a removed guardrail must turn the suite red) are in `tests/ma
 4. انشر الإصدار: من GitHub ← Releases ← Draft a new release ← tag جديد `mxs-v0.2.0` على الفرع ← Publish (أو `git tag mxs-v0.2.0 && git push origin mxs-v0.2.0` من جهازك). ده بيشغّل البناء ويرفع الملفات والروابط الثابتة. · Publish: create tag `mxs-v0.2.0` (GitHub UI or git) — the workflow builds, smoke-tests and attaches the installers.
 5. في الاستوديو: حط `modulex.hmac` (السر المشترك بتاع أنظمة ModuleX). · Set the `modulex.hmac` secret.
 6. اضبط عناوين الـGPU (نص/رؤية: Qwen3-VL؛ صور: Qwen-Image / Qwen-Image-Edit-2511 / FLUX.1 schnell) وبعدين `evals qualify`. · Configure GPU endpoints, then qualify.
-7. اللوجو: حط PNG رسمي مكان `mxstudio/ui/logo-placeholder.svg` (اللوجو الأصلي ماتنقلش صح، فاستخدمنا placeholder). · Provide the logo PNG.
+7. ✓ الأيقونة: اخترت «تاج على الغلاف» — مرسومة في `installer/assets/app.svg`، ومنها `app.ico` (16–256) للبرنامج والمثبّت وشريط المهام، والشعار والـfavicon في الشاشة. لتغييرها: عدّل الـSVG وشغّل `python tools/build_icon.py`. · Icon chosen: «crown on the cover»; regenerate with `tools/build_icon.py`.
 8. **تنبيه ترخيص:** لو الكونسول بتاعك بيستخدم FLUX.1 Kontext [dev] — ده ترخيص غير تجاري؛ البديل المجاني Qwen-Image-Edit-2511 (Apache-2.0). الاستوديو بيرفض الموديل ده. · Licence note: FLUX.1 Kontext [dev] is non-commercial; the free replacement is Qwen-Image-Edit-2511.
 
 ---

@@ -86,6 +86,10 @@ VIAddVersionKey /LANG=0 "LegalCopyright" "ModuleX"
 !include "FileFunc.nsh"
 
 !define MUI_ABORTWARNING
+; App icon (installer/assets/app.ico, built from app.svg by tools/build_icon.py). makensis works from
+; this script's folder, so the path is relative to installer/nsis/.
+!define MUI_ICON "../assets/app.ico"
+!define MUI_UNICON "../assets/app.ico"
 !define MUI_WELCOMEPAGE_TITLE "أهلًا بيك في مثبّت استوديو المجلات"
 !if "${FLAVOUR}" == "full"
   !define MUI_WELCOMEPAGE_TEXT "هنثبّت «مديول إكس · استوديو المجلات» لحسابك بس، من غير صلاحيات مدير.$\r$\n$\r$\nالنسخة دي كاملة (Full): فيها LibreOffice وخزنة الخطوط وحزم الأشكال، ومش محتاجة إنترنت.$\r$\n$\r$\nالبرنامج بيتحط في فولدر برّه C:\المشروع، ومساحة العمل بتختارها في أول تشغيل."
