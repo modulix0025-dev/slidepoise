@@ -6,7 +6,7 @@
 const I18N = {
   ar: {
     app: "استوديو المجلات", "nav.home": "الرئيسية", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
-    "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة",
+    "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة", "nav.marketing": "التسويق والمبيعات",
     "nav.agent": "المساعد", "nav.doctor": "الفحص الشامل", "nav.settings": "الإعدادات", "nav.audit": "السجل",
     "confirm.title": "تأكيد خطوة مالهاش رجوع", "confirm.yes": "أيوه، نفّذ", "confirm.no": "لأ",
     status: "حالة الاستوديو", features: "الأجزاء", jobs: "المهام", budget: "مصاريف الذكاء الاصطناعي النهارده",
@@ -20,7 +20,7 @@ const I18N = {
   en: {
     app: "Magazine Studio", "nav.home": "Home", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
     "nav.shapes": "Shapes & drawing", "nav.colour": "Colour & taste", "nav.kit": "Connect my systems",
-    "nav.qa": "Pre-print QA", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
+    "nav.qa": "Pre-print QA", "nav.marketing": "Marketing & sales", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
     "nav.audit": "Audit log", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
     "confirm.no": "No", status: "Studio status", features: "Feature areas", jobs: "Jobs", budget: "AI spend today",
     providers: "AI providers", keys: "Keys (stored encrypted, never shown again)", save: "Save", test: "Test connection",
@@ -167,7 +167,7 @@ async function route() {
   routeSeq += 1;
   const name = (location.hash || "#home").slice(1);
   document.querySelectorAll("#nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${name}`));
-  const area = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", doctor: "doctor" }[name];
+  const area = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", marketing: "marketing", doctor: "doctor" }[name];
   try {
     if (VIEWS[name]) await VIEWS[name]();
     else if (area) await featureView(area);

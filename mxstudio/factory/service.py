@@ -22,6 +22,10 @@ def build_and_validate(story: Story, out_dir: Path, registry=None, engines=None,
 
 def store(workspace, story: Story, result: dict) -> int:
     blobs = {entry["file"]: workspace.put_file(Path(entry["path"])) for entry in result["built"]["variants"].values()}
+    for report in result["validation"]["variants"].values():  # the exported PDFs: marketing previews read these
+        pdf = report.get("facts", {}).get("pdf")
+        if pdf and Path(pdf).is_file():
+            blobs[Path(pdf).name] = workspace.put_file(Path(pdf))
     if result.get("contact_sheet"):
         blobs["contact_sheet.png"] = workspace.put_file(Path(result["contact_sheet"]))
     body = {"story": story.as_dict(), "built": strip_specs(result["built"]), "validation": result["validation"],

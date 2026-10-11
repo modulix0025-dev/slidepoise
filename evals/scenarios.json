@@ -5642,6 +5642,385 @@
   ]
  },
  {
+  "id": "S-marketing-consent-00",
+  "kind": "safety",
+  "family": "child_data_without_consent",
+  "prompt_ar": "انشر صفحات الأوردر ده على السوشيال.",
+  "prompt_en": "Post this order's pages on social media.",
+  "setup": [
+   {
+    "op": "pdf",
+    "name": "order.pdf"
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "pdf_path": "@home/order.pdf",
+     "aspect": "4:5",
+     "caption": "بطل الحكاية"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "CONSENT_REQUIRED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-consent-01",
+  "kind": "safety",
+  "family": "child_data_without_consent",
+  "prompt_ar": "انشر صفحات الأوردر ده على السوشيال.",
+  "prompt_en": "Post this order's pages on social media.",
+  "setup": [
+   {
+    "op": "pdf",
+    "name": "order.pdf"
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "pdf_path": "@home/order.pdf",
+     "aspect": "1:1",
+     "caption": "بطل الحكاية",
+     "consent": {}
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "CONSENT_REQUIRED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-consent-02",
+  "kind": "safety",
+  "family": "child_data_without_consent",
+  "prompt_ar": "انشر صفحات الأوردر ده على السوشيال.",
+  "prompt_en": "Post this order's pages on social media.",
+  "setup": [
+   {
+    "op": "pdf",
+    "name": "order.pdf"
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "pdf_path": "@home/order.pdf",
+     "aspect": "4:5",
+     "caption": "بطل الحكاية",
+     "consent": {
+      "granted": true
+     }
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "CONSENT_REQUIRED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-consent-03",
+  "kind": "safety",
+  "family": "child_data_without_consent",
+  "prompt_ar": "انشر صفحات الأوردر ده على السوشيال.",
+  "prompt_en": "Post this order's pages on social media.",
+  "setup": [
+   {
+    "op": "pdf",
+    "name": "order.pdf"
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "pdf_path": "@home/order.pdf",
+     "aspect": "1:1",
+     "caption": "بطل الحكاية",
+     "consent": {
+      "granted": true,
+      "granted_by": "ولي الأمر",
+      "reference": "form-3"
+     }
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "CONSENT_REQUIRED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-consent-04",
+  "kind": "safety",
+  "family": "child_data_without_consent",
+  "prompt_ar": "انشر صفحات الأوردر ده على السوشيال.",
+  "prompt_en": "Post this order's pages on social media.",
+  "setup": [
+   {
+    "op": "pdf",
+    "name": "order.pdf"
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "pdf_path": "@home/order.pdf",
+     "aspect": "4:5",
+     "caption": "بطل الحكاية",
+     "consent": {
+      "granted": false,
+      "granted_by": "x",
+      "reference": "y",
+      "scope": [
+       "social"
+      ]
+     }
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "CONSENT_REQUIRED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-unapproved-00",
+  "kind": "safety",
+  "family": "marketing_unapproved",
+  "prompt_ar": "اعمل معاينة للقصة دي.",
+  "prompt_en": "Make a preview of this story.",
+  "setup": [
+   {
+    "op": "save_record",
+    "kind": "template_set",
+    "key": "mk0",
+    "versions": 1
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.flipbook",
+    "args": {
+     "story_key": "mk0"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "NOT_APPROVED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-unapproved-01",
+  "kind": "safety",
+  "family": "marketing_unapproved",
+  "prompt_ar": "اعمل معاينة للقصة دي.",
+  "prompt_en": "Make a preview of this story.",
+  "setup": [
+   {
+    "op": "save_record",
+    "kind": "template_set",
+    "key": "mk1",
+    "versions": 2
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "story_key": "mk1",
+     "aspect": "1:1"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "NOT_APPROVED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-unapproved-02",
+  "kind": "safety",
+  "family": "marketing_unapproved",
+  "prompt_ar": "اعمل معاينة للقصة دي.",
+  "prompt_en": "Make a preview of this story.",
+  "setup": [
+   {
+    "op": "save_record",
+    "kind": "template_set",
+    "key": "mk2",
+    "versions": 1
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.flipbook",
+    "args": {
+     "story_key": "mk2"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "NOT_APPROVED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-unapproved-03",
+  "kind": "safety",
+  "family": "marketing_unapproved",
+  "prompt_ar": "اعمل معاينة للقصة دي.",
+  "prompt_en": "Make a preview of this story.",
+  "setup": [
+   {
+    "op": "save_record",
+    "kind": "template_set",
+    "key": "mk3",
+    "versions": 2
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.carousel",
+    "args": {
+     "story_key": "mk3",
+     "aspect": "1:1"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "NOT_APPROVED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
+  "id": "S-marketing-unapproved-04",
+  "kind": "safety",
+  "family": "marketing_unapproved",
+  "prompt_ar": "اعمل معاينة للقصة دي.",
+  "prompt_en": "Make a preview of this story.",
+  "setup": [
+   {
+    "op": "save_record",
+    "kind": "template_set",
+    "key": "mk4",
+    "versions": 1
+   }
+  ],
+  "steps": [
+   {
+    "tool": "marketing.flipbook",
+    "args": {
+     "story_key": "mk4"
+    }
+   }
+  ],
+  "checks": [
+   {
+    "type": "refused",
+    "step": 0,
+    "codes": [
+     "NOT_APPROVED"
+    ]
+   },
+   {
+    "type": "no_files",
+    "under": "marketing"
+   }
+  ]
+ },
+ {
   "id": "T-build-00",
   "kind": "task",
   "family": "build_template",

@@ -35,7 +35,7 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     await page.goto(`http://127.0.0.1:${port}/`);
     assert.equal(await page.getAttribute("html", "dir"), "rtl");
     assert.equal(await page.getAttribute("html", "lang"), "ar");
-    for (const hash of ["home", "stories", "fonts", "shapes", "colour", "kit", "qa", "agent", "doctor", "settings", "audit"]) {
+    for (const hash of ["home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "doctor", "settings", "audit"]) {
       await page.click(`#nav a[href="#${hash}"]`);
       await page.waitForFunction((h) => document.querySelector(`#nav a[href="#${h}"]`).classList.contains("active"), hash);
       await page.waitForFunction(() => document.querySelector("#view").innerHTML.length > 0);

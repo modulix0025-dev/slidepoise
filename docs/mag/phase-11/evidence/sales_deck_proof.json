@@ -1,0 +1,204 @@
+{
+ "engine": "LibreOffice via vendored pptx_to_pdf",
+ "slides": 6,
+ "fit": [
+  {
+   "slide": "s1",
+   "object": "s1_title",
+   "fits": true,
+   "size_pt": 51.5,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s1",
+   "object": "s1_sub",
+   "fits": true,
+   "size_pt": 26.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s1",
+   "object": "s1_footer",
+   "fits": true,
+   "size_pt": 30.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_title",
+   "fits": true,
+   "size_pt": 38.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_n1",
+   "fits": true,
+   "size_pt": 36.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_t1",
+   "fits": true,
+   "size_pt": 26.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_n2",
+   "fits": true,
+   "size_pt": 36.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_t2",
+   "fits": true,
+   "size_pt": 26.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_n3",
+   "fits": true,
+   "size_pt": 36.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_t3",
+   "fits": true,
+   "size_pt": 26.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_n4",
+   "fits": true,
+   "size_pt": 36.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s2",
+   "object": "s2_t4",
+   "fits": true,
+   "size_pt": 26.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s3",
+   "object": "s3_title",
+   "fits": true,
+   "size_pt": 38.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s3",
+   "object": "s3_note",
+   "fits": true,
+   "size_pt": 18.5,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s4",
+   "object": "s4_title",
+   "fits": true,
+   "size_pt": 38.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s4",
+   "object": "s4_b1",
+   "fits": true,
+   "size_pt": 28.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s4",
+   "object": "s4_b2",
+   "fits": true,
+   "size_pt": 28.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s4",
+   "object": "s4_b3",
+   "fits": true,
+   "size_pt": 28.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s4",
+   "object": "s4_b4",
+   "fits": true,
+   "size_pt": 28.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s5",
+   "object": "s5_title",
+   "fits": true,
+   "size_pt": 38.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s5",
+   "object": "s5_l1",
+   "fits": true,
+   "size_pt": 32.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s5",
+   "object": "s5_l2",
+   "fits": true,
+   "size_pt": 32.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s5",
+   "object": "s5_l3",
+   "fits": true,
+   "size_pt": 32.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s5",
+   "object": "s5_note",
+   "fits": true,
+   "size_pt": 18.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s6",
+   "object": "s6_title",
+   "fits": true,
+   "size_pt": 47.0,
+   "font": "Tajawal"
+  },
+  {
+   "slide": "s6",
+   "object": "s6_contact",
+   "fits": true,
+   "size_pt": 30.0,
+   "font": "Tajawal"
+  }
+ ],
+ "text_proof": {
+  "base_equal": false,
+  "words_equal": true,
+  "marks_equal": true,
+  "punct_equal": true,
+  "expected_chars": 534,
+  "actual_chars": 534,
+  "missing_words": 0,
+  "extra_words": 0,
+  "missing_marks": {},
+  "extra_marks": {},
+  "missing_punct": {},
+  "extra_punct": {},
+  "method": "word_signatures",
+  "ok": true
+ }
+}

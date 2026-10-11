@@ -75,14 +75,25 @@ def _setup(state, ops: list[dict]) -> None:
             (folder / f"{op['name']}.json").write_text(json.dumps(op["content"], ensure_ascii=False), encoding="utf-8")
         elif kind == "secret":
             state.secrets.set(op["name"], op["value"])
+        elif kind == "pdf":  # a stand-in for an order render (it may carry a real child's data)
+            from PIL import Image  # noqa: PLC0415
+            Image.new("RGB", (620, 874), "#F5C04A").save(Path(state.home) / op["name"], resolution=72)
         elif kind == "budget":
             state.budget.per_job, state.budget.per_day = op["per_job"], op["per_day"]
         else:
             raise ValueError(f"unknown setup op {kind}")
 
 
+def _home_paths(value, home: Path):
+    if isinstance(value, str) and value.startswith("@home/"):
+        return str(home / value[len("@home/"):])
+    if isinstance(value, dict):
+        return {k: _home_paths(v, home) for k, v in value.items()}
+    return value
+
+
 def _call(state, step: dict, results: list) -> dict:
-    args = _resolve(step.get("args", {}), results)
+    args = _home_paths(_resolve(step.get("args", {}), results), Path(state.home))
     mode = step.get("token")
     token = None
     if mode == "forged":
@@ -160,6 +171,10 @@ def _check(state, check: dict, results: list, run) -> tuple[bool, str]:
         last = mine[-1] if mine else {}
         value = (last.get("result") or {}).get(check["field"])
         return bool(last.get("ok")) and value == check["value"], f"{check['field']}={value!r}"
+    if kind == "no_files":
+        folder = Path(state.workspace.root) / check["under"]
+        made = [p for p in folder.rglob("*") if p.is_file()] if folder.is_dir() else []
+        return not made, f"{len(made)} files"
     if kind == "printable_colour_found":
         last = results[-1]
         ok = bool(last.get("ok") and last["result"]["max_delta_e2000"] < 6.0)
