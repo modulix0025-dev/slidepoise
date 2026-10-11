@@ -13,19 +13,38 @@
    "licence": "MPL-2.0",
    "licence_url": "https://www.libreoffice.org/about-us/licenses",
    "file_name": "LibreOffice_Win_x86-64.msi",
-   "flavours": {"online": "on_demand", "full": "bundled"},
+   "flavours": {
+    "online": "on_demand",
+    "full": "bundled"
+   },
    "offline_path": "libreoffice/LibreOffice_Win_x86-64.msi",
    "install": {
     "method": "msi_admin_extract",
     "needs_admin": false,
     "target": "{app_dir}/libreoffice",
-    "command": ["msiexec", "/a", "{msi}", "/qn", "TARGETDIR={target}", "/L*v", "{log}"],
+    "command": [
+     "msiexec",
+     "/a",
+     "{msi}",
+     "/qn",
+     "TARGETDIR={target}",
+     "/L*v",
+     "{log}"
+    ],
     "find": "**/program/soffice.exe"
    },
    "fallback": {
     "method": "msi_per_machine",
     "needs_admin": true,
-    "command": ["msiexec", "/i", "{msi}", "/qb", "ALLUSERS=1", "/L*v", "{log}"]
+    "command": [
+     "msiexec",
+     "/i",
+     "{msi}",
+     "/qb",
+     "ALLUSERS=1",
+     "/L*v",
+     "{log}"
+    ]
    },
    "how_to_pin": "Pick the current stable version on https://www.libreoffice.org/download/download-libreoffice/ ; replace TO-PIN in version/url; take sha256 from the official '<file>.mirrorlist' page or compute it after download; set size in bytes. CI job 'libreoffice-standard-user' prints the computed sha256 when run with allow_unpinned."
   },
@@ -39,7 +58,10 @@
    "licence": "MIT",
    "licence_url": "https://github.com/nodejs/node/blob/main/LICENSE",
    "file_name": "node-v22.23.3-win-x64.zip",
-   "flavours": {"online": "build", "full": "build"},
+   "flavours": {
+    "online": "build",
+    "full": "build"
+   },
    "pinned_from": "https://nodejs.org/dist/v22.23.3/SHASUMS256.txt (retrieved 2026-10-11)"
   },
   "webview2_bootstrapper": {
@@ -50,37 +72,57 @@
    "sha256": "NOT-PINNABLE",
    "verify": "authenticode:Microsoft Corporation",
    "file_name": "MicrosoftEdgeWebview2Setup.exe",
-   "flavours": {"online": "on_demand", "full": "on_demand"},
-   "install": {"method": "exe", "needs_admin": false, "command": ["{exe}", "/silent", "/install"]},
+   "flavours": {
+    "online": "on_demand",
+    "full": "on_demand"
+   },
+   "install": {
+    "method": "exe",
+    "needs_admin": false,
+    "command": [
+     "{exe}",
+     "/silent",
+     "/install"
+    ]
+   },
    "note_en": "The evergreen bootstrapper changes with every Microsoft release, so it is verified by its Authenticode signature (signer Microsoft Corporation) instead of a pinned sha256."
   },
   "font_vault": {
-   "label_ar": "خزنة الخطوط",
-   "label_en": "font vault",
-   "version": "TO-PIN",
-   "url": "https://github.com/modulix0025-dev/slidepoise/releases/download/mxs-assets-TO-PIN/mxs-font-vault.zip",
-   "sha256": "TO-PIN",
-   "size": null,
-   "licence": "OFL-1.1 / Apache-2.0 (per-font provenance inside the zip)",
-   "file_name": "mxs-font-vault.zip",
-   "flavours": {"online": "on_demand", "full": "bundled"},
-   "offline_path": "fonts/mxs-font-vault.zip",
-   "install": {"method": "zip_extract", "needs_admin": false, "target": "{home}/fonts"},
-   "how_to_pin": "Publish the font vault built by the fonts module as a release asset under tag mxs-assets-v<N>; replace TO-PIN in version/url; set sha256 and size from 'sha256sum' / 'stat'."
+   "label_ar": "خزنة الخطوط (214 عيلة خطوط مجانية)",
+   "label_en": "font vault (214 free font families)",
+   "recipe": "font_vault",
+   "version": "google/fonts@bd8f81ddb5c7",
+   "licence": "OFL-1.1 / Apache-2.0 (per-family licence file shipped next to the fonts)",
+   "flavours": {
+    "online": "on_demand",
+    "full": "bundled"
+   },
+   "offline_path": "fonts",
+   "install": {
+    "method": "recipe_tree",
+    "needs_admin": false,
+    "target": "{home}/fonts",
+    "then": "install_fonts_per_user"
+   },
+   "pinned_by": "every font file and licence file is pinned by sha256 in catalog/fonts/catalog.json (google/fonts at the pinned commit); only families the licence ledger allows to ship are included"
   },
   "shape_packs": {
-   "label_ar": "حزم الأشكال",
-   "label_en": "shape packs",
-   "version": "TO-PIN",
-   "url": "https://github.com/modulix0025-dev/slidepoise/releases/download/mxs-assets-TO-PIN/mxs-shape-packs.zip",
-   "sha256": "TO-PIN",
-   "size": null,
-   "licence": "per-shape provenance inside the zip (print allowlist only)",
-   "file_name": "mxs-shape-packs.zip",
-   "flavours": {"online": "on_demand", "full": "bundled"},
-   "offline_path": "shapes/mxs-shape-packs.zip",
-   "install": {"method": "zip_extract", "needs_admin": false, "target": "{home}/shapes"},
-   "how_to_pin": "Same as font_vault."
+   "label_ar": "حزم الأشكال (5 مجموعات أيقونات مجانية للطباعة)",
+   "label_en": "shape packs (5 print-safe free icon sets)",
+   "recipe": "shape_packs",
+   "version": "iconify-json@2026-10-11",
+   "licence": "per set: Apache-2.0, MIT, CC-BY-4.0 (credits page) — see catalog/shapes/packs.json",
+   "flavours": {
+    "online": "on_demand",
+    "full": "bundled"
+   },
+   "offline_path": "shapes",
+   "install": {
+    "method": "recipe_tree",
+    "needs_admin": false,
+    "target": "{home}/shapes"
+   },
+   "pinned_by": "each @iconify-json npm tarball is pinned by sha256 (and npm sha512 integrity) in catalog/shapes/packs.json"
   }
  }
 }

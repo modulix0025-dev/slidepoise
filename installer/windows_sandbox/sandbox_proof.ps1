@@ -3,7 +3,8 @@
 #   1. SHA256 of every installer against SHA256SUMS (the integrity check users do by hand)
 #   2. online flavour: silent per-user install -> files present -> Doctor -> uninstall (/S):
 #      program folder gone, data and workspace kept
-#   3. Full flavour (if present): same, and the Doctor "office" line must be green (LibreOffice extracted)
+#   3. Full flavour (if present): same, and the Doctor "office" line must be green (LibreOffice extracted),
+#      "fonts" green, "shapes" ok, and the installer's fonts-install.json must report fonts installed
 #   4. standard-user proof (if a LibreOffice MSI is present): standard_user_proof.ps1
 # The same script is the installed-app smoke test of mag-release.yml:
 #   pwsh -File sandbox_proof.ps1 -In <installers dir> -Out <results dir> -Ci   (exit 1 on any FAIL)
@@ -75,6 +76,15 @@ function Prove-Flavour($label, $setup, [bool]$expectOffice) {
                 $om = Join-Path $AppDir "offline\offline_manifest.json"
                 $lo = if (Test-Path $om) { (Get-Content -Raw -Encoding UTF8 $om | ConvertFrom-Json).entries.libreoffice_msi.status } else { "" }
                 if ($lo -like "bundled*") { $need += "office" } else { Say "  office not required: LibreOffice is not in this build (status '$lo', still TO-PIN)" }
+                # Full always carries the font vault and the shape packs (assembled from per-file pins)
+                $need += "fonts"
+                $shapes = @($doc.checks | Where-Object { $_.id -eq "shapes" })
+                $Results["$label shape packs"] = ($shapes.Count -eq 1) -and ($shapes[0].level -eq "ok")
+                $fl = Join-Path $DataDir "logs\fonts-install.json"
+                $fi = if (Test-Path $fl) { Get-Content -Raw -Encoding UTF8 $fl | ConvertFrom-Json } else { $null }
+                $n = if ($fi) { [int]$fi.installed } else { 0 }
+                Say "  fonts installed for this user: $n"
+                $Results["$label fonts installed"] = ($null -ne $fi) -and ($fi.ok -eq $true) -and ($n -gt 0)
             }
             $bad = @($doc.checks | Where-Object { ($need -contains $_.id) -and (-not $_.ok) })
             $Results["$label doctor"] = ($bad.Count -eq 0)

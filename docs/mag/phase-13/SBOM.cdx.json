@@ -6837,22 +6837,22 @@
   {
    "type": "application",
    "name": "font_vault",
-   "version": "TO-PIN",
+   "version": "google/fonts@bd8f81ddb5c7",
    "licenses": [
     {
      "license": {
-      "name": "OFL-1.1 / Apache-2.0 (per-font provenance inside the zip)"
+      "name": "OFL-1.1 / Apache-2.0 (per-family licence file shipped next to the fonts)"
      }
     }
    ],
    "properties": [
     {
      "name": "mxs:sha256",
-     "value": "TO-PIN"
+     "value": "recipe:font_vault"
     },
     {
      "name": "mxs:pinned",
-     "value": "False"
+     "value": "True"
     }
    ]
   },
@@ -6903,22 +6903,22 @@
   {
    "type": "application",
    "name": "shape_packs",
-   "version": "TO-PIN",
+   "version": "iconify-json@2026-10-11",
    "licenses": [
     {
      "license": {
-      "name": "per-shape provenance inside the zip (print allowlist only)"
+      "name": "per set: Apache-2.0, MIT, CC-BY-4.0 (credits page) — see catalog/shapes/packs.json"
      }
     }
    ],
    "properties": [
     {
      "name": "mxs:sha256",
-     "value": "TO-PIN"
+     "value": "recipe:shape_packs"
     },
     {
      "name": "mxs:pinned",
-     "value": "False"
+     "value": "True"
     }
    ]
   },
@@ -6941,6 +6941,151 @@
     {
      "name": "mxs:pinned",
      "value": "True"
+    }
+   ]
+  },
+  {
+   "type": "data",
+   "name": "@iconify-json/noto",
+   "version": "1.2.9",
+   "purl": "pkg:npm/%40iconify-json/noto@1.2.9",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "3e918d88fc945c0bb3d468dbace6f88caef67f01c9f0e7bcae0915a042e8f1ad"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "shape-pack"
+    },
+    {
+     "name": "mxs:set",
+     "value": "Noto Emoji"
+    }
+   ]
+  },
+  {
+   "type": "data",
+   "name": "@iconify-json/fluent-emoji-flat",
+   "version": "1.2.6",
+   "purl": "pkg:npm/%40iconify-json/fluent-emoji-flat@1.2.6",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "7d064769dee690815f823bc5bcc511d957198caf9f5edd8dd9c1aa48a6aeb175"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "shape-pack"
+    },
+    {
+     "name": "mxs:set",
+     "value": "Fluent Emoji Flat"
+    }
+   ]
+  },
+  {
+   "type": "data",
+   "name": "@iconify-json/twemoji",
+   "version": "1.2.5",
+   "purl": "pkg:npm/%40iconify-json/twemoji@1.2.5",
+   "licenses": [
+    {
+     "license": {
+      "id": "CC-BY-4.0"
+     }
+    }
+   ],
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "19046dff7d8707ce96212ec86468b36ac5f8e60409629dd13f809265c6d0ebb7"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "shape-pack"
+    },
+    {
+     "name": "mxs:set",
+     "value": "Twemoji"
+    }
+   ]
+  },
+  {
+   "type": "data",
+   "name": "@iconify-json/ph",
+   "version": "1.2.2",
+   "purl": "pkg:npm/%40iconify-json/ph@1.2.2",
+   "licenses": [
+    {
+     "license": {
+      "id": "MIT"
+     }
+    }
+   ],
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "e3a582a047d9829fc7e8842c660d8065e598d1b68bb58cb68e75a1f1e5a614cc"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "shape-pack"
+    },
+    {
+     "name": "mxs:set",
+     "value": "Phosphor"
+    }
+   ]
+  },
+  {
+   "type": "data",
+   "name": "@iconify-json/ri",
+   "version": "1.2.10",
+   "purl": "pkg:npm/%40iconify-json/ri@1.2.10",
+   "licenses": [
+    {
+     "license": {
+      "id": "Apache-2.0"
+     }
+    }
+   ],
+   "hashes": [
+    {
+     "alg": "SHA-256",
+     "content": "f7ab45281b250fb0bfa5c5438fc334f010cbf695f5ac851b90b296ef4674fb07"
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "shape-pack"
+    },
+    {
+     "name": "mxs:set",
+     "value": "Remix Icon"
     }
    ]
   }

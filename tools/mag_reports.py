@@ -148,13 +148,28 @@ def build(out: Path) -> dict:
             "version": entry.get("version", ""),
             "licenses": [{"license": {"name": entry.get("licence", "UNKNOWN")}}],
             "properties": [
-                {"name": "mxs:sha256", "value": entry.get("sha256", "")},
-                {"name": "mxs:pinned", "value": str(entry.get("sha256") not in (None, "", "TO-PIN"))},
+                {"name": "mxs:sha256", "value": entry.get("sha256", "") or f"recipe:{entry.get('recipe')}"},
+                {"name": "mxs:pinned", "value": str(bool(entry.get("recipe"))
+                                                    or entry.get("sha256") not in (None, "", "TO-PIN"))},
             ],
         }
         for key, entry in sorted(downloads.items())
     ]
-    components = python + npm + vendored + fonts + bundled
+    packs = json.loads((ROOT / "catalog" / "shapes" / "packs.json").read_text(encoding="utf-8"))
+    shape_sets = [
+        {
+            "type": "data",
+            "name": item["package"],
+            "version": item["version"],
+            "purl": f"pkg:npm/{item['package'].replace('@', '%40')}@{item['version']}",
+            "licenses": [{"license": {"id": item["licence"]}}],
+            "hashes": [{"alg": "SHA-256", "content": item["sha256"]}],
+            "properties": [{"name": "mxs:ecosystem", "value": "shape-pack"},
+                           {"name": "mxs:set", "value": item["name"]}],
+        }
+        for item in packs["sets"]
+    ]
+    components = python + npm + vendored + fonts + bundled + shape_sets
     blob = json.dumps(components).lower()
     banned = [b["id"] for b in policy["banned_components"] for p in b["patterns"] if p.lower() in blob]
     sbom = {
@@ -173,7 +188,7 @@ def build(out: Path) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     (out / "SBOM.cdx.json").write_text(json.dumps(sbom, ensure_ascii=False, indent=1), encoding="utf-8")
     shapes = json.loads((ROOT / "catalog" / "shapes" / "sources.json").read_text(encoding="utf-8"))
-    report = licence_report(python, npm, ledger, qa, shapes, policy, bundled, banned)
+    report = licence_report(python, npm, ledger, qa, shapes, policy, bundled, banned, shape_sets)
     (out / "LICENCE_REPORT_AR_EN.md").write_text(report, encoding="utf-8")
     return {
         "components": len(components),
@@ -184,7 +199,7 @@ def build(out: Path) -> dict:
     }
 
 
-def licence_report(python, npm, ledger, qa, shapes, policy, bundled, banned) -> str:
+def licence_report(python, npm, ledger, qa, shapes, policy, bundled, banned, shape_sets=()) -> str:
     def counts(items):
         return Counter(i["licenses"][0]["license"].get("id") or i["licenses"][0]["license"]["name"] for i in items)
 
@@ -237,6 +252,9 @@ def licence_report(python, npm, ledger, qa, shapes, policy, bundled, banned) -> 
         + "; credits required for "
         + ", ".join(policy["print_asset_requires_credits"])
         + ".",
+        "* Shape packs shipped in the Full installer (pinned npm tarballs, `catalog/shapes/packs.json`): "
+        + ", ".join(f"{c['properties'][1]['value']} ({c['licenses'][0]['license']['id']})" for c in shape_sets)
+        + "; CC-BY-4.0 icons go on the credits page.",
         "* Refused for print: " + ", ".join(policy["print_asset_refused"]) + ".",
         "* Waiting for the operator's decision: " + ", ".join(policy["print_asset_pending_operator"]) + ".",
         "",

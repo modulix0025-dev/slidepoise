@@ -174,6 +174,17 @@ def check_fonts(ctx: DoctorContext) -> CheckResult:
                f"Font vault: {len(files)} fonts ({arabic} with Arabic).", count=len(files), arabic=arabic)
 
 
+def check_shapes(ctx: DoctorContext) -> CheckResult:
+    sets = []
+    for folder in (Path(ctx.app_dir) / "offline" / "shapes", Path(ctx.home) / "shapes"):
+        sets += [p.parent.name for p in folder.glob("iconify/*/icons.json")]
+    if not sets:
+        return _warn("shapes", "حزم الأشكال مش موجودة — البحث عن أشكال هيحتاج نت.",
+                     "Shape packs are missing; shape search needs the internet.", "fetch_shapes")
+    names = sorted(set(sets))
+    return _ok("shapes", f"حزم الأشكال موجودة ({len(names)} مجموعة).", f"Shape packs: {len(names)} sets.", sets=names)
+
+
 WEBVIEW2_GUID = "{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"
 
 
@@ -314,14 +325,14 @@ def child_roundtrip() -> int:
 
 
 CHECKS: list[Callable[[DoctorContext], CheckResult]] = [
-    check_python, check_node, check_office, check_pypdfium2, check_fonts, check_webview2, check_providers,
+    check_python, check_node, check_office, check_pypdfium2, check_fonts, check_shapes, check_webview2, check_providers,
     *[_system_check(*spec) for spec in OPERATOR_SYSTEMS],
     check_workspace, check_disk, check_arabic_path,
 ]
 
 
 def check_ids() -> list[str]:
-    return ["python", "node", "office", "pypdfium2", "fonts", "webview2", "providers",
+    return ["python", "node", "office", "pypdfium2", "fonts", "shapes", "webview2", "providers",
             *[spec[0] for spec in OPERATOR_SYSTEMS], "workspace", "disk", "arabic_path"]
 
 

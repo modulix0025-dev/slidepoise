@@ -23,6 +23,7 @@ from .boolean import boolean as clip_boolean
 from .custgeom import CustomGeometry, GeomPart, Path as GPath
 from .discovery import SEARCHERS, Candidate, PoliteClient, import_candidate, inspiration_candidate
 from .discovery.base import DiscoveryError, sources
+from .discovery.local_sets import SCHEME as LOCAL_SCHEME, LocalClient, LocalSets
 from .generators import generate, list_generators
 from .library import STYLES, ShapeLibrary
 from .raster import mask_from_png
@@ -71,6 +72,7 @@ class ShapeService:
     critic: VisionCritic | None = None
     image_model: ImageModel | None = None
     discovery_enabled: dict = field(default_factory=lambda: {"iconify": True, "openverse": True, "wikimedia": True})
+    local_sets: LocalSets | None = None  # offline Iconify packs (Full installer / Doctor), searched first
     _found: dict = field(default_factory=dict)
     _candidates: dict = field(default_factory=dict)
 
@@ -239,16 +241,21 @@ class ShapeService:
         if len(local) >= min_hits and not body.get("force"):
             return {"ok": True, "from": "library", "library": [a.to_json() for a in local], "printable": [],
                     "refused": [], "errors": {}}
-        if not self.client_factory:
-            raise ServiceError("OFFLINE", "البحث على النت مش متاح دلوقتي.", "no discovery client configured")
-        client = self.client_factory()
-        enabled = [s for s in body.get("sources") or list(SEARCHERS) if self.discovery_enabled.get(s)]
+        limit = int(body.get("limit", 20))
         results, errors = [], {}
-        for name in enabled:
-            try:
-                results.extend(SEARCHERS[name](client, query, limit=int(body.get("limit", 20))))
-            except DiscoveryError as exc:
-                errors[name] = str(exc)
+        wanted = body.get("sources") or [*SEARCHERS, "packs"]
+        if self.local_sets is not None and "packs" in wanted and self.discovery_enabled.get("packs", True):
+            results.extend(self.local_sets.search(query, limit=limit))
+        if not self.client_factory and not results:
+            raise ServiceError("OFFLINE", "البحث على النت مش متاح دلوقتي.", "no discovery client configured")
+        if self.client_factory:
+            client = self.client_factory()
+            seen = {c.source_id for c in results}
+            for name in [s for s in wanted if s in SEARCHERS and self.discovery_enabled.get(s)]:
+                try:
+                    results.extend(c for c in SEARCHERS[name](client, query, limit=limit) if c.source_id not in seen)
+                except DiscoveryError as exc:
+                    errors[name] = str(exc)
         for c in results:
             self._found[f"{c.source}:{c.source_id}"] = c
         return {"ok": True, "from": "apis", "library": [a.to_json() for a in local],
@@ -265,16 +272,21 @@ class ShapeService:
         cand: Candidate | None = self._found.get(str(body.get("key")))
         if cand is None:
             raise ServiceError("UNKNOWN_RESULT", "النتيجة دي مش من آخر بحث.", "import only results from a search")
-        if not self.client_factory:
+        local = cand.asset_url.startswith(LOCAL_SCHEME) and self.local_sets is not None
+        if not local and not self.client_factory:
             raise ServiceError("OFFLINE", "مفيش اتصال.", "no discovery client configured")
+        client = LocalClient(self.local_sets) if local else self.client_factory()
         try:
-            imported = import_candidate(cand, self.client_factory(), approved_by=str(body.get("approved_by", "")))
+            imported = import_candidate(cand, client, approved_by=str(body.get("approved_by", "")))
         except DiscoveryError as exc:
             raise ServiceError(exc.code.upper(), "الاستيراد اترفض.", str(exc)) from None
         if imported.media == "svg":
             geom = svg_to_shapes(imported.svg, sanitize=False).combined()
         else:
             geom = vectorize_image(imported.raster).geometry
+        if not geom.parts:
+            raise ServiceError("NO_FILLED_AREA", "الشكل ده خطوط رفيعة بس من غير مساحة ملوّنة — اختار نسخة «fill» أو شكل تاني.",
+                               "this icon is stroke-only (no filled area); pick a filled variant or another icon")
         asset_id = self.library.add(geometry=geom, origin="discovered", provenance=imported.provenance,
                                     name_ar=str(body.get("name_ar", "")), name_en=str(body.get("name_en", cand.title)),
                                     tags=list(body.get("tags") or cand.tags), style=str(body.get("style", "flat")),

@@ -22,11 +22,17 @@ def build_service(state) -> ShapeService:
     providers = getattr(state, "shape_providers", None) or {}
     disc = settings.get("discovery", {})
     cache = state.home / "cache" / "shape_discovery"
+    from mxstudio.doctor.context import program_dir  # noqa: PLC0415
+
+    from .discovery.local_sets import LocalSets  # noqa: PLC0415
+    packs = LocalSets([program_dir() / "offline" / "shapes", state.home / "shapes"])
     return ShapeService.at(state.workspace.root / "shapes" / "library.sqlite3",
                            client_factory=lambda: PoliteClient(cache_dir=cache),
                            text_model=providers.get("text"), critic=providers.get("critic"),
                            image_model=providers.get("image"),
-                           discovery_enabled={k: bool(disc.get(k, True)) for k in ("iconify", "openverse", "wikimedia")})
+                           discovery_enabled={k: bool(disc.get(k, True))
+                                              for k in ("iconify", "openverse", "wikimedia", "packs")},
+                           local_sets=packs)
 
 
 def register(app, state) -> None:

@@ -17,8 +17,11 @@ def test_manifest_shape_and_honest_pins():
     entries = data["entries"]
     assert {"libreoffice_msi", "node_runtime", "webview2_bootstrapper", "font_vault", "shape_packs"} <= set(entries)
     for name, item in entries.items():
-        assert item["url"].startswith("https://"), name
         assert item.get("label_ar") and item.get("label_en"), name
+        if item.get("recipe"):  # font vault / shape packs: assembled from per-file pins (test_asset_bundles.py)
+            assert payloads.is_pinned(item), name
+            continue
+        assert item["url"].startswith("https://"), name
         sha = str(item["sha256"])
         # either a real 64-hex pin, the explicit TO-PIN marker, or verified another way (Authenticode)
         assert payloads.is_pinned(item) or sha == "TO-PIN" or item.get("verify", "").startswith("authenticode:"), name

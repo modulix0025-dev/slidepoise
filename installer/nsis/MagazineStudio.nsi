@@ -5,8 +5,8 @@
 ;
 ; Conventions copied from the operator's MarketX installer (P157):
 ;   * per-user, PrivilegesRequired=lowest  ->  RequestExecutionLevel user
-;   * fixed program dir OUTSIDE C:\<project> so an agent with project access
-;     cannot modify the program itself (no directory page)
+;   * program dir OUTSIDE C:\<project> so an agent with project access
+;     cannot modify the program itself (the directory page refuses it)
 ;   * Arabic wizard, WebView2 check, graceful stop of the old engine on upgrade
 ;   * uninstall asks before deleting data, default NO
 ;
@@ -18,6 +18,8 @@
 ;       offline; OFFLINE_DIR (LibreOffice MSI, font vault, shape packs) goes to
 ;       $INSTDIR\offline. When PowerPoint is absent, LibreOffice is unpacked
 ;       WITHOUT admin rights by an MSI administrative extraction (msiexec /a).
+;       The vault fonts are installed for the current user (HKCU, no admin) by
+;       "mxstudio-cli assets install-fonts"; the shape packs are searched in place.
 ;
 ; Build (Linux or Windows):
 ;   makensis -INPUTCHARSET UTF8 -DAPP_VER=0.2.0 -DSRC_DIR=<pyinstaller one-folder dir> MagazineStudio.nsi
@@ -266,6 +268,16 @@ Section "Install"
   SetOutPath "$INSTDIR\offline"
   File /r "${OFFLINE_DIR}\*.*"
   SetOutPath "$INSTDIR"
+  ; fonts for this Windows user only (HKCU + %LOCALAPPDATA%\Microsoft\Windows\Fonts): no admin, hidden child
+  DetailPrint "بنسطّب الخطوط لحسابك (من غير صلاحيات مدير)…"
+  CreateDirectory "${DATA_DIR}\logs"
+  nsExec::Exec '"$INSTDIR\${CLI_EXE}" assets install-fonts --out "${DATA_DIR}\logs\fonts-install.json"'
+  Pop $0
+  ${If} $0 == "0"
+    DetailPrint "الخطوط اتسطّبت."
+  ${Else}
+    DetailPrint "تسطيب الخطوط ما كملش ($0) — الدكتور هيعرض «إصلاح» في أول تشغيل."
+  ${EndIf}
 !endif
   WriteINIStr "$INSTDIR\install.ini" "install" "flavour" "${FLAVOUR}"
   WriteINIStr "$INSTDIR\install.ini" "install" "version" "${APP_VER}"

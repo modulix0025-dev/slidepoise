@@ -40,23 +40,38 @@ def fix_create_workspace(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
     return {"ok": True, "ar": f"مساحة العمل اتعملت: {ws}", "en": f"Workspace created: {ws}"}
 
 
-def _fetch_and_extract(ctx: DoctorContext, name: str, target: Path, progress=None) -> dict[str, Any]:
+def _build_bundle(ctx: DoctorContext, name: str, progress=None) -> dict[str, Any]:
+    """Font vault / shape packs: the Full installer's copy if present, else assembled from the pinned sources."""
+    from mxstudio.update import assets  # noqa: PLC0415
+
+    full_copy, home_copy = assets.bundle_dirs(name, app_dir=Path(ctx.app_dir), home=Path(ctx.home))
+    if assets.tree_status(full_copy).get("ok"):
+        return {"ok": True, "ar": "النسخة اللي جت مع البرنامج (Full) موجودة وسليمة.",
+                "en": "The copy shipped with the Full installer is present and intact.", "folder": str(full_copy)}
     try:
-        archive = payloads.fetch(name, Path(ctx.home) / "downloads", app_dir=ctx.app_dir, transport=ctx.transport,
-                                 progress=progress, digits=ctx.settings.get("digits", "arabic_indic"))
-        written = payloads.safe_extract(archive, target)
+        summary = assets.build_tree(name, home_copy, cache_dir=Path(ctx.home) / "downloads" / "assets",
+                                    transport=ctx.transport, progress=progress,
+                                    digits=ctx.settings.get("digits", "arabic_indic"))
     except UpdateError as err:
         return {"ok": False, "ar": err.ar, "en": err.en, "code": err.code}
-    return {"ok": True, "ar": f"اتنزّل واتفك {len(written)} ملف في {target}.", "en": f"{len(written)} files into {target}.",
-            "files": len(written)}
+    return {"ok": True, "ar": f"اتنزّل {summary['files']} ملف في {home_copy}.",
+            "en": f"{summary['files']} files into {home_copy}.", "files": summary["files"], "folder": str(home_copy)}
 
 
 def fix_fetch_fonts(ctx: DoctorContext, *, progress=None, **_: Any) -> dict[str, Any]:
-    return _fetch_and_extract(ctx, "font_vault", Path(ctx.home) / "fonts", progress)
+    result = _build_bundle(ctx, "font_vault", progress)
+    if result.get("ok") and ctx.is_windows:
+        from mxstudio.update import assets  # noqa: PLC0415
+        files = assets.font_files(assets.bundle_dirs("font_vault", app_dir=Path(ctx.app_dir), home=Path(ctx.home)))
+        installed = assets.install_vault_fonts(files)
+        result["installed"] = installed
+        result["ar"] += f" واتسطّب {installed['installed']} خط لحسابك."
+        result["en"] += f" {installed['installed']} fonts installed for this user."
+    return result
 
 
 def fix_fetch_shapes(ctx: DoctorContext, *, progress=None, **_: Any) -> dict[str, Any]:
-    return _fetch_and_extract(ctx, "shape_packs", Path(ctx.home) / "shapes", progress)
+    return _build_bundle(ctx, "shape_packs", progress)
 
 
 AUTHENTICODE_PS = (

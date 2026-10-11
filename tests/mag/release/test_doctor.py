@@ -42,6 +42,8 @@ def make_ctx(tmp_path, **over) -> DoctorContext:
     (app / "node" / "node_modules" / "jszip").mkdir(parents=True)
     (app / "node" / "node.exe").write_bytes(b"MZ")
     shutil.copytree(FONTS / "amiri", app / "fonts" / "amiri")
+    (app / "offline" / "shapes" / "iconify" / "noto").mkdir(parents=True)
+    (app / "offline" / "shapes" / "iconify" / "noto" / "icons.json").write_text('{"prefix": "noto"}', encoding="utf-8")
     ws = tmp_path / "المشروع" / "ModuleX_MagazineStudio_Data"
     ws.mkdir(parents=True)
     home = tmp_path / "home"

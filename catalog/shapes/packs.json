@@ -1,0 +1,91 @@
+{
+ "schema": "mxs-shape-packs/1",
+ "retrieved_at": "2026-10-11",
+ "rule": "Iconify icon sets from the npm registry (official @iconify-json packages), pinned by sha256 of the tarball and npm's own sha512 integrity. Only sets on the print allowlist of catalog/licence_policy.json; excluded prefixes and version caps of catalog/shapes/sources.json apply. Every icon still needs the operator's approval before it enters the shape library.",
+ "sets": [
+  {
+   "prefix": "noto",
+   "name": "Noto Emoji",
+   "package": "@iconify-json/noto",
+   "version": "1.2.9",
+   "url": "https://registry.npmjs.org/@iconify-json/noto/-/noto-1.2.9.tgz",
+   "sha256": "3e918d88fc945c0bb3d468dbace6f88caef67f01c9f0e7bcae0915a042e8f1ad",
+   "size": 3102958,
+   "npm_integrity": "sha512-DQiuXENbun41ch+XPSV55H9FaWKpHTyz46YIKtSaKYD4fIDDzL1tR6H4np/T38jfrTAeI3rcKF0mqHYeZVAuaw==",
+   "licence": "Apache-2.0",
+   "licence_url": "https://github.com/googlefonts/noto-emoji/blob/main/svg/LICENSE",
+   "set_version": null,
+   "author": "Google Inc",
+   "author_url": "https://github.com/googlefonts/noto-emoji",
+   "icons_at_pin": 3729
+  },
+  {
+   "prefix": "fluent-emoji-flat",
+   "name": "Fluent Emoji Flat",
+   "package": "@iconify-json/fluent-emoji-flat",
+   "version": "1.2.6",
+   "url": "https://registry.npmjs.org/@iconify-json/fluent-emoji-flat/-/fluent-emoji-flat-1.2.6.tgz",
+   "sha256": "7d064769dee690815f823bc5bcc511d957198caf9f5edd8dd9c1aa48a6aeb175",
+   "size": 1172438,
+   "npm_integrity": "sha512-RY47RgPb47fYUiyrA64sIOL0+UU02s29sXpNBbIQRBUlPlfNFTKUmZDERGuxDs/7yNGWqQYvuaSYM1M4fRXlUw==",
+   "licence": "MIT",
+   "licence_url": "https://github.com/microsoft/fluentui-emoji/blob/main/LICENSE",
+   "set_version": null,
+   "author": "Microsoft Corporation",
+   "author_url": "https://github.com/microsoft/fluentui-emoji",
+   "icons_at_pin": 3145
+  },
+  {
+   "prefix": "twemoji",
+   "name": "Twemoji",
+   "package": "@iconify-json/twemoji",
+   "version": "1.2.5",
+   "url": "https://registry.npmjs.org/@iconify-json/twemoji/-/twemoji-1.2.5.tgz",
+   "sha256": "19046dff7d8707ce96212ec86468b36ac5f8e60409629dd13f809265c6d0ebb7",
+   "size": 1555888,
+   "npm_integrity": "sha512-uKpuIEV0v6K5BW3Mjdyl+XKFVAbbcPxAgifKvEMtZoUZB5+YiY5zaMm2uNNCxyXzAWU9yNLlj41WU6/mvgALsw==",
+   "licence": "CC-BY-4.0",
+   "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+   "set_version": null,
+   "author": "Twitter",
+   "author_url": "https://github.com/jdecked/twemoji",
+   "icons_at_pin": 3988
+  },
+  {
+   "prefix": "ph",
+   "name": "Phosphor",
+   "package": "@iconify-json/ph",
+   "version": "1.2.2",
+   "url": "https://registry.npmjs.org/@iconify-json/ph/-/ph-1.2.2.tgz",
+   "sha256": "e3a582a047d9829fc7e8842c660d8065e598d1b68bb58cb68e75a1f1e5a614cc",
+   "size": 945517,
+   "npm_integrity": "sha512-PgkEZNtqa8hBGjHXQa4pMwZa93hmfu8FUSjs/nv4oUU6yLsgv+gh9nu28Kqi8Fz9CCVu4hj1MZs9/60J57IzFw==",
+   "licence": "MIT",
+   "licence_url": "https://github.com/phosphor-icons/core/blob/main/LICENSE",
+   "set_version": "2.1.1",
+   "author": "Phosphor Icons",
+   "author_url": "https://github.com/phosphor-icons/core",
+   "icons_at_pin": 9072
+  },
+  {
+   "prefix": "ri",
+   "name": "Remix Icon",
+   "package": "@iconify-json/ri",
+   "version": "1.2.10",
+   "url": "https://registry.npmjs.org/@iconify-json/ri/-/ri-1.2.10.tgz",
+   "sha256": "f7ab45281b250fb0bfa5c5438fc334f010cbf695f5ac851b90b296ef4674fb07",
+   "size": 270261,
+   "npm_integrity": "sha512-WWMhoncVVM+Xmu9T5fgu2lhYRrKTEWhKk3Com0KiM111EeEsRLiASjpsFKnC/SrB6covhUp95r2mH8tGxhgd5Q==",
+   "licence": "Apache-2.0",
+   "licence_url": "https://github.com/cyberalien/RemixIcon/blob/master/License",
+   "set_version": "4.8.0",
+   "author": "Remix Design",
+   "author_url": "https://github.com/cyberalien/RemixIcon",
+   "icons_at_pin": 3188
+  }
+ ],
+ "left_out": {
+  "lucide": "stroke-only outlines: no filled area, so they cannot become a shape (the library stores filled custom geometry)",
+  "tabler": "stroke-only outlines: same reason as lucide"
+ }
+}

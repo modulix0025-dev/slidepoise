@@ -6,7 +6,9 @@ Rules:
   and then only records the computed sha256 — it never pretends it was pinned);
 * the Full (offline) flavour ships the bundled files under ``<app_dir>/offline/<offline_path>``
   and those are used first, re-verified against the same pin;
-* zip payloads are extracted without path traversal.
+* zip payloads are extracted without path traversal;
+* the font vault and the shape packs are *recipes* (``"recipe"`` key): assembled file by file
+  from pins in the catalog by :mod:`mxstudio.update.assets`, not downloaded as one archive.
 """
 from __future__ import annotations
 
@@ -46,6 +48,10 @@ def load(path: Path | None = None) -> dict[str, Any]:
 
 
 def is_pinned(entry: dict[str, Any]) -> bool:
+    if entry.get("recipe"):
+        # assembled from per-file pins (mxstudio/update/assets.py); the recipe refuses any unpinned input
+        from .assets import RECIPES  # noqa: PLC0415
+        return entry["recipe"] in RECIPES
     if not re.fullmatch(r"[0-9a-f]{64}", str(entry.get("sha256") or "")):
         return False
     return not any(TO_PIN in str(entry.get(key) or "") for key in ("url", "version", "sha256"))
@@ -86,6 +92,9 @@ def fetch(name: str, dest_dir: Path, *, app_dir: Path | None = None, manifest: d
     """Return a verified local copy of payload ``name`` (offline copy first, else resumable download)."""
     manifest = manifest or load()
     item = entry(manifest, name)
+    if item.get("recipe"):
+        raise UpdateError("recipe_payload", f"«{item.get('label_ar', name)}» بتتجمّع من ملفات مثبّتة (assets) مش ملف واحد.",
+                          f"{name} is assembled by mxstudio.update.assets.build_tree, not downloaded as one file")
     if app_dir and not is_pinned(item):
         # Full flavour built with --allow-unpinned: the installer's own offline_manifest.json
         # (part of the program, covered by the installer's sha256) records the computed hash.

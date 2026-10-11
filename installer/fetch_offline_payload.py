@@ -2,7 +2,8 @@
 
 Every entry whose ``flavours.full`` is ``bundled`` is downloaded (resumable) and verified
 against its pinned sha256 into ``<out>/<offline_path>``; ``<out>/offline_manifest.json``
-records what is inside.
+records what is inside. Recipe entries (font vault, shape packs) are assembled file by file
+from their per-file pins into the folder ``<out>/<offline_path>`` (mxstudio/update/assets.py).
 
 Strict by default: an entry still marked TO-PIN fails the build. With ``--allow-unpinned``
 (manual release dispatch only) an entry with a real URL but no pinned hash is downloaded and
@@ -23,7 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from mxstudio.update import payloads
+from mxstudio.update import assets, payloads
 from mxstudio.update.download import download, urllib_transport
 
 
@@ -44,6 +45,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--out", required=True)
     parser.add_argument("--manifest", default=str(ROOT / "installer" / "downloads.json"))
     parser.add_argument("--allow-unpinned", action="store_true")
+    parser.add_argument("--cache", help="download cache for recipe inputs (default: <out>/../asset-cache)")
     args = parser.parse_args(argv)
     manifest = payloads.load(Path(args.manifest))
     out = Path(args.out)
@@ -54,6 +56,14 @@ def main(argv: list[str] | None = None) -> int:
         if (item.get("flavours") or {}).get("full") != "bundled":
             continue
         dest = out / item["offline_path"]
+        if item.get("recipe"):
+            summary = assets.build_tree(item["recipe"], dest,
+                                        cache_dir=Path(args.cache) if args.cache else out.parent / "asset-cache")
+            record["entries"][name] = {"dir": item["offline_path"], "recipe": item["recipe"],
+                                       "version": summary["version"], "files": summary["files"],
+                                       "inputs": summary["inputs"], "pinned": True, "status": "bundled"}
+            print(f"bundled {name}: {summary['files']} files from {summary['inputs']} pinned inputs ({summary['version']})")
+            continue
         if payloads.is_pinned(item):
             download(item["url"], dest, sha256=item["sha256"], size=item.get("size"))
             record["entries"][name] = {"file": item["offline_path"], "sha256": item["sha256"],

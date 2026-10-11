@@ -40,10 +40,10 @@ npm (19 runtime packages, dev excluded):
 
 Installer payloads:
 
-* font_vault TO-PIN: OFL-1.1 / Apache-2.0 (per-font provenance inside the zip) — pinned: False
+* font_vault google/fonts@bd8f81ddb5c7: OFL-1.1 / Apache-2.0 (per-family licence file shipped next to the fonts) — pinned: True
 * libreoffice_msi TO-PIN: MPL-2.0 — pinned: False
 * node_runtime 22.23.3: MIT — pinned: True
-* shape_packs TO-PIN: per-shape provenance inside the zip (print allowlist only) — pinned: False
+* shape_packs iconify-json@2026-10-11: per set: Apache-2.0, MIT, CC-BY-4.0 (credits page) — see catalog/shapes/packs.json — pinned: True
 * webview2_bootstrapper evergreen: UNKNOWN — pinned: True
 
 Vendored operator contracts (`vendor/modulex/`) are the operator's own files, copied byte-identically.
@@ -63,6 +63,7 @@ Reserved Font Names are recorded per family; modified builds are renamed when an
 * Office preset geometries and generated shapes: original work (`LicenseRef-ModuleX-Original`).
 * Discovery sources (official APIs only): Iconify API, Openverse API, Wikimedia Commons API, Kenney asset packs, Noto Emoji (SVG), Fluent Emoji, Twemoji graphics, Tabler Icons, Phosphor, Lucide, Remix Icon <= 4.8.0, OpenMoji, Openclipart, Open Peeps, SVG Repo, unDraw.
 * Allowed for print: CC0-1.0, PDM, MIT, ISC, BSD-2-Clause, BSD-3-Clause, Apache-2.0, OFL-1.1, CC-BY-4.0; credits required for CC-BY-4.0.
+* Shape packs shipped in the Full installer (pinned npm tarballs, `catalog/shapes/packs.json`): Noto Emoji (Apache-2.0), Fluent Emoji Flat (MIT), Twemoji (CC-BY-4.0), Phosphor (MIT), Remix Icon (Apache-2.0); CC-BY-4.0 icons go on the credits page.
 * Refused for print: CC-BY-SA-3.0, CC-BY-SA-4.0, CC-BY-NC-4.0, CC-BY-NC-SA-4.0, CC-BY-ND-4.0, CC-BY-NC-ND-4.0, GPL-2.0-only, GPL-2.0-or-later, GPL-3.0, GPL-3.0-or-later, MPL-2.0, UNKNOWN, personal-use.
 * Waiting for the operator's decision: Unlicense, CC-BY-3.0.
 
