@@ -41,9 +41,9 @@ Stable direct links (GitHub Releases, free):
 * Online: `https://github.com/modulix0025-dev/slidepoise/releases/latest/download/ModuleX-MagazineStudio-Setup.exe`
 * Offline (Full): `https://github.com/modulix0025-dev/slidepoise/releases/latest/download/ModuleX-MagazineStudio-Setup-Full.exe`
 
-**AR (بصراحة):** الروابط دي **لسه مش شغّالة** — هتشتغل بعد أول إصدار. GitHub Actions مقفولة على الـfork، والـtag push اترفض من بيئة الكلاود. المطلوب منك (مرة واحدة) في §٩. لو الريبو هيفضل private: اعمل ريبو إصدارات عام وحط `vars.MXS_RELEASE_REPO` و`secrets.MXS_RELEASE_TOKEN`، والرابط هيبقى بنفس الشكل على الريبو ده.
+**AR (بصراحة):** الروابط الثابتة دي **لسه مش شغّالة** — هتشتغل بعد أول إصدار (Release)، والنشر قرارك (الـtag push اترفض من بيئة الكلاود، والنشر التلقائي لإصدار عام اتمنع). **لكن الـEXE اتبنى فعلًا** على GitHub Actions (run `38107836852`) وموجود كـartifact اسمه `installers` في صفحة الـrun (محتاج تسجيل دخول للريبو): `https://github.com/modulix0025-dev/slidepoise/actions/runs/38107836852`. اختبار ويندوز نضيف: النسخة الأونلاين ثبّتت والدكتور عدّى واتشالت والبيانات فضلت؛ التثبيت كمستخدم عادي من غير أدمن نجح. النسخة الكاملة لسه من غير LibreOffice (TO-PIN) فالفحص بتاعها في الدكتور أحمر. لو الريبو هيفضل private: ريبو إصدارات عام + `vars.MXS_RELEASE_REPO` و`secrets.MXS_RELEASE_TOKEN`.
 
-**EN (honest):** the links resolve only after the first release run. Actions are disabled on the fork and the tag push was refused from the cloud. Upstream `release.yml` now uses `make_latest: false`, so `releases/latest` stays the Studio's. Code signing: no paid certificate; SmartScreen warns until the free SignPath Foundation route is configured (documented in `phase-12/CLEAN_INSTALL_RUNBOOK_AR_EN.md`).
+**EN (honest):** the stable links resolve only after the first published release, which is the operator's decision (tag pushes are refused from the cloud and auto-publishing a public release was blocked). The installers **are built**: release run `38107836852` (artifact `installers`, both flavours + SHA256SUMS). Clean windows-latest smoke: online install → Doctor (required checks) → uninstall keeps the workspace — PASS; standard-user per-user install — PASS; Full flavour Doctor FAIL only because the LibreOffice MSI is still TO-PIN. Upstream `release.yml` now uses `make_latest: false`, so `releases/latest` stays the Studio's. Code signing: no paid certificate; SmartScreen warns until the free SignPath Foundation route is configured (documented in `phase-12/CLEAN_INSTALL_RUNBOOK_AR_EN.md`).
 
 ---
 
@@ -165,10 +165,10 @@ Negative controls (a removed guardrail must turn the suite red) are in `tests/ma
 
 ## ٩ · المطلوب منك (مرة واحدة) · Operator actions (once)
 
-1. فعّل GitHub Actions على الريبو. · Enable GitHub Actions.
+1. GitHub Actions شغّالة (CI و Magazine Studio CI خضر على ويندوز ولينكس وماك). · Actions are on; CI is green on Windows, Linux and macOS.
 2. مفتاح التحديثات: `python -m mxstudio.update keygen --out-private key.txt` ← السر `MXS_UPDATE_SIGNING_KEY` والمتغيّر `MXS_UPDATE_PUBLIC_KEY`، وامسح الملف. · Update signing key pair.
 3. ثبّت قيم `TO-PIN` في `installer/downloads.json` (LibreOffice، خزنة الخطوط، حزم الأشكال). · Pin the TO-PIN downloads.
-4. ادفع الـtag: `git tag mxs-v0.2.0 && git push origin mxs-v0.2.0`. · Push the release tag.
+4. انشر الإصدار: من GitHub ← Releases ← Draft a new release ← tag جديد `mxs-v0.2.0` على الفرع ← Publish (أو `git tag mxs-v0.2.0 && git push origin mxs-v0.2.0` من جهازك). ده بيشغّل البناء ويرفع الملفات والروابط الثابتة. · Publish: create tag `mxs-v0.2.0` (GitHub UI or git) — the workflow builds, smoke-tests and attaches the installers.
 5. في الاستوديو: حط `modulex.hmac` (السر المشترك بتاع أنظمة ModuleX). · Set the `modulex.hmac` secret.
 6. اضبط عناوين الـGPU (نص/رؤية: Qwen3-VL؛ صور: Qwen-Image / Qwen-Image-Edit-2511 / FLUX.1 schnell) وبعدين `evals qualify`. · Configure GPU endpoints, then qualify.
 7. اللوجو: حط PNG رسمي مكان `mxstudio/ui/logo-placeholder.svg` (اللوجو الأصلي ماتنقلش صح، فاستخدمنا placeholder). · Provide the logo PNG.
