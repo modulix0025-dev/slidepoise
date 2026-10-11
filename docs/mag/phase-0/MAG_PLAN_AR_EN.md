@@ -1,5 +1,6 @@
 # MAG_PLAN_AR_EN — خطة التنفيذ · Execution plan
 
+> **APPROVED by the operator on 2026-10-11 («موافق») with one change: no commercially-licensed component (D13, R1–R8).**
 > Phase 0 deliverable · 2026-10-11 · waiting for the operator's «موافق» (plan approval only — no information is requested).
 > Facts behind this plan: `MAG_COMPREHENSION_AR_EN.md`, `MAG_PHASE_0_REPORT_AR_EN.md` (environment probe, verifications, licence table).
 
@@ -40,7 +41,7 @@ mxstudio/vendor_wrappers/        deck_pdf_wrapper.py — the two marked changes 
 contracts/mag/v1/                JSON Schemas M0–M7 + frozen known-answer fixtures (both sides run them)
 catalog/                         fonts (Appendix F TSV + measured JSON), shapes, palettes, type themes, licence ledgers
 evals/                           ≥300 agent scenarios + graders (safety / task), recorded cassettes
-installer/                       PyInstaller spec, Inno Setup script (MarketX conventions), Arabic.isl, .wsb, runbooks
+installer/                       PyInstaller spec, NSIS script (MarketX conventions, Arabic.nlf), .wsb, runbooks
 tests/mag/                       new suites; tests/mag/replicas/ = synthetic operator trees generated from Appendix B
 docs/mag/                        phase reports, plan, handoff, runbooks
 .github/workflows/mag-ci.yml     Linux + Windows matrix for the Studio; mag-release.yml for installers
@@ -54,16 +55,17 @@ Upstream `tests/`, `framework/`, `webapp/` stay and keep running (baseline: **36
 |---|---|---|
 | D1 | Remove `profiles/pwc-public/` (17 MB of third-party PwC/Strategy& PDFs, no licence) from the fork as §5 requires. Two upstream tests depend on it (`tests/test_public_reference_bundle.py`, `tests/test_distribution.py`). | Remove in Phase 1; change those two tests to assert the profile is **absent** (tabled with reasons, totals reported). Wikimedia scripts stay, behind the licence gate. |
 | D2 | GitHub Actions on this fork: **0 runs so far** (forks have Actions disabled until the owner enables them in the repo's *Actions* tab). | I push and check; if still no runs, enabling Actions is a one-click operator action. Until then I run the Linux suite here and deliver the Windows workflow + runbook. |
-| D3 | Where installers are published. The direct link must be public. | If `modulix0025-dev/slidepoise` stays public: Releases on it. If it becomes private: a separate public releases-only repo `modulix0025-dev/magazine-studio-releases` (and optionally R2). Stable link form: `…/releases/latest/download/ModuleX-MagazineStudio-Setup.exe`. |
+| D3 | Where installers are published. The direct link must be public. | **GitHub Releases only** (free; R2 dropped — R7). If the source repo becomes private: a public releases-only repo `modulix0025-dev/magazine-studio-releases`. Stable link: `…/releases/latest/download/ModuleX-MagazineStudio-Setup.exe`. |
 | D4 | Logo PNG (Appendix H). My transcription of the base64 in this session did **not** reproduce the sha256 `c0232b98…` (corrupt stream) — I will not ship a guessed logo. | Phase 2 uses a vector placeholder X-on-white-disc clearly labelled as such; the real PNG is accepted by a branding setting that verifies `c0232b98…`; a later session can retry the decode in small verified chunks, or the operator commits `assets/logo-mark-256.png`. |
 | D5 | Tatweel: Blaka, Blaka Hollow, Blaka Ink, Gulzar **lack U+0640** (measured). | Those four never get kashida justification and never render the «لـ» dedication form; the typography system enforces it. |
 | D6 | Template naming for new stories. | `<story_key>_<ar|en>_<boy|girl>_<A4|A5>.pptx` (ASCII key, e.g. `moon_trip_ar_girl_A5.pptx`) registered by exact name; old files untouched. |
 | D7 | Flags naming. | Studio: `MXS_*`. Operator-side hooks: `MODULEX_MAG_*`, all default **0**. |
-| D8 | Ghostscript is **AGPL-3.0+** (verified at `ArtifexSoftware/ghostpdl` @3346f19). Needed only for the optional CMYK / PDF-X derivative (P2 tier). | Not bundled. Optional component: downloaded from the official URL with pinned sha256 at first use, run as a separate process, AGPL text shown. Alternative: Artifex commercial licence (operator's call). |
+| D8 | ~~Ghostscript~~ → **replaced (R1)**: pikepdf (MPL-2.0) + LittleCMS/Pillow + pypdfium2 + colord FOGRA39L/GRACoL profiles (CC0). | Approved by operator 2026-10-11: no commercially-licensed component. |
 | D9 | Iconify sets licensed **Unlicense** (1), **CC-BY-3.0** (1, `game-icons`), **MPL-2.0** (1, `circum`) are not on the brief's allowlist as written. | Refused for print until you decide; my recommendation: allow Unlicense (public-domain dedication) and CC-BY-3.0 with credits; keep MPL-2.0 refused. |
 | D10 | Remix Icon switched to a restrictive custom licence in v4.9.0 (2026-01-27). | Pin Remix ≤ 4.8.0 (Apache-2.0); refuse 4.9+. Upstream SlidePoise's `fetch_remix_icon_pair.py` gets a version pin + licence check in Phase 1. |
-| D11 | Rasteriser: Poppler is GPL; `python-bidi` is LGPL-3.0. | Use **pypdfium2** (PDFium, permissive — to re-verify in Phase 2) for previews; keep Poppler optional/separate. Keep python-bidi in a PyInstaller **one-folder** build (replaceable module, licence texts, source offer), or swap for an ICU bidi if you prefer zero LGPL. |
+| D11 | Rasteriser and bidi | **pypdfium2** (BSD-3/Apache-2.0) for previews; python-bidi (LGPL-3.0) in the one-folder build, replaceable (R8). |
 | D12 | Openclipart, Open Peeps, unDraw, SVG Repo terms could not be read from primary sources in the cloud. | Disabled by default; the Studio's licence probe re-reads them from Windows (or a human checks in a browser) before any is enabled. unDraw and SVG Repo default to refused. |
+| D13 | **No commercially-licensed component anywhere** (operator, 2026-10-11) | Inno Setup → **NSIS** (R2) · paid code-signing → none + SHA256 + Ed25519 (R3) · paid search APIs → **Openverse + Wikimedia + Iconify** (R4) · non-commercial model weights (FLUX.1 [dev]/Kontext [dev]) → **Qwen-Image / Qwen-Image-Edit-2511 / FLUX.1 [schnell]** (R5) · default agent model → **Qwen3-VL** via an OpenAI-compatible endpoint; paid APIs optional and off by default (R6). Full evidence: `docs/mag/decisions/FREE_ALTERNATIVES_AR_EN.md`. |
 
 ## 3 · الفلاجات · Flags (all operator-side flags default OFF)
 
@@ -114,7 +116,8 @@ Pack fallback: `mag-pack-<id>.zip` = files + `manifest.json` + `manifest.sig` (d
 |---|---|---|
 | upstream `ci.yml` | ubuntu/macos/windows × py3.10/3.12 | unchanged upstream suites (kept green) |
 | `mag-ci / linux` | ubuntu-latest, py3.10 + 3.12 | all Studio suites, LibreOffice export proofs, font QA (vault from pinned commit, cached) |
-| `mag-ci / windows` | windows-latest, py3.12 | Studio suites, DPAPI, `CREATE_NO_WINDOW`, Arabic-path round-trip, PyInstaller build, Inno build, **silent install + Doctor + uninstall** |
+| `mag-ci / installer` | ubuntu-latest | `apt install nsis` → `makensis` builds the Windows installer from the PyInstaller artefact |
+| `mag-ci / windows` | windows-latest, py3.12 | Studio suites, DPAPI, `CREATE_NO_WINDOW`, Arabic-path round-trip, PyInstaller build, **silent install (`/S`) of the NSIS installer + Doctor + uninstall** |
 | `mag-release` | windows-latest (tag) | both flavours, SHA256SUMS, SBOM, licence report, signed `latest.json` (Ed25519 key from CI secret) |
 
 ## 7 · المراحل والبوابات · Phases, tiers and gates
@@ -124,7 +127,7 @@ Order = brief §7 (P0 tier first). Each phase ends with `MAG_PHASE_N_REPORT_AR_E
 | Phase | Main outputs | Gate evidence |
 |---|---|---|
 | 1 Fork & Arabic engine | shaping/bidi/line-break; RTL PPTX; trim+bleed+safe; `picture_placeholder`; single-run name token + prefix forms; gendered/bilingual payloads; kids' profiles; no-Arabic-in-art validator | 3 synthetic pages (Appendix A anatomy) → LibreOffice PDF text identical; ported slot/replace counts exact; upstream table; negative controls |
-| 2 Shell + agent foundation + basic installer | server, worker, window, Crossbar UI, providers/DPAPI/budget, workspace, tool layer + tokens, Inno basic | Linux+Windows CI; loopback-only; DPAPI on Windows; jsdom; `CREATE_NO_WINDOW`; silent install in CI |
+| 2 Shell + agent foundation + basic installer | server, worker, window, Crossbar UI, providers/DPAPI/budget, workspace, tool layer + tokens, NSIS basic | Linux+Windows CI; loopback-only; DPAPI on Windows; jsdom; `CREATE_NO_WINDOW`; silent install in CI |
 | 3 Template Factory | Story/Art/Reconstruction/Variant Forge/Validators/Publish | one new story → all 8 variants, all validators green; PowerPoint proof queued |
 | 4a/b/c Fonts | catalog DB, builds, QA, ledger, install/sync, validator; typography + ≥30 type themes; customer choice, name art, specimen book | drift empty; deterministic builds; QA status ×214; validator negative control |
 | 5 Shapes | presets/warps, generators, canvas, SVG↔custGeom, sanitiser, discovery, library mgmt | enumeration vs spec; determinism; IoU ≥ 0.99 on 50 shapes; sanitiser fuzz; licence negatives |
@@ -158,8 +161,8 @@ Order = brief §7 (P0 tier first). Each phase ends with `MAG_PHASE_N_REPORT_AR_E
 | PowerPoint renders Arabic/harakat differently from HarfBuzz metrics | fit with safety margin; per-font min line height from the collision test; device proof per type theme before it is offered |
 | Picture placeholders lost on PowerPoint save | XML post-process + device round-trip proof; Console slot count compared after round-trip |
 | Actions disabled on the fork | D2: one-click enable; meanwhile Linux here + scripts/runbook |
-| Hosts blocked in the cloud (Iconify, Openclipart, Wikimedia, LibreOffice, Inno, Ghostscript downloads) | product calls them from Windows at run time; cassettes in tests; CI runners download Inno/LibreOffice directly |
-| Ghostscript AGPL / Poppler GPL inside a closed installer | see licence table in the Phase 0 report: download-at-install from official URL with pinned sha256, or ship as separate unmodified programs with source offer — decided per the report |
+| Hosts blocked in the cloud (Iconify, Openclipart, Wikimedia, Openverse, LibreOffice downloads) | product calls them from Windows at run time; cassettes in tests; CI runners download LibreOffice directly; NSIS comes from Ubuntu apt |
+| CMYK derivative without Ghostscript | pikepdf + LittleCMS rewrite; pages with shadings/transparency rasterised at 600 dpi by pypdfium2 and flagged; described as "CMYK print derivative", never as certified PDF/X |
 | LibreOffice MSI admin extraction needs no admin? | proved on `windows-latest` standard user + Sandbox runbook; else per-machine with Arabic UAC explanation |
 | Per-user fonts invisible to a service account | Kit detects the account; machine-wide install with consent |
 | Logo not reproducible from text | D4 |
