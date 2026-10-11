@@ -148,10 +148,8 @@ def forge(story: Story, out_dir: Path, sizes=("A4", "A5"), master_size: str = "A
           registry: FontRegistry | None = None, render=None) -> dict:
     """Build every variant deck. `render(spec, path)` defaults to the forked PptxGenJS renderer."""
     if render is None:
-        import sys  # noqa: PLC0415
-
         from mxstudio.validators.synthetic_story import render as default_render  # noqa: PLC0415
-        render = lambda spec, path: default_render(spec, path, python=sys.executable)  # noqa: E731
+        render = default_render  # Node + a Python for the post-processor come from mxstudio.runtime_paths
     problems = story.validate()
     if problems:
         raise ValueError("story is not ready: " + "; ".join(problems))

@@ -1,0 +1,30 @@
+<!--
+  ModuleX Magazine Studio - clean-machine proof in Windows Sandbox (ASCII-only file).
+  Host preparation (see docs/mag/phase-12/CLEAN_INSTALL_RUNBOOK_AR_EN.md):
+    C:\ModuleX-Sandbox\            <- copy of installer\windows_sandbox\* + the two installers
+                                      + SHA256SUMS (+ optional LibreOffice MSI)
+    C:\ModuleX-Sandbox-Results\    <- empty folder; the proof writes its results here
+  Double-click this file. The proof runs hidden and opens results\summary.txt in Notepad.
+-->
+<Configuration>
+  <VGpu>Disable</VGpu>
+  <Networking>Enable</Networking>
+  <MemoryInMB>8192</MemoryInMB>
+  <ClipboardRedirection>Disable</ClipboardRedirection>
+  <PrinterRedirection>Disable</PrinterRedirection>
+  <MappedFolders>
+    <MappedFolder>
+      <HostFolder>C:\ModuleX-Sandbox</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\mxs</SandboxFolder>
+      <ReadOnly>true</ReadOnly>
+    </MappedFolder>
+    <MappedFolder>
+      <HostFolder>C:\ModuleX-Sandbox-Results</HostFolder>
+      <SandboxFolder>C:\Users\WDAGUtilityAccount\Desktop\mxs-results</SandboxFolder>
+      <ReadOnly>false</ReadOnly>
+    </MappedFolder>
+  </MappedFolders>
+  <LogonCommand>
+    <Command>C:\Users\WDAGUtilityAccount\Desktop\mxs\sandbox_logon.cmd</Command>
+  </LogonCommand>
+</Configuration>

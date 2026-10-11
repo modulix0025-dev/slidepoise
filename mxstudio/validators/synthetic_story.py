@@ -12,11 +12,12 @@ import json
 from pathlib import Path
 
 from mxstudio.proc import run_hidden
+from mxstudio.runtime_paths import node_executable, renderer_env, renderer_script
 
 from slidepoise.print_geometry import PageSpec
 
 REPO = Path(__file__).resolve().parents[2]
-RENDERER = REPO / "slidepoise" / "runtime" / "js" / "scene_to_pptx.mjs"
+RENDERER = renderer_script()
 
 BASE_NAMES = {"ar_boy": "إياد", "ar_girl": "جيداء", "en_boy": "Eyad", "en_girl": "Gaidaa"}
 _STORY = {
@@ -97,8 +98,11 @@ def render(spec: dict, output: Path, python: str | None = None) -> Path:
     spec_path = output.with_suffix(".spec.json")
     payload = {key: value for key, value in spec.items() if not key.startswith("_")}
     spec_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-    proc = run_hidden(["node", str(RENDERER), "--input", str(spec_path), "--output", str(output)],
-                      env={"PYTHON": python} if python else None, timeout=300)
+    env = renderer_env()
+    if python:
+        env["PYTHON"] = python
+    proc = run_hidden([node_executable(), str(RENDERER), "--input", str(spec_path), "--output", str(output)],
+                      env=env, timeout=300)
     if proc.returncode != 0:
         raise RuntimeError(f"renderer failed: {(proc.stderr or proc.stdout).decode('utf-8', 'replace')}")
     return output

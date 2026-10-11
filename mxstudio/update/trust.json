@@ -1,0 +1,8 @@
+{
+ "public_keys": {},
+ "manifest_url": "https://github.com/modulix0025-dev/slidepoise/releases/latest/download/latest.json",
+ "allowed_hosts": [
+  "github.com"
+ ],
+ "release_repo": "modulix0025-dev/slidepoise"
+}

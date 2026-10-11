@@ -1,0 +1,335 @@
+name: Magazine Studio Release
+
+# Builds both installer flavours, proves them on a clean windows-latest, and publishes a
+# GitHub Release with SHA256SUMS, stable-named copies and an Ed25519-signed latest.json.
+#
+#   tag push  mxs-v<X.Y.Z>  -> full pipeline + release (X.Y.Z must equal mxstudio.config.APP_VERSION)
+#   manual dispatch         -> full pipeline; release only when "publish" is ticked
+#
+# Free-only (docs/mag/decisions/FREE_ALTERNATIVES_AR_EN.md): NSIS 3, GitHub Releases, no paid
+# certificate. PyInstaller must run on Windows; NSIS is not preinstalled on windows-latest, so
+# the .exe installers are built on ubuntu-latest (apt nsis) from the Windows PyInstaller artifact
+# and then installed silently on windows-latest.
+#
+# Repository settings used (all optional except where noted):
+#   secrets.MXS_UPDATE_SIGNING_KEY   Ed25519 private key (python -m mxstudio.update keygen); without it
+#                                    no latest.json is published and auto-update stays off (honest)
+#   vars.MXS_UPDATE_PUBLIC_KEY       matching public key, embedded in the app at build time
+#   vars.MXS_RELEASE_REPO            owner/name of a public releases-only repo (default: this repo)
+#   secrets.MXS_RELEASE_TOKEN        token with contents:write on MXS_RELEASE_REPO (only if it is set)
+#   vars.SIGNPATH_ORGANIZATION_ID, vars.SIGNPATH_PROJECT_SLUG, vars.SIGNPATH_POLICY_SLUG,
+#   secrets.SIGNPATH_API_TOKEN       free SignPath Foundation signing; the step is skipped until configured
+
+on:
+  push:
+    tags:
+      - "mxs-v*"
+  workflow_dispatch:
+    inputs:
+      allow_unpinned:
+        description: "Build the Full flavour even if installer/downloads.json still has TO-PIN entries (recorded as unpinned/missing)"
+        type: boolean
+        default: false
+      publish:
+        description: "Publish a GitHub Release (tag mxs-v<APP_VERSION>)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mag-release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONUTF8: "1"
+  PYTHONDONTWRITEBYTECODE: "1"
+  APP_DIR_NAME: "ModuleX Magazine Studio"
+
+jobs:
+  version:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+      tag: ${{ steps.v.outputs.tag }}
+      repo: ${{ steps.v.outputs.repo }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        env:
+          RELEASE_REPO: ${{ vars.MXS_RELEASE_REPO }}
+        run: |
+          app_version=$(python3 -c "import sys; sys.path.insert(0, '.'); from mxstudio.config import APP_VERSION; print(APP_VERSION)")
+          if [[ "$GITHUB_REF" == refs/tags/mxs-v* ]]; then
+            tag_version="${GITHUB_REF#refs/tags/mxs-v}"
+            if [[ "$tag_version" != "$app_version" ]]; then
+              echo "::error::tag version $tag_version != mxstudio.config.APP_VERSION $app_version"; exit 1
+            fi
+          fi
+          echo "version=$app_version" >> "$GITHUB_OUTPUT"
+          echo "tag=mxs-v$app_version" >> "$GITHUB_OUTPUT"
+          echo "repo=${RELEASE_REPO:-$GITHUB_REPOSITORY}" >> "$GITHUB_OUTPUT"
+
+  tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y nsis
+      - run: python -m pip install -e ".[dev,runtime,studio]"
+      - name: Release suites (NSIS compile runs on Linux; skipped where makensis is absent)
+        run: python -m pytest tests/mag/release -q -rs -p no:cacheprovider
+
+  build-app:
+    needs: [version, tests]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Embed update trust (public key + manifest URL; never the private key)
+        env:
+          MXS_UPDATE_PUBLIC_KEY: ${{ vars.MXS_UPDATE_PUBLIC_KEY }}
+        run: python -m pip install cryptography && python -m mxstudio.update embed --repo "${{ needs.version.outputs.repo }}"
+      - name: PyInstaller one-folder + portable Node + doctor smoke
+        shell: pwsh
+        run: ./installer/pyinstaller/build_windows.ps1 -Version "${{ needs.version.outputs.version }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-onefolder
+          path: workspace/dist/ModuleX Magazine Studio
+          if-no-files-found: error
+          retention-days: 7
+
+  offline-payload:
+    needs: version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch the Full payload (pinned sha256; strict unless allow_unpinned)
+        run: |
+          extra=""
+          if [[ "${{ inputs.allow_unpinned }}" == "true" ]]; then extra="--allow-unpinned"; fi
+          python installer/fetch_offline_payload.py --out workspace/offline $extra
+      - uses: actions/upload-artifact@v4
+        with:
+          name: offline-payload
+          path: workspace/offline
+          if-no-files-found: error
+          retention-days: 7
+
+  installers:
+    needs: [version, build-app, offline-payload]
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y nsis
+      - uses: actions/download-artifact@v4
+        with:
+          name: app-onefolder
+          path: workspace/app
+      - uses: actions/download-artifact@v4
+        with:
+          name: offline-payload
+          path: workspace/offline
+      - name: Build both NSIS flavours
+        run: |
+          mkdir -p workspace/installers
+          test -f "workspace/app/$APP_DIR_NAME.exe" && test -f workspace/app/mxstudio-cli.exe
+          vi_ver="$(echo "$VERSION" | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/').0"
+          makensis -V2 -WX -INPUTCHARSET UTF8 -DAPP_VER="$VERSION" -DVI_VER="$vi_ver" \
+            -DSRC_DIR="$PWD/workspace/app" -DOUT_DIR="$PWD/workspace/installers" installer/nsis/MagazineStudio.nsi
+          makensis -V2 -WX -INPUTCHARSET UTF8 -DAPP_VER="$VERSION" -DVI_VER="$vi_ver" -DFLAVOUR=full \
+            -DOFFLINE_DIR="$PWD/workspace/offline" \
+            -DSRC_DIR="$PWD/workspace/app" -DOUT_DIR="$PWD/workspace/installers" installer/nsis/MagazineStudio.nsi
+          ls -la workspace/installers
+      - id: unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: installers-unsigned
+          path: workspace/installers/*.exe
+          if-no-files-found: error
+          retention-days: 7
+      # Optional, free: SignPath Foundation (OSI open-source projects). Skipped until configured.
+      - name: Sign with SignPath Foundation (optional)
+        if: ${{ vars.SIGNPATH_ORGANIZATION_ID != '' }}
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ vars.SIGNPATH_ORGANIZATION_ID }}
+          project-slug: ${{ vars.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ vars.SIGNPATH_POLICY_SLUG }}
+          github-artifact-id: ${{ steps.unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          output-artifact-directory: workspace/installers
+      - name: SHA256 of the installers that will be tested and published
+        run: (cd workspace/installers && sha256sum *.exe | tee SHA256SUMS)
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installers
+          path: workspace/installers
+          if-no-files-found: error
+          retention-days: 14
+
+  smoke-windows:
+    needs: [version, installers]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: installers
+          path: workspace/installers
+      - name: Ensure Microsoft Edge WebView2 Runtime (the installer requires it)
+        shell: pwsh
+        run: |
+          $guid = "{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}"
+          $pv = (Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\$guid" -ErrorAction SilentlyContinue).pv
+          if (-not $pv -or $pv -eq "0.0.0.0") {
+            Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2124703" -OutFile "$env:RUNNER_TEMP\wv2.exe" -UseBasicParsing
+            $sig = Get-AuthenticodeSignature "$env:RUNNER_TEMP\wv2.exe"
+            if ($sig.Status -ne "Valid") { throw "WebView2 bootstrapper signature is $($sig.Status)" }
+            Start-Process "$env:RUNNER_TEMP\wv2.exe" -ArgumentList "/silent", "/install" -Wait
+          }
+          Write-Host "WebView2: $((Get-ItemProperty -Path "HKLM:\SOFTWARE\WOW6432Node\Microsoft\EdgeUpdate\Clients\$guid" -ErrorAction SilentlyContinue).pv)"
+      - name: Installed-app smoke (silent install -> Doctor -> uninstall; both flavours)
+        shell: pwsh
+        run: ./installer/windows_sandbox/sandbox_proof.ps1 -In "$env:GITHUB_WORKSPACE\workspace\installers" -Out "$env:GITHUB_WORKSPACE\workspace\smoke" -Ci -SkipStandardUser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: smoke-results
+          path: workspace/smoke
+
+  standard-user-proof:
+    # Records the no-admin proof (LibreOffice admin extraction + per-user install as a STANDARD user).
+    # It does not block the release; its JSON is attached to the run for the phase report.
+    needs: [version, installers, offline-payload]
+    runs-on: windows-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: installers
+          path: workspace/installers
+      - uses: actions/download-artifact@v4
+        with:
+          name: offline-payload
+          path: workspace/offline
+      - name: Run as a throw-away standard user
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem workspace/installers -Filter "ModuleX-MagazineStudio-Setup-*.exe" | Where-Object { $_.Name -notlike "*-Full.exe" } | Select-Object -First 1
+          $msi = Get-ChildItem workspace/offline -Recurse -Filter "*.msi" | Select-Object -First 1
+          $p = @{ OutDir = "$env:GITHUB_WORKSPACE\workspace\standard-user"; Setup = $setup.FullName }
+          if ($msi) { $p.Msi = $msi.FullName } else { Write-Host "::warning::no LibreOffice MSI in the offline payload (still TO-PIN) - proving the per-user install only" }
+          ./installer/windows_sandbox/standard_user_proof.ps1 @p
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: standard-user-proof
+          path: workspace/standard-user
+
+  release:
+    needs: [version, installers, smoke-windows]
+    if: ${{ startsWith(github.ref, 'refs/tags/mxs-v') || inputs.publish }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      VERSION: ${{ needs.version.outputs.version }}
+      TAG: ${{ needs.version.outputs.tag }}
+      REPO: ${{ needs.version.outputs.repo }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install cryptography
+      - uses: actions/download-artifact@v4
+        with:
+          name: installers
+          path: workspace/release
+      - name: Stable-named copies (direct links via releases/latest/download/)
+        run: |
+          cd workspace/release
+          cp "ModuleX-MagazineStudio-Setup-$VERSION.exe" ModuleX-MagazineStudio-Setup.exe
+          cp "ModuleX-MagazineStudio-Setup-$VERSION-Full.exe" ModuleX-MagazineStudio-Setup-Full.exe
+      - name: Signed latest.json (only when the signing secret exists)
+        env:
+          MXS_UPDATE_SIGNING_KEY: ${{ secrets.MXS_UPDATE_SIGNING_KEY }}
+          MXS_UPDATE_PUBLIC_KEY: ${{ vars.MXS_UPDATE_PUBLIC_KEY }}
+        run: |
+          cd workspace/release
+          if [ -z "$MXS_UPDATE_SIGNING_KEY" ]; then
+            echo "::warning::MXS_UPDATE_SIGNING_KEY is not set: no latest.json is published, so installed apps will not auto-update."
+            exit 0
+          fi
+          base="https://github.com/$REPO/releases/download/$TAG"
+          python -m mxstudio.update manifest --version "$VERSION" --tag "$TAG" --base-url "$base" \
+            --online "ModuleX-MagazineStudio-Setup-$VERSION.exe" --full "ModuleX-MagazineStudio-Setup-$VERSION-Full.exe" \
+            --out "$RUNNER_TEMP/latest.unsigned.json" > /dev/null
+          python -m mxstudio.update sign --manifest "$RUNNER_TEMP/latest.unsigned.json" --out latest.json > /dev/null
+          if [ -n "$MXS_UPDATE_PUBLIC_KEY" ]; then
+            python -m mxstudio.update verify --manifest latest.json --pubkey "$MXS_UPDATE_PUBLIC_KEY" --assets-dir .
+          else
+            echo "::warning::vars.MXS_UPDATE_PUBLIC_KEY is not set: the app embeds no key and will refuse this latest.json."
+          fi
+      - name: SHA256SUMS and release notes
+        run: |
+          cd workspace/release
+          rm -f SHA256SUMS
+          sha256sum *.exe $( [ -f latest.json ] && echo latest.json ) > SHA256SUMS
+          cat SHA256SUMS
+          python - <<'PY'
+          import os, pathlib
+          v, repo, tag = os.environ["VERSION"], os.environ["REPO"], os.environ["TAG"]
+          sums = pathlib.Path("SHA256SUMS").read_text(encoding="utf-8")
+          body = f"""## ModuleX Magazine Studio {v}
+
+          **روابط مباشرة · Direct links (always the latest):**
+          - https://github.com/{repo}/releases/latest/download/ModuleX-MagazineStudio-Setup.exe (أونلاين · online)
+          - https://github.com/{repo}/releases/latest/download/ModuleX-MagazineStudio-Setup-Full.exe (كاملة · offline)
+
+          ### SmartScreen
+          المثبّت مش موقّع بشهادة مدفوعة (قرار: من غير أي حاجة ليها ترخيص تجاري)، فويندوز ممكن يقول «Windows protected your PC». اتأكد من البصمة الأول، وبعدين: More info ← Run anyway.
+          The installer carries no paid code-signing certificate, so SmartScreen may warn. Verify the SHA256 first, then More info → Run anyway.
+
+          ### تأكيد البصمة · Verify SHA256 (PowerShell)
+          ```
+          Get-FileHash .\\ModuleX-MagazineStudio-Setup.exe -Algorithm SHA256
+          ```
+          قارن الناتج بالسطر المطابق هنا · compare with the matching line:
+          ```
+          {sums}```
+          """
+          pathlib.Path("RELEASE_NOTES.md").write_text(body, encoding="utf-8")
+          PY
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.version.outputs.tag }}
+          name: ModuleX Magazine Studio ${{ needs.version.outputs.version }}
+          body_path: workspace/release/RELEASE_NOTES.md
+          make_latest: "true"
+          repository: ${{ needs.version.outputs.repo }}
+          token: ${{ secrets.MXS_RELEASE_TOKEN || github.token }}
+          files: |
+            workspace/release/*.exe
+            workspace/release/SHA256SUMS
+            workspace/release/latest.json
+          fail_on_unmatched_files: false
