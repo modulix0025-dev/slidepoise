@@ -1,0 +1,140 @@
+name: Magazine Studio CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mag-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y libreoffice-impress poppler-utils nsis
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev,runtime,studio]"
+      - run: npm ci
+      - name: Static gates
+        run: |
+          git ls-files '*.py' | xargs python -m py_compile
+          for f in $(git ls-files '*.js' '*.mjs'); do node --check "$f"; done
+          python -m ruff check --select E9,F63,F7,F82 framework webapp slidepoise tests setup.py mxstudio tools vendor
+      - name: Vendored operator contracts
+        run: |
+          (cd vendor/modulex && sha256sum -c SHA256SUMS)
+          python vendor/modulex/modulex_signing.py --selftest
+      - name: Library manifests are current (vendored verbatim by the Kit)
+        run: python mxlibs/build_manifests.py --check mx_textfit mx_preflight2 mx_impose mx_qagate
+      - name: Agent eval suite (safety must be 100%)
+        run: python -m mxstudio evals run --report workspace/evals_report.json
+        env:
+          SLIDEPOISE_FONT_DIRS: ${{ github.workspace }}/tests/mag/fixtures/fonts
+      - name: Studio UI in Chromium
+        run: |
+          npx playwright install --with-deps chromium
+          set -o pipefail
+          npm run test:mag-browser 2>&1 | tee workspace-browser.log || {
+            grep -E "not ok|Error|expected|actual|Timeout|at .*studio_ui" workspace-browser.log | head -12 | while IFS= read -r line; do echo "::error title=Studio UI in Chromium::$line"; done
+            exit 1
+          }
+        env:
+          PYTHON: python
+      - uses: actions/cache@v4
+        with:
+          path: workspace/test-fonts
+          key: mxs-test-fonts-${{ hashFiles('catalog/fonts/catalog.json', 'catalog/fonts/type_themes.json') }}
+      - name: Theme fonts for the hamza-name and no-substitute proofs (pinned sha256, google/fonts)
+        run: python tools/fetch_test_fonts.py --all
+      - name: Studio suites (no skips allowed on Linux)
+        run: python -m pytest tests/mag -q -rs --junitxml=workspace/test-results/mag.xml
+        env:
+          MXS_ALL_THEMES: ${{ matrix.python-version == '3.12' && '1' || '0' }}
+      - name: Failed tests as annotations (readable without downloading logs)
+        if: failure()
+        run: |
+          python - <<'PY'
+          import xml.etree.ElementTree as ET
+          root = ET.parse("workspace/test-results/mag.xml").getroot()
+          for case in root.iter("testcase"):
+              for bad in list(case.findall("failure")) + list(case.findall("error")):
+                  msg = (bad.get("message") or bad.text or "")[:600].replace("\n", " | ")
+                  print(f"::error title={case.get('classname')}.{case.get('name')}::{msg}")
+          PY
+      - name: Full suite
+        run: python -m pytest -q
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: mag-test-results-${{ matrix.python-version }}
+          path: workspace/test-results/
+
+  windows:
+    runs-on: windows-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: python -m pip install -e ".[dev,runtime,studio]"
+      - run: npm ci
+      - name: Studio suites (LibreOffice proofs are skipped here and run on Linux)
+        run: python -m pytest tests/mag -q -rs
+
+  installer:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: sudo apt-get update && sudo apt-get install -y nsis gcc-mingw-w64-x86-64
+      - run: python -m pip install -e ".[dev,runtime,studio]"
+      - name: Release suites (update signing, rollback, doctor, wizard, NSIS both flavours, ASCII scripts)
+        run: python -m pytest tests/mag/release -q -rs -p no:cacheprovider
+      - name: Build both NSIS flavours (placeholder payload; the real build is mag-release.yml)
+        run: |
+          mkdir -p workspace/payload workspace/offline/libreoffice workspace/installer
+          echo "placeholder payload" > "workspace/payload/ModuleX Magazine Studio.exe"
+          echo "placeholder payload" > "workspace/payload/mxstudio-cli.exe"
+          echo "placeholder msi" > "workspace/offline/libreoffice/LibreOffice_Win_x86-64.msi"
+          sh installer/mcp_launcher/build.sh workspace/mcp/mxstudio-mcp.exe
+          for flavour in online full; do
+            makensis -V2 -WX -INPUTCHARSET UTF8 -DAPP_VER=0.0.1 -DFLAVOUR=$flavour -DSRC_DIR="$PWD/workspace/payload" \
+              -DMCP_LAUNCHER="$PWD/workspace/mcp/mxstudio-mcp.exe" \
+              -DOFFLINE_DIR="$PWD/workspace/offline" -DOUT_DIR="$PWD/workspace/installer" installer/nsis/MagazineStudio.nsi
+          done
+          sha256sum workspace/installer/*.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-smoke
+          path: workspace/installer/*.exe

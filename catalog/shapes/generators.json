@@ -1,0 +1,1099 @@
+{
+ "generators": [
+  {
+   "label_ar": "إطار مموّج بأقواس",
+   "label_en": "Scalloped frame",
+   "name": "scalloped_frame",
+   "params": {
+    "band": {
+     "choices": null,
+     "default": 90.0,
+     "range": [
+      0,
+      2000
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 700.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "hole": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "inward": {
+     "choices": null,
+     "default": false,
+     "range": null
+    },
+    "scallop": {
+     "choices": null,
+     "default": 70.0,
+     "range": [
+      10,
+      1000
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "frame"
+   ]
+  },
+  {
+   "label_ar": "إطار طابع بريد",
+   "label_en": "Postage-stamp frame",
+   "name": "stamp_frame",
+   "params": {
+    "band": {
+     "choices": null,
+     "default": 70.0,
+     "range": [
+      0,
+      2000
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "hole": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "notch": {
+     "choices": null,
+     "default": 0.55,
+     "range": [
+      0.1,
+      0.9
+     ]
+    },
+    "perforation": {
+     "choices": null,
+     "default": 46.0,
+     "range": [
+      10,
+      500
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 800.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "frame"
+   ]
+  },
+  {
+   "label_ar": "إطار سحابة",
+   "label_en": "Cloud frame",
+   "name": "cloud_frame",
+   "params": {
+    "bumps": {
+     "choices": null,
+     "default": 14,
+     "range": [
+      5,
+      60
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 700.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "hole": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "hole_inset": {
+     "choices": null,
+     "default": 0.22,
+     "range": [
+      0.05,
+      0.6
+     ]
+    },
+    "puff": {
+     "choices": null,
+     "default": 0.35,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "variance": {
+     "choices": null,
+     "default": 0.25,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "frame"
+   ]
+  },
+  {
+   "label_ar": "ورق مقطوع",
+   "label_en": "Torn paper",
+   "name": "torn_paper",
+   "params": {
+    "detail": {
+     "choices": null,
+     "default": 7,
+     "range": [
+      2,
+      10
+     ]
+    },
+    "edges": {
+     "choices": null,
+     "default": "top,bottom",
+     "range": null
+    },
+    "h": {
+     "choices": null,
+     "default": 600.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "roughness": {
+     "choices": null,
+     "default": 0.035,
+     "range": [
+      0.0,
+      0.2
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "paper"
+   ]
+  },
+  {
+   "label_ar": "برواز صفحة بثيم",
+   "label_en": "Themed page border",
+   "name": "page_border",
+   "params": {
+    "band": {
+     "choices": null,
+     "default": 120.0,
+     "range": [
+      10,
+      1000
+     ]
+    },
+    "density": {
+     "choices": null,
+     "default": 1.0,
+     "range": [
+      0.2,
+      4
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 2100.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "theme": {
+     "choices": [
+      "sea_waves",
+      "vines",
+      "stars",
+      "candy"
+     ],
+     "default": "sea_waves",
+     "range": null
+    },
+    "w": {
+     "choices": null,
+     "default": 1480.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "border"
+   ]
+  },
+  {
+   "label_ar": "زخرفة الحرف الأول",
+   "label_en": "Drop-cap ornament",
+   "name": "drop_cap_ornament",
+   "params": {
+    "flourish": {
+     "choices": null,
+     "default": 0.5,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "frame": {
+     "choices": null,
+     "default": 0.08,
+     "range": [
+      0.03,
+      0.2
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 600.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "shape": {
+     "choices": [
+      "square",
+      "circle"
+     ],
+     "default": "square",
+     "range": null
+    },
+    "w": {
+     "choices": null,
+     "default": 600.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "ornament"
+   ]
+  },
+  {
+   "label_ar": "إطار ماندالا",
+   "label_en": "Mandala frame",
+   "name": "mandala_frame",
+   "params": {
+    "h": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "hole": {
+     "choices": null,
+     "default": 0.42,
+     "range": [
+      0.15,
+      0.8
+     ]
+    },
+    "petal": {
+     "choices": null,
+     "default": 0.5,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "rings": {
+     "choices": null,
+     "default": 3,
+     "range": [
+      1,
+      6
+     ]
+    },
+    "symmetry": {
+     "choices": null,
+     "default": 12,
+     "range": [
+      3,
+      48
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "frame",
+    "radial"
+   ]
+  },
+  {
+   "label_ar": "شكل عضوي",
+   "label_en": "Organic blob",
+   "name": "blob",
+   "params": {
+    "h": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "m": {
+     "choices": null,
+     "default": 5.0,
+     "range": [
+      0,
+      20
+     ]
+    },
+    "n1": {
+     "choices": null,
+     "default": 4.0,
+     "range": [
+      0.2,
+      20
+     ]
+    },
+    "n2": {
+     "choices": null,
+     "default": 7.0,
+     "range": [
+      0.2,
+      20
+     ]
+    },
+    "n3": {
+     "choices": null,
+     "default": 7.0,
+     "range": [
+      0.2,
+      20
+     ]
+    },
+    "noise": {
+     "choices": null,
+     "default": 0.12,
+     "range": [
+      0,
+      0.5
+     ]
+    },
+    "points": {
+     "choices": null,
+     "default": 40,
+     "range": [
+      8,
+      200
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "wobble_knots": {
+     "choices": null,
+     "default": 7,
+     "range": [
+      2,
+      24
+     ]
+    }
+   },
+   "tags": [
+    "organic"
+   ]
+  },
+  {
+   "label_ar": "خط مرسوم باليد",
+   "label_en": "Hand-drawn outline",
+   "name": "rough_outline",
+   "params": {
+    "base": {
+     "choices": [
+      "rect",
+      "ellipse",
+      "polygon"
+     ],
+     "default": "rect",
+     "range": null
+    },
+    "bowing": {
+     "choices": null,
+     "default": 1.0,
+     "range": [
+      0,
+      6
+     ]
+    },
+    "curve_steps": {
+     "choices": null,
+     "default": 11,
+     "range": [
+      6,
+      40
+     ]
+    },
+    "fill": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "h": {
+     "choices": null,
+     "default": 700.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "roughness": {
+     "choices": null,
+     "default": 1.0,
+     "range": [
+      0,
+      4
+     ]
+    },
+    "sides": {
+     "choices": null,
+     "default": 6,
+     "range": [
+      3,
+      24
+     ]
+    },
+    "strokes": {
+     "choices": null,
+     "default": 2,
+     "range": [
+      1,
+      4
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "hand-drawn"
+   ]
+  },
+  {
+   "label_ar": "فقاعة كلام",
+   "label_en": "Speech bubble",
+   "name": "speech_bubble",
+   "params": {
+    "anchor": {
+     "choices": null,
+     "default": [
+      1100.0,
+      1100.0
+     ],
+     "range": null
+    },
+    "body": {
+     "choices": null,
+     "default": [
+      200.0,
+      200.0,
+      700.0,
+      380.0
+     ],
+     "range": null
+    },
+    "corner": {
+     "choices": null,
+     "default": 0.18,
+     "range": [
+      0,
+      0.5
+     ]
+    },
+    "curve": {
+     "choices": null,
+     "default": 0.12,
+     "range": [
+      -0.5,
+      0.5
+     ]
+    },
+    "gap": {
+     "choices": null,
+     "default": 60.0,
+     "range": [
+      0,
+      1000
+     ]
+    },
+    "kind": {
+     "choices": [
+      "ellipse",
+      "roundrect",
+      "rect"
+     ],
+     "default": "ellipse",
+     "range": null
+    },
+    "page_h": {
+     "choices": null,
+     "default": 2100.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "page_w": {
+     "choices": null,
+     "default": 1480.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "tail_width": {
+     "choices": null,
+     "default": 0.22,
+     "range": [
+      0.05,
+      0.6
+     ]
+    }
+   },
+   "tags": [
+    "bubble"
+   ]
+  },
+  {
+   "label_ar": "فقاعة تفكير",
+   "label_en": "Thought bubble",
+   "name": "thought_bubble",
+   "params": {
+    "anchor": {
+     "choices": null,
+     "default": [
+      1100.0,
+      1100.0
+     ],
+     "range": null
+    },
+    "body": {
+     "choices": null,
+     "default": [
+      200.0,
+      200.0,
+      700.0,
+      420.0
+     ],
+     "range": null
+    },
+    "bumps": {
+     "choices": null,
+     "default": 11,
+     "range": [
+      5,
+      40
+     ]
+    },
+    "gap": {
+     "choices": null,
+     "default": 60.0,
+     "range": [
+      0,
+      1000
+     ]
+    },
+    "page_h": {
+     "choices": null,
+     "default": 2100.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "page_w": {
+     "choices": null,
+     "default": 1480.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "trail": {
+     "choices": null,
+     "default": 3,
+     "range": [
+      1,
+      6
+     ]
+    }
+   },
+   "tags": [
+    "bubble"
+   ]
+  },
+  {
+   "label_ar": "شريط لافتة",
+   "label_en": "Ribbon banner",
+   "name": "ribbon_banner",
+   "params": {
+    "arch": {
+     "choices": null,
+     "default": 0.0,
+     "range": [
+      -0.5,
+      0.5
+     ]
+    },
+    "band": {
+     "choices": null,
+     "default": 0.72,
+     "range": [
+      0.4,
+      0.9
+     ]
+    },
+    "fold": {
+     "choices": null,
+     "default": 0.05,
+     "range": [
+      0,
+      0.15
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 300.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "notch": {
+     "choices": null,
+     "default": 0.45,
+     "range": [
+      0,
+      0.9
+     ]
+    },
+    "tail": {
+     "choices": null,
+     "default": 0.14,
+     "range": [
+      0.05,
+      0.3
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1200.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "banner"
+   ]
+  },
+  {
+   "label_ar": "وسام",
+   "label_en": "Rosette badge",
+   "name": "rosette_badge",
+   "params": {
+    "points": {
+     "choices": null,
+     "default": 28,
+     "range": [
+      8,
+      80
+     ]
+    },
+    "ring": {
+     "choices": null,
+     "default": 0.16,
+     "range": [
+      0.05,
+      0.5
+     ]
+    },
+    "tails": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "badge"
+   ]
+  },
+  {
+   "label_ar": "قوس قزح",
+   "label_en": "Rainbow",
+   "name": "rainbow",
+   "params": {
+    "bands": {
+     "choices": null,
+     "default": 6,
+     "range": [
+      1,
+      12
+     ]
+    },
+    "gap": {
+     "choices": null,
+     "default": 0.0,
+     "range": [
+      0,
+      0.8
+     ]
+    },
+    "inner": {
+     "choices": null,
+     "default": 0.38,
+     "range": [
+      0.05,
+      0.9
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "rainbow"
+   ]
+  },
+  {
+   "label_ar": "فاصل أمواج",
+   "label_en": "Wave divider",
+   "name": "wave_divider",
+   "params": {
+    "amplitude": {
+     "choices": null,
+     "default": 0.3,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 300.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "layers": {
+     "choices": null,
+     "default": 2,
+     "range": [
+      1,
+      5
+     ]
+    },
+    "phase_shift": {
+     "choices": null,
+     "default": 0.25,
+     "range": [
+      0,
+      1
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 2000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "waves": {
+     "choices": null,
+     "default": 3.0,
+     "range": [
+      0.5,
+      30
+     ]
+    }
+   },
+   "tags": [
+    "divider"
+   ]
+  },
+  {
+   "label_ar": "قصاصات ونجوم متناثرة",
+   "label_en": "Confetti / star scatter",
+   "name": "confetti_scatter",
+   "params": {
+    "colors": {
+     "choices": null,
+     "default": 4,
+     "range": [
+      1,
+      8
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 2100.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "keepouts": {
+     "choices": null,
+     "default": [],
+     "range": null
+    },
+    "kinds": {
+     "choices": null,
+     "default": "star,circle,rect,triangle",
+     "range": null
+    },
+    "margin": {
+     "choices": null,
+     "default": 24.0,
+     "range": [
+      0,
+      500
+     ]
+    },
+    "radius": {
+     "choices": null,
+     "default": 110.0,
+     "range": [
+      10,
+      2000
+     ]
+    },
+    "semantic_map": {
+     "choices": null,
+     "default": null,
+     "range": null
+    },
+    "size": {
+     "choices": null,
+     "default": 34.0,
+     "range": [
+      4,
+      500
+     ]
+    },
+    "w": {
+     "choices": null,
+     "default": 1480.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "scatter"
+   ]
+  },
+  {
+   "label_ar": "نقشة تعبئة",
+   "label_en": "Pattern fill",
+   "name": "pattern_fill",
+   "params": {
+    "angle": {
+     "choices": null,
+     "default": 0.0,
+     "range": [
+      -180,
+      180
+     ]
+    },
+    "h": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "kind": {
+     "choices": [
+      "dots",
+      "stripes",
+      "checks",
+      "hearts"
+     ],
+     "default": "dots",
+     "range": null
+    },
+    "region": {
+     "choices": null,
+     "default": "rect",
+     "range": null
+    },
+    "size": {
+     "choices": null,
+     "default": 0.42,
+     "range": [
+      0.05,
+      0.8
+     ]
+    },
+    "spacing": {
+     "choices": null,
+     "default": 90.0,
+     "range": [
+      8,
+      2000
+     ]
+    },
+    "stagger": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "pattern"
+   ]
+  },
+  {
+   "label_ar": "حدّ قص الملصق",
+   "label_en": "Die-cut sticker outline",
+   "name": "sticker_outline",
+   "params": {
+    "h": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    },
+    "include_art": {
+     "choices": null,
+     "default": false,
+     "range": null
+    },
+    "mask": {
+     "choices": null,
+     "default": null,
+     "range": null
+    },
+    "offset_by": {
+     "choices": null,
+     "default": 40.0,
+     "range": [
+      1,
+      500
+     ]
+    },
+    "smooth": {
+     "choices": null,
+     "default": true,
+     "range": null
+    },
+    "source": {
+     "choices": null,
+     "default": null,
+     "range": null
+    },
+    "w": {
+     "choices": null,
+     "default": 1000.0,
+     "range": [
+      10.0,
+      20000.0
+     ]
+    }
+   },
+   "tags": [
+    "sticker"
+   ]
+  }
+ ]
+}

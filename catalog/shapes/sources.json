@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "decided": "2026-10-11",
+  "evidence": "docs/mag/phase-0/evidence/licence_verification_2026-10-11.md",
+  "rule": "Only official APIs are queried. General-web results are inspiration only and are never imported. Licence is checked per set (Iconify) or per file (Openverse, Wikimedia) against catalog/licence_policy.json.",
+  "api_hosts": ["api.iconify.design", "api.openverse.org", "commons.wikimedia.org"],
+  "asset_hosts": ["upload.wikimedia.org", "api.iconify.design"],
+  "original_work_licence": "LicenseRef-ModuleX-Original",
+  "sources": [
+    {"id": "iconify", "name": "Iconify API", "kind": "api", "enabled": true, "base_url": "https://api.iconify.design", "self_hosted_base_url_setting": "discovery.iconify_base_url", "licence_basis": "per icon set: collections[prefix].license.spdx", "verdict": "filter_per_set"},
+    {"id": "openverse", "name": "Openverse API", "kind": "api", "enabled": true, "base_url": "https://api.openverse.org/v1", "licence_basis": "per image: license + license_version + license_url", "verdict": "filter_per_asset", "request_license_filter": "cc0,pdm,by"},
+    {"id": "wikimedia", "name": "Wikimedia Commons API", "kind": "api", "enabled": true, "base_url": "https://commons.wikimedia.org/w/api.php", "licence_basis": "per file: imageinfo.extmetadata License/LicenseShortName/LicenseUrl/AttributionRequired/Restrictions/NonFree", "verdict": "filter_per_asset"},
+    {"id": "kenney", "name": "Kenney asset packs", "kind": "local_pack", "enabled": true, "licence_basis": "License.txt inside each pack must state CC0", "verdict": "print_ok_after_pack_check"},
+    {"id": "noto-emoji", "name": "Noto Emoji (SVG)", "kind": "iconify_set", "prefix": "noto", "enabled": true, "licence": "Apache-2.0", "verdict": "print_ok"},
+    {"id": "fluent-emoji", "name": "Fluent Emoji", "kind": "iconify_set", "prefix": "fluent-emoji-flat", "enabled": true, "licence": "MIT", "verdict": "print_ok"},
+    {"id": "twemoji", "name": "Twemoji graphics", "kind": "iconify_set", "prefix": "twemoji", "enabled": true, "licence": "CC-BY-4.0", "verdict": "print_ok_with_credits"},
+    {"id": "tabler", "name": "Tabler Icons", "kind": "iconify_set", "prefix": "tabler", "enabled": true, "licence": "MIT", "verdict": "print_ok"},
+    {"id": "phosphor", "name": "Phosphor", "kind": "iconify_set", "prefix": "ph", "enabled": true, "licence": "MIT", "verdict": "print_ok"},
+    {"id": "lucide", "name": "Lucide", "kind": "iconify_set", "prefix": "lucide", "enabled": true, "licence": "ISC", "verdict": "print_ok"},
+    {"id": "remix", "name": "Remix Icon <= 4.8.0", "kind": "iconify_set", "prefix": "ri", "enabled": true, "licence": "Apache-2.0", "max_version": "4.8.0", "verdict": "print_ok_only_up_to_4.8.0"},
+    {"id": "openmoji", "name": "OpenMoji", "kind": "iconify_set", "prefix": "openmoji", "enabled": false, "licence": "CC-BY-SA-4.0", "verdict": "refused_for_print"},
+    {"id": "openclipart", "name": "Openclipart", "kind": "site", "enabled": false, "verdict": "unverified_disabled"},
+    {"id": "openpeeps", "name": "Open Peeps", "kind": "site", "enabled": false, "verdict": "unverified_disabled"},
+    {"id": "svgrepo", "name": "SVG Repo", "kind": "site", "enabled": false, "verdict": "refused"},
+    {"id": "undraw", "name": "unDraw", "kind": "site", "enabled": false, "verdict": "refused"}
+  ],
+  "iconify_excluded_prefixes": {
+    "simple-icons": "brand marks: CC0 does not clear trademarks (children's product)",
+    "logos": "brand marks: trademarks",
+    "openmoji": "CC-BY-SA-4.0: refused for print",
+    "cbi": "CC-BY-NC-SA-4.0",
+    "ps": "CC-BY-NC-4.0"
+  },
+  "iconify_version_caps": {"ri": "4.8.0"}
+}

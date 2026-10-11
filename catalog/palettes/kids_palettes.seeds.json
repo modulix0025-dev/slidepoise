@@ -1,0 +1,1767 @@
+{
+ "version": 1,
+ "note": "Hand-curated seeds for the Studio's children's palettes: name (Egyptian Arabic + English), tags and three brand colours. Background, text and outline are derived by mxstudio.colour.palettes.build_palette; out-of-press-gamut seeds are pulled in by OKLCH chroma reduction.",
+ "licence": "CC0-1.0",
+ "palettes": [
+  {
+   "id": "coral_reef",
+   "name_en": "Coral Reef",
+   "name_ar": "الشعب المرجانية",
+   "themes": [
+    "sea"
+   ],
+   "moods": [
+    "cheerful",
+    "curious"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#1b9aaa",
+   "secondary": "#ff7f6e",
+   "accent": "#ffc43d"
+  },
+  {
+   "id": "deep_blue",
+   "name_en": "Deep Blue",
+   "name_ar": "الأزرق العميق",
+   "themes": [
+    "sea",
+    "night"
+   ],
+   "moods": [
+    "calm",
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#2a6fdb",
+   "secondary": "#48cae4",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "red_sea_snorkel",
+   "name_en": "Red Sea Snorkel",
+   "name_ar": "غطس في البحر الأحمر",
+   "themes": [
+    "sea",
+    "desert_egypt"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#0077b6",
+   "secondary": "#f4a259",
+   "accent": "#e85d75"
+  },
+  {
+   "id": "seashell_shore",
+   "name_en": "Seashell Shore",
+   "name_ar": "شط الصدف",
+   "themes": [
+    "sea",
+    "summer"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#5fa8d3",
+   "secondary": "#e3a67a",
+   "accent": "#f28482"
+  },
+  {
+   "id": "lighthouse",
+   "name_en": "Lighthouse",
+   "name_ar": "الفنار",
+   "themes": [
+    "sea"
+   ],
+   "moods": [
+    "brave"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#c44536",
+   "secondary": "#1d4e89",
+   "accent": "#f6c453"
+  },
+  {
+   "id": "whale_song",
+   "name_en": "Whale Song",
+   "name_ar": "غنوة الحوت",
+   "themes": [
+    "sea",
+    "bedtime"
+   ],
+   "moods": [
+    "calm",
+    "sleepy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#3d5a98",
+   "secondary": "#7fb7be",
+   "accent": "#f2d0a4"
+  },
+  {
+   "id": "pirate_cove",
+   "name_en": "Pirate Cove",
+   "name_ar": "خليج القراصنة",
+   "themes": [
+    "sea"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#1f5f8b",
+   "secondary": "#b5651d",
+   "accent": "#e63946"
+  },
+  {
+   "id": "alexandria_waves",
+   "name_en": "Alexandria Waves",
+   "name_ar": "موج إسكندرية",
+   "themes": [
+    "sea",
+    "city",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#118ab2",
+   "secondary": "#06d6a0",
+   "accent": "#ef476f"
+  },
+  {
+   "id": "rocket_launch",
+   "name_en": "Rocket Launch",
+   "name_ar": "انطلاق الصاروخ",
+   "themes": [
+    "space"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#ff6b35",
+   "secondary": "#4ea8de",
+   "accent": "#ffd23f"
+  },
+  {
+   "id": "moon_base",
+   "name_en": "Moon Base",
+   "name_ar": "قاعدة على القمر",
+   "themes": [
+    "space"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#7b8cde",
+   "secondary": "#c0c6d8",
+   "accent": "#ffcf56"
+  },
+  {
+   "id": "galaxy_swirl",
+   "name_en": "Galaxy Swirl",
+   "name_ar": "دوامة المجرة",
+   "themes": [
+    "space"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#9d4edd",
+   "secondary": "#4cc9f0",
+   "accent": "#f72585"
+  },
+  {
+   "id": "friendly_aliens",
+   "name_en": "Friendly Aliens",
+   "name_ar": "كائنات فضائية لطيفة",
+   "themes": [
+    "space"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#72c472",
+   "secondary": "#a06cd5",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "mars_rover",
+   "name_en": "Mars Rover",
+   "name_ar": "عربية المريخ",
+   "themes": [
+    "space",
+    "mountains"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#c1440e",
+   "secondary": "#f0a868",
+   "accent": "#3a86ff"
+  },
+  {
+   "id": "star_map",
+   "name_en": "Star Map",
+   "name_ar": "خريطة النجوم",
+   "themes": [
+    "space",
+    "night"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#4361ee",
+   "secondary": "#a3b8f0",
+   "accent": "#f9c74f"
+  },
+  {
+   "id": "comet_tail",
+   "name_en": "Comet Tail",
+   "name_ar": "ديل المذنّب",
+   "themes": [
+    "space"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#00b4d8",
+   "secondary": "#90e0ef",
+   "accent": "#ff9f1c"
+  },
+  {
+   "id": "planet_parade",
+   "name_en": "Planet Parade",
+   "name_ar": "موكب الكواكب",
+   "themes": [
+    "space",
+    "rainbow"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#3a5bd9",
+   "secondary": "#ef8a17",
+   "accent": "#2ec4b6"
+  },
+  {
+   "id": "pyramids_noon",
+   "name_en": "Pyramids at Noon",
+   "name_ar": "الأهرامات وقت الضهر",
+   "themes": [
+    "desert_egypt",
+    "pharaohs"
+   ],
+   "moods": [
+    "proud"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#d9a441",
+   "secondary": "#3c6e91",
+   "accent": "#c8553d"
+  },
+  {
+   "id": "golden_sands",
+   "name_en": "Golden Sands",
+   "name_ar": "الرملة الدهبي",
+   "themes": [
+    "desert_egypt"
+   ],
+   "moods": [
+    "calm",
+    "cosy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#e0a458",
+   "secondary": "#8a5a44",
+   "accent": "#2a9d8f"
+  },
+  {
+   "id": "pharaoh_gold",
+   "name_en": "Pharaoh's Gold",
+   "name_ar": "دهب الفرعون",
+   "themes": [
+    "pharaohs",
+    "desert_egypt",
+    "night"
+   ],
+   "moods": [
+    "proud",
+    "magical"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#d4a017",
+   "secondary": "#1e5aa8",
+   "accent": "#c0392b"
+  },
+  {
+   "id": "nile_morning",
+   "name_en": "Nile Morning",
+   "name_ar": "صباح النيل",
+   "themes": [
+    "river_nile",
+    "desert_egypt"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#2e86ab",
+   "secondary": "#6aa84f",
+   "accent": "#f6ae2d"
+  },
+  {
+   "id": "felucca_sunset",
+   "name_en": "Felucca Sunset",
+   "name_ar": "فلوكة وقت الغروب",
+   "themes": [
+    "river_nile",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#e76f51",
+   "secondary": "#264f73",
+   "accent": "#f4a261"
+  },
+  {
+   "id": "oasis",
+   "name_en": "Oasis",
+   "name_ar": "الواحة",
+   "themes": [
+    "desert_egypt",
+    "garden"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#3a7d44",
+   "secondary": "#e9b872",
+   "accent": "#2d9cdb"
+  },
+  {
+   "id": "camel_caravan",
+   "name_en": "Camel Caravan",
+   "name_ar": "قافلة الجمال",
+   "themes": [
+    "desert_egypt"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#b5793a",
+   "secondary": "#6b8f71",
+   "accent": "#3d7ea6"
+  },
+  {
+   "id": "lotus_blue",
+   "name_en": "Blue Lotus",
+   "name_ar": "اللوتس الأزرق",
+   "themes": [
+    "pharaohs",
+    "river_nile"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#3b6fb6",
+   "secondary": "#e7b75f",
+   "accent": "#3aa39a"
+  },
+  {
+   "id": "scarab_turquoise",
+   "name_en": "Scarab Turquoise",
+   "name_ar": "الجعران الفيروزي",
+   "themes": [
+    "pharaohs",
+    "desert_egypt"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#1aa39a",
+   "secondary": "#c99a2e",
+   "accent": "#b23a48"
+  },
+  {
+   "id": "khan_lanterns",
+   "name_en": "Khan el-Khalili Lanterns",
+   "name_ar": "فوانيس خان الخليلي",
+   "themes": [
+    "desert_egypt",
+    "city",
+    "ramadan",
+    "night"
+   ],
+   "moods": [
+    "festive"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#e9a03b",
+   "secondary": "#c0392b",
+   "accent": "#2a9d8f"
+  },
+  {
+   "id": "siwa_salt_lakes",
+   "name_en": "Siwa Salt Lakes",
+   "name_ar": "بحيرات سيوة",
+   "themes": [
+    "desert_egypt"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#3fa7d6",
+   "secondary": "#e8c39e",
+   "accent": "#59cd90"
+  },
+  {
+   "id": "luxor_temple",
+   "name_en": "Luxor Temple",
+   "name_ar": "معبد الأقصر",
+   "themes": [
+    "pharaohs",
+    "desert_egypt"
+   ],
+   "moods": [
+    "proud"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#c2803b",
+   "secondary": "#5b7db1",
+   "accent": "#2e8b7a"
+  },
+  {
+   "id": "bubblegum",
+   "name_en": "Bubblegum",
+   "name_ar": "لبانة",
+   "themes": [
+    "candy"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#ff6f91",
+   "secondary": "#6ec6ff",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "lollipop",
+   "name_en": "Lollipop",
+   "name_ar": "مصّاصة",
+   "themes": [
+    "candy",
+    "rainbow"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#ef476f",
+   "secondary": "#26c6da",
+   "accent": "#ffb627"
+  },
+  {
+   "id": "cotton_candy",
+   "name_en": "Cotton Candy",
+   "name_ar": "غزل البنات",
+   "themes": [
+    "candy",
+    "festival"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#f497c9",
+   "secondary": "#8fb8ff",
+   "accent": "#8fd694"
+  },
+  {
+   "id": "sugar_cookies",
+   "name_en": "Sugar Cookies",
+   "name_ar": "بسكوت بالسكر",
+   "themes": [
+    "candy",
+    "bakery"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#d98e5a",
+   "secondary": "#7fb3d5",
+   "accent": "#e85d75"
+  },
+  {
+   "id": "mint_chocolate",
+   "name_en": "Mint Chocolate",
+   "name_ar": "نعناع وشوكولاتة",
+   "themes": [
+    "candy"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#3fb59a",
+   "secondary": "#7b4b3a",
+   "accent": "#ff8fab"
+  },
+  {
+   "id": "kunafa_basbousa",
+   "name_en": "Kunafa & Basbousa",
+   "name_ar": "كنافة وبسبوسة",
+   "themes": [
+    "candy",
+    "ramadan",
+    "bakery"
+   ],
+   "moods": [
+    "cosy",
+    "festive"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#e09f3e",
+   "secondary": "#9e2a2b",
+   "accent": "#335c67"
+  },
+  {
+   "id": "deep_forest",
+   "name_en": "Deep Forest",
+   "name_ar": "الغابة العميقة",
+   "themes": [
+    "forest"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#2d6a4f",
+   "secondary": "#95d5b2",
+   "accent": "#e76f51"
+  },
+  {
+   "id": "mushroom_trail",
+   "name_en": "Mushroom Trail",
+   "name_ar": "طريق عيش الغراب",
+   "themes": [
+    "forest",
+    "fairy_tale"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#c8553d",
+   "secondary": "#588157",
+   "accent": "#f2cc8f"
+  },
+  {
+   "id": "owl_night",
+   "name_en": "Owl Night",
+   "name_ar": "ليلة البومة",
+   "themes": [
+    "forest",
+    "night"
+   ],
+   "moods": [
+    "sleepy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#5c8f6a",
+   "secondary": "#b08968",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "fern_glade",
+   "name_en": "Fern Glade",
+   "name_ar": "وادي السرخس",
+   "themes": [
+    "forest",
+    "spring"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#52b788",
+   "secondary": "#74c0fc",
+   "accent": "#f7b267"
+  },
+  {
+   "id": "woodland_friends",
+   "name_en": "Woodland Friends",
+   "name_ar": "أصحاب الغابة",
+   "themes": [
+    "forest"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#a0522d",
+   "secondary": "#6a994e",
+   "accent": "#4d9de0"
+  },
+  {
+   "id": "rainforest",
+   "name_en": "Rainforest",
+   "name_ar": "الغابة المطيرة",
+   "themes": [
+    "jungle",
+    "forest"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#1b7f5a",
+   "secondary": "#f9a03f",
+   "accent": "#d7263d"
+  },
+  {
+   "id": "pine_and_snow",
+   "name_en": "Pine & Snow",
+   "name_ar": "صنوبر وتلج",
+   "themes": [
+    "forest",
+    "winter"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#2f5d50",
+   "secondary": "#8ab6d6",
+   "accent": "#c94c4c"
+  },
+  {
+   "id": "bedtime_moon",
+   "name_en": "Bedtime Moon",
+   "name_ar": "قمر وقت النوم",
+   "themes": [
+    "night",
+    "bedtime"
+   ],
+   "moods": [
+    "sleepy"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "dark",
+   "primary": "#6c7bd9",
+   "secondary": "#b8c0ff",
+   "accent": "#ffe08a"
+  },
+  {
+   "id": "firefly_meadow",
+   "name_en": "Firefly Meadow",
+   "name_ar": "مرج اليراعات",
+   "themes": [
+    "night",
+    "garden"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#4f9d69",
+   "secondary": "#8d99ae",
+   "accent": "#ffd23f"
+  },
+  {
+   "id": "city_lights",
+   "name_en": "City Lights",
+   "name_ar": "أنوار المدينة",
+   "themes": [
+    "night",
+    "city"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#f77f00",
+   "secondary": "#4cc9f0",
+   "accent": "#f15bb5"
+  },
+  {
+   "id": "starry_rooftop",
+   "name_en": "Starry Rooftop",
+   "name_ar": "سطوح بالنجوم",
+   "themes": [
+    "night",
+    "desert_egypt",
+    "city"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "dark",
+   "primary": "#4a6fa5",
+   "secondary": "#e0a96d",
+   "accent": "#f2e3bc"
+  },
+  {
+   "id": "dream_clouds",
+   "name_en": "Dream Clouds",
+   "name_ar": "سحاب الأحلام",
+   "themes": [
+    "night",
+    "bedtime",
+    "fairy_tale"
+   ],
+   "moods": [
+    "sleepy",
+    "magical"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "dark",
+   "primary": "#9b8fd6",
+   "secondary": "#f2a7c3",
+   "accent": "#a5d8ff"
+  },
+  {
+   "id": "campfire_stories",
+   "name_en": "Campfire Stories",
+   "name_ar": "حواديت جنب النار",
+   "themes": [
+    "night",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#e85d04",
+   "secondary": "#6a8caf",
+   "accent": "#ffba08"
+  },
+  {
+   "id": "moulid_lights",
+   "name_en": "Moulid Lights",
+   "name_ar": "أنوار المولد",
+   "themes": [
+    "festival",
+    "city"
+   ],
+   "moods": [
+    "festive"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#d62246",
+   "secondary": "#1f7a8c",
+   "accent": "#f5b700"
+  },
+  {
+   "id": "eid_morning",
+   "name_en": "Eid Morning",
+   "name_ar": "صباح العيد",
+   "themes": [
+    "eid",
+    "festival"
+   ],
+   "moods": [
+    "festive",
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#2b9348",
+   "secondary": "#d4a017",
+   "accent": "#e4572e"
+  },
+  {
+   "id": "ramadan_lantern",
+   "name_en": "Ramadan Lantern",
+   "name_ar": "فانوس رمضان",
+   "themes": [
+    "ramadan",
+    "festival",
+    "night"
+   ],
+   "moods": [
+    "magical",
+    "cosy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#f2a541",
+   "secondary": "#3b8ea5",
+   "accent": "#d1495b"
+  },
+  {
+   "id": "birthday_party",
+   "name_en": "Birthday Party",
+   "name_ar": "حفلة عيد ميلاد",
+   "themes": [
+    "festival",
+    "birthday"
+   ],
+   "moods": [
+    "festive",
+    "playful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#ff595e",
+   "secondary": "#1982c4",
+   "accent": "#8ac926"
+  },
+  {
+   "id": "sham_el_nessim",
+   "name_en": "Sham el-Nessim",
+   "name_ar": "شم النسيم",
+   "themes": [
+    "festival",
+    "spring",
+    "garden"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#43aa8b",
+   "secondary": "#f9c74f",
+   "accent": "#f9844a"
+  },
+  {
+   "id": "carnival_parade",
+   "name_en": "Carnival Parade",
+   "name_ar": "موكب الكرنفال",
+   "themes": [
+    "festival",
+    "rainbow"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#6a4c93",
+   "secondary": "#ff924c",
+   "accent": "#1982c4"
+  },
+  {
+   "id": "sunflower_field",
+   "name_en": "Sunflower Field",
+   "name_ar": "غيط عبّاد الشمس",
+   "themes": [
+    "garden",
+    "summer"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#e9b200",
+   "secondary": "#4a7c59",
+   "accent": "#2b6cb0"
+  },
+  {
+   "id": "butterfly_garden",
+   "name_en": "Butterfly Garden",
+   "name_ar": "جنينة الفراشات",
+   "themes": [
+    "garden",
+    "spring"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#f15bb5",
+   "secondary": "#00bbf9",
+   "accent": "#9bc53d"
+  },
+  {
+   "id": "rose_garden",
+   "name_en": "Rose Garden",
+   "name_ar": "جنينة الورد",
+   "themes": [
+    "garden"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#c9184a",
+   "secondary": "#52796f",
+   "accent": "#ffb703"
+  },
+  {
+   "id": "happy_farm",
+   "name_en": "Happy Farm",
+   "name_ar": "المزرعة السعيدة",
+   "themes": [
+    "farm"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#d64933",
+   "secondary": "#5aa469",
+   "accent": "#f2c14e"
+  },
+  {
+   "id": "delta_fields",
+   "name_en": "Delta Fields",
+   "name_ar": "غيطان الدلتا",
+   "themes": [
+    "farm",
+    "river_nile"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#6a994e",
+   "secondary": "#2f6690",
+   "accent": "#e9c46a"
+  },
+  {
+   "id": "barn_morning",
+   "name_en": "Barn Morning",
+   "name_ar": "صباح الحظيرة",
+   "themes": [
+    "farm"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#b23a48",
+   "secondary": "#8cb369",
+   "accent": "#f4a259"
+  },
+  {
+   "id": "safari_sunset",
+   "name_en": "Safari Sunset",
+   "name_ar": "غروب السفاري",
+   "themes": [
+    "safari"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#e07a1f",
+   "secondary": "#6b8e23",
+   "accent": "#8e5572"
+  },
+  {
+   "id": "jungle_drums",
+   "name_en": "Jungle Drums",
+   "name_ar": "طبول الغابة",
+   "themes": [
+    "jungle",
+    "music"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#00916e",
+   "secondary": "#feb95f",
+   "accent": "#c33c54"
+  },
+  {
+   "id": "lion_pride",
+   "name_en": "Lion Pride",
+   "name_ar": "عيلة الأسد",
+   "themes": [
+    "safari"
+   ],
+   "moods": [
+    "brave",
+    "proud"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#c97c1d",
+   "secondary": "#3e6259",
+   "accent": "#4d6cfa"
+  },
+  {
+   "id": "polar_bears",
+   "name_en": "Polar Bears",
+   "name_ar": "الدببة القطبية",
+   "themes": [
+    "arctic",
+    "winter"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#3d8bd4",
+   "secondary": "#9ad1d4",
+   "accent": "#f28f3b"
+  },
+  {
+   "id": "northern_lights",
+   "name_en": "Northern Lights",
+   "name_ar": "الشفق القطبي",
+   "themes": [
+    "arctic",
+    "night"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#2ec4b6",
+   "secondary": "#9b5de5",
+   "accent": "#b5e48c"
+  },
+  {
+   "id": "igloo_day",
+   "name_en": "Igloo Day",
+   "name_ar": "يوم في الإيجلو",
+   "themes": [
+    "arctic",
+    "winter"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#5390d9",
+   "secondary": "#bde0fe",
+   "accent": "#ff6b6b"
+  },
+  {
+   "id": "rainy_day",
+   "name_en": "Rainy Day",
+   "name_ar": "يوم مطر",
+   "themes": [
+    "rain"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#457b9d",
+   "secondary": "#a8dadc",
+   "accent": "#f4d35e"
+  },
+  {
+   "id": "rainbow_after_rain",
+   "name_en": "Rainbow After Rain",
+   "name_ar": "قوس قزح بعد المطر",
+   "themes": [
+    "rain",
+    "rainbow"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#e63946",
+   "secondary": "#2a9d8f",
+   "accent": "#ffb703"
+  },
+  {
+   "id": "autumn_leaves",
+   "name_en": "Autumn Leaves",
+   "name_ar": "ورق الخريف",
+   "themes": [
+    "autumn"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#bc4b14",
+   "secondary": "#6b705c",
+   "accent": "#ddaa33"
+  },
+  {
+   "id": "date_harvest",
+   "name_en": "Date Harvest",
+   "name_ar": "موسم البلح",
+   "themes": [
+    "autumn",
+    "farm",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cosy",
+    "proud"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#8c3b1f",
+   "secondary": "#d99a3e",
+   "accent": "#3e7c59"
+  },
+  {
+   "id": "summer_holiday",
+   "name_en": "Summer Holiday",
+   "name_ar": "أجازة الصيف",
+   "themes": [
+    "summer",
+    "sea"
+   ],
+   "moods": [
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#00a6a6",
+   "secondary": "#f49d37",
+   "accent": "#ef3e36"
+  },
+  {
+   "id": "mango_juice",
+   "name_en": "Mango Juice",
+   "name_ar": "عصير مانجا",
+   "themes": [
+    "summer",
+    "candy"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#f8961e",
+   "secondary": "#43aa8b",
+   "accent": "#d00000"
+  },
+  {
+   "id": "first_day_school",
+   "name_en": "First Day of School",
+   "name_ar": "أول يوم مدرسة",
+   "themes": [
+    "school"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#3a86ff",
+   "secondary": "#ffbe0b",
+   "accent": "#fb5607"
+  },
+  {
+   "id": "science_lab",
+   "name_en": "Science Lab",
+   "name_ar": "معمل العلوم",
+   "themes": [
+    "school",
+    "robots"
+   ],
+   "moods": [
+    "curious"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#0081a7",
+   "secondary": "#00afb9",
+   "accent": "#f07167"
+  },
+  {
+   "id": "library_corner",
+   "name_en": "Library Corner",
+   "name_ar": "ركن المكتبة",
+   "themes": [
+    "school",
+    "bedtime"
+   ],
+   "moods": [
+    "calm"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#7f5539",
+   "secondary": "#386fa4",
+   "accent": "#c44569"
+  },
+  {
+   "id": "football_match",
+   "name_en": "Football Match",
+   "name_ar": "ماتش كورة",
+   "themes": [
+    "sports"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#2b9348",
+   "secondary": "#d00000",
+   "accent": "#1d4e89"
+  },
+  {
+   "id": "swimming_pool",
+   "name_en": "Swimming Pool",
+   "name_ar": "حمّام السباحة",
+   "themes": [
+    "sports",
+    "summer"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#0096c7",
+   "secondary": "#48cae4",
+   "accent": "#ff7b00"
+  },
+  {
+   "id": "oud_and_tabla",
+   "name_en": "Oud & Tabla",
+   "name_ar": "عود وطبلة",
+   "themes": [
+    "music",
+    "festival"
+   ],
+   "moods": [
+    "festive"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#8d4b2a",
+   "secondary": "#c19434",
+   "accent": "#285e61"
+  },
+  {
+   "id": "sing_along",
+   "name_en": "Sing-Along",
+   "name_ar": "نغنّي سوا",
+   "themes": [
+    "music"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#8338ec",
+   "secondary": "#ff006e",
+   "accent": "#3a86ff"
+  },
+  {
+   "id": "dino_valley",
+   "name_en": "Dino Valley",
+   "name_ar": "وادي الديناصورات",
+   "themes": [
+    "dinosaurs",
+    "jungle"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#588157",
+   "secondary": "#dda15e",
+   "accent": "#bc4749"
+  },
+  {
+   "id": "volcano_island",
+   "name_en": "Volcano Island",
+   "name_ar": "جزيرة البركان",
+   "themes": [
+    "dinosaurs"
+   ],
+   "moods": [
+    "brave"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#e85d04",
+   "secondary": "#4f772d",
+   "accent": "#ffba08"
+  },
+  {
+   "id": "tin_robot",
+   "name_en": "Tin Robot",
+   "name_ar": "روبوت الصفيح",
+   "themes": [
+    "robots"
+   ],
+   "moods": [
+    "curious",
+    "playful"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#4d908e",
+   "secondary": "#f9c74f",
+   "accent": "#f94144"
+  },
+  {
+   "id": "circuit_glow",
+   "name_en": "Circuit Glow",
+   "name_ar": "لمعة الدوائر",
+   "themes": [
+    "robots",
+    "space"
+   ],
+   "moods": [
+    "energetic"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#06d6a0",
+   "secondary": "#118ab2",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "castle_in_clouds",
+   "name_en": "Castle in the Clouds",
+   "name_ar": "قلعة في السحاب",
+   "themes": [
+    "fairy_tale"
+   ],
+   "moods": [
+    "magical"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#7b68ee",
+   "secondary": "#ff8fab",
+   "accent": "#ffd166"
+  },
+  {
+   "id": "friendly_dragon",
+   "name_en": "Friendly Dragon",
+   "name_ar": "التنين الطيب",
+   "themes": [
+    "fairy_tale"
+   ],
+   "moods": [
+    "brave",
+    "playful"
+   ],
+   "ages": [
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#2a9d55",
+   "secondary": "#e76f51",
+   "accent": "#9b5de5"
+  },
+  {
+   "id": "magic_carpet",
+   "name_en": "Magic Carpet",
+   "name_ar": "البساط السحري",
+   "themes": [
+    "fairy_tale",
+    "desert_egypt",
+    "night"
+   ],
+   "moods": [
+    "magical",
+    "adventurous"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "dark",
+   "primary": "#c9184a",
+   "secondary": "#f2b134",
+   "accent": "#3f8efc"
+  },
+  {
+   "id": "crayon_box",
+   "name_en": "Crayon Box",
+   "name_ar": "علبة الألوان",
+   "themes": [
+    "rainbow",
+    "school"
+   ],
+   "moods": [
+    "playful"
+   ],
+   "ages": [
+    "3-5"
+   ],
+   "mode": "light",
+   "primary": "#ef233c",
+   "secondary": "#2b59c3",
+   "accent": "#ffbe0b"
+  },
+  {
+   "id": "sinai_mountains",
+   "name_en": "Sinai Mountains",
+   "name_ar": "جبال سينا",
+   "themes": [
+    "mountains",
+    "desert_egypt"
+   ],
+   "moods": [
+    "adventurous"
+   ],
+   "ages": [
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#a44a3f",
+   "secondary": "#4e7ea6",
+   "accent": "#f2bb05"
+  },
+  {
+   "id": "cairo_rooftops",
+   "name_en": "Cairo Rooftops",
+   "name_ar": "أسطح القاهرة",
+   "themes": [
+    "city",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "6-8",
+    "9-12"
+   ],
+   "mode": "light",
+   "primary": "#c46d5e",
+   "secondary": "#2b7a78",
+   "accent": "#f2c14e"
+  },
+  {
+   "id": "morning_bakery",
+   "name_en": "Morning Bakery",
+   "name_ar": "فرن الصبح",
+   "themes": [
+    "bakery"
+   ],
+   "moods": [
+    "cosy"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#b5651d",
+   "secondary": "#6d9dc5",
+   "accent": "#5fa36a"
+  },
+  {
+   "id": "breakfast_table",
+   "name_en": "Breakfast Table",
+   "name_ar": "فطار الصبح",
+   "themes": [
+    "bakery",
+    "desert_egypt"
+   ],
+   "moods": [
+    "cosy",
+    "cheerful"
+   ],
+   "ages": [
+    "3-5",
+    "6-8"
+   ],
+   "mode": "light",
+   "primary": "#7a9e3e",
+   "secondary": "#c97b2b",
+   "accent": "#3b7ea1"
+  }
+ ]
+}

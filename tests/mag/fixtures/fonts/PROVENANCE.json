@@ -1,0 +1,8 @@
+{"source": "https://github.com/google/fonts", "commit": "bd8f81ddb5c74d5c8897b36ad88b440266245103", "retrieved_at": "2026-10-11",
+ "files": {
+  "tajawal/Tajawal-Regular.ttf": {"sha256": "6882892da3e03527d5db2bbab3b48bde6ef2e878a43f522d1a4eebda90010a19", "repo_path": "ofl/tajawal/Tajawal-Regular.ttf", "licence": "OFL-1.1"},
+  "tajawal/Tajawal-Bold.ttf": {"sha256": "0342ab6b74b6bd1b4b5bf7beda45a9734a2b3147a31e8a3a45b6a3417a52d9d7", "repo_path": "ofl/tajawal/Tajawal-Bold.ttf", "licence": "OFL-1.1"},
+  "tajawal/OFL.txt": {"sha256": "9b584984f9db0ee30347391a76eff9c0a6b03dc450c3c6afe3757a2cb3a4db87", "repo_path": "ofl/tajawal/OFL.txt", "licence": "OFL-1.1"},
+  "amiri/Amiri-Regular.ttf": {"sha256": "ab391c4147d054c48976e98322ad0eefe1427aa0e0502a12a4c75d80a70cfcd7", "repo_path": "ofl/amiri/Amiri-Regular.ttf", "licence": "OFL-1.1"},
+  "amiri/OFL.txt": {"sha256": "72de68e5954f4fdd24702292ef5a32f003ca960ec9330dc86e5eefb5dffb9b22", "repo_path": "ofl/amiri/OFL.txt", "licence": "OFL-1.1"}
+ }}

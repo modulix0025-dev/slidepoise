@@ -12,6 +12,7 @@ import re
 import sqlite3
 import tempfile
 import textwrap
+from contextlib import closing
 from pathlib import Path
 from typing import Any
 
@@ -196,7 +197,7 @@ def build_index(records: list[dict], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         try:
-            with sqlite3.connect(f"{path.as_uri()}?mode=ro", uri=True) as existing:
+            with closing(sqlite3.connect(f"{path.as_uri()}?mode=ro", uri=True)) as existing:
                 version = existing.execute("SELECT version FROM reference_index_meta").fetchone()
             if version != (SCHEMA_VERSION,):
                 raise ValueError("unrecognized schema")
@@ -205,7 +206,8 @@ def build_index(records: list[dict], path: Path) -> None:
     with tempfile.NamedTemporaryFile(prefix="reference-index-", suffix=".sqlite", dir=path.parent, delete=False) as file:
         temporary = Path(file.name)
     try:
-        with sqlite3.connect(temporary) as connection:
+        # closing(): sqlite3's own context manager only commits; an open handle blocks replace() on Windows
+        with closing(sqlite3.connect(temporary)) as connection, connection:
             connection.executescript("""
                 CREATE TABLE reference_index_meta (version TEXT NOT NULL);
                 CREATE TABLE reference_records (row_id INTEGER PRIMARY KEY, record_json TEXT NOT NULL);
@@ -236,7 +238,7 @@ def query_index(path: Path, intent: dict, *, query: str = "", authenticity: str 
     structure_terms = tokens(" ".join(text for field, text in fields if not field.startswith("required_content")))
     if not query_terms:
         raise ValueError("Intent and query contain no searchable communication, relationship, role or content terms")
-    with sqlite3.connect(f"{path.resolve().as_uri()}?mode=ro", uri=True) as connection:
+    with closing(sqlite3.connect(f"{path.resolve().as_uri()}?mode=ro", uri=True)) as connection:
         records = {row_id: json.loads(raw) for row_id, raw in connection.execute(
             "SELECT row_id, record_json FROM reference_records")}
         matches: dict[int, list[tuple[str, str, float]]] = {}

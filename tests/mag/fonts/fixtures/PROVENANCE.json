@@ -1,0 +1,68 @@
+{
+ "source": "https://github.com/google/fonts",
+ "commit": "bd8f81ddb5c74d5c8897b36ad88b440266245103",
+ "retrieved_at": "2026-10-11",
+ "note": "Unmodified copies from the pinned commit; each folder keeps its licence file. Used only by tests/mag/fonts.",
+ "files": {
+  "blaka/Blaka-Regular.ttf": {
+   "sha256": "5cd0ff67dcfbc371c6450afffe10f6e7027ffada0c31f436beb8865e57b781a3",
+   "repo_path": "ofl/blaka/Blaka-Regular.ttf",
+   "licence": "OFL-1.1",
+   "purpose": "Arabic font without tatweel U+0640: dedication/«لـ» negative control"
+  },
+  "blaka/OFL.txt": {
+   "sha256": "94b5d5a52420a96f2b4f427bc6f56133f6ddbdfaffa17fdd29049811fc9fd64c",
+   "repo_path": "ofl/blaka/OFL.txt",
+   "licence": "OFL-1.1",
+   "purpose": "Arabic font without tatweel U+0640: dedication/«لـ» negative control"
+  },
+  "chewy/Chewy-Regular.ttf": {
+   "sha256": "7cf75ea288f82fd20badea8ab4da7a656a96a7277c170811e813b3d3d6294147",
+   "repo_path": "apache/chewy/Chewy-Regular.ttf",
+   "licence": "Apache-2.0",
+   "purpose": "Apache-2.0 Latin font: licence ledger (LICENSE.txt)"
+  },
+  "chewy/LICENSE.txt": {
+   "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+   "repo_path": "apache/chewy/LICENSE.txt",
+   "licence": "Apache-2.0",
+   "purpose": "Apache-2.0 Latin font: licence ledger (LICENSE.txt)"
+  },
+  "reemkufi/OFL.txt": {
+   "sha256": "3e1dea8822e6e4008fe0ebd2f65f88579683cfee198c0089407fa197535dbe65",
+   "repo_path": "ofl/reemkufi/OFL.txt",
+   "licence": "OFL-1.1",
+   "purpose": "variable + Reserved Font Name (\"Josefin Sans\") + Arabic: Office build, rename and harakat tests"
+  },
+  "reemkufi/ReemKufi[wght].ttf": {
+   "sha256": "33ead1986cd48c138c4d906c9e5a6341877268461f97623409a2014de1cd4aa4",
+   "repo_path": "ofl/reemkufi/ReemKufi[wght].ttf",
+   "licence": "OFL-1.1",
+   "purpose": "variable + Reserved Font Name (\"Josefin Sans\") + Arabic: Office build, rename and harakat tests"
+  },
+  "reemkufifun/OFL.txt": {
+   "sha256": "fedb204ccadda62524c5467136cef4968b6b67efdc6ca3e8752c1248d81e7f4e",
+   "repo_path": "ofl/reemkufifun/OFL.txt",
+   "licence": "OFL-1.1",
+   "purpose": "colour (COLR/CPAL) variable Arabic font: negative control (screen_only, refused for print)"
+  },
+  "reemkufifun/ReemKufiFun[wght].ttf": {
+   "sha256": "d1342cebd08afc04a51bf9a28e5ac6a8299c5716c47df9b7ea27f94653aaa40f",
+   "repo_path": "ofl/reemkufifun/ReemKufiFun[wght].ttf",
+   "licence": "OFL-1.1",
+   "purpose": "colour (COLR/CPAL) variable Arabic font: negative control (screen_only, refused for print)"
+  },
+  "thabit/OFL.txt": {
+   "sha256": "9b8405bf5f503f92401fc990f372b34d469670ab60041d5298d1015d3d0b45f8",
+   "repo_path": "ofl/thabit/OFL.txt",
+   "licence": "OFL-1.1",
+   "purpose": "monospaced Arabic without GPOS mkmk: effect-titles-only limit"
+  },
+  "thabit/Thabit.ttf": {
+   "sha256": "3fe6f423d751919d6411b38d6de2ff823252292eef9e860c4a532faf779b674a",
+   "repo_path": "ofl/thabit/Thabit.ttf",
+   "licence": "OFL-1.1",
+   "purpose": "monospaced Arabic without GPOS mkmk: effect-titles-only limit"
+  }
+ }
+}

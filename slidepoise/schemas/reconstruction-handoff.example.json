@@ -7,7 +7,7 @@
       "generation_description": "Remix Icon hierarchy line candidate; neutral 24 x 24 footprint.",
       "provider": "Remix Icon",
       "provider_version": "4.9.0",
-      "license": "Remix Icon License v1.0",
+      "license": "Apache-2.0",
       "style_variant": "line",
       "style_pair_id": "remix-hierarchy",
       "pair_asset_ids": [
@@ -25,7 +25,7 @@
       "generation_description": "Remix Icon hierarchy fill candidate; neutral 24 x 24 footprint.",
       "provider": "Remix Icon",
       "provider_version": "4.9.0",
-      "license": "Remix Icon License v1.0",
+      "license": "Apache-2.0",
       "style_variant": "fill",
       "style_pair_id": "remix-hierarchy",
       "pair_asset_ids": [

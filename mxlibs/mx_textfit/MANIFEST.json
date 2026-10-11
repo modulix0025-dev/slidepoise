@@ -1,0 +1,21 @@
+{
+ "files": {
+  "__init__.py": "6396d939609cfab690da529718d4b44a6e1e4590ba1ff9eab741e5b1560112de",
+  "_sfnt.py": "ef8b8c292443722d6ab8d709ee93d7bbc0cee542117b2de741de157ffa489f35",
+  "fit.py": "b6f1bcfce753c1470f950addf4236a1bc347cc63757240efedb5f82fee1ab802",
+  "fonts.py": "58ce0df7ab6bec4e87948a37d5b0ee39ac18f970d86a5fc64d9a1ff7758f698a",
+  "measure.py": "179ff2003c76b480878b200370a9d6880664c722488e065b9c79c796ab11d30e",
+  "pptx_box.py": "de6356cfe347397075729ca7be531cb27993d5008d985979bed7b1d2a0463344"
+ },
+ "lib": "mx_textfit",
+ "optional": [
+  "uharfbuzz",
+  "fontTools"
+ ],
+ "python": ">=3.10",
+ "requires": [
+  "Pillow"
+ ],
+ "vendoring": "copy bytes verbatim (no line-ending conversion); verify with verify_manifest()",
+ "version": "1.0.0"
+}

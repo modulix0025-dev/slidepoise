@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="night">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ModuleX Magazine Studio</title>
+<link rel="stylesheet" href="/ui/crossbar.css">
+<link rel="icon" href="/ui/app-icon.svg" type="image/svg+xml">
+</head>
+<body>
+<header class="mx-top">
+  <div class="mx-brand"><img src="/ui/app-icon.svg" alt="" width="30" height="30"><span class="mx-brand-name" data-i18n="app">استوديو المجلات</span></div>
+  <span class="mx-sep" aria-hidden="true"></span>
+  <span class="mx-current" id="current-title"></span>
+  <span class="spacer"></span>
+  <a class="mx-chip" id="claude-chip" href="#mcp"><span class="mx-dot"></span><span id="claude-chip-text">Claude Desktop</span></a>
+  <button type="button" class="mx-control-btn" id="control-toggle" aria-expanded="false" aria-controls="control">
+    <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><rect x="14" y="3" width="7" height="7" rx="1.5"></rect><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><rect x="14" y="14" width="7" height="7" rx="1.5"></rect></svg>
+    <span data-i18n="control">مركز التحكم</span>
+  </button>
+  <button type="button" class="mx-icon-btn" id="lang-toggle">English</button>
+  <button type="button" class="mx-icon-btn" id="theme-toggle" aria-label="day/night">☾</button>
+</header>
+<div id="restart-bar" class="restart-bar" hidden></div>
+
+<main class="mx-stage" id="stage" aria-label="الصفحات">
+  <div class="mx-stage-head">
+    <h1 class="mx-stage-title" data-i18n="pages">الصفحات</h1>
+    <span class="mx-stage-facts" id="stage-facts"></span>
+    <span class="spacer"></span>
+    <select id="stage-key" aria-label="القالب"></select>
+  </div>
+  <div class="mx-pages" id="pages"></div>
+  <div class="mx-sheet" id="preview"></div>
+</main>
+
+<section class="mx-float mx-work" id="work" aria-label="التنفيذ والتعديل">
+  <div class="mx-panel-head">
+    <h2 class="mx-panel-title" data-i18n="work">التنفيذ والتعديل</h2>
+    <div class="mx-seg" role="tablist" id="work-tabs">
+      <button type="button" role="tab" data-work="ask" aria-selected="true" data-i18n="tab.ask">اطلب</button>
+      <button type="button" role="tab" data-work="edit" aria-selected="false" data-i18n="tab.edit">عدّل</button>
+      <button type="button" role="tab" data-work="approve" aria-selected="false"><span data-i18n="tab.approve">وافق</span> <span class="mx-count" id="pending-count"></span></button>
+    </div>
+  </div>
+  <div class="mx-panes">
+    <div class="mx-pane is-on" id="pane-ask" role="tabpanel"></div>
+    <div class="mx-pane" id="pane-edit" role="tabpanel"></div>
+    <div class="mx-pane" id="pane-approve" role="tabpanel"></div>
+  </div>
+</section>
+
+<section class="mx-float mx-control" id="control" aria-label="مركز التحكم" aria-hidden="true">
+  <nav class="mx-groups" id="nav" aria-label="أقسام مركز التحكم">
+    <div class="mx-group" data-i18n="group.make">الإنتاج</div>
+    <a href="#stories" data-i18n="nav.stories">القصص والقوالب</a>
+    <a href="#fonts" data-i18n="nav.fonts">الخطوط</a>
+    <a href="#shapes" data-i18n="nav.shapes">الأشكال والرسم</a>
+    <a href="#colour" data-i18n="nav.colour">الألوان والذوق</a>
+    <div class="mx-group" data-i18n="group.quality">الجودة</div>
+    <a href="#qa" data-i18n="nav.qa">فحص قبل الطباعة</a>
+    <a href="#doctor" data-i18n="nav.doctor">الفحص الشامل</a>
+    <div class="mx-group" data-i18n="group.connect">الاتصال</div>
+    <a href="#mcp" data-i18n="nav.mcp">توصيل Claude Desktop</a>
+    <a href="#kit" data-i18n="nav.kit">ربط أنظمتي</a>
+    <div class="mx-group" data-i18n="group.business">الشغل</div>
+    <a href="#marketing" data-i18n="nav.marketing">التسويق والمبيعات</a>
+    <a href="#agent" data-i18n="nav.agent">المساعد</a>
+    <div class="mx-group" data-i18n="group.system">النظام</div>
+    <a href="#home" data-i18n="nav.home">حالة البرنامج</a>
+    <a href="#settings" data-i18n="nav.settings">الإعدادات</a>
+    <a href="#audit" data-i18n="nav.audit">السجل</a>
+  </nav>
+  <div class="mx-control-main">
+    <div class="mx-panel-head">
+      <h2 class="mx-panel-title" id="control-title"></h2>
+      <button type="button" class="mx-close" id="control-close" aria-label="اقفل مركز التحكم">
+        <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <div class="mx-view" id="view" aria-live="polite"></div>
+  </div>
+</section>
+
+<dialog id="confirm-dialog">
+  <h3 data-i18n="confirm.title">تأكيد خطوة مالهاش رجوع</h3>
+  <p id="confirm-text"></p>
+  <div class="row"><button class="xb" id="confirm-yes" type="button" data-i18n="confirm.yes">أيوه، نفّذ</button>
+    <button class="xb ghost" id="confirm-no" type="button" data-i18n="confirm.no">لأ</button></div>
+</dialog>
+<script src="/ui/start.js"></script>
+<script src="/ui/mcp.js"></script>
+<script src="/ui/stage.js"></script>
+<script src="/ui/app.js"></script>
+</body>
+</html>

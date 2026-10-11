@@ -24,7 +24,7 @@ def assets(tmp_path):
             "asset_id": asset_id,
             "canonical_file": str(tmp_path / f"{asset_id}.svg"),
             "provider": "Remix Icon",
-            "provider_version": "4.9.0",
+            "provider_version": "4.8.0",
             "style_variant": variant,
             "style_pair_id": "remix-brain",
             "pair_asset_ids": pair,
@@ -56,7 +56,7 @@ def test_official_pair_lookup_retains_line_and_fill(monkeypatch):
         {"type": "blob", "path": "icons/Health & Medical/brain-fill.svg"},
     ]}
     monkeypatch.setattr(fetcher, "request", lambda _url: json.dumps(tree).encode())
-    assert fetcher.locate_pair("brain", "4.9.0") == {
+    assert fetcher.locate_pair("brain", "4.8.0") == {
         "line": "icons/Health & Medical/brain-line.svg",
         "fill": "icons/Health & Medical/brain-fill.svg",
     }
@@ -103,3 +103,20 @@ def test_semantic_explanation_overlay_uses_authored_groups_and_relationships(tmp
     report = render(image, semantic, output)
     assert report == {"output": str(output.resolve()), "entities": 2, "groups": 2, "relationships_rendered": 1, "notice": "Mechanical rendering of host-authored semantics. No semantic discovery or visual acceptance."}
     assert Image.open(output).size == (320, 180)
+
+
+def test_fork_refuses_remix_icon_versions_under_the_remix_licence(tmp_path, monkeypatch):
+    """ModuleX fork: v4.9.0+ ships under the Remix Icon License v1.0 (no icon libraries)."""
+    assert fetcher.DEFAULT_VERSION == "4.8.0"
+    assert fetcher.apache_licensed("4.8.0") and fetcher.apache_licensed("3.5.0")
+    assert not fetcher.apache_licensed("4.9.0") and not fetcher.apache_licensed("5.0.0")
+    config = tmp_path / "config.json"
+    config.write_text(json.dumps({"remote_sources": {"remix_icon": {"enabled": True, "provider_version": "4.9.0"}}}))
+    monkeypatch.setattr(fetcher, "request", lambda _url: (_ for _ in ()).throw(AssertionError("must not fetch")))
+    monkeypatch.setattr(sys, "argv", ["fetch", "brain", "--config", str(config), "--output-dir", str(tmp_path / "o")])
+    try:
+        fetcher.main()
+    except SystemExit as exc:
+        assert "Remix Icon License v1.0" in str(exc)
+    else:
+        raise AssertionError("4.9.0 was accepted")

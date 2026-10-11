@@ -1,0 +1,215 @@
+id	family	script	repo_dir	roles	themes	licence	flags	observation
+F001	Baloo Bhaijaan 2	AR	ofl/baloobhaijaan2	title,name,body	all	OFL	VAR	
+F002	Lemonada	AR	ofl/lemonada	title,name,bubble	playful,food,summer	OFL	VAR	
+F003	Marhey	AR	ofl/marhey	title,name,bubble	playful,cartoon	OFL	VAR	
+F004	Cairo Play	AR	ofl/cairoplay	title,body	modern,games	OFL	COLOR VAR	
+F005	Cairo	AR	ofl/cairo	body,ui	modern,school	OFL	VAR	
+F006	Jomhuria	AR	ofl/jomhuria	title,effect	bold,adventure	OFL		
+F007	Lalezar	AR	ofl/lalezar	title,name,effect	bold,adventure,sports	OFL		
+F008	Rakkas	AR	ofl/rakkas	title,name	fairy_tale,egypt	OFL		
+F009	Katibeh	AR	ofl/katibeh	title	fairy_tale,arabian_nights	OFL		
+F010	Blaka	AR	ofl/blaka	title	heritage,egypt	OFL		
+F011	Blaka Hollow	AR	ofl/blakahollow	title,coloring	heritage,coloring	OFL		
+F012	Blaka Ink	AR	ofl/blakaink	title	heritage	OFL	COLOR	SVG-table color font: failed to render in Pillow/FreeType (no SVG hook) — expect Office/LibreOffice to fail too until proven
+F013	Badeen Display	AR	ofl/badeendisplay	title,effect	playful,cartoon	OFL		
+F014	Handjet	AR	ofl/handjet	title,effect	space,robots,games	OFL	VAR	
+F015	Vibes	AR	ofl/vibes	title,bubble	playful	OFL		
+F016	Oi	AR	ofl/oi	title,effect	bold,cartoon	OFL		
+F017	Playpen Sans Arabic	AR	ofl/playpensansarabic	body,bubble,handwriting	school,diary,playful	OFL	VAR	
+F018	Reem Kufi Fun	AR	ofl/reemkufifun	title,name	playful,cartoon	OFL	COLOR VAR RFN	
+F019	Reem Kufi	AR	ofl/reemkufi	title	heritage,egypt	OFL	VAR RFN	
+F020	Reem Kufi Ink	AR	ofl/reemkufiink	title	heritage	OFL	COLOR RFN	
+F021	El Messiri	AR	ofl/elmessiri	title,body	fairy_tale,egypt	OFL	VAR	
+F022	Mada	AR	ofl/mada	body,ui	modern	OFL	VAR RFN	
+F023	Harmattan	AR	ofl/harmattan	body	reading	OFL	RFN	
+F024	Zain	AR	ofl/zain	body,title	modern	OFL		Arabic-Indic digits input rendered with Western-looking shapes in specimen — verify digit forms
+F025	Almarai	AR	ofl/almarai	body,ui	modern,school	OFL		
+F026	Beiruti	AR	ofl/beiruti	title,body	modern	OFL	VAR	
+F027	Qahiri	AR	ofl/qahiri	title	heritage,egypt	OFL		
+F028	Tajawal	AR	ofl/tajawal	body,ui	modern,school	OFL		
+F029	Estedad	AR	ofl/estedad	body	modern	OFL	VAR	
+F030	Noto Sans Arabic	AR	ofl/notosansarabic	body,fallback	all	OFL	VAR	
+F031	Noto Kufi Arabic	AR	ofl/notokufiarabic	title,body	modern	OFL	VAR	
+F032	Alexandria	AR	ofl/alexandria	title,body	modern,egypt	OFL	VAR	
+F033	Readex Pro	AR	ofl/readexpro	body,ui	reading,school	OFL	VAR RFN	
+F034	Changa	AR	ofl/changa	title,body	sports,adventure	OFL	VAR	
+F035	Vazirmatn	AR	ofl/vazirmatn	body	modern	OFL	VAR	
+F036	Fustat	AR	ofl/fustat	title,body	egypt,heritage	OFL	VAR	
+F037	IBM Plex Sans Arabic	AR	ofl/ibmplexsansarabic	body,ui	modern,science	OFL	RFN	
+F038	Rubik	AR	ofl/rubik	body,title	modern,playful	OFL	VAR	
+F039	Kufam	AR	ofl/kufam	title	heritage,games	OFL	VAR	
+F040	Alan Sans	AR	ofl/alansans	body	modern	OFL	VAR	
+F041	Thabit	AR	ofl/thabit	title,effect	retro,games	OFL		monospace Arabic: letters look spaced/disconnected — effect/retro titles only, never body; no mkmk GPOS feature — test shadda+haraka stacking before vowelized body text
+F042	Ruwudu	AR	ofl/ruwudu	body,title	fairy_tale,heritage	OFL	RFN	no mkmk GPOS feature — test shadda+haraka stacking before vowelized body text
+F043	Scheherazade New	AR	ofl/scheherazadenew	body	reading,arabian_nights,religious	OFL	RFN	
+F044	Noto Naskh Arabic	AR	ofl/notonaskharabic	body,fallback	reading	OFL	VAR	
+F045	Aref Ruqaa	AR	ofl/arefruqaa	title,handwriting	heritage,egypt,letters	OFL	RFN	
+F046	Aref Ruqaa Ink	AR	ofl/arefruqaaink	title	heritage	OFL	COLOR RFN	SVG-table color font: failed to render in Pillow/FreeType — same risk
+F047	Amiri	AR	ofl/amiri	body,title	reading,heritage,fairy_tale	OFL		
+F048	Lateef	AR	ofl/lateef	body	reading	OFL	RFN	
+F049	Mirza	AR	ofl/mirza	body,title	heritage	OFL		
+F050	Gulzar	AR	ofl/gulzar	title	heritage	OFL		
+F051	Alyamama	AR	ofl/alyamama	title	heritage	OFL	VAR	
+F052	Alkalami	AR	ofl/alkalami	body	reading	OFL	RFN	no mkmk GPOS feature — test shadda+haraka stacking before vowelized body text
+F053	Markazi Text	AR	ofl/markazitext	body	reading,fairy_tale	OFL	VAR	
+F054	Parastoo	AR	ofl/parastoo	body	reading	OFL	VAR	
+F055	Andika	EN	ofl/andika	body	reading	OFL	RFN	
+F056	Lexend	EN	ofl/lexend	body	reading	OFL	VAR RFN	
+F057	Atkinson Hyperlegible	EN	ofl/atkinsonhyperlegible	body	reading,accessibility	OFL		
+F058	Comic Neue	EN	ofl/comicneue	body,bubble	comic,school	OFL		
+F059	Edu SA Beginner	EN	ofl/edusabeginner	body,handwriting	school	OFL	VAR	
+F060	Edu NSW ACT Foundation	EN	ofl/edunswactfoundation	body,handwriting	school	OFL	VAR	
+F061	Edu QLD Beginner	EN	ofl/eduqldbeginner	body,handwriting	school	OFL	VAR	
+F062	Edu VIC WA NT Beginner	EN	ofl/eduvicwantbeginner	body,handwriting	school	OFL	VAR	
+F063	Edu TAS Beginner	EN	ofl/edutasbeginner	body,handwriting	school	OFL	VAR	
+F064	Nunito	EN	ofl/nunito	body,ui	all	OFL	VAR	
+F065	Quicksand	EN	ofl/quicksand	body,title	modern,playful	OFL	VAR RFN	
+F066	Varela Round	EN	ofl/varelaround	body	playful	OFL	RFN	
+F067	Fredoka	EN	ofl/fredoka	title,body,name	all	OFL	VAR	
+F068	Baloo 2	EN	ofl/baloo2	title,body,name	all	OFL	VAR	
+F069	Balsamiq Sans	EN	ofl/balsamiqsans	body,bubble	comic,school	OFL		
+F070	Mali	EN	ofl/mali	body,handwriting	playful	OFL		
+F071	Itim	EN	ofl/itim	body,handwriting	playful	OFL		
+F072	Sour Gummy	EN	ofl/sourgummy	title,body	candy,playful	OFL	VAR	
+F073	Playpen Sans	EN	ofl/playpensans	body,bubble,handwriting	school,diary	OFL	VAR	
+F074	Shantell Sans	EN	ofl/shantellsans	body,bubble	comic,playful	OFL	VAR	
+F075	Short Stack	EN	ofl/shortstack	body,bubble	playful	OFL	RFN	
+F076	Comfortaa	EN	ofl/comfortaa	title,body	modern,space	OFL	VAR RFN	
+F077	Delius	EN	ofl/delius	body	playful	OFL	RFN	
+F078	Delius Swash Caps	EN	ofl/deliusswashcaps	title	fairy_tale	OFL	RFN	
+F079	Delius Unicase	EN	ofl/deliusunicase	title	playful	OFL	RFN	
+F080	Patrick Hand	EN	ofl/patrickhand	body,bubble,handwriting	diary,school	OFL		
+F081	Patrick Hand SC	EN	ofl/patrickhandsc	title	diary	OFL		
+F082	Handlee	EN	ofl/handlee	body,handwriting	diary	OFL	RFN	
+F083	Pangolin	EN	ofl/pangolin	body,bubble	playful	OFL		
+F084	Neucha	EN	ofl/neucha	body,handwriting	diary	OFL		
+F085	Mouse Memoirs	EN	ofl/mousememoirs	title,bubble	comic,animals	OFL	RFN	
+F086	Gochi Hand	EN	ofl/gochihand	bubble,handwriting	comic	OFL	RFN	
+F087	Schoolbell	EN	apache/schoolbell	bubble,handwriting	school	APACHE2		
+F088	Coming Soon	EN	apache/comingsoon	bubble,handwriting	diary	APACHE2		
+F089	Indie Flower	EN	ofl/indieflower	bubble,handwriting	diary,nature	OFL		
+F090	Shadows Into Light	EN	ofl/shadowsintolight	handwriting	diary	OFL		
+F091	Amatic SC	EN	ofl/amaticsc	title,handwriting	crafts,nature	OFL		
+F092	Caveat	EN	ofl/caveat	handwriting,dedication	letters	OFL	VAR	
+F093	Caveat Brush	EN	ofl/caveatbrush	handwriting,title	crafts	OFL		
+F094	Kalam	EN	ofl/kalam	body,handwriting	diary	OFL		
+F095	Gloria Hallelujah	EN	ofl/gloriahallelujah	bubble,handwriting	comic	OFL		
+F096	Architects Daughter	EN	ofl/architectsdaughter	handwriting	science,crafts	OFL		
+F097	Rock Salt	EN	apache/rocksalt	title,handwriting	adventure	APACHE2		
+F098	Permanent Marker	EN	apache/permanentmarker	title,effect	adventure,sports	APACHE2		
+F099	Sue Ellen Francisco	EN	ofl/sueellenfrancisco	handwriting	diary	OFL		
+F100	Walter Turncoat	EN	apache/walterturncoat	bubble,handwriting	comic	APACHE2		
+F101	Covered By Your Grace	EN	ofl/coveredbyyourgrace	handwriting	diary	OFL		
+F102	Just Another Hand	EN	apache/justanotherhand	handwriting	diary	APACHE2		
+F103	Mansalva	EN	ofl/mansalva	handwriting,title	crafts	OFL		
+F104	Crafty Girls	EN	apache/craftygirls	handwriting	crafts	APACHE2		
+F105	Annie Use Your Telescope	EN	ofl/annieuseyourtelescope	handwriting	space,science	OFL		
+F106	Reenie Beanie	EN	ofl/reeniebeanie	handwriting	diary	OFL		
+F107	Waiting for the Sunrise	EN	ofl/waitingforthesunrise	handwriting	diary	OFL		
+F108	Fuzzy Bubbles	EN	ofl/fuzzybubbles	bubble,title	playful	OFL		
+F109	Dekko	EN	ofl/dekko	handwriting	diary	OFL		
+F110	Grape Nuts	EN	ofl/grapenuts	handwriting	diary	OFL		
+F111	Sunshiney	EN	apache/sunshiney	handwriting,title	summer	APACHE2		
+F112	Butterfly Kids	EN	ofl/butterflykids	title,coloring	nature,fairy_tale	OFL	RFN	
+F113	Princess Sofia	EN	ofl/princesssofia	title	fairy_tale,princess	OFL	RFN	
+F114	Ruge Boogie	EN	ofl/rugeboogie	title	playful	OFL		
+F115	Fuggles	EN	ofl/fuggles	handwriting	diary	OFL		
+F116	Grechen Fuemen	EN	ofl/grechenfuemen	title	playful	OFL		
+F117	Felipa	EN	ofl/felipa	title	fairy_tale	OFL	RFN	
+F118	Mynerve	EN	ofl/mynerve	handwriting	diary	OFL		
+F119	Pacifico	EN	ofl/pacifico	title,name	summer,sea	OFL		
+F120	Bubblegum Sans	EN	ofl/bubblegumsans	title,bubble	candy,playful	OFL	RFN	
+F121	Chewy	EN	apache/chewy	title,name	cartoon,candy	APACHE2		
+F122	Luckiest Guy	EN	apache/luckiestguy	title,effect	comic,adventure	APACHE2		
+F123	Bangers	EN	ofl/bangers	effect,title	comic,superhero	OFL		
+F124	Grandstander	EN	ofl/grandstander	title,body	playful	OFL	VAR	
+F125	Sniglet	EN	ofl/sniglet	title	playful	OFL		
+F126	Gluten	EN	ofl/gluten	title,name	food,candy	OFL	VAR	
+F127	Lilita One	EN	ofl/lilitaone	title,name	adventure	OFL	RFN	
+F128	Titan One	EN	ofl/titanone	title,name	cartoon	OFL	RFN	
+F129	Rubik Bubbles	EN	ofl/rubikbubbles	title,name	candy,sea	OFL		
+F130	Rubik Puddles	EN	ofl/rubikpuddles	title	rain,nature	OFL		
+F131	Rubik Doodle Shadow	EN	ofl/rubikdoodleshadow	title	playful,crafts	OFL		
+F132	Rubik Wet Paint	EN	ofl/rubikwetpaint	title,effect	crafts,art	OFL		
+F133	Rubik Moonrocks	EN	ofl/rubikmoonrocks	title	space	OFL		
+F134	Rubik Beastly	EN	ofl/rubikbeastly	title	monsters,animals	OFL		
+F135	Rubik Spray Paint	EN	ofl/rubikspraypaint	title,effect	art,urban	OFL		
+F136	Rubik Gemstones	EN	ofl/rubikgemstones	title	fairy_tale,treasure	OFL		
+F137	Bungee	EN	ofl/bungee	title,effect	city,vehicles	OFL		
+F138	Bungee Shade	EN	ofl/bungeeshade	title	city	OFL		
+F139	Bungee Inline	EN	ofl/bungeeinline	title	city,sports	OFL		
+F140	Bungee Outline	EN	ofl/bungeeoutline	title,coloring	coloring	OFL		
+F141	Bungee Spice	EN	ofl/bungeespice	title	candy	OFL	COLOR	COLRv1: rendered BLANK in Pillow — prove PowerPoint/LibreOffice/PDF before any print use
+F142	Fascinate	EN	ofl/fascinate	title	retro	OFL	RFN	
+F143	Sigmar	EN	ofl/sigmar	title,effect	circus,adventure	OFL		
+F144	Modak	EN	ofl/modak	title,name	candy,cartoon	OFL		
+F145	Knewave	EN	ofl/knewave	title,effect	sports,sea	OFL	RFN	
+F146	Boogaloo	EN	ofl/boogaloo	title	retro,music	OFL	RFN	
+F147	Love Ya Like A Sister	EN	ofl/loveyalikeasister	title	crafts	OFL		
+F148	Henny Penny	EN	ofl/hennypenny	title	fairy_tale,magic	OFL	RFN	
+F149	Mountains of Christmas	EN	apache/mountainsofchristmas	title	winter,holidays	APACHE2		
+F150	Emilys Candy	EN	ofl/emilyscandy	title	candy,fairy_tale	OFL	RFN	
+F151	Griffy	EN	ofl/griffy	title	magic,monsters	OFL	RFN	
+F152	Spicy Rice	EN	ofl/spicyrice	title	food,adventure	OFL	RFN	
+F153	Happy Monkey	EN	ofl/happymonkey	title,body	animals,jungle	OFL	RFN	
+F154	Freckle Face	EN	ofl/freckleface	title	playful	OFL	RFN	
+F155	Gorditas	EN	ofl/gorditas	title	candy	OFL	RFN	
+F156	Original Surfer	EN	ofl/originalsurfer	title	sea,summer	OFL	RFN	
+F157	Wendy One	EN	ofl/wendyone	title	playful	OFL	RFN	
+F158	Galindo	EN	ofl/galindo	title	western,adventure	OFL	RFN	
+F159	Ribeye	EN	ofl/ribeye	title	western	OFL	RFN	
+F160	Ribeye Marrow	EN	ofl/ribeyemarrow	title,coloring	western,coloring	OFL	RFN	
+F161	Snowburst One	EN	ofl/snowburstone	title	winter	OFL	RFN	
+F162	Kavoon	EN	ofl/kavoon	title	pirates,adventure	OFL	RFN	
+F163	Margarine	EN	ofl/margarine	title	food	OFL	RFN	
+F164	Paytone One	EN	ofl/paytoneone	title	sports	OFL	RFN	
+F165	DynaPuff	EN	ofl/dynapuff	title,name	cartoon,playful	OFL	VAR	
+F166	Cherry Cream Soda	EN	apache/cherrycreamsoda	title	retro,food	APACHE2		
+F167	Fontdiner Swanky	EN	apache/fontdinerswanky	title	retro,food	APACHE2		
+F168	Rammetto One	EN	ofl/rammettoone	title	bold	OFL	RFN	
+F169	Chicle	EN	ofl/chicle	title	candy	OFL	RFN	
+F170	Lobster	EN	ofl/lobster	title	retro,sea	OFL	RFN	
+F171	Kranky	EN	apache/kranky	title	monsters	APACHE2		
+F172	Bagel Fat One	EN	ofl/bagelfatone	title,name	food,candy	OFL		
+F173	Londrina Solid	EN	ofl/londrinasolid	title	playful	OFL	RFN	
+F174	Londrina Shadow	EN	ofl/londrinashadow	title	playful	OFL	RFN	
+F175	Londrina Sketch	EN	ofl/londrinasketch	title,coloring	coloring,crafts	OFL	RFN	
+F176	Irish Grover	EN	apache/irishgrover	title	fairy_tale,magic	APACHE2		
+F177	Jolly Lodger	EN	ofl/jollylodger	title	pirates	OFL	RFN	
+F178	Mystery Quest	EN	ofl/mysteryquest	title	mystery,detective	OFL	RFN	
+F179	Piedra	EN	ofl/piedra	title	dinosaurs,stone_age	OFL	RFN	
+F180	Underdog	EN	ofl/underdog	title	comic	OFL	RFN	
+F181	Barriecito	EN	ofl/barriecito	title	playful	OFL		
+F182	Barrio	EN	ofl/barrio	title	art,urban	OFL		
+F183	Chela One	EN	ofl/chelaone	title	art	OFL	RFN	
+F184	Concert One	EN	ofl/concertone	title,body	music	OFL	RFN	
+F185	Fresca	EN	ofl/fresca	body	playful	OFL	RFN	
+F186	Life Savers	EN	ofl/lifesavers	title	candy,retro	OFL		
+F187	Oregano	EN	ofl/oregano	title	food	OFL	RFN	
+F188	Salsa	EN	ofl/salsa	title	music	OFL	RFN	
+F189	Slackey	EN	apache/slackey	title	cartoon	APACHE2		
+F190	Unkempt	EN	apache/unkempt	title	monsters	APACHE2		
+F191	Ranchers	EN	ofl/ranchers	title	western	OFL	RFN	
+F192	Lacquer	EN	ofl/lacquer	title,effect	art	OFL		
+F193	Coiny	EN	ofl/coiny	title,name	cartoon,games	OFL		
+F194	Chango	EN	ofl/chango	title	bold	OFL	RFN	
+F195	Frijole	EN	ofl/frijole	title	western,food	OFL	RFN	
+F196	Flavors	EN	ofl/flavors	title	candy,ice_cream	OFL	RFN	
+F197	Combo	EN	ofl/combo	title	comic	OFL	RFN	
+F198	Aladin	EN	ofl/aladin	title	arabian_nights	OFL	RFN	
+F199	Almendra Display	EN	ofl/almendradisplay	title	fairy_tale,medieval	OFL	RFN	
+F200	Pirata One	EN	ofl/pirataone	title	pirates	OFL	RFN	
+F201	Uncial Antiqua	EN	ofl/uncialantiqua	title	fairy_tale,dragons	OFL	RFN	
+F202	MedievalSharp	EN	ofl/medievalsharp	title	knights,castle	OFL	RFN	
+F203	Cinzel Decorative	EN	ofl/cinzeldecorative	title	royal,fairy_tale	OFL	RFN	
+F204	Fondamento	EN	ofl/fondamento	title	fairy_tale	OFL	RFN	
+F205	Macondo	EN	ofl/macondo	title	magic,fairy_tale	OFL	RFN	
+F206	Macondo Swash Caps	EN	ofl/macondoswashcaps	title	magic	OFL	RFN	
+F207	Bowlby One SC	EN	ofl/bowlbyonesc	title	sports	OFL	RFN	
+F208	Atomic Age	EN	ofl/atomicage	title	space,robots	OFL	RFN	
+F209	Monoton	EN	ofl/monoton	title	space,neon	OFL	RFN	
+F210	Faster One	EN	ofl/fasterone	title,effect	racing,vehicles	OFL	RFN	
+F211	Jersey 10	EN	ofl/jersey10	title,effect	games,sports	OFL		
+F212	Micro 5	EN	ofl/micro5	effect	games,robots	OFL		
+F213	Honk	EN	ofl/honk	title	playful	OFL	COLOR VAR	
+F214	Nabla	EN	ofl/nabla	title	games	OFL	COLOR VAR	COLRv1: rendered BLANK in Pillow — prove before any print use

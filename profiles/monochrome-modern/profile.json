@@ -38,7 +38,7 @@
     "generic_icons": {
       "mode": "remote_on_demand",
       "preferred_provider": "Remix Icon",
-      "provider_version": "4.9.0",
+      "provider_version": "4.8.0",
       "candidate_policy": "Use a coherent Remix Icon line and fill pair when it can express the intended concept. Select the canonical variant after generated-slide approval through host-Agent visual review.",
       "style": "neutral monochrome, 24x24 optical footprint, line or fill selected per approved composition and peer group",
       "persist": "run_cache_only"

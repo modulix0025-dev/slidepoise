@@ -1,0 +1,291 @@
+/* ModuleX Magazine Studio UI — vanilla JS, HTTP only (no pywebview js_api).
+   Every mutating call carries the CSRF token from /api/session. Irreversible tools
+   ask the human through a dialog, then mint a single-use confirmation token. */
+"use strict";
+
+const I18N = {
+  ar: {
+    app: "استوديو المجلات", "nav.start": "ابدأ هنا", "nav.mcp": "توصيل Claude Desktop", "nav.home": "حالة البرنامج", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
+    "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة", "nav.marketing": "التسويق والمبيعات",
+    "nav.agent": "المساعد", "nav.doctor": "الفحص الشامل", "nav.settings": "الإعدادات", "nav.audit": "السجل",
+    control: "مركز التحكم", pages: "الصفحات", work: "التنفيذ والتعديل", "tab.ask": "اطلب", "tab.edit": "عدّل", "tab.approve": "وافق",
+    "group.make": "الإنتاج", "group.quality": "الجودة", "group.connect": "الاتصال", "group.business": "الشغل", "group.system": "النظام",
+    claudeOk: "Claude متوصّل", claudeBad: "Claude مش متوصّل", claudeWait: "Claude: بيختبر…",
+    "confirm.title": "تأكيد خطوة مالهاش رجوع", "confirm.yes": "أيوه، نفّذ", "confirm.no": "لأ",
+    status: "حالة الاستوديو", features: "الأجزاء", jobs: "المهام", budget: "مصاريف الذكاء الاصطناعي النهارده",
+    providers: "مزوّدي الذكاء الاصطناعي", keys: "المفاتيح (بتتحفظ مشفّرة ومش بتظهر تاني)", save: "حفظ",
+    test: "اختبار الاتصال", workspace: "مكان مساحة العمل", tools: "أدوات المساعد", run: "تشغيل",
+    unavailable: "الجزء ده لسه مش متاح في النسخة دي.", actions: "الإجراءات", result: "النتيجة",
+    confirmAsk: "الخطوة دي مالهاش رجوع:", baseUrl: "عنوان السيرفر", model: "الموديل", enabled: "مفعّل",
+    perJob: "الحد للمهمة (دولار)", perDay: "الحد اليومي (دولار)", saved: "اتحفظ.", keyName: "اسم المفتاح",
+    keyValue: "قيمة المفتاح", auditEmpty: "مفيش عمليات لسه.", openCanvas: "افتح لوحة الرسم",
+  },
+  en: {
+    app: "Magazine Studio", "nav.start": "Start here", "nav.mcp": "Connect Claude Desktop", "nav.home": "Status", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
+    "nav.shapes": "Shapes & drawing", "nav.colour": "Colour & taste", "nav.kit": "Connect my systems",
+    "nav.qa": "Pre-print QA", "nav.marketing": "Marketing & sales", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
+    "nav.audit": "Audit log", control: "Control centre", pages: "Pages", work: "Make & edit", "tab.ask": "Ask", "tab.edit": "Edit",
+    "tab.approve": "Approve", "group.make": "Production", "group.quality": "Quality", "group.connect": "Connection", "group.business": "Business",
+    "group.system": "System", claudeOk: "Claude connected", claudeBad: "Claude not connected", claudeWait: "Claude: testing…", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
+    "confirm.no": "No", status: "Studio status", features: "Feature areas", jobs: "Jobs", budget: "AI spend today",
+    providers: "AI providers", keys: "Keys (stored encrypted, never shown again)", save: "Save", test: "Test connection",
+    workspace: "Workspace folder", tools: "Assistant tools", run: "Run", unavailable: "This area is not available in this build.",
+    actions: "Actions", result: "Result", confirmAsk: "This step cannot be undone:", baseUrl: "Server URL",
+    model: "Model", enabled: "Enabled", perJob: "Per-job limit (USD)", perDay: "Daily limit (USD)", saved: "Saved.",
+    keyName: "Key name", keyValue: "Key value", auditEmpty: "No activity yet.", openCanvas: "Open the drawing canvas",
+  },
+};
+let lang = "ar";
+let csrf = "";
+const t = (key) => (I18N[lang] && I18N[lang][key]) || key;
+const view = () => document.getElementById("view");
+const esc = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+async function api(path, options = {}) {
+  const init = { method: options.method || "GET", headers: { "Content-Type": "application/json" }, credentials: "same-origin" };
+  if (init.method !== "GET") init.headers["X-MXS-CSRF"] = csrf;
+  if (options.body !== undefined) init.body = JSON.stringify(options.body);
+  const response = await fetch(path, init);
+  const text = await response.text();
+  try { return JSON.parse(text); } catch { return { ok: false, status: response.status, text }; }
+}
+
+function applyLanguage() {
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  document.querySelectorAll("[data-i18n]").forEach((node) => { node.textContent = t(node.dataset.i18n); });
+  document.getElementById("lang-toggle").textContent = lang === "ar" ? "English" : "العربية";
+}
+
+async function confirmAndCall(tool, args) {
+  const dialog = document.getElementById("confirm-dialog");
+  document.getElementById("confirm-text").textContent = `${t("confirmAsk")} ${tool}`;
+  const yes = await new Promise((resolve) => {
+    document.getElementById("confirm-yes").onclick = () => { dialog.close(); resolve(true); };
+    document.getElementById("confirm-no").onclick = () => { dialog.close(); resolve(false); };
+    dialog.showModal();
+  });
+  if (!yes) return { ok: false, code: "CANCELLED_BY_HUMAN" };
+  const minted = await api("/api/confirm", { method: "POST", body: { tool, args } });
+  return api(`/api/tools/${encodeURIComponent(tool)}`, { method: "POST", body: { args, actor: "ui", confirmation_token: minted.token } });
+}
+
+async function callTool(tool, args) {
+  const result = await api(`/api/tools/${encodeURIComponent(tool)}`, { method: "POST", body: { args, actor: "ui" } });
+  if (result && result.code === "CONFIRMATION_REQUIRED") return confirmAndCall(tool, args);
+  return result;
+}
+
+function tile(title, inner) { return `<div class="tile"><h2>${esc(title)}</h2>${inner}</div>`; }
+function pre(data) { return `<pre>${esc(JSON.stringify(data, null, 1))}</pre>`; }
+
+const VIEWS = {
+  async mcp() {
+    await window.MXS_MCP({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
+  },
+  async home() {
+    const [health, features, jobs, budget, mcp] = await Promise.all([api("/api/health"), api("/api/features"),
+      api("/api/jobs"), api("/api/budget"), api("/api/mcp/health")]);
+    const test = ((mcp.last_heal || {}).self_test) || null;
+    const claude = lang === "ar"
+      ? (test ? (test.ok ? `توصيل Claude Desktop: ${test.ar}` : `توصيل Claude Desktop: ${test.ar || "مش شغّال"}`) : "توصيل Claude Desktop: الاختبار لسه شغّال…")
+      : (test ? `Claude Desktop connection: ${test.ok ? "OK" : "failing"} (${test.tools || 0} tools, ${test.seconds ?? "?"} s)` : "Claude Desktop connection: test running…");
+    view().innerHTML = tile(t("status"), `<div class="row ${health.ok ? "ok" : "bad"}">${esc(health.app)} <span class="num">${esc(health.version)}</span></div>
+      <div class="row ${test ? (test.ok ? "ok" : "bad") : ""}" id="mcp-status-row">${esc(claude)} <a href="#mcp">→</a></div>`)
+      + tile(t("features"), `<table>${Object.entries(features.features || {}).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join("")}</table>`)
+      + tile(t("budget"), pre(budget)) + tile(t("jobs"), pre((jobs.jobs || []).slice(0, 20)));
+  },
+  async settings() {
+    const settings = await api("/api/settings");
+    const secrets = await api("/api/secrets");
+    const tv = settings.providers.text_vision, im = settings.providers.image;
+    view().innerHTML = tile(t("providers"), `
+      <div class="row"><label>Text/Vision</label><select id="tv-kind"><option value="anthropic" ${tv.kind === "anthropic" ? "selected" : ""}>Claude (Anthropic API)</option>
+        <option value="openai_compatible" ${tv.kind !== "anthropic" ? "selected" : ""}>OpenAI-compatible (GPU: vLLM / LM Studio…)</option></select></div>
+      <div class="row"><label>${t("baseUrl")}</label><input id="tv-url" value="${esc(tv.base_url)}" placeholder="http://gpu-host:8000"></div>
+      <div class="row"><label>${t("model")}</label><input id="tv-model" value="${esc(tv.model)}"></div>
+      <div class="row"><label>${t("enabled")}</label><input id="tv-on" type="checkbox" ${tv.enabled ? "checked" : ""}></div>
+      <div class="row"><label>ComfyUI · ${t("baseUrl")}</label><input id="im-url" value="${esc(im.base_url)}" placeholder="http://gpu-host:8188"></div>
+      <div class="row"><label>${t("enabled")}</label><input id="im-on" type="checkbox" ${im.enabled ? "checked" : ""}></div>
+      <div class="row"><button class="xb" id="save-providers">${t("save")}</button>
+        <button class="xb ghost" id="test-tv">${t("test")} (text)</button><button class="xb ghost" id="test-im">${t("test")} (image)</button></div>
+      <div id="provider-result"></div>`)
+      + tile(t("keys"), `<div class="row"><label>${t("keyName")}</label><input id="key-name" value="provider.text_vision"></div>
+      <div class="row"><label>${t("keyValue")}</label><input id="key-value" type="password" autocomplete="off"></div>
+      <div class="row"><button class="xb" id="save-key">${t("save")}</button></div>${pre(secrets)}`)
+      + tile(t("budget"), `<div class="row"><label>${t("perJob")}</label><input id="per-job" class="num" value="${esc(settings.budget.per_job_usd)}"></div>
+      <div class="row"><label>${t("perDay")}</label><input id="per-day" class="num" value="${esc(settings.budget.per_day_usd)}"></div>
+      <div class="row"><label>${t("workspace")}</label><input id="workspace" value="${esc(settings.workspace || "")}"></div>
+      <div class="row"><button class="xb" id="save-general">${t("save")}</button></div>`);
+    const out = (data) => { document.getElementById("provider-result").innerHTML = pre(data); };
+    document.getElementById("tv-kind").onchange = (event) => {  // keep the model name matching the provider
+      const model = document.getElementById("tv-model");
+      if (event.target.value === "anthropic" && !model.value.startsWith("claude")) model.value = "claude-opus-5-5";
+      if (event.target.value !== "anthropic" && model.value.startsWith("claude")) model.value = "Qwen/Qwen3-VL-8B-Instruct";
+    };
+    document.getElementById("save-providers").onclick = async () => out(await api("/api/settings", { method: "POST", body: { providers: {
+      text_vision: { kind: document.getElementById("tv-kind").value, base_url: document.getElementById("tv-url").value,
+        model: document.getElementById("tv-model").value || (document.getElementById("tv-kind").value === "anthropic" ? "claude-opus-5-5" : ""),
+        enabled: document.getElementById("tv-on").checked },
+      image: { base_url: document.getElementById("im-url").value, enabled: document.getElementById("im-on").checked } } } }));
+    document.getElementById("test-tv").onclick = async () => out(await api("/api/providers/text_vision/test", { method: "POST", body: {} }));
+    document.getElementById("test-im").onclick = async () => out(await api("/api/providers/image/test", { method: "POST", body: {} }));
+    document.getElementById("save-key").onclick = async () => {
+      const name = document.getElementById("key-name").value;
+      const value = document.getElementById("key-value").value;
+      document.getElementById("key-value").value = "";
+      await api(`/api/secrets/${encodeURIComponent(name)}`, { method: "POST", body: { value } });
+      VIEWS.settings();
+    };
+    document.getElementById("save-general").onclick = async () => {
+      await api("/api/settings", { method: "POST", body: { budget: { per_job_usd: Number(document.getElementById("per-job").value),
+        per_day_usd: Number(document.getElementById("per-day").value) }, workspace: document.getElementById("workspace").value || null } });
+      out(t("saved"));
+    };
+  },
+  async agent() {
+    const tools = await api("/api/tools");
+    view().innerHTML = tile(t("tools"), `<div class="row"><select id="tool">${(tools.tools || []).map((x) => `<option value="${esc(x.name)}">${esc(x.name)}${x.irreversible ? " ⚠" : ""} — ${esc(lang === "ar" ? x.description_ar : x.description_en)}</option>`).join("")}</select></div>
+      <div class="row"><textarea id="tool-args" rows="6" dir="ltr">{}</textarea></div>
+      <div class="row"><button class="xb" id="run-tool">${t("run")}</button></div><div id="tool-result"></div>`);
+    document.getElementById("run-tool").onclick = async () => {
+      let args = {};
+      try { args = JSON.parse(document.getElementById("tool-args").value || "{}"); } catch (error) { args = { _invalid_json: String(error) }; }
+      document.getElementById("tool-result").innerHTML = pre(await callTool(document.getElementById("tool").value, args));
+    };
+  },
+  async shapes() {
+    if ((await featureView("shapes", "shapes")) === false) return;
+    view().insertAdjacentHTML("beforeend", tile(t("openCanvas"),
+      `<div class="row"><a class="xb" href="/ui/canvas/index.html" target="_blank" rel="noopener">${t("openCanvas")}</a></div>
+      <iframe src="/ui/canvas/index.html" title="${t("openCanvas")}" style="width:100%;height:70vh;border:0"></iframe>`));
+  },
+  async audit() {
+    const audit = await api("/api/audit");
+    const rows = (audit.entries || []).map((e) => `<tr><td class="num">${new Date(e.ts * 1000).toLocaleString()}</td><td>${esc(e.actor)}</td><td>${esc(e.tool)}</td><td>${esc(e.outcome)}</td><td>${esc(e.code)}</td></tr>`).join("");
+    view().innerHTML = tile(t("nav.audit"), rows ? `<table>${rows}</table>` : t("auditEmpty"));
+  },
+};
+
+let routeSeq = 0; // a late answer from a tab the operator already left must not overwrite the current tab
+
+async function featureView(area, name = area) {
+  const seq = routeSeq;
+  const summary = await api(`/api/${area}/summary`);
+  if (seq !== routeSeq) return false;
+  if (summary.status === 404 || summary.ok === false && summary.status) { view().innerHTML = tile(t(`nav.${name}`), t("unavailable")); return; }
+  const actions = summary.actions || [];
+  view().innerHTML = tile(t(`nav.${name}`), pre(summary.facts || summary))
+    + tile(t("actions"), actions.map((a, i) => `<div class="row"><button class="xb ghost" data-action="${i}">${esc(lang === "ar" ? a.label_ar : a.label_en)}</button></div>`).join("") + `<div id="action-result"></div>`);
+  view().querySelectorAll("[data-action]").forEach((button) => {
+    button.onclick = async () => {
+      const action = actions[Number(button.dataset.action)];
+      document.getElementById("action-result").innerHTML = pre(await callTool(action.tool, action.args || {}));
+    };
+  });
+}
+
+const AREAS = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", marketing: "marketing", doctor: "doctor" };
+let lastArea = "stories";
+const work = { lang, panes: {}, api, esc, stage: null }; // the context the work panel (start.js) reads
+
+function setControl(open) {
+  document.body.classList.toggle("control-open", open);
+  document.getElementById("control").setAttribute("aria-hidden", String(!open));
+  document.getElementById("control-toggle").setAttribute("aria-expanded", String(open));
+}
+
+/* «اطلب / عدّل / وافق»: one tab is on; the panel height does not jump */
+function setWork(name) {
+  document.querySelectorAll("#work-tabs [data-work]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.work === name)));
+  ["ask", "edit", "approve"].forEach((n) => document.getElementById(`pane-${n}`).classList.toggle("is-on", n === name));
+}
+
+async function route() {
+  routeSeq += 1;
+  const name = (location.hash || "#start").slice(1);
+  if (!VIEWS[name] && !AREAS[name]) { setControl(false); refreshChip(); return; } // «#start» and unknown hashes: back to the pages
+  lastArea = name;
+  setControl(true);
+  document.querySelectorAll("#nav a").forEach((a) => {
+    const on = a.getAttribute("href") === `#${name}`;
+    a.classList.toggle("active", on);
+    if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  document.getElementById("control-title").textContent = t(`nav.${name}`);
+  const box = view();
+  box.classList.remove("is-entering");
+  void box.offsetWidth; // restart the entrance animation on every section change
+  box.classList.add("is-entering");
+  try {
+    if (VIEWS[name]) await VIEWS[name]();
+    else await featureView(AREAS[name], name);
+  } catch (error) {
+    view().innerHTML = tile("⚠", esc(String(error)));
+  }
+  refreshChip();
+}
+
+/* the small status chip in the top bar replaces the old «حالة البرنامج» landing page */
+async function refreshChip() {
+  const chip = document.getElementById("claude-chip"), text = document.getElementById("claude-chip-text");
+  let health = null;
+  try { health = await api("/api/mcp/health"); } catch { health = null; }
+  const test = health && ((health.last_heal || {}).self_test || null);
+  chip.classList.toggle("is-ok", Boolean(test && test.ok));
+  chip.classList.toggle("is-bad", Boolean(test && !test.ok) || !health);
+  text.textContent = !health ? t("claudeBad") : !test ? t("claudeWait") : test.ok ? t("claudeOk") : t("claudeBad");
+  try { if (window.MXS_MCP && window.MXS_MCP.restartBar) await window.MXS_MCP.restartBar({ api, esc, lang }); } catch { /* the bar is a hint, never a blocker */ }
+}
+
+async function boot() {
+  const session = await api("/api/session");
+  csrf = session.csrf || "";
+  try { lang = localStorage.getItem("mxs.lang") || "ar"; } catch { lang = "ar"; }
+  let theme = "night";
+  try { theme = localStorage.getItem("mxs.theme") || "night"; } catch { theme = "night"; }
+  document.documentElement.dataset.theme = theme;
+  document.getElementById("theme-toggle").textContent = theme === "night" ? "☀" : "☾";
+  document.getElementById("lang-toggle").onclick = async () => {
+    lang = lang === "ar" ? "en" : "ar";
+    try { localStorage.setItem("mxs.lang", lang); } catch {}
+    applyLanguage();
+    work.lang = lang;
+    window.MXS_STAGE.rerender();
+    route();
+    await window.MXS_START.rerender();
+  };
+  document.getElementById("theme-toggle").onclick = () => {
+    const next = document.documentElement.dataset.theme === "day" ? "night" : "day";
+    document.documentElement.dataset.theme = next;
+    document.getElementById("theme-toggle").textContent = next === "night" ? "☀" : "☾";
+    try { localStorage.setItem("mxs.theme", next); } catch {}
+  };
+  document.getElementById("control-toggle").onclick = () => {
+    location.hash = document.body.classList.contains("control-open") ? "#start" : `#${lastArea}`;
+  };
+  document.getElementById("control-close").onclick = () => { location.hash = "#start"; };
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("control-open") && !document.getElementById("confirm-dialog").open) location.hash = "#start";
+  });
+  document.querySelectorAll("#work-tabs [data-work]").forEach((b) => {
+    b.onclick = () => { setWork(b.dataset.work); if (b.dataset.work === "edit") window.MXS_START.renderEdit(); };
+  });
+  window.addEventListener("hashchange", route);
+  applyLanguage();
+  route();
+
+  work.lang = lang;
+  work.panes = { ask: document.getElementById("pane-ask"), edit: document.getElementById("pane-edit"), approve: document.getElementById("pane-approve") };
+  work.stage = window.MXS_STAGE;
+  // the work panel takes its context before the first page card exists: a click on a page can never
+  // land while «عدّل» has nothing to render into
+  const started = window.MXS_START(work);
+  await Promise.all([started, window.MXS_STAGE.init({
+    api, esc, lang: () => lang,
+    onSelect: () => { setWork("edit"); window.MXS_START.renderEdit(); },
+    onChange: () => window.MXS_START.renderEdit(),
+  })]);
+}
+
+if (typeof window !== "undefined" && typeof document !== "undefined") boot();

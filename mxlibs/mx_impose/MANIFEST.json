@@ -1,0 +1,20 @@
+{
+ "files": {
+  "__init__.py": "fc120dff43b8fcc7d86a654e54fd06de49c4298deb8753e1a49fb92e0044c5c8",
+  "_pdfutil.py": "6e49b81b72a63baead3c1d7b84d0ab669b5da94b6e33db74c484f4ff1e9972e9",
+  "cmyk.py": "9a5065613b7e5096a710377940734121853a6e889f4424b9151e00ed0df1be70",
+  "marks.py": "56d89a265b0ccf0d4b322a90e63c027362f0c696b20037dbc42451c3cf473871",
+  "saddle.py": "a479435c03601ec3e12d2ba7c3a3a206f8b5128a040e84f16b35d6f86bf2ae0f"
+ },
+ "lib": "mx_impose",
+ "optional": [],
+ "python": ">=3.10",
+ "requires": [
+  "pikepdf",
+  "pypdfium2",
+  "numpy",
+  "Pillow"
+ ],
+ "vendoring": "copy bytes verbatim (no line-ending conversion); verify with verify_manifest()",
+ "version": "1.0.0"
+}

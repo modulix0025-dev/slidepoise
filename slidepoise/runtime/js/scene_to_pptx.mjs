@@ -73,12 +73,21 @@ function addTextbox(slide, object, dimensions, slideSize, postprocessHints) {
     ? [margins[1], margins[2], margins[3], margins[0]].map(pxToPoints)
     : pxToPoints(margins);
   const paragraphs = Array.isArray(object.paragraphs) ? object.paragraphs : null;
-  const content = paragraphs && object.bullet_style
+  const runs = Array.isArray(object.runs) ? object.runs : null;
+  if (runs && runs.some(run => !run || typeof run.text !== "string")) throw new Error(`Text ${object.id} runs must carry text`);
+  const content = runs
+    ? runs.map(run => ({ text: run.text, options: {} }))
+    : paragraphs && object.bullet_style
     ? paragraphs.map((paragraph, index) => ({
         text: `•  ${paragraph}`,
         options: { breakLine: index < paragraphs.length - 1 },
       }))
     : object.text ?? "";
+  // ModuleX print fork: right-to-left paragraphs and role-tagged runs are finished by the
+  // post-processor (rtl/algn/lang on every paragraph, one rPr per run, one pPr per paragraph).
+  const rtl = style.direction === "rtl";
+  if (rtl) postprocessHints.text_direction[object.id] = { rtl: true, lang: style.lang ?? "ar-EG" };
+  if (runs) postprocessHints.text_runs[object.id] = runs.map(run => ({ text: run.text, role: run.role ?? null }));
   slide.addText(content, {
     objectName: object.id,
     ...geometry(object.bbox_px, dimensions, slideSize),
@@ -88,7 +97,8 @@ function addTextbox(slide, object, dimensions, slideSize, postprocessHints) {
     italic: Boolean(style.italic),
     charSpacing: pxToPoints(style.char_spacing_px ?? 0),
     color: hex(style.color, "111111"),
-    align: style.alignment ?? "left",
+    align: style.alignment ?? (rtl ? "right" : "left"),
+    ...(rtl ? { rtlMode: true, lang: style.lang ?? "ar-EG" } : {}),
     valign: style.vertical_alignment === "middle" ? "mid" : style.vertical_alignment ?? "top",
     margin: officeMargins,
     breakLine: false,
@@ -123,6 +133,21 @@ function addShape(slide, object, dimensions, slideSize, pptx, postprocessHints) 
     line: style.stroke === "none" ? { color: "FFFFFF", transparency: 100 } : { color: hex(style.stroke, "D9D9D9"), width: Math.max(0.5, pixelPoints(style.stroke_width_px ?? 1, dimensions, slideSize)) },
   };
   slide.addShape(type, options);
+}
+
+function addPicturePlaceholder(slide, object, dimensions, slideSize, pptx, postprocessHints) {
+  // ModuleX print fork: PptxGenJS cannot emit a slide-level <p:ph type="pic">, so a named
+  // marker rectangle is drawn here and the post-processor turns it into the placeholder
+  // (plus a matching layout placeholder) that the Console's slot counter reads.
+  if (!Array.isArray(object.bbox_px) || object.bbox_px.length !== 4) throw new Error(`Picture placeholder ${object.id} requires bbox_px`);
+  postprocessHints.picture_placeholders[object.id] = { order: Number.isFinite(Number(object.order)) ? Number(object.order) : null, label: object.label ?? null,
+    idx: Number.isInteger(object.ph_idx) && object.ph_idx > 0 ? object.ph_idx : null };
+  slide.addShape(pptx.ShapeType.rect, {
+    objectName: `SC_PICPH__${object.id}`,
+    ...geometry(object.bbox_px, dimensions, slideSize),
+    fill: { color: "FFFFFF", transparency: 100 },
+    line: { color: "FFFFFF", transparency: 100 },
+  });
 }
 
 function gradientCoordinates(direction) {
@@ -768,8 +793,18 @@ async function main() {
     if (!Array.isArray(scene.dimensions_px) || scene.dimensions_px.length !== 2) throw new Error(`Slide ${index + 1} dimensions_px are required`);
     if (scene.dimensions_px[0] !== dimensions[0] || scene.dimensions_px[1] !== dimensions[1]) throw new Error(`Slide ${index + 1} dimensions do not match the first slide`);
   }
-  const physicalWidth = 40 / 3;
-  const physicalHeight = physicalWidth * Number(dimensions[1]) / Number(dimensions[0]);
+  // ModuleX print fork: a print page declares its physical canvas (trim + bleed) in millimetres.
+  const pageMm = spec.page?.canvas_mm;
+  if (pageMm !== undefined) {
+    if (!Array.isArray(pageMm) || pageMm.length !== 2 || pageMm.some(value => typeof value !== "number" || !Number.isFinite(value) || value <= 0)) {
+      throw new Error("page.canvas_mm must be two positive millimetre values");
+    }
+    const declared = pageMm[1] / pageMm[0];
+    const measured = Number(dimensions[1]) / Number(dimensions[0]);
+    if (Math.abs(declared - measured) / declared > 0.005) throw new Error("page.canvas_mm aspect does not match dimensions_px");
+  }
+  const physicalWidth = pageMm ? pageMm[0] / 25.4 : 40 / 3;
+  const physicalHeight = pageMm ? pageMm[1] / 25.4 : physicalWidth * Number(dimensions[1]) / Number(dimensions[0]);
   pptx.defineLayout({ name: "SLIDEPOISE_CUSTOM", width: physicalWidth, height: physicalHeight });
   pptx.layout = "SLIDEPOISE_CUSTOM";
   pptx.author = "SlidePoise";
@@ -786,7 +821,8 @@ async function main() {
   const postprocessHints = { slides: {} };
   const frameMasters = new Map();
   for (const [index, scene] of scenes.entries()) {
-    const slideHints = { round_rect_adjustments: {}, text_character_spacing: {}, chart_label_treatments: {}, arrowhead_sizes: {} };
+    const slideHints = { round_rect_adjustments: {}, text_character_spacing: {}, chart_label_treatments: {}, arrowhead_sizes: {},
+      text_direction: {}, text_runs: {}, picture_placeholders: {} };
     postprocessHints.slides[`ppt/slides/slide${index + 1}.xml`] = slideHints;
     const masterKey = frameMasterKey(scene);
     if (!frameMasters.has(masterKey)) frameMasters.set(masterKey, defineFrameMaster(pptx, scene, slideSize, frameMasters.size + 1));
@@ -803,6 +839,7 @@ async function main() {
       else if (object.kind === "table") addTable(slide, object, scene.dimensions_px, slideSize);
       else if (object.kind === "chart") addChart(slide, object, scene.dimensions_px, slideSize, pptx, slideHints);
       else if (object.kind === "freeform") addFreeform(slide, object, scene.dimensions_px, slideSize, pptx);
+      else if (object.kind === "picture_placeholder") addPicturePlaceholder(slide, object, scene.dimensions_px, slideSize, pptx, slideHints);
       else throw new Error(`Unsupported constructor object kind ${object.kind}`);
     }
     const sources = scene.sources ?? scene.source_references ?? [];

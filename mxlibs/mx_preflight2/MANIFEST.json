@@ -1,0 +1,20 @@
+{
+ "files": {
+  "__init__.py": "c20b571ac4c3f5617948e622fe2780feb6b9880b2a276e24820f582e00259cca",
+  "_icc.py": "b24623321db8e6a8b56a9aa1c0b88c5023dbe7d900024abfe6d91c5fb9ce6ba5",
+  "_pdfwalk.py": "329ea3acbb06f14d0456f3bd5accd9d66af3b510bca91ec7ec3f0b67c7a092c8",
+  "_raster.py": "6743cd66e9282dd039736792c4c2446686fae602c2554cfa4c7a4883c8171eaf",
+  "preflight.py": "aaa59214ab07478ac1c2cb4da4473d2dd2dd382c6f0582a2b880c521e40071ce"
+ },
+ "lib": "mx_preflight2",
+ "optional": [],
+ "python": ">=3.10",
+ "requires": [
+  "pikepdf",
+  "pypdfium2",
+  "numpy",
+  "Pillow"
+ ],
+ "vendoring": "copy bytes verbatim (no line-ending conversion); verify with verify_manifest()",
+ "version": "1.0.0"
+}

@@ -14,10 +14,17 @@ from pathlib import Path
 SAFE_NAME = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 SAFE_VERSION = re.compile(r"^[0-9]+\.[0-9]+\.[0-9]+$")
 REPOSITORY = "Remix-Design/RemixIcon"
-DEFAULT_VERSION = "4.9.0"
+DEFAULT_VERSION = "4.8.0"
+# ModuleX fork: v4.9.0 (2026-01) moved Remix Icon to the custom "Remix Icon License v1.0",
+# which forbids compiling the icons into libraries. v4.8.0 and earlier are Apache-2.0.
+LAST_APACHE_VERSION = (4, 8, 0)
 TREE_URL = "https://api.github.com/repos/{repository}/git/trees/v{version}?recursive=1"
 RAW_URL = "https://raw.githubusercontent.com/{repository}/v{version}/{path}"
 LICENSE_URL = "https://github.com/Remix-Design/RemixIcon/blob/v{version}/License"
+
+
+def apache_licensed(version: str) -> bool:
+    return tuple(int(part) for part in version.split(".")) <= LAST_APACHE_VERSION
 
 
 def request(url: str) -> bytes:
@@ -79,6 +86,9 @@ def main() -> None:
         raise SystemExit("Remix Icon name must contain lowercase letters, digits, and hyphens only")
     if not SAFE_VERSION.fullmatch(version):
         raise SystemExit("Remix Icon version must use major.minor.patch")
+    if not apache_licensed(version):
+        raise SystemExit(f"Remix Icon {version} uses the Remix Icon License v1.0, which this fork does not accept; "
+                         f"use {DEFAULT_VERSION} or earlier (Apache-2.0)")
     paths = locate_pair(name, version)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     pair_id = f"remix-{name}"
@@ -97,9 +107,9 @@ def main() -> None:
             "source_repository_path": repository_path,
             "provider": "Remix Icon",
             "provider_version": version,
-            "license": "Remix Icon License v1.0",
+            "license": "Apache-2.0",
             "license_url": LICENSE_URL.format(version=version),
-            "attribution_notice": "This project uses icons from Remix Icon (https://remixicon.com), licensed under the Remix Icon License v1.0.",
+            "attribution_notice": "Icons from Remix Icon (https://remixicon.com), Apache License 2.0.",
             "style_variant": variant,
             "style_pair_id": pair_id,
             "pair_asset_ids": asset_ids,

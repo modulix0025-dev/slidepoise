@@ -405,6 +405,54 @@ def transform_chart_labels(xml: str, treatment: dict) -> tuple[str, int]:
     return etree.tostring(root, encoding="unicode"), int(before != etree.tostring(root))
 
 
+PRINT_FORK_KEYS = ("text_direction", "text_runs", "picture_placeholders")
+SLIDE_NUMBER_RE = re.compile(r"slide(\d+)\.xml$")
+
+
+def _print_fork():
+    """ModuleX print-fork helpers, loaded from this script's own directory."""
+    import importlib.util  # noqa: PLC0415
+    import sys  # noqa: PLC0415
+    name = "slidepoise_print_fork_xml"
+    if name not in sys.modules:
+        spec = importlib.util.spec_from_file_location(name, Path(__file__).with_name("print_fork_xml.py"))
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[name] = module
+        spec.loader.exec_module(module)
+    return sys.modules[name]
+
+
+def _slide_layout_part(source: zipfile.ZipFile, slide_name: str) -> str | None:
+    rels_name = posixpath.join(posixpath.dirname(slide_name), "_rels", posixpath.basename(slide_name) + ".rels")
+    if rels_name not in source.namelist():
+        return None
+    rels = parse_xml(source.read(rels_name).decode("utf-8"))
+    for rel in rels.iter(tag("pr:Relationship")):
+        if rel.get("Type", "").endswith("/slideLayout"):
+            return posixpath.normpath(posixpath.join(posixpath.dirname(slide_name), rel.get("Target")))
+    return None
+
+
+def apply_print_fork(source: zipfile.ZipFile, slide_name: str, xml: str, slide_metadata: dict,
+                     layout_additions: dict[str, list]) -> tuple[str, dict[str, int]]:
+    """RTL text, tagged runs and picture placeholders for slides that ask for them."""
+    hints = {key: slide_metadata.get(key) or {} for key in PRINT_FORK_KEYS}
+    if not any(hints.values()):
+        return xml, {}
+    fork = _print_fork()
+    root = parse_xml(xml)
+    facts = fork.apply_text_hints(root, hints["text_direction"], hints["text_runs"])
+    if hints["picture_placeholders"]:
+        number = int(SLIDE_NUMBER_RE.search(slide_name).group(1))
+        placed = fork.apply_picture_placeholders(root, hints["picture_placeholders"], number)
+        layout = _slide_layout_part(source, slide_name)
+        if layout is None:
+            raise ValueError(f"{slide_name} has picture placeholders but no slide layout")
+        layout_additions.setdefault(layout, []).extend(placed)
+        facts["picturePlaceholders"] = len(placed)
+    return etree.tostring(root, encoding="unicode"), facts
+
+
 def postprocess(pptx_path: Path, metadata: dict | None = None) -> dict[str, int | str]:
     pptx_path = pptx_path.resolve()
     metadata = metadata or {}
@@ -416,6 +464,7 @@ def postprocess(pptx_path: Path, metadata: dict | None = None) -> dict[str, int 
         with zipfile.ZipFile(pptx_path, "r") as source:
             replacements = {}
             chart_treatments = {}
+            layout_additions: dict[str, list] = {}
             for info in source.infolist():
                 if not DRAWING_PART_RE.fullmatch(info.filename):
                     continue
@@ -431,14 +480,20 @@ def postprocess(pptx_path: Path, metadata: dict | None = None) -> dict[str, int 
                 spacing = slide_metadata.get("text_character_spacing", metadata.get("text_character_spacing", {})) or {}
                 updated, local = transform_xml(source.read(info.filename).decode("utf-8"), rounding, spacing,
                                                slide_metadata.get("arrowhead_sizes", {}))
+                updated, fork_facts = apply_print_fork(source, info.filename, updated, slide_metadata,
+                                                       layout_additions)
+                local = {**local, **{key: local.get(key, 0) + value for key, value in fork_facts.items()}}
                 for key, count in local.items():
-                    facts[key] += count
+                    facts[key] = facts.get(key, 0) + count
                 replacements[info.filename] = updated.encode("utf-8")
                 for part, treatment in chart_label_parts(source, info.filename, updated,
                                                          slide_metadata.get("chart_label_treatments", {})).items():
                     if part in chart_treatments and chart_treatments[part] != treatment:
                         raise ValueError(f"Shared chart part has conflicting label treatments. {part}")
                     chart_treatments[part] = treatment
+            for part, placed in layout_additions.items():
+                current = replacements.get(part, source.read(part))
+                replacements[part] = _print_fork().add_layout_placeholders(current, placed)
             for part, treatment in chart_treatments.items():
                 updated, count = transform_chart_labels(source.read(part).decode("utf-8"), treatment)
                 replacements[part] = updated.encode("utf-8")

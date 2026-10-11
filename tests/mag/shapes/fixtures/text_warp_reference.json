@@ -1,0 +1,277 @@
+{
+ "_source": "LibreOffice/core master oox/source/export/presetTextWarpDefinitions.xml (raw.githubusercontent.com), read 2026-10-11, sha256 3948968d5539d576a5cb4407367fc978168cd6e90e0a822dccacdbbd4543c391; avLst names+formulas only (facts extracted for a test, file not shipped)",
+ "warps": {
+  "textArchDown": [
+   [
+    "adj",
+    "val 0"
+   ]
+  ],
+  "textArchDownPour": [
+   [
+    "adj1",
+    "val 0"
+   ],
+   [
+    "adj2",
+    "val 25000"
+   ]
+  ],
+  "textArchUp": [
+   [
+    "adj",
+    "val cd2"
+   ]
+  ],
+  "textArchUpPour": [
+   [
+    "adj1",
+    "val cd2"
+   ],
+   [
+    "adj2",
+    "val 50000"
+   ]
+  ],
+  "textButton": [
+   [
+    "adj",
+    "val 10800000"
+   ]
+  ],
+  "textButtonPour": [
+   [
+    "adj1",
+    "val cd2"
+   ],
+   [
+    "adj2",
+    "val 50000"
+   ]
+  ],
+  "textCanDown": [
+   [
+    "adj",
+    "val 14286"
+   ]
+  ],
+  "textCanUp": [
+   [
+    "adj",
+    "val 85714"
+   ]
+  ],
+  "textCascadeDown": [
+   [
+    "adj",
+    "val 44444"
+   ]
+  ],
+  "textCascadeUp": [
+   [
+    "adj",
+    "val 44444"
+   ]
+  ],
+  "textChevron": [
+   [
+    "adj",
+    "val 25000"
+   ]
+  ],
+  "textChevronInverted": [
+   [
+    "adj",
+    "val 75000"
+   ]
+  ],
+  "textCircle": [
+   [
+    "adj",
+    "val 10800000"
+   ]
+  ],
+  "textCirclePour": [
+   [
+    "adj1",
+    "val cd2"
+   ],
+   [
+    "adj2",
+    "val 50000"
+   ]
+  ],
+  "textCurveDown": [
+   [
+    "adj",
+    "val 45977"
+   ]
+  ],
+  "textCurveUp": [
+   [
+    "adj",
+    "val 45977"
+   ]
+  ],
+  "textDeflate": [
+   [
+    "adj",
+    "val 18750"
+   ]
+  ],
+  "textDeflateBottom": [
+   [
+    "adj",
+    "val 50000"
+   ]
+  ],
+  "textDeflateInflate": [
+   [
+    "adj",
+    "val 35000"
+   ]
+  ],
+  "textDeflateInflateDeflate": [
+   [
+    "adj",
+    "val 25000"
+   ]
+  ],
+  "textDeflateTop": [
+   [
+    "adj",
+    "val 50000"
+   ]
+  ],
+  "textDoubleWave1": [
+   [
+    "adj1",
+    "val 6250"
+   ],
+   [
+    "adj2",
+    "val 0"
+   ]
+  ],
+  "textFadeDown": [
+   [
+    "adj",
+    "val 33333"
+   ]
+  ],
+  "textFadeLeft": [
+   [
+    "adj",
+    "val 33333"
+   ]
+  ],
+  "textFadeRight": [
+   [
+    "adj",
+    "val 33333"
+   ]
+  ],
+  "textFadeUp": [
+   [
+    "adj",
+    "val 33333"
+   ]
+  ],
+  "textInflate": [
+   [
+    "adj",
+    "val 18750"
+   ]
+  ],
+  "textInflateBottom": [
+   [
+    "adj",
+    "val 60000"
+   ]
+  ],
+  "textInflateTop": [
+   [
+    "adj",
+    "val 40000"
+   ]
+  ],
+  "textPlain": [
+   [
+    "adj",
+    "val 50000"
+   ]
+  ],
+  "textRingInside": [
+   [
+    "adj",
+    "val 60000"
+   ]
+  ],
+  "textRingOutside": [
+   [
+    "adj",
+    "val 60000"
+   ]
+  ],
+  "textSlantDown": [
+   [
+    "adj",
+    "val 44445"
+   ]
+  ],
+  "textSlantUp": [
+   [
+    "adj",
+    "val 55555"
+   ]
+  ],
+  "textStop": [
+   [
+    "adj",
+    "val 25000"
+   ]
+  ],
+  "textTriangle": [
+   [
+    "adj",
+    "val 50000"
+   ]
+  ],
+  "textTriangleInverted": [
+   [
+    "adj",
+    "val 50000"
+   ]
+  ],
+  "textWave1": [
+   [
+    "adj1",
+    "val 12500"
+   ],
+   [
+    "adj2",
+    "val 0"
+   ]
+  ],
+  "textWave2": [
+   [
+    "adj1",
+    "val 12500"
+   ],
+   [
+    "adj2",
+    "val 0"
+   ]
+  ],
+  "textWave4": [
+   [
+    "adj1",
+    "val 6250"
+   ],
+   [
+    "adj2",
+    "val 0"
+   ]
+  ]
+ }
+}

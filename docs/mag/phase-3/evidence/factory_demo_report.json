@@ -1,0 +1,46 @@
+{
+ "ok": true,
+ "contact_sheet": "/tmp/claude-0/-home-user-slidepoise/6d109101-90a2-5623-8e7b-da455199666a/scratchpad/factory_out/moon_star_contact_sheet.png",
+ "variants": {
+  "ar_boy_A4": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "ar_girl_A4": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "en_boy_A4": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "en_girl_A4": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "ar_boy_A5": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "ar_girl_A5": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "en_boy_A5": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  },
+  "en_girl_A5": {
+   "ok": true,
+   "findings": [],
+   "engine": "soffice"
+  }
+ }
+}

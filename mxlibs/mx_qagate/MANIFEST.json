@@ -1,0 +1,16 @@
+{
+ "files": {
+  "__init__.py": "0feeb7d8aeede6340b2d71107050038c8dfff1813c56ba17fc7658422713dcc5",
+  "gate.py": "dcd405a5db3c01af85a0a3314b5ad9ddb02e6a99a536b35161ec24c165353c42"
+ },
+ "lib": "mx_qagate",
+ "optional": [
+  "pypdfium2",
+  "numpy",
+  "mx_textfit"
+ ],
+ "python": ">=3.10",
+ "requires": [],
+ "vendoring": "copy bytes verbatim (no line-ending conversion); verify with verify_manifest()",
+ "version": "1.0.0"
+}

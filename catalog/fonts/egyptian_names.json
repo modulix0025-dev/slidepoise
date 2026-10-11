@@ -1,0 +1,1309 @@
+{
+ "schema": "mx.fonts.names_corpus/1",
+ "purpose": "Shaping corpus for font QA: common Egyptian children's names (Arabic + the usual Latin spelling). Covers every Arabic base letter, hamza seats, taa marbuta, alef maqsura, lam-alef and long compound names.",
+ "source": "Compiled for ModuleX Magazine Studio from common Egyptian given names; spellings are the usual Egyptian civil-registry forms.",
+ "counts": {
+  "boys": 111,
+  "girls": 105,
+  "total": 216
+ },
+ "dedication_template_ar": "إهداء لـ{name}",
+ "names": [
+  {
+   "ar": "محمد",
+   "en": "Mohamed",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أحمد",
+   "en": "Ahmed",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "محمود",
+   "en": "Mahmoud",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مصطفى",
+   "en": "Mostafa",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "علي",
+   "en": "Ali",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عمر",
+   "en": "Omar",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "يوسف",
+   "en": "Youssef",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "إبراهيم",
+   "en": "Ibrahim",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حسن",
+   "en": "Hassan",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حسين",
+   "en": "Hussein",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "خالد",
+   "en": "Khaled",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عبد الله",
+   "en": "Abdallah",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الرحمن",
+   "en": "Abdelrahman",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد العزيز",
+   "en": "Abdelaziz",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الرحيم",
+   "en": "Abdelrahim",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الحليم",
+   "en": "Abdelhalim",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الفتاح",
+   "en": "Abdelfattah",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد المنعم",
+   "en": "Abdelmoneim",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الحميد",
+   "en": "Abdelhamid",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الكريم",
+   "en": "Abdelkarim",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الوهاب",
+   "en": "Abdelwahab",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الناصر",
+   "en": "Abdelnasser",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "عبد الرازق",
+   "en": "Abdelrazek",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "سيف",
+   "en": "Seif",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ياسين",
+   "en": "Yassin",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "آدم",
+   "en": "Adam",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "زياد",
+   "en": "Ziad",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "كريم",
+   "en": "Karim",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مالك",
+   "en": "Malek",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حمزة",
+   "en": "Hamza",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "إياد",
+   "en": "Eyad",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مروان",
+   "en": "Marwan",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عمرو",
+   "en": "Amr",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "طارق",
+   "en": "Tarek",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "هشام",
+   "en": "Hesham",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "وليد",
+   "en": "Walid",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "شريف",
+   "en": "Sherif",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "تامر",
+   "en": "Tamer",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حازم",
+   "en": "Hazem",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "رامي",
+   "en": "Ramy",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "سامح",
+   "en": "Sameh",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أشرف",
+   "en": "Ashraf",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أيمن",
+   "en": "Ayman",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عادل",
+   "en": "Adel",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "جمال",
+   "en": "Gamal",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "كمال",
+   "en": "Kamal",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "سعيد",
+   "en": "Saeed",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ماجد",
+   "en": "Maged",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مجدي",
+   "en": "Magdy",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مدحت",
+   "en": "Medhat",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "نبيل",
+   "en": "Nabil",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "هاني",
+   "en": "Hany",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "وائل",
+   "en": "Wael",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ياسر",
+   "en": "Yasser",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "رضا",
+   "en": "Reda",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عصام",
+   "en": "Essam",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "فارس",
+   "en": "Fares",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أنس",
+   "en": "Anas",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "بلال",
+   "en": "Belal",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "معاذ",
+   "en": "Moaz",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عمار",
+   "en": "Ammar",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حمدي",
+   "en": "Hamdy",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "صلاح",
+   "en": "Salah",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "سليم",
+   "en": "Selim",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ريان",
+   "en": "Rayan",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "تميم",
+   "en": "Tamim",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "يحيى",
+   "en": "Yehia",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "زكريا",
+   "en": "Zakaria",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "إسماعيل",
+   "en": "Ismail",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "موسى",
+   "en": "Moussa",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عيسى",
+   "en": "Eissa",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "يونس",
+   "en": "Younis",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "سليمان",
+   "en": "Soliman",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أدهم",
+   "en": "Adham",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "باسل",
+   "en": "Basel",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "جاسر",
+   "en": "Gasser",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "نادر",
+   "en": "Nader",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "حسام",
+   "en": "Hossam",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "إسلام",
+   "en": "Eslam",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عماد",
+   "en": "Emad",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "رامز",
+   "en": "Ramez",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مهند",
+   "en": "Mohanad",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مؤمن",
+   "en": "Moamen",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أسامة",
+   "en": "Osama",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عثمان",
+   "en": "Osman",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أمير",
+   "en": "Amir",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "مازن",
+   "en": "Mazen",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ممدوح",
+   "en": "Mamdouh",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "فتحي",
+   "en": "Fathy",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "شادي",
+   "en": "Shady",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "أكرم",
+   "en": "Akram",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "يزن",
+   "en": "Yazan",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "لؤي",
+   "en": "Louay",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "تيم",
+   "en": "Taim",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "سند",
+   "en": "Sanad",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "فهد",
+   "en": "Fahd",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "نوح",
+   "en": "Nouh",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "داود",
+   "en": "Dawood",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "هيثم",
+   "en": "Haitham",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "شهاب",
+   "en": "Shehab",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "عز الدين",
+   "en": "Ezzeldin",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "نور الدين",
+   "en": "Noureldin",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "سيف الدين",
+   "en": "Seifeldin",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "صلاح الدين",
+   "en": "Salaheldin",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "علاء الدين",
+   "en": "Alaaeldin",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "محمد علي",
+   "en": "Mohamed Ali",
+   "gender": "boy",
+   "words": 2
+  },
+  {
+   "ar": "بدر",
+   "en": "Badr",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "رؤوف",
+   "en": "Raouf",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ضياء",
+   "en": "Diaa",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "ظافر",
+   "en": "Zafer",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "غسان",
+   "en": "Ghassan",
+   "gender": "boy",
+   "words": 1
+  },
+  {
+   "ar": "فاطمة",
+   "en": "Fatma",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "فاطمة الزهراء",
+   "en": "Fatma Elzahraa",
+   "gender": "girl",
+   "words": 2
+  },
+  {
+   "ar": "مريم",
+   "en": "Mariam",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نور",
+   "en": "Nour",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سلمى",
+   "en": "Salma",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ملك",
+   "en": "Malak",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "جنى",
+   "en": "Jana",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "حبيبة",
+   "en": "Habiba",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "منة الله",
+   "en": "Menna Allah",
+   "gender": "girl",
+   "words": 2
+  },
+  {
+   "ar": "رحمة",
+   "en": "Rahma",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "آية",
+   "en": "Aya",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ندى",
+   "en": "Nada",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هدى",
+   "en": "Hoda",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نور الهدى",
+   "en": "Nour Elhoda",
+   "gender": "girl",
+   "words": 2
+  },
+  {
+   "ar": "سارة",
+   "en": "Sara",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ياسمين",
+   "en": "Yasmin",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رقية",
+   "en": "Roqaya",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "خديجة",
+   "en": "Khadiga",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "عائشة",
+   "en": "Aisha",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "زينب",
+   "en": "Zeinab",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أسماء",
+   "en": "Asmaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "شيماء",
+   "en": "Shaimaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "دعاء",
+   "en": "Doaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "إسراء",
+   "en": "Esraa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "آلاء",
+   "en": "Alaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هاجر",
+   "en": "Hagar",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "منى",
+   "en": "Mona",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "مي",
+   "en": "Mai",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ريم",
+   "en": "Reem",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "روان",
+   "en": "Rawan",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "لمى",
+   "en": "Lama",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ليلى",
+   "en": "Laila",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ليان",
+   "en": "Layan",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "لجين",
+   "en": "Logain",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "جودي",
+   "en": "Joudy",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "تالا",
+   "en": "Tala",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "تاليا",
+   "en": "Talia",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "كنزي",
+   "en": "Kenzy",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ريتال",
+   "en": "Retal",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رتاج",
+   "en": "Retag",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أروى",
+   "en": "Arwa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أمينة",
+   "en": "Amina",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سمية",
+   "en": "Somaya",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "صفية",
+   "en": "Safia",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "حفصة",
+   "en": "Hafsa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رنا",
+   "en": "Rana",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رنيم",
+   "en": "Raneem",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ريماس",
+   "en": "Remas",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "دانة",
+   "en": "Dana",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هنا",
+   "en": "Hana",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هالة",
+   "en": "Hala",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نهى",
+   "en": "Noha",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نسمة",
+   "en": "Nesma",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نادين",
+   "en": "Nadine",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "بسملة",
+   "en": "Basmala",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "تسنيم",
+   "en": "Tasneem",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سندس",
+   "en": "Sondos",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أريج",
+   "en": "Areeg",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "شهد",
+   "en": "Shahd",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "لينا",
+   "en": "Lina",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ميار",
+   "en": "Mayar",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رهف",
+   "en": "Rahaf",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "غادة",
+   "en": "Ghada",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نجلاء",
+   "en": "Naglaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سعاد",
+   "en": "Soad",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "عبير",
+   "en": "Abeer",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "إيمان",
+   "en": "Eman",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أمل",
+   "en": "Amal",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "وفاء",
+   "en": "Wafaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "صفاء",
+   "en": "Safaa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سماح",
+   "en": "Samah",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سحر",
+   "en": "Sahar",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نيرة",
+   "en": "Nayera",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "يارا",
+   "en": "Yara",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "يمنى",
+   "en": "Yomna",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ريهام",
+   "en": "Reham",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رضوى",
+   "en": "Radwa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "بسنت",
+   "en": "Basant",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نيرمين",
+   "en": "Nermeen",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هبة",
+   "en": "Heba",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "هبة الله",
+   "en": "Heba Allah",
+   "gender": "girl",
+   "words": 2
+  },
+  {
+   "ar": "آيات",
+   "en": "Ayat",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "فرح",
+   "en": "Farah",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "جميلة",
+   "en": "Gamila",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "زهرة",
+   "en": "Zahra",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "وردة",
+   "en": "Warda",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ميرنا",
+   "en": "Merna",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "كارما",
+   "en": "Karma",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "جيهان",
+   "en": "Gihan",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "داليا",
+   "en": "Dalia",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "لبنى",
+   "en": "Lobna",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "رانيا",
+   "en": "Rania",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "سهى",
+   "en": "Soha",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "مها",
+   "en": "Maha",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "منار",
+   "en": "Manar",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أمنية",
+   "en": "Omneya",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "حنين",
+   "en": "Haneen",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "روضة",
+   "en": "Rawda",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "أسيل",
+   "en": "Aseel",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "نور العين",
+   "en": "Nour Elein",
+   "gender": "girl",
+   "words": 2
+  },
+  {
+   "ar": "جنات",
+   "en": "Gannat",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ضحى",
+   "en": "Doha",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ظريفة",
+   "en": "Zarifa",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "غدير",
+   "en": "Ghadeer",
+   "gender": "girl",
+   "words": 1
+  },
+  {
+   "ar": "ثريا",
+   "en": "Thoraya",
+   "gender": "girl",
+   "words": 1
+  }
+ ]
+}
