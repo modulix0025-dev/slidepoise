@@ -1,0 +1,3725 @@
+{
+ "count": 187,
+ "presets": [
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [],
+   "label_en": "Line",
+   "prst": "line"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [],
+   "label_en": "Straight Connector",
+   "prst": "lineInv"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Isosceles Triangle",
+   "prst": "triangle"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Right Triangle",
+   "prst": "rtTriangle"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [],
+   "label_en": "Rectangle",
+   "prst": "rect"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Diamond",
+   "prst": "diamond"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Parallelogram",
+   "prst": "parallelogram"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Trapezoid",
+   "prst": "trapezoid"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Non-isosceles Trapezoid",
+   "prst": "nonIsoscelesTrapezoid"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 105146,
+     "kind": "ratio",
+     "max": 105146,
+     "min": 0,
+     "name": "hf"
+    },
+    {
+     "default": 110557,
+     "kind": "ratio",
+     "max": 110557,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "Regular Pentagon",
+   "prst": "pentagon"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    },
+    {
+     "default": 115470,
+     "kind": "ratio",
+     "max": 115470,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "Hexagon",
+   "prst": "hexagon"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 102572,
+     "kind": "ratio",
+     "max": 102572,
+     "min": 0,
+     "name": "hf"
+    },
+    {
+     "default": 105210,
+     "kind": "ratio",
+     "max": 105210,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "Heptagon",
+   "prst": "heptagon"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 29289,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Octagon",
+   "prst": "octagon"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 105146,
+     "kind": "ratio",
+     "max": 105146,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "Decagon",
+   "prst": "decagon"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Dodecagon",
+   "prst": "dodecagon"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "4-Point Star",
+   "prst": "star4"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 19098,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    },
+    {
+     "default": 105146,
+     "kind": "ratio",
+     "max": 105146,
+     "min": 0,
+     "name": "hf"
+    },
+    {
+     "default": 110557,
+     "kind": "ratio",
+     "max": 110557,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "5-Point Star",
+   "prst": "star5"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 28868,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    },
+    {
+     "default": 115470,
+     "kind": "ratio",
+     "max": 115470,
+     "min": 0,
+     "name": "hf"
+    }
+   ],
+   "label_en": "6-Point Star",
+   "prst": "star6"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 34601,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    },
+    {
+     "default": 102572,
+     "kind": "ratio",
+     "max": 102572,
+     "min": 0,
+     "name": "hf"
+    },
+    {
+     "default": 105210,
+     "kind": "ratio",
+     "max": 105210,
+     "min": 0,
+     "name": "vf"
+    }
+   ],
+   "label_en": "7-Point Star",
+   "prst": "star7"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 37500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "8-Point Star",
+   "prst": "star8"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 42533,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    },
+    {
+     "default": 105146,
+     "kind": "ratio",
+     "max": 105146,
+     "min": 0,
+     "name": "hf"
+    }
+   ],
+   "label_en": "10-Point Star",
+   "prst": "star10"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 37500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "12-Point Star",
+   "prst": "star12"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 37500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "16-Point Star",
+   "prst": "star16"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 37500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "24-Point Star",
+   "prst": "star24"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [
+    {
+     "default": 37500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "32-Point Star",
+   "prst": "star32"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Rounded Rectangle",
+   "prst": "roundRect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Round Single Corner Rectangle",
+   "prst": "round1Rect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Round Same Side Corner Rectangle",
+   "prst": "round2SameRect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Round Diagonal Corner Rectangle",
+   "prst": "round2DiagRect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Snip and Round Single Corner Rectangle",
+   "prst": "snipRoundRect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Snip Single Corner Rectangle",
+   "prst": "snip1Rect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Snip Same Side Corner Rectangle",
+   "prst": "snip2SameRect"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Snip Diagonal Corner Rectangle",
+   "prst": "snip2DiagRect"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Plaque",
+   "prst": "plaque"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Oval",
+   "prst": "ellipse"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 100000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Teardrop",
+   "prst": "teardrop"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Pentagon",
+   "prst": "homePlate"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Chevron",
+   "prst": "chevron"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Pie",
+   "prst": "pieWedge"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 0,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 16200000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Pie",
+   "prst": "pie"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Block Arc",
+   "prst": "blockArc"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Donut",
+   "prst": "donut"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "\"No\" Symbol",
+   "prst": "noSmoking"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Right Arrow",
+   "prst": "rightArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Left Arrow",
+   "prst": "leftArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Up Arrow",
+   "prst": "upArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Down Arrow",
+   "prst": "downArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Striped Right Arrow",
+   "prst": "stripedRightArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Notched Right Arrow",
+   "prst": "notchedRightArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Bent-Up Arrow",
+   "prst": "bentUpArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Left-Right Arrow",
+   "prst": "leftRightArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Up-Down Arrow",
+   "prst": "upDownArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Left-Up Arrow",
+   "prst": "leftUpArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Left-Right-Up Arrow",
+   "prst": "leftRightUpArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 22500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 22500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 22500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Quad Arrow",
+   "prst": "quadArrow"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 64977,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Left Arrow Callout",
+   "prst": "leftArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 64977,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Right Arrow Callout",
+   "prst": "rightArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 64977,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Up Arrow Callout",
+   "prst": "upArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 64977,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Down Arrow Callout",
+   "prst": "downArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 48123,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Left-Right Arrow Callout",
+   "prst": "leftRightArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 48123,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Up-Down Arrow Callout",
+   "prst": "upDownArrowCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18515,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 18515,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18515,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": 48123,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Quad Arrow Callout",
+   "prst": "quadArrowCallout"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    },
+    {
+     "default": 43750,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Bent Arrow",
+   "prst": "bentArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    },
+    {
+     "default": 43750,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj4"
+    },
+    {
+     "default": 75000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj5"
+    }
+   ],
+   "label_en": "U-Turn Arrow",
+   "prst": "uturnArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 1142319,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 20457681,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj3"
+    },
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj4"
+    },
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj5"
+    }
+   ],
+   "label_en": "Circular Arrow",
+   "prst": "circularArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": -1142319,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 1142319,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj3"
+    },
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj4"
+    },
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj5"
+    }
+   ],
+   "label_en": "Left Circular Arrow",
+   "prst": "leftCircularArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 1142319,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 20457681,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj3"
+    },
+    {
+     "default": 11942319,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj4"
+    },
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj5"
+    }
+   ],
+   "label_en": "Left Right Circular Arrow",
+   "prst": "leftRightCircularArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Right Arrow",
+   "prst": "curvedRightArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Left Arrow",
+   "prst": "curvedLeftArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Up Arrow",
+   "prst": "curvedUpArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Down Arrow",
+   "prst": "curvedDownArrow"
+  },
+  {
+   "category": "arrows",
+   "category_ar": "أسهم",
+   "category_en": "Arrows",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Swoosh Arrow",
+   "prst": "swooshArrow"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Cube",
+   "prst": "cube"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Can",
+   "prst": "can"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [],
+   "label_en": "Lightning Bolt",
+   "prst": "lightningBolt"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [],
+   "label_en": "Heart",
+   "prst": "heart"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Sun",
+   "prst": "sun"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Moon",
+   "prst": "moon"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 4653,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Smiley Face",
+   "prst": "smileyFace"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [],
+   "label_en": "Explosion",
+   "prst": "irregularSeal1"
+  },
+  {
+   "category": "stars",
+   "category_ar": "نجوم وأختام",
+   "category_en": "Stars and seals",
+   "handles": [],
+   "label_en": "Explosion",
+   "prst": "irregularSeal2"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Folded Corner",
+   "prst": "foldedCorner"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Bevel",
+   "prst": "bevel"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Frame",
+   "prst": "frame"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Half Frame",
+   "prst": "halfFrame"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Corner",
+   "prst": "corner"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Diagonal Stripe",
+   "prst": "diagStripe"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 2700000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 16200000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Chord",
+   "prst": "chord"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 16200000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Arc",
+   "prst": "arc"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 8333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Left Bracket",
+   "prst": "leftBracket"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 8333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Right Bracket",
+   "prst": "rightBracket"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 8333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Left Brace",
+   "prst": "leftBrace"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 8333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Right Brace",
+   "prst": "rightBrace"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Double Bracket",
+   "prst": "bracketPair"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 8333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Double Brace",
+   "prst": "bracePair"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [],
+   "label_en": "Straight connector1",
+   "prst": "straightConnector1"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [],
+   "label_en": "Bent connector2",
+   "prst": "bentConnector2"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Bent connector3",
+   "prst": "bentConnector3"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Bent connector4",
+   "prst": "bentConnector4"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Bent connector5",
+   "prst": "bentConnector5"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [],
+   "label_en": "Curved connector2",
+   "prst": "curvedConnector2"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Curved connector3",
+   "prst": "curvedConnector3"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Curved connector4",
+   "prst": "curvedConnector4"
+  },
+  {
+   "category": "lines",
+   "category_ar": "خطوط وموصلات",
+   "category_en": "Lines and connectors",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved connector5",
+   "prst": "curvedConnector5"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -38333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Line Callout 1 (No Border)",
+   "prst": "callout1"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -46667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    }
+   ],
+   "label_en": "Line Callout 2 (No Border)",
+   "prst": "callout2"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 100000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    },
+    {
+     "default": 112963,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj7"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj8"
+    }
+   ],
+   "label_en": "Line Callout 3 (No Border)",
+   "prst": "callout3"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -38333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Line Callout 1 (Accent Bar)",
+   "prst": "accentCallout1"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -46667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    }
+   ],
+   "label_en": "Line Callout 2 (Accent Bar)",
+   "prst": "accentCallout2"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 100000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    },
+    {
+     "default": 112963,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj7"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj8"
+    }
+   ],
+   "label_en": "Line Callout 3 (Accent Bar)",
+   "prst": "accentCallout3"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -38333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Line Callout 1",
+   "prst": "borderCallout1"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -46667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    }
+   ],
+   "label_en": "Line Callout 2",
+   "prst": "borderCallout2"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 100000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    },
+    {
+     "default": 112963,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj7"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj8"
+    }
+   ],
+   "label_en": "Line Callout 3",
+   "prst": "borderCallout3"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -38333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    }
+   ],
+   "label_en": "Line Callout 1 (Border and Accent Bar)",
+   "prst": "accentBorderCallout1"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 112500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -46667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    }
+   ],
+   "label_en": "Line Callout 2 (Border and Accent Bar)",
+   "prst": "accentBorderCallout2"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj4"
+    },
+    {
+     "default": 100000,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj5"
+    },
+    {
+     "default": -16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj6"
+    },
+    {
+     "default": 112963,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj7"
+    },
+    {
+     "default": -8333,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj8"
+    }
+   ],
+   "label_en": "Line Callout 3 (Border and Accent Bar)",
+   "prst": "accentBorderCallout3"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": -20833,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 62500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Rectangular Callout",
+   "prst": "wedgeRectCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": -20833,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 62500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    },
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Rounded Rectangular Callout",
+   "prst": "wedgeRoundRectCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": -20833,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 62500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Oval Callout",
+   "prst": "wedgeEllipseCallout"
+  },
+  {
+   "category": "callouts",
+   "category_ar": "فقاعات كلام",
+   "category_en": "Callouts",
+   "handles": [
+    {
+     "default": -20833,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj1"
+    },
+    {
+     "default": 62500,
+     "kind": "ratio",
+     "max": 200000,
+     "min": -200000,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Cloud Callout",
+   "prst": "cloudCallout"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [],
+   "label_en": "Cloud",
+   "prst": "cloud"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Down Ribbon",
+   "prst": "ribbon"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Up Ribbon",
+   "prst": "ribbon2"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Down Ribbon",
+   "prst": "ellipseRibbon"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Curved Up Ribbon",
+   "prst": "ellipseRibbon2"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 16667,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Left Right Ribbon",
+   "prst": "leftRightRibbon"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Vertical Scroll",
+   "prst": "verticalScroll"
+  },
+  {
+   "category": "banners",
+   "category_ar": "شرائط ولفائف",
+   "category_en": "Ribbons and scrolls",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Horizontal Scroll",
+   "prst": "horizontalScroll"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Wave",
+   "prst": "wave"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 6250,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Double Wave",
+   "prst": "doubleWave"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "label_en": "Cross",
+   "prst": "plus"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Process",
+   "prst": "flowChartProcess"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Decision",
+   "prst": "flowChartDecision"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Data",
+   "prst": "flowChartInputOutput"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Predefined Process",
+   "prst": "flowChartPredefinedProcess"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Internal Storage",
+   "prst": "flowChartInternalStorage"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Document",
+   "prst": "flowChartDocument"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Multidocument",
+   "prst": "flowChartMultidocument"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Terminator",
+   "prst": "flowChartTerminator"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Preparation",
+   "prst": "flowChartPreparation"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Manual Input",
+   "prst": "flowChartManualInput"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Manual Operation",
+   "prst": "flowChartManualOperation"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Connector",
+   "prst": "flowChartConnector"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Card",
+   "prst": "flowChartPunchedCard"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Punched Tape",
+   "prst": "flowChartPunchedTape"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Summing Junction",
+   "prst": "flowChartSummingJunction"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Or",
+   "prst": "flowChartOr"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Collate",
+   "prst": "flowChartCollate"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Sort",
+   "prst": "flowChartSort"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Extract",
+   "prst": "flowChartExtract"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Merge",
+   "prst": "flowChartMerge"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Offline Storage",
+   "prst": "flowChartOfflineStorage"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Stored Data",
+   "prst": "flowChartOnlineStorage"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Sequential Access Storage",
+   "prst": "flowChartMagneticTape"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Magnetic Disk",
+   "prst": "flowChartMagneticDisk"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Direct Access Storage",
+   "prst": "flowChartMagneticDrum"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Display",
+   "prst": "flowChartDisplay"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Delay",
+   "prst": "flowChartDelay"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Alternate process",
+   "prst": "flowChartAlternateProcess"
+  },
+  {
+   "category": "flowchart",
+   "category_ar": "مخطط انسيابي",
+   "category_en": "Flowchart",
+   "handles": [],
+   "label_en": "Off-page Connector",
+   "prst": "flowChartOffpageConnector"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Custom",
+   "prst": "actionButtonBlank"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Home",
+   "prst": "actionButtonHome"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Help",
+   "prst": "actionButtonHelp"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Information",
+   "prst": "actionButtonInformation"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Forward or Next",
+   "prst": "actionButtonForwardNext"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Back or Previous",
+   "prst": "actionButtonBackPrevious"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: End",
+   "prst": "actionButtonEnd"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Beginning",
+   "prst": "actionButtonBeginning"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Return",
+   "prst": "actionButtonReturn"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Document",
+   "prst": "actionButtonDocument"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Sound",
+   "prst": "actionButtonSound"
+  },
+  {
+   "category": "action",
+   "category_ar": "أزرار إجراء",
+   "category_en": "Action buttons",
+   "handles": [],
+   "label_en": "Action Button: Movie",
+   "prst": "actionButtonMovie"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 15000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 3526,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Gear 6",
+   "prst": "gear6"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [
+    {
+     "default": 10000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 1763,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Gear 9",
+   "prst": "gear9"
+  },
+  {
+   "category": "fun",
+   "category_ar": "أشكال مرحة",
+   "category_en": "Fun shapes",
+   "handles": [],
+   "label_en": "Funnel",
+   "prst": "funnel"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Plus",
+   "prst": "mathPlus"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Minus",
+   "prst": "mathMinus"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    }
+   ],
+   "label_en": "Multiply",
+   "prst": "mathMultiply"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 5880,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 11760,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Division",
+   "prst": "mathDivide"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 11760,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "label_en": "Equal",
+   "prst": "mathEqual"
+  },
+  {
+   "category": "math",
+   "category_ar": "رموز رياضية",
+   "category_en": "Math",
+   "handles": [
+    {
+     "default": 23520,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 6600000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj2"
+    },
+    {
+     "default": 11760,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj3"
+    }
+   ],
+   "label_en": "Not Equal",
+   "prst": "mathNotEqual"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [],
+   "label_en": "Corner Tabs",
+   "prst": "cornerTabs"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [],
+   "label_en": "Square Tabs",
+   "prst": "squareTabs"
+  },
+  {
+   "category": "rects",
+   "category_ar": "مستطيلات",
+   "category_en": "Rectangles",
+   "handles": [],
+   "label_en": "Plaque Tabs",
+   "prst": "plaqueTabs"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Chart X",
+   "prst": "chartX"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Chart Star",
+   "prst": "chartStar"
+  },
+  {
+   "category": "basic",
+   "category_ar": "أشكال أساسية",
+   "category_en": "Basic shapes",
+   "handles": [],
+   "label_en": "Chart Plus",
+   "prst": "chartPlus"
+  }
+ ],
+ "source": "ECMA-376 Part 1 ST_ShapeType; avLst defaults via python-pptx autoshape_types"
+}

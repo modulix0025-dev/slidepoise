@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>لوحة الرسم — Drawing canvas</title>
+<link rel="stylesheet" href="/ui/crossbar.css">
+<style>
+  :root { --bg: #fbf8f3; --ink: #222; --line: #d9d2c7; --accent: #e63946; --muted: #6b6b6b; }
+  body { margin: 0; font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; background: var(--bg); color: var(--ink); }
+  .wrap { display: grid; grid-template-columns: 300px 1fr; gap: 12px; padding: 12px; }
+  aside { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 10px; overflow: auto; max-height: calc(100vh - 40px); }
+  aside h3 { margin: 12px 0 6px; font-size: 14px; }
+  aside label { display: block; font-size: 13px; margin: 4px 0; }
+  .tools button, .row button { margin: 2px; padding: 6px 8px; border: 1px solid var(--line); background: #fff; border-radius: 6px; cursor: pointer; }
+  .tools button[aria-pressed="true"] { background: var(--accent); color: #fff; border-color: var(--accent); }
+  #board { background: #fff; border: 1px solid var(--line); border-radius: 10px; touch-action: none; width: 100%; height: calc(100vh - 40px); }
+  #board .sel { stroke: #1d70b8; stroke-dasharray: 4 3; }
+  .anchor { fill: #fff; stroke: #1d70b8; }
+  .handle { fill: #1d70b8; }
+  .status { font-size: 12px; color: var(--muted); min-height: 1.4em; }
+  .preset-list { max-height: 180px; overflow: auto; border: 1px solid var(--line); border-radius: 6px; }
+  .preset-list div { padding: 3px 6px; cursor: pointer; font-size: 12px; direction: ltr; text-align: left; }
+  .preset-list div:hover { background: #f3efe8; }
+  .en { color: var(--muted); font-size: 11px; }
+  input[type=range] { width: 100%; }
+  pre { direction: ltr; text-align: left; font-size: 10px; white-space: pre-wrap; word-break: break-all; max-height: 120px; overflow: auto; background: #f7f4ee; padding: 4px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside>
+    <h3>الأدوات <span class="en">Tools</span></h3>
+    <div class="tools" id="tools">
+      <button data-tool="pen" aria-pressed="true">قلم بيزييه <span class="en">Pen</span></button>
+      <button data-tool="freehand">رسم حر <span class="en">Freehand</span></button>
+      <button data-tool="select">تحديد <span class="en">Select</span></button>
+    </div>
+    <label>سُمك الرسم الحر <span class="en">Freehand size</span> <input id="fh-size" type="range" min="2" max="60" value="16"></label>
+    <label>تنعيم <span class="en">Smoothing / streamline</span> <input id="fh-smooth" type="range" min="0" max="100" value="50"></label>
+    <label>ترفيع <span class="en">Thinning</span> <input id="fh-thin" type="range" min="0" max="100" value="50"></label>
+
+    <h3>الالتقاط <span class="en">Snapping</span></h3>
+    <label><input id="snap-grid" type="checkbox" checked> شبكة <span class="en">grid</span> <input id="grid" type="number" min="2" max="200" value="10" style="width:60px"></label>
+    <label><input id="snap-anchor" type="checkbox" checked> نقط موجودة <span class="en">anchors</span></label>
+    <label><input id="snap-angle" type="checkbox"> زوايا ١٥° <span class="en">15° angles (or hold Shift)</span></label>
+
+    <h3>التماثل <span class="en">Symmetry</span></h3>
+    <label><input id="sym-mirror" type="checkbox"> مراية <span class="en">mirror</span></label>
+    <label>تماثل دائري × <span class="en">radial ×N</span> <input id="sym-radial" type="number" min="1" max="36" value="1" style="width:60px"></label>
+
+    <h3>الخط والتعبئة <span class="en">Stroke &amp; fill</span></h3>
+    <label>عرض الخط (pt) <span class="en">stroke width</span> <input id="stroke-w" type="number" min="0" max="20" step="0.25" value="1.5" style="width:70px"></label>
+    <label>نوع الخط <span class="en">dash</span>
+      <select id="stroke-dash"><option value="solid">متصل solid</option><option value="dash">شرط dash</option><option value="dot">نقط dot</option><option value="dashDot">شرطة ونقطة dash-dot</option><option value="longDash">شرط طويل long dash</option></select></label>
+    <label>نهاية الخط <span class="en">cap</span> <select id="stroke-cap"><option value="rnd">مدوّرة round</option><option value="flat">مستقيمة flat</option><option value="sq">مربعة square</option></select></label>
+    <label><input id="fill-on" type="checkbox" checked> تعبئة للأشكال المقفولة <span class="en">fill closed paths</span></label>
+
+    <h3>دمج وطرح <span class="en">Boolean (server)</span></h3>
+    <div class="row">
+      <button data-op="union">دمج <span class="en">union</span></button>
+      <button data-op="subtract">طرح <span class="en">subtract</span></button>
+      <button data-op="intersect">تقاطع <span class="en">intersect</span></button>
+    </div>
+
+    <h3>حفظ <span class="en">Commit</span></h3>
+    <label>الاسم <span class="en">name</span> <input id="name" type="text" style="width:100%"></label>
+    <label>اسم المشغّل (موافقة) <span class="en">operator (approval)</span> <input id="author" type="text" style="width:100%"></label>
+    <label>الستايل <span class="en">style</span> <select id="style"><option>flat</option><option>hand-drawn</option><option>outline</option><option>3D</option></select></label>
+    <div class="row">
+      <button id="commit">حوّل لشكل قابل للتعديل <span class="en">to custGeom</span></button>
+      <button id="save">احفظ في المكتبة <span class="en">save to library</span></button>
+      <button id="undo">تراجع <span class="en">undo</span></button>
+      <button id="clear">مسح <span class="en">clear</span></button>
+    </div>
+    <div class="status" id="status"></div>
+
+    <h3>الأشكال الجاهزة <span class="en">Preset geometries</span></h3>
+    <input id="preset-filter" type="search" placeholder="cloud, star, wedge…" style="width:100%">
+    <div class="preset-list" id="preset-list"></div>
+    <div id="preset-handles"></div>
+    <pre id="preset-xml"></pre>
+  </aside>
+  <svg id="board" viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" aria-label="drawing board">
+    <defs><pattern id="gridpat" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M10 0H0V10" fill="none" stroke="#eee" stroke-width="0.5"/></pattern></defs>
+    <rect id="gridrect" width="1000" height="700" fill="url(#gridpat)"/>
+    <g id="layer"></g>
+    <g id="overlay"></g>
+  </svg>
+</div>
+<script src="/ui/canvas/geometry.js"></script>
+<script src="/ui/canvas/canvas.js"></script>
+</body>
+</html>

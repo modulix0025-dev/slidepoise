@@ -48,7 +48,8 @@ for pkg in ("mxstudio", "pptx", "pypdfium2", "pypdfium2_raw", "webview", "colora
     datas += _safe(collect_data_files, pkg)
 # The SlidePoise skill tree (SKILL.md, references, schemas, runtime/js) as plain resources.
 for rel, dest in (("slidepoise", "skill/slidepoise"), ("catalog", "catalog"), ("contracts", "contracts"),
-                  ("vendor/modulex", "vendor/modulex"), ("framework/defaults", "framework/defaults")):
+                  ("vendor/modulex", "vendor/modulex"), ("framework/defaults", "framework/defaults"),
+                  ("mxlibs", "mxlibs")):
     if (ROOT / rel).is_dir():
         datas.append((str(ROOT / rel), dest))
 

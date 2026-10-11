@@ -15,7 +15,7 @@ const I18N = {
     unavailable: "الجزء ده لسه مش متاح في النسخة دي.", actions: "الإجراءات", result: "النتيجة",
     confirmAsk: "الخطوة دي مالهاش رجوع:", baseUrl: "عنوان السيرفر", model: "الموديل", enabled: "مفعّل",
     perJob: "الحد للمهمة (دولار)", perDay: "الحد اليومي (دولار)", saved: "اتحفظ.", keyName: "اسم المفتاح",
-    keyValue: "قيمة المفتاح", auditEmpty: "مفيش عمليات لسه.",
+    keyValue: "قيمة المفتاح", auditEmpty: "مفيش عمليات لسه.", openCanvas: "افتح لوحة الرسم",
   },
   en: {
     app: "Magazine Studio", "nav.home": "Home", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
@@ -27,7 +27,7 @@ const I18N = {
     workspace: "Workspace folder", tools: "Assistant tools", run: "Run", unavailable: "This area is not available in this build.",
     actions: "Actions", result: "Result", confirmAsk: "This step cannot be undone:", baseUrl: "Server URL",
     model: "Model", enabled: "Enabled", perJob: "Per-job limit (USD)", perDay: "Daily limit (USD)", saved: "Saved.",
-    keyName: "Key name", keyValue: "Key value", auditEmpty: "No activity yet.",
+    keyName: "Key name", keyValue: "Key value", auditEmpty: "No activity yet.", openCanvas: "Open the drawing canvas",
   },
 };
 let lang = "ar";
@@ -132,6 +132,12 @@ const VIEWS = {
       document.getElementById("tool-result").innerHTML = pre(await callTool(document.getElementById("tool").value, args));
     };
   },
+  async shapes() {
+    if ((await featureView("shapes")) === false) return;
+    view().insertAdjacentHTML("beforeend", tile(t("openCanvas"),
+      `<div class="row"><a class="xb" href="/ui/canvas/index.html" target="_blank" rel="noopener">${t("openCanvas")}</a></div>
+      <iframe src="/ui/canvas/index.html" title="${t("openCanvas")}" style="width:100%;height:70vh;border:0"></iframe>`));
+  },
   async audit() {
     const audit = await api("/api/audit");
     const rows = (audit.entries || []).map((e) => `<tr><td class="num">${new Date(e.ts * 1000).toLocaleString()}</td><td>${esc(e.actor)}</td><td>${esc(e.tool)}</td><td>${esc(e.outcome)}</td><td>${esc(e.code)}</td></tr>`).join("");
@@ -139,8 +145,12 @@ const VIEWS = {
   },
 };
 
+let routeSeq = 0; // a late answer from a tab the operator already left must not overwrite the current tab
+
 async function featureView(area) {
+  const seq = routeSeq;
   const summary = await api(`/api/${area}/summary`);
+  if (seq !== routeSeq) return false;
   if (summary.status === 404 || summary.ok === false && summary.status) { view().innerHTML = tile(t(`nav.${area}`), t("unavailable")); return; }
   const actions = summary.actions || [];
   view().innerHTML = tile(t(`nav.${area}`), pre(summary.facts || summary))
@@ -154,6 +164,7 @@ async function featureView(area) {
 }
 
 async function route() {
+  routeSeq += 1;
   const name = (location.hash || "#home").slice(1);
   document.querySelectorAll("#nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${name}`));
   const area = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", doctor: "doctor" }[name];

@@ -1,0 +1,669 @@
+{
+ "count": 41,
+ "source": "ECMA-376 Part 1 ST_TextShapeType; avLst per presetTextWarpDefinitions.xml",
+ "warps": [
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [],
+   "prst": "textNoShape"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textPlain"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textStop"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textTriangle"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textTriangleInverted"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textChevron"
+  },
+  {
+   "group": "basic",
+   "group_ar": "أساسي",
+   "group_en": "Basic",
+   "handles": [
+    {
+     "default": 75000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textChevronInverted"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 60000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textRingInside"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 60000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textRingOutside"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textArchUp"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 0,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textArchDown"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCircle"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textButton"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textArchUpPour"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 0,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textArchDownPour"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textCirclePour"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 10800000,
+     "kind": "angle",
+     "max": 21599999,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textButtonPour"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 45977,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCurveUp"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 45977,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCurveDown"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 85714,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCanUp"
+  },
+  {
+   "group": "arch",
+   "group_ar": "أقواس ودوائر",
+   "group_en": "Arches and circles",
+   "handles": [
+    {
+     "default": 14286,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCanDown"
+  },
+  {
+   "group": "wave",
+   "group_ar": "أمواج",
+   "group_en": "Waves",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": -100000,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textWave1"
+  },
+  {
+   "group": "wave",
+   "group_ar": "أمواج",
+   "group_en": "Waves",
+   "handles": [
+    {
+     "default": 12500,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": -100000,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textWave2"
+  },
+  {
+   "group": "wave",
+   "group_ar": "أمواج",
+   "group_en": "Waves",
+   "handles": [
+    {
+     "default": 6250,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": -100000,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textDoubleWave1"
+  },
+  {
+   "group": "wave",
+   "group_ar": "أمواج",
+   "group_en": "Waves",
+   "handles": [
+    {
+     "default": 6250,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj1"
+    },
+    {
+     "default": 0,
+     "kind": "ratio",
+     "max": 100000,
+     "min": -100000,
+     "name": "adj2"
+    }
+   ],
+   "prst": "textWave4"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textInflate"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 18750,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textDeflate"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 60000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textInflateBottom"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textDeflateBottom"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 40000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textInflateTop"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 50000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textDeflateTop"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 35000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textDeflateInflate"
+  },
+  {
+   "group": "inflate",
+   "group_ar": "انتفاخ وانكماش",
+   "group_en": "Inflate and deflate",
+   "handles": [
+    {
+     "default": 25000,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textDeflateInflateDeflate"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textFadeRight"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textFadeLeft"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textFadeUp"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 33333,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textFadeDown"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 55555,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textSlantUp"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 44445,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textSlantDown"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 44444,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCascadeUp"
+  },
+  {
+   "group": "perspective",
+   "group_ar": "منظور وميل",
+   "group_en": "Perspective and slant",
+   "handles": [
+    {
+     "default": 44444,
+     "kind": "ratio",
+     "max": 100000,
+     "min": 0,
+     "name": "adj"
+    }
+   ],
+   "prst": "textCascadeDown"
+  }
+ ]
+}

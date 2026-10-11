@@ -1,0 +1,294 @@
+{
+ "_meta": {
+  "recorded_live": false,
+  "kind": "fixture shaped after the documented response schema; not a live recording",
+  "why": "the official APIs are unreachable from the cloud container (proxy 403, see docs/mag/phase-0/evidence/licence_verification_2026-10-11.md)",
+  "re_record": "pending on-device: Proof Runner step 'shapes.discovery.record' re-records these from the operator's PC and the suite must still pass",
+  "schema_sources": {
+   "extmetadata": "wikimedia/mediawiki-extensions-CommonsMetadata @28eaa46: LicenseShortName, License, LicenseUrl, UsageTerms, AttributionRequired, Artist, Credit, Restrictions, NonFree"
+  }
+ },
+ "interactions": [
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://commons.wikimedia.org/w/api.php?action=query&format=json&generator=search&gsrnamespace=6&gsrsearch=rabbit&gsrlimit=20&prop=imageinfo&iiprop=url|extmetadata|mime|sha1|size"
+   },
+   "response": {
+    "status": 200,
+    "json": {
+     "batchcomplete": "",
+     "query": {
+      "pages": {
+       "-1": {
+        "pageid": 1001,
+        "ns": 6,
+        "title": "File:Rabbit icon.svg",
+        "index": 1,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Rabbit_icon.svg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Rabbit_icon.svg",
+          "mime": "image/svg+xml",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "License": {
+            "value": "cc-by-4.0",
+            "source": "commons-desc-page"
+           },
+           "LicenseShortName": {
+            "value": "CC BY 4.0",
+            "source": "commons-desc-page"
+           },
+           "LicenseUrl": {
+            "value": "https://creativecommons.org/licenses/by/4.0",
+            "source": "commons-desc-page"
+           },
+           "UsageTerms": {
+            "value": "Creative Commons Attribution 4.0",
+            "source": "commons-desc-page"
+           },
+           "AttributionRequired": {
+            "value": "true",
+            "source": "commons-desc-page"
+           },
+           "Artist": {
+            "value": "<a href=\"//commons.wikimedia.org/wiki/User:Example\" title=\"User:Example\">Example Artist</a>",
+            "source": "commons-desc-page"
+           },
+           "Credit": {
+            "value": "<span class=\"int-own-work\">Own work</span>",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       },
+       "-2": {
+        "pageid": 1002,
+        "ns": 6,
+        "title": "File:Rabbit drawing.png",
+        "index": 2,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Rabbit_drawing.png",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Rabbit_drawing.png",
+          "mime": "image/png",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "License": {
+            "value": "cc-by-sa-4.0",
+            "source": "commons-desc-page"
+           },
+           "LicenseShortName": {
+            "value": "CC BY-SA 4.0",
+            "source": "commons-desc-page"
+           },
+           "LicenseUrl": {
+            "value": "https://creativecommons.org/licenses/by-sa/4.0",
+            "source": "commons-desc-page"
+           },
+           "AttributionRequired": {
+            "value": "true",
+            "source": "commons-desc-page"
+           },
+           "Artist": {
+            "value": "Someone",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       },
+       "-3": {
+        "pageid": 1003,
+        "ns": 6,
+        "title": "File:Hare woodcut.svg",
+        "index": 3,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Hare_woodcut.svg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Hare_woodcut.svg",
+          "mime": "image/svg+xml",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "License": {
+            "value": "pd",
+            "source": "commons-desc-page"
+           },
+           "LicenseShortName": {
+            "value": "Public domain",
+            "source": "commons-desc-page"
+           },
+           "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page"
+           },
+           "LicenseUrl": {
+            "value": "https://creativecommons.org/publicdomain/mark/1.0/",
+            "source": "commons-desc-page"
+           },
+           "Artist": {
+            "value": "Unknown artist",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       },
+       "-4": {
+        "pageid": 1004,
+        "ns": 6,
+        "title": "File:Rabbit brand logo.svg",
+        "index": 4,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Rabbit_brand_logo.svg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Rabbit_brand_logo.svg",
+          "mime": "image/svg+xml",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "License": {
+            "value": "cc0",
+            "source": "commons-desc-page"
+           },
+           "LicenseShortName": {
+            "value": "CC0",
+            "source": "commons-desc-page"
+           },
+           "LicenseUrl": {
+            "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+            "source": "commons-desc-page"
+           },
+           "AttributionRequired": {
+            "value": "false",
+            "source": "commons-desc-page"
+           },
+           "Artist": {
+            "value": "Brand Co",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "trademarked",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       },
+       "-5": {
+        "pageid": 1005,
+        "ns": 6,
+        "title": "File:Rabbit film still.jpg",
+        "index": 5,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/en/e/ef/Rabbit_film_still.jpg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Rabbit_film_still.jpg",
+          "mime": "image/jpeg",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "License": {
+            "value": "fairuse",
+            "source": "commons-desc-page"
+           },
+           "LicenseShortName": {
+            "value": "Fair use",
+            "source": "commons-desc-page"
+           },
+           "NonFree": {
+            "value": "true",
+            "source": "commons-desc-page"
+           },
+           "Artist": {
+            "value": "Studio",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       },
+       "-6": {
+        "pageid": 1006,
+        "ns": 6,
+        "title": "File:Rabbit mystery.svg",
+        "index": 6,
+        "imagerepository": "local",
+        "imageinfo": [
+         {
+          "url": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Rabbit_mystery.svg",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Rabbit_mystery.svg",
+          "mime": "image/svg+xml",
+          "sha1": "0000000000000000000000000000000000000000",
+          "size": 2048,
+          "width": 512,
+          "height": 512,
+          "extmetadata": {
+           "Artist": {
+            "value": "Nobody",
+            "source": "commons-desc-page"
+           },
+           "Restrictions": {
+            "value": "",
+            "source": "commons-desc-page"
+           }
+          }
+         }
+        ]
+       }
+      }
+     }
+    }
+   }
+  },
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Rabbit_icon.svg"
+   },
+   "response": {
+    "status": 200,
+    "headers": {
+     "Content-Type": "image/svg+xml"
+    },
+    "body_text": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"120\" height=\"120\" viewBox=\"0 0 120 120\"><foreignObject width=\"120\" height=\"120\"><div xmlns=\"http://www.w3.org/1999/xhtml\">hi</div></foreignObject><image xlink:href=\"https://tracker.example/pixel.png\" width=\"1\" height=\"1\"/><circle cx=\"60\" cy=\"70\" r=\"40\" fill=\"#999\"/><ellipse cx=\"45\" cy=\"25\" rx=\"10\" ry=\"25\" fill=\"#999\"/><ellipse cx=\"75\" cy=\"25\" rx=\"10\" ry=\"25\" fill=\"#999\"/></svg>"
+   }
+  }
+ ]
+}

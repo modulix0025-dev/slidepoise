@@ -1,0 +1,50 @@
+{
+ "_meta": {
+  "recorded_live": false,
+  "kind": "fixture shaped after the documented response schema; not a live recording",
+  "why": "the official APIs are unreachable from the cloud container (proxy 403, see docs/mag/phase-0/evidence/licence_verification_2026-10-11.md)",
+  "re_record": "pending on-device: Proof Runner step 'shapes.discovery.record' re-records these from the operator's PC and the suite must still pass",
+  "schema_sources": {}
+ },
+ "interactions": [
+  {
+   "request": {
+    "method": "GET",
+    "url": "https://api.iconify.design/search?query=smile&limit=32"
+   },
+   "response": {
+    "status": 200,
+    "json": {
+     "icons": [
+      "ri:emotion-happy-line"
+     ],
+     "total": 1,
+     "limit": 32,
+     "start": 0,
+     "collections": {
+      "ri": {
+       "name": "Remix Icon",
+       "total": 100,
+       "author": {
+        "name": "Remix Design",
+        "url": "https://github.com/Remix-Design/RemixIcon"
+       },
+       "license": {
+        "title": "Apache 2.0",
+        "spdx": "Apache-2.0",
+        "url": "https://github.com/Remix-Design/RemixIcon/blob/master/License"
+       },
+       "category": "General",
+       "palette": false,
+       "version": "4.9.1"
+      }
+     },
+     "request": {
+      "query": "smile",
+      "limit": "32"
+     }
+    }
+   }
+  }
+ ]
+}
