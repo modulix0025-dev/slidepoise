@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "note": "CMYK press characterisation profiles bundled so the Studio and its tests never depend on /usr/share. Both are CC0 (public domain dedication) in the colord project; they were built by colord from published characterisation data. They are verified by sha256 before every use (mxstudio/colour/print_safety.py).",
+  "profiles": {
+    "FOGRA39": {
+      "file": "FOGRA39L_coated.icc",
+      "description": "FOGRA39L Coated",
+      "sha256": "3ff7ca2a650ad47a8d2a929eb23ef162ccf979d013ade56e441c1f55156a261f",
+      "bytes": 122028,
+      "condition": "ISO 12647-2 offset, coated paper (PT1/2), FOGRA39 characterisation",
+      "source_url": "https://github.com/hughsie/colord/blob/main/data/profiles/FOGRA39L_coated.iccprofile.xml",
+      "author": "colord project (Richard Hughes and contributors)",
+      "licence": "CC0-1.0",
+      "licence_evidence": "data/profiles/FOGRA39L_coated.iccprofile.xml declares <license>CC0</license>; the profile's copyright tag reads 'This profile is free of known copyright restrictions'",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "built_by": "Ubuntu package colord-data 1.4.7-1build2 (/usr/share/color/icc/colord/FOGRA39L_coated.icc)",
+      "retrieved_at": "2026-10-11",
+      "default_tac_limit_percent": 300
+    },
+    "GRACoL": {
+      "file": "GRACoL_TR006_coated.icc",
+      "description": "GRACoL TR006 Coated",
+      "sha256": "6c5ad2c4536cb1e0ff9f61ae4c090ff0034c3886d12783ca628bf4d13dcac860",
+      "bytes": 121164,
+      "condition": "GRACoL coated (CGATS TR006 characterisation)",
+      "source_url": "https://github.com/hughsie/colord/blob/main/data/profiles/GRACoL_TR006_coated.iccprofile.xml",
+      "author": "colord project (Richard Hughes and contributors)",
+      "licence": "CC0-1.0",
+      "licence_evidence": "data/profiles/GRACoL_TR006_coated.iccprofile.xml declares <license>CC0</license>; the profile's copyright tag reads 'This profile is free of known copyright restrictions'",
+      "licence_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "built_by": "Ubuntu package colord-data 1.4.7-1build2 (/usr/share/color/icc/colord/GRACoL_TR006_coated.icc)",
+      "retrieved_at": "2026-10-11",
+      "default_tac_limit_percent": 300
+    }
+  }
+}
