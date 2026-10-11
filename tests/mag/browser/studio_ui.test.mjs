@@ -44,8 +44,13 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     await page.fill("#chat-text", "قصة عن البحر بألوان الصورة دي");
     await page.click("#chat-send");
     await page.waitForFunction(() => document.querySelector("#chat-status").textContent.includes("NO_MODEL"));
-    assert.ok(await page.isVisible("text=claude_desktop_config.json"));
-    for (const hash of ["start", "home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "doctor", "settings", "audit"]) {
+    // «توصيل Claude Desktop» at the bottom of the menu: status, steps, config snippet, self-test of the real command
+    await page.click('#nav a[href="#mcp"]');
+    await page.waitForSelector("#mcp-snippet");
+    assert.ok((await page.textContent("#mcp-snippet")).includes("modulex-studio"));
+    await page.click("#mcp-test");
+    await page.waitForFunction(() => document.querySelector("#mcp-result").textContent.includes("✓"), null, { timeout: 90000 });
+    for (const hash of ["start", "home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "mcp", "doctor", "settings", "audit"]) {
       await page.click(`#nav a[href="#${hash}"]`);
       await page.waitForFunction((h) => document.querySelector(`#nav a[href="#${h}"]`).classList.contains("active"), hash);
       await page.waitForFunction(() => document.querySelector("#view").innerHTML.length > 0);

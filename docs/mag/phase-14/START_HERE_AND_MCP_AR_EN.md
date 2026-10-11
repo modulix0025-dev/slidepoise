@@ -34,6 +34,11 @@ The assistant starts in **suggestion-only** mode; press «اختبر المود�
 
 **EN:** The MCP server (`mxstudio-cli.exe mcp`, stdio, no console window) exposes every Studio tool plus `studio_manual`, `studio_view_preview` (returns the rendered pages as an image so Claude can look), `studio_add_reference_image` (file path or base64), `studio_view_reference` and `studio_pending_approvals`. It shares the Studio's workspace, so builds made from Claude Desktop show up in the Studio and vice versa. Anything irreversible is **queued** — the operator approves it in the Studio window.
 
+### قسم «توصيل Claude Desktop» (آخر القايمة الجانبية) · The «Connect Claude Desktop» section
+**AR:** بيبيّن إذا كان Claude Desktop متسطّب ومتوصّل، ومكان ملف إعداداته. زرار «وصّل تلقائيًا» بيضيف الاستوديو لملف `claude_desktop_config.json` (بعد ما ياخد نسخة احتياطية منه، ومن غير ما يلمس أي إعداد أو سيرفر تاني، ولو الملف فيه خطأ بيرفض ويقولك ليه)، و«اختبر التوصيل» بيشغّل نفس الأمر اللي Claude Desktop هيشغّله ويتأكد إن الأدوات بترد، و«شيل التوصيل» بيرجّع الملف من غير الاستوديو. بعد التوصيل: اقفل Claude Desktop من أيقونته جنب الساعة (Quit) وافتحه تاني. الأزرار دي للإنسان بس — مفيش أداة للمساعد تقدر تلمس إعدادات Claude Desktop.
+
+**EN:** Shows whether Claude Desktop is installed and connected and where its config lives (including the Microsoft Store build's redirected folder). «Connect automatically» merges our entry into `claude_desktop_config.json` (timestamped backup first, other servers/settings untouched, invalid JSON refused, atomic write); «Test the connection» launches the exact command Claude Desktop will run and performs the MCP handshake; «Disconnect» removes only our entry. Human clicks only — no agent tool can touch Claude Desktop's config.
+
 ## ٣ · الأمان · Safety
 * The model acts only through typed, schema-checked tools; tool results are wrapped as data and instruction-like text is flagged.
 * Irreversible requests from any model (Studio chat, MCP, evals) become pending approvals; only the human UI session can decide (`ToolRegistry.decide` refuses any non-`ui:` actor; the HTTP route needs the Studio window's CSRF token). An approval mints a single-use token bound to that exact request and runs it as the human; the audit log records who.

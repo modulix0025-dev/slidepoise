@@ -81,3 +81,7 @@ td, th { border-bottom: 1px solid var(--xb-line); padding: 6px 8px; text-align: 
 .bubble.waiting { border-style: dashed; }
 .tile, section.xb-view, .chat-col, .side-col { min-width: 0; }
 .side-col pre, .pend pre { white-space: pre-wrap; word-break: break-all; }
+nav.xb-nav a.nav-bottom { margin-top: auto; border-top: 1px solid var(--xb-line); }
+.steps { margin: 0; padding-inline-start: 22px; line-height: 1.9; }
+.linkbtn { display: inline-block; text-decoration: none; border: 1px solid var(--xb-ink); padding: 7px 14px; color: var(--xb-ink); }
+code { font-family: var(--xb-num); word-break: break-all; }

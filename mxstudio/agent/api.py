@@ -121,6 +121,41 @@ def register(app, state) -> None:
         from mxstudio.mcp.server import client_config  # noqa: PLC0415
         return {"config": client_config()}
 
+    # -- Claude Desktop connection (human clicks only; these are not agent tools) ----------
+    def _entry() -> dict:
+        from mxstudio.mcp.server import client_config  # noqa: PLC0415
+        return client_config()["mcpServers"]["modulex-studio"]
+
+    def _desktop(call):
+        from mxstudio.mcp.clients import ConfigProblem  # noqa: PLC0415
+        try:
+            return call()
+        except ConfigProblem as exc:
+            raise HTTPException(409, {"code": "CONFIG_PROBLEM", "ar": exc.ar, "en": exc.en}) from exc
+
+    @app.get("/api/mcp/claude-desktop")
+    def desktop_status():
+        from mxstudio.mcp import clients  # noqa: PLC0415
+        return _desktop(lambda: clients.status(_entry()))
+
+    @app.post("/api/mcp/claude-desktop/install")
+    def desktop_install(request: Request):
+        from mxstudio.mcp import clients  # noqa: PLC0415
+        app.state.human(request)
+        return _desktop(lambda: clients.install(_entry()))
+
+    @app.post("/api/mcp/claude-desktop/remove")
+    def desktop_remove(request: Request):
+        from mxstudio.mcp import clients  # noqa: PLC0415
+        app.state.human(request)
+        return _desktop(clients.remove)
+
+    @app.post("/api/mcp/self-test")
+    def mcp_self_test(request: Request):
+        from mxstudio.mcp import clients  # noqa: PLC0415
+        app.state.human(request)
+        return clients.self_test(_entry())
+
     # -- model qualification (a human click; it calls the configured model) ---------------
     @app.post("/api/agent/qualify")
     def qualify_model():

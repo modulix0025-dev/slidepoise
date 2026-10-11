@@ -5,7 +5,7 @@
 
 const I18N = {
   ar: {
-    app: "استوديو المجلات", "nav.start": "ابدأ هنا", "nav.home": "حالة البرنامج", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
+    app: "استوديو المجلات", "nav.start": "ابدأ هنا", "nav.mcp": "توصيل Claude Desktop", "nav.home": "حالة البرنامج", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
     "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة", "nav.marketing": "التسويق والمبيعات",
     "nav.agent": "المساعد", "nav.doctor": "الفحص الشامل", "nav.settings": "الإعدادات", "nav.audit": "السجل",
     "confirm.title": "تأكيد خطوة مالهاش رجوع", "confirm.yes": "أيوه، نفّذ", "confirm.no": "لأ",
@@ -18,7 +18,7 @@ const I18N = {
     keyValue: "قيمة المفتاح", auditEmpty: "مفيش عمليات لسه.", openCanvas: "افتح لوحة الرسم",
   },
   en: {
-    app: "Magazine Studio", "nav.start": "Start here", "nav.home": "Status", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
+    app: "Magazine Studio", "nav.start": "Start here", "nav.mcp": "Connect Claude Desktop", "nav.home": "Status", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
     "nav.shapes": "Shapes & drawing", "nav.colour": "Colour & taste", "nav.kit": "Connect my systems",
     "nav.qa": "Pre-print QA", "nav.marketing": "Marketing & sales", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
     "nav.audit": "Audit log", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
@@ -77,6 +77,9 @@ function pre(data) { return `<pre>${esc(JSON.stringify(data, null, 1))}</pre>`; 
 const VIEWS = {
   async start() {
     await window.MXS_START({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
+  },
+  async mcp() {
+    await window.MXS_MCP({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
   },
   async home() {
     const [health, features, jobs, budget] = await Promise.all([api("/api/health"), api("/api/features"),

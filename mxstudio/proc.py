@@ -47,3 +47,10 @@ def spawn_hidden(cmd: list[str], *, env: dict[str, str] | None = None, cwd: str 
     out = open(log_path, "ab") if log_path else subprocess.DEVNULL  # noqa: SIM115 - handed to the child
     return subprocess.Popen(cmd, env=child_env(env), cwd=str(cwd) if cwd else None, stdin=subprocess.DEVNULL,
                             stdout=out, stderr=subprocess.STDOUT, creationflags=creation_flags())
+
+
+def run_hidden_scripted(cmd: list[str], script: bytes, *, env: dict[str, str] | None = None,
+                        timeout: float | None = None) -> subprocess.CompletedProcess:
+    """Like `run_hidden`, but stdin is a fixed, pre-written script (e.g. an MCP handshake) — never a person."""
+    return subprocess.run(cmd, env=child_env(env), timeout=timeout, input=script, stdout=subprocess.PIPE,
+                          stderr=subprocess.PIPE, creationflags=creation_flags(), check=False)

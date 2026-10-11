@@ -287,3 +287,68 @@ def test_mcp_client_config_points_at_this_install():
     from mxstudio.mcp.server import client_config
     entry = client_config()["mcpServers"]["modulex-studio"]
     assert entry["command"] == sys.executable and entry["args"] == ["-m", "mxstudio", "mcp"]
+
+
+# -- Claude Desktop connection ------------------------------------------------------------------------
+def test_claude_desktop_config_is_merged_backed_up_and_never_broken(tmp_path):
+    from mxstudio.mcp import clients
+    from mxstudio.mcp.server import client_config
+    entry = client_config()["mcpServers"]["modulex-studio"]
+    path = tmp_path / "Claude" / "claude_desktop_config.json"
+    path.parent.mkdir()
+    original = {"mcpServers": {"filesystem": {"command": "npx", "args": ["x"]}}, "globalShortcut": "Ctrl+Space"}
+    path.write_text(json.dumps(original), encoding="utf-8")
+    before = clients.status(entry, [path])
+    assert before["claude_desktop_found"] and not before["connected"] and before["other_servers"] == ["filesystem"]
+    done = clients.install(entry, [path])
+    data = json.loads(path.read_text(encoding="utf-8"))
+    assert data["mcpServers"]["modulex-studio"] == entry
+    assert data["mcpServers"]["filesystem"] == original["mcpServers"]["filesystem"]
+    assert data["globalShortcut"] == "Ctrl+Space"
+    assert json.loads(Path(done["backup"]).read_text(encoding="utf-8")) == original
+    assert clients.status(entry, [path])["connected"] is True
+    assert clients.remove([path])["removed"] and "modulex-studio" not in json.loads(path.read_text())["mcpServers"]
+    path.write_text("{ broken", encoding="utf-8")
+    with pytest.raises(clients.ConfigProblem):
+        clients.install(entry, [path])
+    assert path.read_text(encoding="utf-8") == "{ broken"  # untouched
+    assert clients.status(entry, [path])["problem"]["ar"]
+
+
+def test_claude_desktop_config_created_when_claude_desktop_has_its_folder(tmp_path):
+    from mxstudio.mcp import clients
+    missing = tmp_path / "nowhere" / "claude_desktop_config.json"
+    folder = tmp_path / "Claude" / "claude_desktop_config.json"
+    folder.parent.mkdir()
+    assert clients.config_path([missing, folder]) == folder  # the folder Claude Desktop made wins
+    clients.install({"command": "x", "args": ["mcp"]}, [missing, folder])
+    assert json.loads(folder.read_text())["mcpServers"]["modulex-studio"]["args"] == ["mcp"]
+    assert not missing.exists()
+
+
+def test_self_test_starts_the_server_exactly_as_claude_desktop_will(tmp_path, monkeypatch):
+    from mxstudio.mcp import clients
+    from mxstudio.mcp.server import client_config
+    monkeypatch.setenv("MXS_HOME", str(tmp_path / "home"))
+    monkeypatch.setenv("MXS_WORKSPACE", str(tmp_path / "ws"))
+    monkeypatch.setenv("PYTHONPATH", str(ROOT))
+    result = clients.self_test(client_config()["mcpServers"]["modulex-studio"])
+    assert result["ok"] and result["tools"] > 40 and result["server"]["name"] == "modulex-magazine-studio"
+    broken = clients.self_test({"command": str(tmp_path / "no-such.exe"), "args": ["mcp"]})
+    assert broken["ok"] is False and broken["ar"]
+
+
+def test_connection_routes_need_the_studio_window(state, tmp_path, monkeypatch):
+    from mxstudio.mcp import clients
+    target = tmp_path / "Claude" / "claude_desktop_config.json"
+    target.parent.mkdir()
+    monkeypatch.setattr(clients, "config_candidates", lambda: [target])
+    app, client, headers = _ui(state)
+    assert client.get("/api/mcp/claude-desktop").json()["connected"] is False
+    assert client.post("/api/mcp/claude-desktop/install", json={}).status_code == 403  # no CSRF: not the window
+    assert not target.exists()
+    assert client.post("/api/mcp/claude-desktop/install", json={}, headers=headers).json()["path"] == str(target)
+    assert client.get("/api/mcp/claude-desktop").json()["connected"] is True
+    assert client.post("/api/mcp/claude-desktop/remove", json={}, headers=headers).json()["removed"] is True
+    names = {s["name"] for s in state.tools.specs()}
+    assert not any("claude" in n or "desktop" in n for n in names)  # no agent tool can touch Claude Desktop

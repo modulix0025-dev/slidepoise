@@ -13,7 +13,8 @@ window.MXS_START = (function () {
       noModel: "مفيش موديل متظبط. من «الإعدادات» اختار Claude وحط المفتاح، أو حط عنوان موديل الـGPU بتاعك — أو وصّل Claude Desktop بالـMCP تحت.",
       suggest: "المساعد في وضع «اقتراح بس»: هيقترح ومش هينفّذ لحد ما الموديل يعدّي اختبار الأمان.",
       qualify: "اختبر الموديل", qualifying: "بيختبر… (بيكلّم الموديل كام مرة)", mcp: "التحكم من Claude Desktop / Claude Code (MCP)",
-      mcpHelp: "حط ده في إعدادات MCP عند العميل (claude_desktop_config.json أو .mcp.json). أي خطوة مالهاش رجوع هتظهرلك هنا في «طلبات الموافقة».",
+      mcpHelp: "خلّي Claude Desktop يبني ويعدّل في الاستوديو باشتراكك العادي. أي خطوة مالهاش رجوع هتظهرلك هنا في «طلبات الموافقة».",
+      mcpGo: "خطوات التوصيل ←",
       you: "انت", agent: "المساعد", plan: "الخطة", open: "افتح بالحجم الكامل", failed: "حصلت مشكلة",
     },
     en: {
@@ -25,7 +26,8 @@ window.MXS_START = (function () {
       noModel: "No model is configured. In Settings choose Claude and add the key, or set your GPU model URL — or connect Claude Desktop through MCP below.",
       suggest: "The assistant is in suggestion-only mode until the model passes the safety check.",
       qualify: "Check the model", qualifying: "Checking… (calls the model a few times)", mcp: "Control from Claude Desktop / Claude Code (MCP)",
-      mcpHelp: "Put this in the client's MCP settings (claude_desktop_config.json or .mcp.json). Irreversible steps show up here under Pending approvals.",
+      mcpHelp: "Let Claude Desktop build and revise in the Studio with your normal subscription. Irreversible steps show up here under Pending approvals.",
+      mcpGo: "Connection steps →",
       you: "You", agent: "Assistant", plan: "Plan", open: "Open full size", failed: "Something went wrong",
     },
   };
@@ -36,7 +38,7 @@ window.MXS_START = (function () {
     const { api, esc, tile, view, lang } = ctx;
     const s = (key) => (S[lang] || S.ar)[key];
     const seq = ctx.seq();
-    const [settings, chats, mcp] = await Promise.all([api("/api/settings"), api("/api/agent/conversations"), api("/api/mcp/config")]);
+    const [settings, chats] = await Promise.all([api("/api/settings"), api("/api/agent/conversations")]);
     if (seq !== ctx.seq()) return;
     const tv = (settings.providers || {}).text_vision || {};
     const mode = (settings.agent || {}).mode || "suggest_only";
@@ -62,7 +64,7 @@ window.MXS_START = (function () {
       <div class="side-col">
         ${tile(s("preview"), `<div id="preview">${esc(s("noPreview"))}</div>`)}
         ${tile(s("pending"), `<div id="pending"></div>`)}
-        ${tile(s("mcp"), `<p class="lead">${esc(s("mcpHelp"))}</p><pre>${esc(JSON.stringify(mcp.config || mcp, null, 2))}</pre>`)}
+        ${tile(s("mcp"), `<p class="lead">${esc(s("mcpHelp"))}</p><a class="xb ghost linkbtn" href="#mcp">${esc(s("mcpGo"))}</a>`)}
       </div></div>`;
 
     const status = (text) => { document.getElementById("chat-status").textContent = text || ""; };
