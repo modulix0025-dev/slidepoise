@@ -293,6 +293,11 @@ jobs:
           catch { Write-Host "::error title=standard-user-proof threw::$($_.Exception.Message) @ $($_.InvocationInfo.PositionMessage -replace '\r?\n',' ')"; $code = 1 }
           $j = Join-Path $p.OutDir "standard_user_proof.json"
           if (Test-Path $j) { Write-Host "::notice title=standard-user-proof result::$((Get-Content -Raw $j | ConvertFrom-Json | ConvertTo-Json -Depth 6 -Compress))" }
+          $m = Join-Path $p.OutDir "msi.log"
+          if ((Test-Path $m) -and $code -ne 0) {
+            $tail = Get-Content $m -Encoding Unicode -ErrorAction SilentlyContinue | Select-String -Pattern "Return value 3|Error \d{4}|error code|MainEngineThread is returning" | Select-Object -Last 6 | ForEach-Object { $_.Line.Trim() }
+            if ($tail) { Write-Host "::notice title=msi.log::$($tail -join ' | ')" }
+          }
           $d = Join-Path $p.OutDir "doctor-standard-user.json"
           if (Test-Path $d) {
             $bad = (Get-Content -Raw $d | ConvertFrom-Json).checks | Where-Object { $_.level -in @("warn", "red") } | ForEach-Object { "$($_.id)=$($_.level)" }

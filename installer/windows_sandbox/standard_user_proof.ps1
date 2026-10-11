@@ -77,6 +77,16 @@ Set-Content -Path "$Proof\inner.ps1" -Value $Inner -Encoding ASCII
 Remove-Item "$Proof\inner.json" -ErrorAction SilentlyContinue
 
 # 4. run it as the standard user (RunLevel Limited = never elevated)
+# A scheduled task is a BATCH logon: its token lacks the INTERACTIVE SID, and the Windows Installer
+# service grants SERVICE_START to interactive users, so a standard user's msiexec gets 1601 when the
+# service is stopped. On a real desktop the operator is interactive and starts it implicitly; here the
+# harness starts it (it changes no rights of the test user) and records that it did.
+$MsiServerWasRunning = $true
+if ($Parts -contains "msi") {
+    $svc = Get-Service -Name msiserver
+    $MsiServerWasRunning = ($svc.Status -eq "Running")
+    if (-not $MsiServerWasRunning) { Start-Service -Name msiserver; (Get-Service msiserver).WaitForStatus("Running", "00:00:30") }
+}
 $Task = "mxs-standard-user-proof"
 Unregister-ScheduledTask -TaskName $Task -Confirm:$false -ErrorAction SilentlyContinue
 $Action = New-ScheduledTaskAction -Execute "powershell.exe" -Argument "-NoProfile -NonInteractive -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$Proof\inner.ps1`""
@@ -90,7 +100,8 @@ do {
 $Info = Get-ScheduledTaskInfo -TaskName $Task
 
 # 5. verdict (facts only)
-$Result = [ordered]@{ parts = $Parts; task_last_result = $Info.LastTaskResult; finished = (Test-Path "$Proof\inner.json") }
+$Result = [ordered]@{ parts = $Parts; task_last_result = $Info.LastTaskResult; finished = (Test-Path "$Proof\inner.json");
+    msiserver_started_by_harness = (-not $MsiServerWasRunning) }
 if ($Result.finished) {
     $InnerResult = Get-Content -Raw -Encoding UTF8 "$Proof\inner.json" | ConvertFrom-Json
     $Result.inner = $InnerResult
