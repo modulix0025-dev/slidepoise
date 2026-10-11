@@ -9,9 +9,9 @@ deck).
 from __future__ import annotations
 
 import json
-import os
-import subprocess
 from pathlib import Path
+
+from mxstudio.proc import run_hidden
 
 from slidepoise.print_geometry import PageSpec
 
@@ -97,11 +97,8 @@ def render(spec: dict, output: Path, python: str | None = None) -> Path:
     spec_path = output.with_suffix(".spec.json")
     payload = {key: value for key, value in spec.items() if not key.startswith("_")}
     spec_path.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
-    env = dict(os.environ)
-    if python:
-        env["PYTHON"] = python
-    proc = subprocess.run(["node", str(RENDERER), "--input", str(spec_path), "--output", str(output)],
-                          capture_output=True, text=True, env=env)
+    proc = run_hidden(["node", str(RENDERER), "--input", str(spec_path), "--output", str(output)],
+                      env={"PYTHON": python} if python else None, timeout=300)
     if proc.returncode != 0:
-        raise RuntimeError(f"renderer failed: {proc.stderr or proc.stdout}")
+        raise RuntimeError(f"renderer failed: {(proc.stderr or proc.stdout).decode('utf-8', 'replace')}")
     return output

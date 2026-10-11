@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="day">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ModuleX Magazine Studio</title>
+<link rel="stylesheet" href="/ui/crossbar.css">
+</head>
+<body>
+<header class="xb-hd">
+  <div class="logo" title="ModuleX"><img src="/ui/logo-placeholder.svg" alt="X" width="26" height="26"></div>
+  <div><div class="title" data-i18n="app">استوديو المجلات</div><div class="sub">ModuleX World</div></div>
+  <div class="spacer"></div>
+  <button id="lang-toggle" type="button">English</button>
+  <button id="theme-toggle" type="button" aria-label="day/night">☾</button>
+</header>
+<main>
+  <nav class="xb-nav" id="nav">
+    <a href="#home" data-i18n="nav.home">الرئيسية</a>
+    <a href="#stories" data-i18n="nav.stories">القصص والقوالب</a>
+    <a href="#fonts" data-i18n="nav.fonts">الخطوط</a>
+    <a href="#shapes" data-i18n="nav.shapes">الأشكال والرسم</a>
+    <a href="#colour" data-i18n="nav.colour">الألوان والذوق</a>
+    <a href="#kit" data-i18n="nav.kit">ربط أنظمتي</a>
+    <a href="#qa" data-i18n="nav.qa">فحص قبل الطباعة</a>
+    <a href="#agent" data-i18n="nav.agent">المساعد</a>
+    <a href="#doctor" data-i18n="nav.doctor">الفحص الشامل</a>
+    <a href="#settings" data-i18n="nav.settings">الإعدادات</a>
+    <a href="#audit" data-i18n="nav.audit">السجل</a>
+  </nav>
+  <section class="xb-view" id="view" aria-live="polite"></section>
+</main>
+<dialog id="confirm-dialog">
+  <h3 data-i18n="confirm.title">تأكيد خطوة مالهاش رجوع</h3>
+  <p id="confirm-text"></p>
+  <div class="row"><button class="xb" id="confirm-yes" type="button" data-i18n="confirm.yes">أيوه، نفّذ</button>
+    <button class="xb ghost" id="confirm-no" type="button" data-i18n="confirm.no">لأ</button></div>
+</dialog>
+<script src="/ui/app.js"></script>
+</body>
+</html>

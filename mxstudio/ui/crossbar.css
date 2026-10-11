@@ -1,0 +1,57 @@
+/* Crossbar skin — tokens copied from OrderManagement/app/static/mx-crossbar.css (brief Appendix I).
+   Strictly black & white chrome; colour lives only in the user's content. */
+@font-face { font-family: "XB Kufi"; src: local("Noto Kufi Arabic"), local("NotoKufiArabic-Regular"); }
+@font-face { font-family: "XB Petch"; src: local("Chakra Petch"), local("ChakraPetch-Medium"); }
+
+:root, :root[data-theme="day"] {
+  --xb-paper:#f4f4f2; --xb-ink:#0a0a0a; --xb-ink2:#2b2b2b;
+  --xb-tile:#ffffff; --xb-chip:#eeeeec; --xb-chip2:#e4e4e1; --xb-gray:#d4d4d4;
+  --xb-line:#d6d6d2; --xb-dash:#c4c4c4;
+  --xb-mute:#4a4a4a; --xb-mute2:#5a5a5a; --xb-mid:#3a3a3a;
+  --xb-shadow:#0a0a0a; --xb-shadow2:#9a9a9a; --xb-wash:rgba(10,10,10,.06); --xb-edge:#0a0a0a;
+  --xb-hd-bg:#0a0a0a; --xb-hd-fg:#ffffff; --xb-hd-mute:#b5b5b5;
+  --xb-dock:#0a0a0a; --xb-dock-fg:#f4f4f2;
+  --xb-font:'XB Kufi','Almarai',system-ui,sans-serif;
+  --xb-num:'XB Petch','XB Kufi',ui-monospace,monospace;
+}
+:root[data-theme="night"] {
+  --xb-paper:#0e0e0e; --xb-ink:#f2f2f0; --xb-ink2:#d6d6d6;
+  --xb-tile:#171717; --xb-chip:#232323; --xb-chip2:#2b2b2b; --xb-gray:#262626;
+  --xb-line:#2c2c2c; --xb-dash:#3a3a3a; --xb-edge:#3a3a3a;
+  --xb-mute:#b8b8b8; --xb-mute2:#a3a3a3; --xb-mid:#c4c4c4;
+  --xb-shadow:#000000; --xb-shadow2:#000000; --xb-wash:rgba(242,242,240,.07);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--xb-paper); color: var(--xb-ink); font-family: var(--xb-font); }
+body { min-height: 100vh; display: grid; grid-template-rows: auto 1fr; }
+header.xb-hd { background: var(--xb-hd-bg); color: var(--xb-hd-fg); display: flex; align-items: center; gap: 14px;
+  padding: 10px 18px; }
+header .logo { width: 38px; height: 38px; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+header .title { font-weight: 800; letter-spacing: .2px; }
+header .sub { color: var(--xb-hd-mute); font-size: 12px; }
+header .spacer { flex: 1; }
+header button { background: transparent; color: var(--xb-hd-fg); border: 1px solid #555; padding: 6px 10px;
+  font: inherit; cursor: pointer; }
+main { display: grid; grid-template-columns: 220px 1fr; min-height: 0; }
+nav.xb-nav { border-inline-end: 1px solid var(--xb-line); padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+nav.xb-nav a { color: var(--xb-ink); text-decoration: none; padding: 9px 12px; border: 1px solid transparent; }
+nav.xb-nav a.active, nav.xb-nav a:hover { border-color: var(--xb-edge); background: var(--xb-tile); }
+section.xb-view { padding: 20px 24px; overflow: auto; }
+.tile { background: var(--xb-tile); border: 1px solid var(--xb-line); padding: 14px 16px; margin-bottom: 14px;
+  box-shadow: 4px 4px 0 var(--xb-shadow2); }
+.tile h2 { margin: 0 0 8px; font-size: 18px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
+label { min-width: 160px; color: var(--xb-mute); }
+input, select, textarea { font: inherit; background: var(--xb-paper); color: var(--xb-ink); border: 1px solid var(--xb-edge);
+  padding: 7px 9px; min-width: 260px; }
+button.xb { font: inherit; background: var(--xb-ink); color: var(--xb-paper); border: 1px solid var(--xb-ink);
+  padding: 7px 14px; cursor: pointer; }
+button.xb.ghost { background: transparent; color: var(--xb-ink); }
+.num { font-family: var(--xb-num); }
+.ok { border-inline-start: 4px solid var(--xb-ink); padding-inline-start: 8px; }
+.bad { border-inline-start: 4px dashed var(--xb-ink); padding-inline-start: 8px; }
+pre { background: var(--xb-chip); padding: 10px; overflow: auto; direction: ltr; text-align: left; font-size: 12px; }
+dialog { border: 2px solid var(--xb-edge); background: var(--xb-tile); color: var(--xb-ink); max-width: 560px; }
+table { border-collapse: collapse; width: 100%; }
+td, th { border-bottom: 1px solid var(--xb-line); padding: 6px 8px; text-align: start; }
+@media (max-width: 760px) { main { grid-template-columns: 1fr; } nav.xb-nav { flex-direction: row; overflow-x: auto; } }

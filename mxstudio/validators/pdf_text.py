@@ -14,7 +14,6 @@ Equal on both ⇒ every word and every haraka of the deck is in the PDF.
 from __future__ import annotations
 
 import shutil
-import subprocess
 import unicodedata
 from collections import Counter
 from pathlib import Path
@@ -26,7 +25,8 @@ TATWEEL = "ـ"
 def extract_text(pdf: Path) -> str:
     exe = shutil.which("pdftotext")
     if exe:
-        proc = subprocess.run([exe, "-enc", "UTF-8", str(pdf), "-"], capture_output=True, check=True)
+        from mxstudio.proc import run_hidden  # noqa: PLC0415
+        proc = run_hidden([exe, "-enc", "UTF-8", str(pdf), "-"], check=True, timeout=120)
         return proc.stdout.decode("utf-8", "replace")
     import pypdfium2 as pdfium  # noqa: PLC0415 - permissive fallback when Poppler is absent
     document = pdfium.PdfDocument(str(pdf))

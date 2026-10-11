@@ -24,7 +24,8 @@
   },
   "scripts": {
     "test": "node --test tests/console_interactions.test.mjs tests/panel_interactions.test.mjs tests/dialog_dismiss.test.mjs",
-    "test:browser": "node --test tests/browser/*.test.mjs"
+    "test:browser": "node --test tests/browser/*.test.mjs",
+    "test:mag-browser": "node --test tests/mag/browser/*.test.mjs"
   },
   "files": [
     "bin/",
