@@ -5,6 +5,10 @@ name: Magazine Studio Release
 #
 #   tag push  mxs-v<X.Y.Z>  -> full pipeline + release (X.Y.Z must equal mxstudio.config.APP_VERSION)
 #   manual dispatch         -> full pipeline; release only when "publish" is ticked
+#   push to the Studio development branch touching the release files -> build + smoke only, NO
+#                           release: the installers are run artifacts (a manual dispatch needs this
+#                           file on the default branch). Unpinned Full payload entries are allowed
+#                           there and recorded as missing.
 #
 # Free-only (docs/mag/decisions/FREE_ALTERNATIVES_AR_EN.md): NSIS 3, GitHub Releases, no paid
 # certificate. PyInstaller must run on Windows; NSIS is not preinstalled on windows-latest, so
@@ -24,6 +28,12 @@ on:
   push:
     tags:
       - "mxs-v*"
+    branches:
+      - "claude/adoring-mccarthy-zgg4ek"
+    paths:
+      - ".github/workflows/mag-release.yml"
+      - "installer/**"
+      - "mxstudio/config.py"
   workflow_dispatch:
     inputs:
       allow_unpinned:
@@ -121,7 +131,7 @@ jobs:
       - name: Fetch the Full payload (pinned sha256; strict unless allow_unpinned)
         run: |
           extra=""
-          if [[ "${{ inputs.allow_unpinned }}" == "true" ]]; then extra="--allow-unpinned"; fi
+          if [[ "${{ inputs.allow_unpinned }}" == "true" || "${{ github.ref_type }}" == "branch" ]]; then extra="--allow-unpinned"; fi
           python installer/fetch_offline_payload.py --out workspace/offline $extra
       - uses: actions/upload-artifact@v4
         with:
