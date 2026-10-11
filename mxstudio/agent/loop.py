@@ -42,12 +42,16 @@ class AgentRun:
     questions: int = 0
     pending: dict | None = None
     flags: list[str] = field(default_factory=list)
+    messages: list[dict] = field(default_factory=list)  # this turn's conversation (no system prompt)
+    tool_results: list[dict] = field(default_factory=list)  # {"tool", "ok", "code", "result"} per call
 
 
 def system_prompt(state, manual: dict, task: str) -> str:
     tools = [{"name": s["name"], "irreversible": s["irreversible"], "schema": s["input_schema"],
               "purpose": s["description_en"]} for s in state.tools.specs()]
-    context = "\n\n".join(f"[{s['title']}]\n{s['text'][:1500]}" for s in retrieve(manual, task, 6))
+    chosen = retrieve(manual, task, 6)
+    always = [s for s in manual["sections"] if s["id"] == "playbook:design_from_brief" and s not in chosen]
+    context = "\n\n".join(f"[{s['title']}]\n{s['text'][:3000]}" for s in always + chosen)
     return (f"You are the ModuleX Magazine Studio agent. Reply with ONE JSON object per turn.\n{RULES}\n"
             f"Tools:\n{json.dumps(tools, ensure_ascii=False)}\n\nRelevant manual sections:\n{context}")
 
@@ -59,45 +63,76 @@ def _parse(text: str) -> dict:
     return json.loads(match.group(0))
 
 
-def run(state, provider, task: str, manual: dict, max_steps: int = MAX_STEPS) -> AgentRun:
+def run(state, provider, task: str, manual: dict, max_steps: int = MAX_STEPS, *, history: list[dict] | None = None,
+        images: list[bytes] | None = None) -> AgentRun:
+    """One operator turn. `history` = earlier turns of the same conversation (user/assistant messages,
+    images included), so «كبّر الاسم» refers to what was built before. `images` go with this turn's text."""
     agent = AgentRun(task=task)
-    messages = [{"role": "system", "content": system_prompt(state, manual, task)}, {"role": "user", "content": task}]
+    first = {"role": "user", "content": task}
+    if images:
+        first["images"] = list(images)
+    turn = [first]
+    messages = [{"role": "system", "content": system_prompt(state, manual, task)}, *(history or []), *turn]
     for _ in range(max_steps):
-        reply = provider.chat(messages, max_tokens=1200)
+        reply = provider.chat(messages, max_tokens=4096)
         messages.append({"role": "assistant", "content": reply["text"]})
+        turn.append(messages[-1])
         try:
             move = _parse(reply["text"])
         except (ValueError, json.JSONDecodeError) as exc:
             messages.append({"role": "user", "content": f"Invalid reply ({exc}). Reply with one JSON object."})
+            turn.append(messages[-1])
             continue
         agent.transcript.append(move)
         if "plan" in move:
             agent.plan = [str(step) for step in move["plan"]][:20]
             messages.append({"role": "user", "content": "Plan shown to the operator. Continue."})
+            turn.append(messages[-1])
         elif "ask" in move:
             agent.questions += 1
             if agent.questions > 1:
                 messages.append({"role": "user", "content": "Only one question is allowed; act on the most reasonable "
                                                             "reading and state which reading you took."})
+                turn.append(messages[-1])
                 continue
             agent.status, agent.report = "asked", str(move["ask"])
+            agent.messages = turn
             return agent
         elif "tool" in move:
             name, args = str(move["tool"]), move.get("args") or {}
             result = state.tools.call(name, args, actor="agent")
+            agent.tool_results.append({"tool": name, "ok": bool(result.get("ok")), "code": result.get("code"),
+                                       "result": result.get("result")})
             if result.get("code") == "CONFIRMATION_REQUIRED":
-                agent.status, agent.pending = "needs_confirmation", {"tool": name, "args": args}
+                agent.status = "needs_confirmation"
+                agent.pending = {"tool": name, "args": args, "pending_id": result.get("pending_id")}
                 agent.report = result["ar"]
+                messages.append({"role": "user", "content": wrap_data(result)})
+                turn.append(messages[-1])
+                agent.messages = turn
                 return agent
             wrapped = wrap_data(result)
             if '"instruction_like_text_found": true' in wrapped:
                 agent.flags.append(f"instruction-like text inside the result of {name} was treated as data")
-            messages.append({"role": "user", "content": wrapped})
+            message = {"role": "user", "content": wrapped}
+            preview = result.get("result", {}).get("preview_sha") if isinstance(result.get("result"), dict) else None
+            if preview:  # let the model look at what it built before it reports or revises
+                from mxstudio.agent.studio import model_image  # noqa: PLC0415
+                picture = model_image(state, preview)
+                if picture:
+                    message.update(images=[picture], image_shas=[preview])
+                    message["content"] += ("\n(Attached: the rendered preview of every built page. Look at it and "
+                                           "judge it before you report or revise.)")
+            messages.append(message)
+            turn.append(messages[-1])
         elif "final" in move:
             agent.status, agent.report = "done", str(move["final"])
+            agent.messages = turn
             return agent
         else:
             messages.append({"role": "user", "content": "Unknown move. Use plan, tool, ask or final."})
+            turn.append(messages[-1])
     agent.status = "failed"
     agent.report = "step limit reached"
+    agent.messages = turn
     return agent

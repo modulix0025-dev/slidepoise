@@ -35,7 +35,17 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     await page.goto(`http://127.0.0.1:${port}/`);
     assert.equal(await page.getAttribute("html", "dir"), "rtl");
     assert.equal(await page.getAttribute("html", "lang"), "ar");
-    for (const hash of ["home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "doctor", "settings", "audit"]) {
+    // «ابدأ هنا» is the first page: chat, picture upload (stored and shown), honest "no model" answer
+    await page.waitForSelector("#chat-text");
+    assert.equal(await page.getAttribute('#nav a[href="#start"]', "class"), "active");
+    const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAFElEQVR4nGP8tNiKARtgwio6aCUAbekB3/mw8Q8AAAAASUVORK5CYII=", "base64");
+    await page.setInputFiles("#chat-files", { name: "design.png", mimeType: "image/png", buffer: png });
+    await page.waitForSelector("#attached .thumb img");
+    await page.fill("#chat-text", "قصة عن البحر بألوان الصورة دي");
+    await page.click("#chat-send");
+    await page.waitForFunction(() => document.querySelector("#chat-status").textContent.includes("NO_MODEL"));
+    assert.ok(await page.isVisible("text=claude_desktop_config.json"));
+    for (const hash of ["start", "home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "doctor", "settings", "audit"]) {
       await page.click(`#nav a[href="#${hash}"]`);
       await page.waitForFunction((h) => document.querySelector(`#nav a[href="#${h}"]`).classList.contains("active"), hash);
       await page.waitForFunction(() => document.querySelector("#view").innerHTML.length > 0);

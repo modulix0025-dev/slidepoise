@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from mxstudio.providers.base import ComfyUIRemote, ManualExchange, OpenAICompatible, ProviderError
+from mxstudio.providers.base import AnthropicClaude, ComfyUIRemote, ManualExchange, OpenAICompatible, ProviderError
 
 POLICY = Path(__file__).resolve().parents[2] / "catalog" / "licence_policy.json"
 
@@ -34,6 +34,11 @@ def build_text_provider(config: dict, api_key: str | None = None):
         raise ProviderError("text/vision provider is not configured")
     if model_licence_findings(config.get("model", "")):
         raise ProviderError("model licence not allowed")
+    if config.get("kind") == "anthropic":
+        if not api_key:
+            raise ProviderError("set the Claude API key (secret provider.text_vision) in Settings")
+        return AnthropicClaude(api_key=api_key, model=config.get("model") or "claude-opus-5-5",
+                               effort=config.get("effort", "medium"))
     if config.get("kind") != "openai_compatible":
         raise ProviderError(f"unknown text provider kind {config.get('kind')!r}")
     return OpenAICompatible(base_url=config["base_url"], model=config["model"], api_key=api_key)

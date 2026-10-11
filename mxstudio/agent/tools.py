@@ -7,6 +7,9 @@
   Tokens are minted only by the UI for the human operator, bound to the exact
   tool + arguments, expire, and are single-use. The agent has no way to mint one.
 * Every call — accepted or refused — is written to the audit log.
+* When an agent (in-Studio chat, MCP client, eval) asks for an irreversible tool without a
+  token, the request is queued as a *pending approval*. Only a human in the Studio UI can
+  approve it; the approval mints a token for that human and runs the call as that human.
 """
 from __future__ import annotations
 
@@ -70,6 +73,9 @@ class _Store:
                                                  expires REAL, used REAL);
               CREATE TABLE IF NOT EXISTS audit (id INTEGER PRIMARY KEY AUTOINCREMENT, ts REAL, actor TEXT, tool TEXT,
                                                 args TEXT, outcome TEXT, code TEXT, token TEXT, summary TEXT);
+              CREATE TABLE IF NOT EXISTS pending (id TEXT PRIMARY KEY, ts REAL, actor TEXT, tool TEXT, args TEXT,
+                                                  reason TEXT, status TEXT, decided_by TEXT, decided_at REAL,
+                                                  result TEXT);
             """)
 
     def db(self):
@@ -142,11 +148,55 @@ class AuditLog:
         return [dict(zip(keys, row)) | {"args": json.loads(row[4])} for row in rows]
 
 
+class PendingApprovals:
+    """Irreversible requests from agents, waiting for a human decision in the Studio UI."""
+
+    def __init__(self, store: _Store, clock=time.time):
+        self.store, self.clock = store, clock
+
+    def add(self, actor: str, tool: str, args: dict, reason: str = "") -> str:
+        with self.store._lock, self.store.db() as db:
+            row = db.execute("SELECT id FROM pending WHERE status='pending' AND tool=? AND args=?",
+                             (tool, canonical_args(args))).fetchone()
+            if row:  # the same request asked twice stays one request
+                return row[0]
+            pending_id = secrets.token_hex(6)
+            db.execute("INSERT INTO pending VALUES (?,?,?,?,?,?, 'pending', NULL, NULL, NULL)",
+                       (pending_id, self.clock(), actor, tool, canonical_args(args), reason[:500]))
+        return pending_id
+
+    def get(self, pending_id: str) -> dict | None:
+        with self.store.db() as db:
+            row = db.execute("SELECT * FROM pending WHERE id=?", (pending_id,)).fetchone()
+        return self._row(row) if row else None
+
+    def list(self, status: str | None = "pending", limit: int = 50) -> list[dict]:
+        with self.store.db() as db:
+            rows = db.execute("SELECT * FROM pending WHERE (? IS NULL OR status=?) ORDER BY ts DESC LIMIT ?",
+                              (status, status, limit)).fetchall()
+        return [self._row(row) for row in rows]
+
+    def close(self, pending_id: str, status: str, human: str, result: dict | None = None) -> None:
+        with self.store._lock, self.store.db() as db:
+            db.execute("UPDATE pending SET status=?, decided_by=?, decided_at=?, result=? WHERE id=?",
+                       (status, human, self.clock(), json.dumps(result, ensure_ascii=False, default=str)[:4000]
+                        if result is not None else None, pending_id))
+
+    @staticmethod
+    def _row(row) -> dict:
+        keys = ("id", "ts", "actor", "tool", "args", "reason", "status", "decided_by", "decided_at", "result")
+        out = dict(zip(keys, row))
+        out["args"] = json.loads(out["args"])
+        out["result"] = json.loads(out["result"]) if out["result"] else None
+        return out
+
+
 class ToolRegistry:
     def __init__(self, path: Path, clock=time.time):
         store = _Store(path)
         self.tokens = ConfirmationTokens(store, clock)
         self.audit = AuditLog(store, clock)
+        self.pending = PendingApprovals(store, clock)
         self._tools: dict[str, Tool] = {}
 
     def register(self, tool: Tool) -> Tool:
@@ -178,9 +228,30 @@ class ToolRegistry:
             result = tool.handler(args)
         except ToolError as exc:
             self.audit.write(actor, name, args, "refused", exc.code)
-            return exc.as_dict()
+            out = exc.as_dict()
+            if exc.code == "CONFIRMATION_REQUIRED" and not confirmation_token and actor.startswith("agent"):
+                out["pending_id"] = self.pending.add(actor, name, args)
+                out["ar"] += " طلبك اتسجّل في «طلبات الموافقة» في الاستوديو."
+                out["en"] += " The request is queued under Pending approvals in the Studio."
+            return out
         except Exception as exc:  # noqa: BLE001 - every failure is reported and audited
             self.audit.write(actor, name, args, "error", type(exc).__name__, summary=str(exc))
             return {"ok": False, "code": "TOOL_FAILED", "ar": "الأداة فشلت.", "en": str(exc)}
         self.audit.write(actor, name, args, "ok", token=token_ref, summary=json.dumps(result, ensure_ascii=False)[:500])
         return {"ok": True, "result": result}
+
+    def decide(self, pending_id: str, approve: bool, human: str) -> dict:
+        """A human decision on a queued request. Approving runs it now, as the human, with a fresh token."""
+        if not human.startswith("ui:"):
+            raise ToolError("HUMAN_ONLY", "القرار ده للإنسان من شاشة الاستوديو بس.", "only a human in the Studio UI decides")
+        item = self.pending.get(pending_id)
+        if item is None or item["status"] != "pending":
+            raise ToolError("NOT_PENDING", "الطلب ده مش موجود أو اتقرر قبل كده.", "no such pending request")
+        if not approve:
+            self.pending.close(pending_id, "rejected", human)
+            self.audit.write(human, item["tool"], item["args"], "rejected", "REJECTED_BY_HUMAN")
+            return {"ok": True, "status": "rejected"}
+        token = self.tokens.mint(item["tool"], item["args"], human=human)
+        result = self.call(item["tool"], item["args"], actor=human, confirmation_token=token)
+        self.pending.close(pending_id, "approved" if result.get("ok") else "failed", human, result)
+        return {"ok": bool(result.get("ok")), "status": "approved" if result.get("ok") else "failed", "result": result}

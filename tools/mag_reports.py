@@ -23,6 +23,9 @@ ROOT = Path(__file__).resolve().parents[1]
 EXTRAS = ("runtime", "studio")
 #: components whose metadata alone does not settle the licence question, with the reviewed reading
 REVIEWED = {
+    "anthropic": "MIT SDK. The Claude API it calls is a paid service the operator opted into for the Start-page "
+    "chat; optional - the free route is an open-weight model (Qwen3-VL) on the operator's GPU or Claude Desktop "
+    "over MCP.",
     "certifi": "MPL-2.0 (file-level copyleft): shipped unmodified; free for commercial use.",
     "pikepdf": "MPL-2.0 (file-level copyleft): shipped unmodified; its QPDF core is Apache-2.0.",
     "libreoffice_msi": "MPL-2.0: official binaries installed unmodified; free for commercial use.",

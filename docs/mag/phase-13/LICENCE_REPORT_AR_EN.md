@@ -8,20 +8,21 @@
 
 ## Code · الكود
 
-Python (43 distributions, runtime + studio closure):
+Python (50 distributions, runtime + studio closure):
 
 * Apache License 2.0: 1
 * Apache Software License: 1
+* Apache Software License / MIT License: 1
 * Apache-2.0: 1
 * Apache-2.0 OR BSD-2-Clause: 1
 * Apache-2.0 OR BSD-3-Clause: 1
 * BSD License: 2
 * BSD License / Other/Proprietary License: 1
-* BSD-3-Clause: 8
+* BSD-3-Clause: 10
 * BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0: 1
 * BSD-3-Clause, Apache-2.0, dependency licenses: 1
-* MIT: 15
-* MIT License: 3
+* MIT: 17
+* MIT License: 5
 * MIT License / OSI Approved: 1
 * MIT-0: 1
 * MIT-CMU: 1
@@ -71,6 +72,7 @@ Reserved Font Names are recorded per family; modified builds are renamed when an
 
 ## Reviewed items · مراجعة يدوية
 
+* anthropic: MIT SDK. The Claude API it calls is a paid service the operator opted into for the Start-page chat; optional - the free route is an open-weight model (Qwen3-VL) on the operator's GPU or Claude Desktop over MCP.
 * certifi: MPL-2.0 (file-level copyleft): shipped unmodified; free for commercial use.
 * jszip: dual MIT OR GPL-3.0-or-later: used under MIT.
 * libreoffice_msi: MPL-2.0: official binaries installed unmodified; free for commercial use.

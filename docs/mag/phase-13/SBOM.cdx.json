@@ -59,6 +59,25 @@
   },
   {
    "type": "library",
+   "name": "anthropic",
+   "version": "1.13.0",
+   "purl": "pkg:pypi/anthropic@1.13.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
    "name": "anyio",
    "version": "4.15.1",
    "purl": "pkg:pypi/anyio@4.15.1",
@@ -192,6 +211,25 @@
   },
   {
    "type": "library",
+   "name": "docstring_parser",
+   "version": "0.18.0",
+   "purl": "pkg:pypi/docstring_parser@0.18.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
    "name": "fastapi",
    "version": "0.143.0",
    "purl": "pkg:pypi/fastapi@0.143.0",
@@ -268,6 +306,25 @@
   },
   {
    "type": "library",
+   "name": "httpcore2",
+   "version": "2.13.1",
+   "purl": "pkg:pypi/httpcore2@2.13.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
    "name": "httpx",
    "version": "0.28.1",
    "purl": "pkg:pypi/httpx@0.28.1",
@@ -287,6 +344,25 @@
   },
   {
    "type": "library",
+   "name": "httpx2",
+   "version": "2.13.1",
+   "purl": "pkg:pypi/httpx2@2.13.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
    "name": "idna",
    "version": "3.20",
    "purl": "pkg:pypi/idna@3.20",
@@ -294,6 +370,25 @@
     {
      "license": {
       "name": "BSD-3-Clause"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "jiter",
+   "version": "0.17.0",
+   "purl": "pkg:pypi/jiter@0.17.0",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
      }
     }
    ],
@@ -686,6 +781,25 @@
   },
   {
    "type": "library",
+   "name": "sniffio",
+   "version": "1.3.1",
+   "purl": "pkg:pypi/sniffio@1.3.1",
+   "licenses": [
+    {
+     "license": {
+      "name": "Apache Software License / MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
    "name": "starlette",
    "version": "1.7.0",
    "purl": "pkg:pypi/starlette@1.7.0",
@@ -712,6 +826,25 @@
     {
      "license": {
       "name": "MIT License"
+     }
+    }
+   ],
+   "properties": [
+    {
+     "name": "mxs:ecosystem",
+     "value": "python"
+    }
+   ]
+  },
+  {
+   "type": "library",
+   "name": "truststore",
+   "version": "0.10.4",
+   "purl": "pkg:pypi/truststore@0.10.4",
+   "licenses": [
+    {
+     "license": {
+      "name": "MIT"
      }
     }
    ],

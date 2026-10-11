@@ -15,6 +15,85 @@ class ProviderError(RuntimeError):
     pass
 
 
+def image_media_type(data: bytes) -> str:
+    if data[:4] == b"\x89PNG":
+        return "image/png"
+    if data[:3] == b"\xff\xd8\xff":
+        return "image/jpeg"
+    if data[:4] == b"RIFF" and data[8:12] == b"WEBP":
+        return "image/webp"
+    if data[:6] in (b"GIF87a", b"GIF89a"):
+        return "image/gif"
+    raise ProviderError("unsupported image type (use PNG, JPEG, WebP or GIF)")
+
+
+@dataclass
+class AnthropicClaude:
+    """Claude through the official Anthropic SDK (Messages API). Messages may carry `images` (raw bytes).
+
+    Default model: Claude Opus 5.5. Refusal fallbacks are on (`fallbacks: "default"`), so a
+    classifier decline is retried server-side on Anthropic's recommended model; a final
+    refusal comes back as a plain final answer that says so.
+    """
+    api_key: str | None = None
+    model: str = "claude-opus-5-5"
+    effort: str = "medium"
+    name: str = "anthropic"
+    client: Any = None  # injectable for tests
+
+    def _client(self):
+        if self.client is not None:
+            return self.client
+        try:
+            import anthropic  # noqa: PLC0415
+        except ImportError as exc:
+            raise ProviderError("the anthropic package is not installed") from exc
+        return anthropic.Anthropic(api_key=self.api_key, max_retries=2)
+
+    @staticmethod
+    def _content(message: dict) -> str | list[dict]:
+        pictures = message.get("images") or []
+        if not pictures:
+            return str(message.get("content", ""))
+        blocks = [{"type": "image", "source": {"type": "base64", "media_type": image_media_type(img),
+                                               "data": base64.standard_b64encode(img).decode("ascii")}}
+                  for img in pictures]
+        return blocks + [{"type": "text", "text": str(message.get("content", "")) or "(image)"}]
+
+    def chat(self, messages: list[dict], *, images: list[bytes] | None = None, max_tokens: int = 16000,
+             temperature: float | None = None) -> dict:
+        system = "\n\n".join(str(m["content"]) for m in messages if m["role"] == "system")
+        convo = [dict(m) for m in messages if m["role"] != "system"]
+        if images and convo:
+            convo[-1]["images"] = list(convo[-1].get("images") or []) + list(images)
+        payload = [{"role": m["role"], "content": self._content(m)} for m in convo]
+        try:
+            import anthropic  # noqa: PLC0415
+            api_error: type[Exception] = anthropic.APIError
+        except ImportError:
+            api_error = RuntimeError
+        try:
+            response = self._client().beta.messages.create(
+                model=self.model, max_tokens=max(max_tokens, 4096), system=system or None, messages=payload,
+                output_config={"effort": self.effort}, betas=["server-side-fallback-2026-07-01"], fallbacks="default")
+        except api_error as exc:
+            raise ProviderError(f"anthropic: {exc}") from exc
+        if response.stop_reason == "refusal":
+            return {"text": json.dumps({"final": "The model declined this request; nothing was changed."}),
+                    "usage": {}, "model": response.model, "refusal": True}
+        text = "".join(block.text for block in response.content if block.type == "text")
+        usage = response.usage
+        return {"text": text, "model": response.model,
+                "usage": {"input_tokens": usage.input_tokens, "output_tokens": usage.output_tokens}}
+
+    def test_connection(self) -> dict:
+        try:
+            info = self._client().models.retrieve(self.model)
+        except Exception as exc:  # noqa: BLE001 - reported to the operator, never raised
+            return {"ok": False, "ar": "مش قادر أوصل لـClaude — اتأكد من المفتاح.", "detail": str(exc)[:300]}
+        return {"ok": True, "models": [info.id], "model_listed": True}
+
+
 class TextVisionProvider(Protocol):
     name: str
 
@@ -50,13 +129,19 @@ class OpenAICompatible:
 
     def chat(self, messages: list[dict], *, images: list[bytes] | None = None, max_tokens: int = 1024,
              temperature: float = 0.2) -> dict:
-        payload_messages = [dict(m) for m in messages]
-        if images:
-            last = payload_messages[-1]
-            parts = [{"type": "text", "text": str(last.get("content", ""))}]
-            parts += [{"type": "image_url", "image_url": {"url": "data:image/png;base64,"
-                                                          + base64.b64encode(img).decode("ascii")}} for img in images]
-            last["content"] = parts
+        payload_messages = []
+        for index, message in enumerate(messages):
+            pictures = list(message.get("images") or [])
+            if images and index == len(messages) - 1:
+                pictures += images
+            if pictures:
+                parts = [{"type": "text", "text": str(message.get("content", ""))}]
+                parts += [{"type": "image_url", "image_url": {"url": f"data:{image_media_type(img)};base64,"
+                                                              + base64.b64encode(img).decode("ascii")}}
+                          for img in pictures]
+                payload_messages.append({"role": message["role"], "content": parts})
+            else:
+                payload_messages.append({"role": message["role"], "content": message.get("content", "")})
         body = {"model": self.model, "messages": payload_messages, "max_tokens": max_tokens, "temperature": temperature}
         try:
             with self._client() as client:

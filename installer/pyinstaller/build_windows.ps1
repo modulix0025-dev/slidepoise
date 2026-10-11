@@ -105,6 +105,19 @@ if (-not $SkipSmoke) {
     $Bad = @($Doc.checks | Where-Object { ($Required -contains $_.id) -and (-not $_.ok) })
     $Doc.checks | ForEach-Object { Write-Host ("  {0,-16} {1,-5} {2}" -f $_.id, $_.level, $_.en) }
     if ($Bad.Count -gt 0) { throw "doctor smoke failed: $(($Bad | ForEach-Object { $_.id }) -join ', ')" }
+    # MCP over stdio through the windowed CLI (no console): initialize + tools/list from a file
+    Step "smoke: mcp"
+    $McpIn = Join-Path $Smoke "mcp-in.jsonl"
+    $McpOut = Join-Path $Smoke "mcp-out.jsonl"
+    $Lines = @(
+        '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"smoke","version":"1"}}}',
+        '{"jsonrpc":"2.0","id":2,"method":"tools/list"}'
+    )
+    [System.IO.File]::WriteAllText($McpIn, ($Lines -join "`n") + "`n", (New-Object System.Text.UTF8Encoding($false)))
+    $m = Start-Process -FilePath (Join-Path $App "mxstudio-cli.exe") -ArgumentList @("mcp") -RedirectStandardInput $McpIn -RedirectStandardOutput $McpOut -Wait -PassThru -WindowStyle Hidden
+    $Reply = if (Test-Path $McpOut) { Get-Content -Raw -Encoding UTF8 $McpOut } else { "" }
+    if (($Reply -notmatch '"protocolVersion"') -or ($Reply -notmatch 'studio_view_preview')) { throw "mcp smoke failed (exit $($m.ExitCode)): $Reply" }
+    Write-Host "  mcp ok: initialize + tools/list"
     Remove-Item Env:MXS_HOME, Env:MXS_WORKSPACE
 }
 Step "done: $App"

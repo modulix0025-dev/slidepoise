@@ -1,6 +1,6 @@
 """`python -m mxstudio <command>` — every command is non-interactive and prints JSON where useful.
 
-serve | open | shutdown | status | worker | doctor | kit | update | firstrun | factory | fonts | evals
+serve | open | shutdown | status | worker | doctor | kit | update | firstrun | factory | fonts | evals | mcp
 """
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ def main(argv: list[str] | None = None) -> int:
         return int(worker_main(argv) or 0)
     modules = {"doctor": "mxstudio.doctor", "kit": "mxstudio.kit.cli", "update": "mxstudio.update",
                "firstrun": "mxstudio.firstrun", "factory": "mxstudio.factory.cli", "fonts": "mxstudio.fonts.cli",
-               "evals": "mxstudio.agent.evals.cli"}
+               "evals": "mxstudio.agent.evals.cli", "mcp": "mxstudio.mcp.server"}
     if command in modules:
         return _delegate(modules[command], argv)
     print(json.dumps({"ok": False, "error": f"unknown command {command!r}", "commands": ["serve", "open", "shutdown",

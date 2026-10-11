@@ -54,6 +54,8 @@ def create_app(state: AppState) -> FastAPI:
             raise HTTPException(403, "no UI session")
         return f"ui:{session[:8]}"
 
+    app.state.human = human  # feature areas (e.g. pending approvals) need the same human identity
+
     # -- UI ---------------------------------------------------------------
     @app.get("/", response_class=HTMLResponse)
     def index():

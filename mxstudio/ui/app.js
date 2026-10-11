@@ -5,7 +5,7 @@
 
 const I18N = {
   ar: {
-    app: "استوديو المجلات", "nav.home": "الرئيسية", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
+    app: "استوديو المجلات", "nav.start": "ابدأ هنا", "nav.home": "حالة البرنامج", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
     "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة", "nav.marketing": "التسويق والمبيعات",
     "nav.agent": "المساعد", "nav.doctor": "الفحص الشامل", "nav.settings": "الإعدادات", "nav.audit": "السجل",
     "confirm.title": "تأكيد خطوة مالهاش رجوع", "confirm.yes": "أيوه، نفّذ", "confirm.no": "لأ",
@@ -18,7 +18,7 @@ const I18N = {
     keyValue: "قيمة المفتاح", auditEmpty: "مفيش عمليات لسه.", openCanvas: "افتح لوحة الرسم",
   },
   en: {
-    app: "Magazine Studio", "nav.home": "Home", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
+    app: "Magazine Studio", "nav.start": "Start here", "nav.home": "Status", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
     "nav.shapes": "Shapes & drawing", "nav.colour": "Colour & taste", "nav.kit": "Connect my systems",
     "nav.qa": "Pre-print QA", "nav.marketing": "Marketing & sales", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
     "nav.audit": "Audit log", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
@@ -75,6 +75,9 @@ function tile(title, inner) { return `<div class="tile"><h2>${esc(title)}</h2>${
 function pre(data) { return `<pre>${esc(JSON.stringify(data, null, 1))}</pre>`; }
 
 const VIEWS = {
+  async start() {
+    await window.MXS_START({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
+  },
   async home() {
     const [health, features, jobs, budget] = await Promise.all([api("/api/health"), api("/api/features"),
       api("/api/jobs"), api("/api/budget")]);
@@ -87,7 +90,9 @@ const VIEWS = {
     const secrets = await api("/api/secrets");
     const tv = settings.providers.text_vision, im = settings.providers.image;
     view().innerHTML = tile(t("providers"), `
-      <div class="row"><label>Text/Vision · ${t("baseUrl")}</label><input id="tv-url" value="${esc(tv.base_url)}" placeholder="http://gpu-host:8000"></div>
+      <div class="row"><label>Text/Vision</label><select id="tv-kind"><option value="anthropic" ${tv.kind === "anthropic" ? "selected" : ""}>Claude (Anthropic API)</option>
+        <option value="openai_compatible" ${tv.kind !== "anthropic" ? "selected" : ""}>OpenAI-compatible (GPU: vLLM / LM Studio…)</option></select></div>
+      <div class="row"><label>${t("baseUrl")}</label><input id="tv-url" value="${esc(tv.base_url)}" placeholder="http://gpu-host:8000"></div>
       <div class="row"><label>${t("model")}</label><input id="tv-model" value="${esc(tv.model)}"></div>
       <div class="row"><label>${t("enabled")}</label><input id="tv-on" type="checkbox" ${tv.enabled ? "checked" : ""}></div>
       <div class="row"><label>ComfyUI · ${t("baseUrl")}</label><input id="im-url" value="${esc(im.base_url)}" placeholder="http://gpu-host:8188"></div>
@@ -103,8 +108,15 @@ const VIEWS = {
       <div class="row"><label>${t("workspace")}</label><input id="workspace" value="${esc(settings.workspace || "")}"></div>
       <div class="row"><button class="xb" id="save-general">${t("save")}</button></div>`);
     const out = (data) => { document.getElementById("provider-result").innerHTML = pre(data); };
+    document.getElementById("tv-kind").onchange = (event) => {  // keep the model name matching the provider
+      const model = document.getElementById("tv-model");
+      if (event.target.value === "anthropic" && !model.value.startsWith("claude")) model.value = "claude-opus-5-5";
+      if (event.target.value !== "anthropic" && model.value.startsWith("claude")) model.value = "Qwen/Qwen3-VL-8B-Instruct";
+    };
     document.getElementById("save-providers").onclick = async () => out(await api("/api/settings", { method: "POST", body: { providers: {
-      text_vision: { base_url: document.getElementById("tv-url").value, model: document.getElementById("tv-model").value, enabled: document.getElementById("tv-on").checked },
+      text_vision: { kind: document.getElementById("tv-kind").value, base_url: document.getElementById("tv-url").value,
+        model: document.getElementById("tv-model").value || (document.getElementById("tv-kind").value === "anthropic" ? "claude-opus-5-5" : ""),
+        enabled: document.getElementById("tv-on").checked },
       image: { base_url: document.getElementById("im-url").value, enabled: document.getElementById("im-on").checked } } } }));
     document.getElementById("test-tv").onclick = async () => out(await api("/api/providers/text_vision/test", { method: "POST", body: {} }));
     document.getElementById("test-im").onclick = async () => out(await api("/api/providers/image/test", { method: "POST", body: {} }));
@@ -165,13 +177,13 @@ async function featureView(area) {
 
 async function route() {
   routeSeq += 1;
-  const name = (location.hash || "#home").slice(1);
+  const name = (location.hash || "#start").slice(1);
   document.querySelectorAll("#nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${name}`));
   const area = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", marketing: "marketing", doctor: "doctor" }[name];
   try {
     if (VIEWS[name]) await VIEWS[name]();
     else if (area) await featureView(area);
-    else await VIEWS.home();
+    else await VIEWS.start();
   } catch (error) {
     view().innerHTML = tile("⚠", esc(String(error)));
   }

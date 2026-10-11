@@ -40,7 +40,7 @@ def _safe(fn, name):
 hiddenimports = ["entry_cli"]
 for pkg in ("mxstudio", "slidepoise", "uvicorn", "webview", "clr_loader", "pythonnet", "cv2", "pikepdf",
             "pypdfium2", "pypdfium2_raw", "uharfbuzz", "fontTools", "coloraide", "pyclipper", "vtracer",
-            "pptx", "lxml", "svgelements", "qrcode", "resvg_py", "cryptography"):
+            "pptx", "lxml", "svgelements", "qrcode", "resvg_py", "cryptography", "anthropic"):
     hiddenimports += _safe(collect_submodules, pkg)
 
 datas = [(str(ROOT / "installer" / "downloads.json"), "mxstudio_data")]

@@ -27,6 +27,12 @@ def register(app, state) -> None:
         return cvd.check_colour_meanings(args["meanings"], args.get("cues"))
 
     def from_art(args: dict) -> dict:
+        if args.get("reference"):  # an image the operator uploaded in the Studio (workspace blob sha)
+            if not state.workspace.verify_blob(str(args["reference"])):
+                raise ToolError("FILE_NOT_FOUND", "الصورة المرفوعة مش موجودة.", "uploaded image not found")
+            args = dict(args, image=str(state.workspace.blob_path(str(args["reference"]))))
+        if not args.get("image"):
+            raise ToolError("INVALID_ARGUMENTS", "ابعت image أو reference.", "give image or reference")
         path = Path(args["image"])
         if not path.is_file():
             raise ToolError("FILE_NOT_FOUND", "الصورة مش موجودة.", "image not found")
@@ -53,8 +59,10 @@ def register(app, state) -> None:
                                "additionalProperties": False}, meanings, tags=["colour"]))
     state.tools.register(Tool("colour.from_art", "طلّع باليتة من الرسمة المعتمدة.", "Extract a palette from approved art.",
                               {"type": "object", "properties": {"image": {"type": "string"},
+                                                                "reference": {"type": "string",
+                                                                              "pattern": "^[0-9a-f]{64}$"},
                                                                 "k": {"type": "integer", "minimum": 2, "maximum": 12}},
-                               "required": ["image"], "additionalProperties": False}, from_art, tags=["colour"]))
+                               "additionalProperties": False}, from_art, tags=["colour"]))
 
     @app.get("/api/colour/summary")
     def summary():
