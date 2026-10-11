@@ -42,7 +42,7 @@ When the user asks to anonymize an internal deck for a private reference library
 
 An inspected catalog record may set `retrieval_eligible` to `false`, for example for a cover or contact page that remains useful as source context. This host-authored flag excludes it from normal results. Use `--include-ineligible` only when that context is relevant. Eligibility expresses a recorded use decision and does not establish aesthetic quality.
 
-The bundled `pwc-public` profile provides genuine published sources for this workflow. Its complete Strategy& deck supports neighboring-page inspection as well as individual-page retrieval. Private user references remain separate.
+This fork ships no third-party published-document profile (the upstream `pwc-public` collection has no open-content licence). Install references whose licence allows redistribution, or keep private references in local profiles; private user references remain separate.
 
 ## Check source and inspect the page
 

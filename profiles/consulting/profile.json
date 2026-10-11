@@ -356,11 +356,11 @@
       "public_showcase_override": {
         "preferred_provider": "Remix Icon",
         "exact_logo_candidate_provider": "Wikimedia Commons",
-        "provider_version": "4.9.0",
+        "provider_version": "4.8.0",
         "activation": "Enable each required source independently under session remote_sources.",
         "pair_policy": "Retrieve a Remix line/fill pair before generation. Host Agent selects one variant per icon_treatment_group after inspecting the approved generated slide.",
         "identity_boundary": "Generic icons are supporting communication symbols only. Never use one as a logo, trademark, or brand identity. Wikimedia Commons results are candidates whose exact identity, license, attribution, and trademark constraints still require Agent review.",
-        "license": "Remix Icon License v1.0"
+        "license": "Apache-2.0"
       },
       "slot_policy": "Every icon has an explicit reserved slot for generation and measurement. A faint generation-only boundary may mark a bare icon slot for localization, but that boundary is scaffolding, not a decorative container, and must not be reconstructed. Only a positively judged intentional background surface may be reconstructed. When an icon sits directly on a larger colored panel/card and the visible white box merely isolates/localizes the glyph, prefer no reconstructed slot surface so the icon background remains transparent and inherits the surrounding panel colour.",
       "coherence_policy": "Assign one treatment to each local peer icon or pictogram group. The host Agent chooses the peer grouping and one treatment id for that group. Reconstruction applies that treatment coherently while preserving each selected Remix glyph's geometry.",

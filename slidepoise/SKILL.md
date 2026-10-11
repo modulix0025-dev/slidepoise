@@ -40,6 +40,7 @@ At the start of every run
 8. Read `references/raster-composition.md` for raster artwork, intrinsic lettering, texture, or overlapping text. Read `references/illustration-refinement.md` before an optional raster edit.
 9. Read `references/multi-agent-review.md` when the host exposes subagents. Use an independent final review for a multi-slide deck or a slide with dense tables, charts or directed relationships. Keep the review read-only and bounded. Without subagents, use a separate inspection pass.
 10. Read `references/user-language.md` before authoring user-facing prose.
+11. Read `references/print-arabic.md` for printed magazine pages, Arabic or other right-to-left text, and pages personalised by name replacement.
 
 ## Product shape
 

@@ -1,0 +1,91 @@
+name: Magazine Studio CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mag-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.10", "3.12"]
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: sudo apt-get update
+      - run: sudo apt-get install -y libreoffice-impress poppler-utils nsis
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[dev,runtime]"
+      - run: npm ci
+      - name: Static gates
+        run: |
+          git ls-files '*.py' | xargs python -m py_compile
+          for f in $(git ls-files '*.js' '*.mjs'); do node --check "$f"; done
+          python -m ruff check --select E9,F63,F7,F82 framework webapp slidepoise tests setup.py mxstudio tools vendor
+      - name: Vendored operator contracts
+        run: |
+          (cd vendor/modulex && sha256sum -c SHA256SUMS)
+          python vendor/modulex/modulex_signing.py --selftest
+      - name: Studio suites (no skips allowed on Linux)
+        run: python -m pytest tests/mag -q -rs --junitxml=workspace/test-results/mag.xml
+      - name: Full suite
+        run: python -m pytest -q
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: mag-test-results-${{ matrix.python-version }}
+          path: workspace/test-results/
+
+  windows:
+    runs-on: windows-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: python -m pip install -e ".[dev,runtime]"
+      - run: npm ci
+      - name: Studio suites (LibreOffice proofs are skipped here and run on Linux)
+        run: python -m pytest tests/mag -q -rs
+
+  installer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update && sudo apt-get install -y nsis
+      - name: Build the NSIS installer (placeholder payload until the Phase 2 PyInstaller build)
+        run: |
+          mkdir -p workspace/payload workspace/installer
+          echo "placeholder payload" > "workspace/payload/ModuleX Magazine Studio.exe"
+          makensis -V2 -INPUTCHARSET UTF8 -DAPP_VER=0.0.1 -DSRC_DIR="$PWD/workspace/payload" \
+            -DOUT_DIR="$PWD/workspace/installer" installer/nsis/MagazineStudio.nsi
+          sha256sum workspace/installer/*.exe
+      - uses: actions/upload-artifact@v4
+        with:
+          name: installer-smoke
+          path: workspace/installer/*.exe

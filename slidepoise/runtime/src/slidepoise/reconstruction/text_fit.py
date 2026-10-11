@@ -13,6 +13,8 @@ from typing import Any
 
 from PIL import ImageFont
 
+RTL_TEXT = re.compile("[\u0590-\u08FF\uFB1D-\uFDFF\uFE70-\uFEFF]")
+
 FONT_PATHS = {
     ("Arial", False, False): (
         "/System/Library/Fonts/Supplemental/Arial.ttf",
@@ -269,6 +271,22 @@ def _fits(entity: dict[str, Any], style: dict[str, Any], size_px: float, text_ov
     inset = float(policy.get("inset_px", 2))
     usable_width = max(1.0, width - 2 * inset)
     usable_height = max(1.0, height - 2 * inset)
+    rtl_text = text_override if text_override is not None else _authored_text(entity)
+    if RTL_TEXT.search(rtl_text) and not entity.get("bullet_style"):
+        from slidepoise.arabic.fit import measure as _measure_shaped  # noqa: PLC0415 - runtime extra
+        from slidepoise.arabic.fonts import default_registry as _font_registry  # noqa: PLC0415
+        # ModuleX print fork: right-to-left copy is measured with HarfBuzz on the exact
+        # family (harakat-aware line height, whitespace-only breaks). Latin copy keeps
+        # the upstream Pillow estimate unchanged.
+        face = _font_registry().resolve(style["family"], style["bold"], style["italic"])
+        if face is not None:
+            spacing = float(style.get("line_spacing", policy.get("line_spacing", 1.1)))
+            facts = _measure_shaped(face, rtl_text, size_px, usable_width * 0.96, spacing)
+            if facts["too_wide"] or facts["block_height_pt"] > usable_height * 0.95:
+                return None
+            return {"lines": facts["lines"], "max_width_px": round(facts["max_width_pt"], 2),
+                    "block_height_px": round(facts["block_height_pt"], 2), "inset_px": inset,
+                    "shaping": "harfbuzz", "font_path": face.path}
     scaled = max(4, round(size_px * 4))
     font = _load_font(style["family"], style["bold"], style["italic"], scaled)
     office_width = usable_width * 4 * 0.96

@@ -9,7 +9,7 @@
       "source": "remote",
       "provider": "remix_icon",
       "root": "",
-      "license": "Remix Icon License v1.0"
+      "license": "Apache-2.0 (Remix Icon <= 4.8.0)"
     },
     "wikimedia-identity": {
       "id": "wikimedia-identity",

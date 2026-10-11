@@ -35,7 +35,7 @@
       "pair_styles": ["line", "fill"],
       "repository_tree_url": "https://api.github.com/repos/Remix-Design/RemixIcon/git/trees/v{version}?recursive=1",
       "raw_url_template": "https://raw.githubusercontent.com/Remix-Design/RemixIcon/v{version}/{repository_path}",
-      "license": "Remix Icon License v1.0",
+      "license": "Apache-2.0",
       "license_url": "https://github.com/Remix-Design/RemixIcon/blob/v{version}/License",
       "selection_stage": "post_generation_visual_review",
       "selection_owner": "host_agent_visual_reasoning",
