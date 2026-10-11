@@ -180,3 +180,12 @@ def test_repository_trust_file_holds_no_private_material():
     assert set(data) <= {"public_keys", "manifest_url", "allowed_hosts", "release_repo"}
     for key in data["public_keys"].values():
         signing.load_public(key)  # only 32-byte public keys
+
+
+def test_repository_trust_file_pins_the_release_key():
+    # the release signing key's public half ships in the app; without it installed apps refuse every latest.json
+    from mxstudio.update.trust import TRUST_FILE
+    data = json.loads(TRUST_FILE.read_text(encoding="utf-8"))
+    assert data["public_keys"], "no update public key committed: installed apps could never auto-update"
+    for key_id, key in data["public_keys"].items():
+        assert signing.key_id(key) == key_id

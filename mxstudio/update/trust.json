@@ -1,5 +1,7 @@
 {
- "public_keys": {},
+ "public_keys": {
+  "aedad8fb702678d2": "uDipQBtl99r0oRuXzjE4KTRZym6x0iYsowrGZtup3n0="
+ },
  "manifest_url": "https://github.com/modulix0025-dev/slidepoise/releases/latest/download/latest.json",
  "allowed_hosts": [
   "github.com"

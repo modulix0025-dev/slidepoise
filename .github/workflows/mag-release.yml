@@ -18,7 +18,7 @@ name: Magazine Studio Release
 # Repository settings used (all optional except where noted):
 #   secrets.MXS_UPDATE_SIGNING_KEY   Ed25519 private key (python -m mxstudio.update keygen); without it
 #                                    no latest.json is published and auto-update stays off (honest)
-#   vars.MXS_UPDATE_PUBLIC_KEY       matching public key, embedded in the app at build time
+#   vars.MXS_UPDATE_PUBLIC_KEY       optional extra public key; the release key is committed in mxstudio/update/trust.json
 #   vars.MXS_RELEASE_REPO            owner/name of a public releases-only repo (default: this repo)
 #   secrets.MXS_RELEASE_TOKEN        token with contents:write on MXS_RELEASE_REPO (only if it is set)
 #   vars.SIGNPATH_ORGANIZATION_ID, vars.SIGNPATH_PROJECT_SLUG, vars.SIGNPATH_POLICY_SLUG,
@@ -289,7 +289,16 @@ jobs:
           $msi = Get-ChildItem workspace/offline -Recurse -Filter "*.msi" | Select-Object -First 1
           $p = @{ OutDir = "$env:GITHUB_WORKSPACE\workspace\standard-user"; Setup = $setup.FullName }
           if ($msi) { $p.Msi = $msi.FullName } else { Write-Host "::warning::no LibreOffice MSI in the offline payload (still TO-PIN) - proving the per-user install only" }
-          ./installer/windows_sandbox/standard_user_proof.ps1 @p
+          try { ./installer/windows_sandbox/standard_user_proof.ps1 @p; $code = $LASTEXITCODE }
+          catch { Write-Host "::error title=standard-user-proof threw::$($_.Exception.Message) @ $($_.InvocationInfo.PositionMessage -replace '\r?\n',' ')"; $code = 1 }
+          $j = Join-Path $p.OutDir "standard_user_proof.json"
+          if (Test-Path $j) { Write-Host "::notice title=standard-user-proof result::$((Get-Content -Raw $j | ConvertFrom-Json | ConvertTo-Json -Depth 6 -Compress))" }
+          $d = Join-Path $p.OutDir "doctor-standard-user.json"
+          if (Test-Path $d) {
+            $bad = (Get-Content -Raw $d | ConvertFrom-Json).checks | Where-Object { $_.level -ne "green" } | ForEach-Object { "$($_.id)=$($_.level)" }
+            if ($bad) { Write-Host "::notice title=doctor as standard user::$($bad -join ', ')" }
+          }
+          exit $code
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -338,10 +347,11 @@ jobs:
             --online "ModuleX-MagazineStudio-Setup-$VERSION.exe" --full "ModuleX-MagazineStudio-Setup-$VERSION-Full.exe" \
             --out "$RUNNER_TEMP/latest.unsigned.json" > /dev/null
           python -m mxstudio.update sign --manifest "$RUNNER_TEMP/latest.unsigned.json" --out latest.json > /dev/null
+          # verify with exactly what the app trusts: the committed mxstudio/update/trust.json (+ the optional variable)
           if [ -n "$MXS_UPDATE_PUBLIC_KEY" ]; then
             python -m mxstudio.update verify --manifest latest.json --pubkey "$MXS_UPDATE_PUBLIC_KEY" --assets-dir .
           else
-            echo "::warning::vars.MXS_UPDATE_PUBLIC_KEY is not set: the app embeds no key and will refuse this latest.json."
+            python -m mxstudio.update verify --manifest latest.json --assets-dir .
           fi
       - name: SHA256SUMS and release notes
         run: |
