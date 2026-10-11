@@ -1,6 +1,6 @@
 # MAG_PHASE_0_REPORT_AR_EN — المرحلة 0: الفهم والتحقّق والخطة · Phase 0: understand, verify, plan
 
-> 2026-10-11 · branch `claude/adoring-mccarthy-zgg4ek` · tag `mag-phase-0` · **STOP — waiting for the operator's «موافق» on `MAG_PLAN_AR_EN.md`.**
+> 2026-10-11 · branch `claude/adoring-mccarthy-zgg4ek` · tag `mag-phase-0` (local only — see §1) · **STOP — waiting for the operator's «موافق» on `MAG_PLAN_AR_EN.md`.**
 > Deliverables: `MAG_COMPREHENSION_AR_EN.md` (30 checks answered) · `MAG_PLAN_AR_EN.md` (layout, flags, contracts M0–M7, tests, CI, decisions D1–D12) · this report · `evidence/` · `SHA256SUMS`.
 
 ## 1 · فحص البيئة · Environment probe
@@ -14,8 +14,8 @@
 | pypi.org / files.pythonhosted.org / registry.npmjs.org | ✅ reachable |
 | api.iconify.design, openclipart.org, commons.wikimedia.org, kenney.nl, openmoji.org, download.documentfoundation.org, jrsoftware.org (Inno), ghostscript.com, Ghostscript GitHub release downloads | ❌ blocked by the proxy (403) — **not a product blocker**: the installed Studio calls them from Windows; tests use recorded cassettes; CI runners download Inno/LibreOffice directly |
 | WebFetch to the blocked hosts | ❌ ENOTFOUND (tried by the licence agent) |
-| GitHub Actions on `modulix0025-dev/slidepoise` | ⚠️ workflows exist (`ci.yml`, `release.yml`) but **0 runs ever** — on a fork, Actions stay disabled until the owner enables them (repo → *Actions* tab → "I understand… enable"). The push of this phase will show whether runs start. |
-| Push rights to the branch | ✅ (this report was pushed) |
+| GitHub Actions on `modulix0025-dev/slidepoise` | ❌ **disabled**: workflows exist (`ci.yml`, `release.yml`, trigger `on: push`) but the push of this phase produced **0 runs**. On a fork, Actions stay off until the owner enables them: repo → *Actions* tab → enable. Until then the Linux suite runs here and the Windows proof waits (plan D2). |
+| Push rights | ✅ branch push works · ❌ **tag push refused** by the session's git proxy (`send-pack: unexpected disconnect`, retried 3× with backoff). `mag-phase-0` exists locally on this commit; phase tags will be created by the release workflow / GitHub Releases once Actions are enabled, or by you with one click. |
 
 ## 2 · التحقّق من الأصل · Upstream verification
 
