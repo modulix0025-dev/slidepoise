@@ -69,7 +69,13 @@ function Prove-Flavour($label, $setup, [bool]$expectOffice) {
             $doc = Get-Content -Raw -Encoding UTF8 $report | ConvertFrom-Json
             foreach ($c in $doc.checks) { Say ("  doctor {0,-16} {1,-5} {2}" -f $c.id, $c.level, $c.en) }
             $need = @("python", "node", "pypdfium2", "arabic_path", "workspace", "webview2")
-            if ($expectOffice) { $need += "office" }
+            if ($expectOffice) {
+                # Full: LibreOffice is required only when this build really bundles it (offline_manifest.json);
+                # an unpinned branch build records it as missing, and a tag build refuses to exist without it
+                $om = Join-Path $AppDir "offline\offline_manifest.json"
+                $lo = if (Test-Path $om) { (Get-Content -Raw -Encoding UTF8 $om | ConvertFrom-Json).entries.libreoffice_msi.status } else { "" }
+                if ($lo -like "bundled*") { $need += "office" } else { Say "  office not required: LibreOffice is not in this build (status '$lo', still TO-PIN)" }
+            }
             $bad = @($doc.checks | Where-Object { ($need -contains $_.id) -and (-not $_.ok) })
             $Results["$label doctor"] = ($bad.Count -eq 0)
         } else { $Results["$label doctor"] = $false; Say "  doctor wrote no report" }

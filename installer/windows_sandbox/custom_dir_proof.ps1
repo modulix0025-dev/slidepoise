@@ -28,7 +28,11 @@ $code = Install "/S /D=$Custom"
 $R.custom_install = ($code -eq 0) -and (Test-Path (Join-Path $Custom $Exe)) -and -not (Test-Path (Join-Path $Default $Exe))
 $R.registry_location = ((Get-ItemProperty $Key).InstallLocation -eq $Custom)
 $lnk = Shortcut
-$R.shortcut_target = ($lnk.TargetPath -eq (Join-Path $Custom $Exe)) -and ($lnk.IconLocation -like "*$Exe,0")
+# compare the file itself: Windows may store the long form of a short (8.3) TEMP path, or the reverse
+$target = $lnk.TargetPath
+$R.shortcut_target = (Test-Path $target) -and ($target.EndsWith("$App\$Exe")) -and
+    ((Get-FileHash $target).Hash -eq (Get-FileHash (Join-Path $Custom $Exe)).Hash) -and ($lnk.IconLocation -like "*$Exe,0")
+$R.shortcut_detail = "target=$target icon=$($lnk.IconLocation)"
 
 # 2. an update (silent, no /D) goes back to the same folder
 $code = Install "/S"
@@ -50,5 +54,8 @@ Uninstall $Sub
 $R.shared_file_kept = (Test-Path (Join-Path $Shared "keep.txt")) -and -not (Test-Path (Join-Path $Sub $Exe))
 
 $R | ConvertTo-Json | Set-Content -Path (Join-Path $Out "custom_dir_proof.json") -Encoding UTF8
-$R.GetEnumerator() | ForEach-Object { Write-Host ("  {0,-26} {1}" -f $_.Key, $(if ($_.Value) { "PASS" } else { "FAIL" })) }
-if ($R.Values -contains $false) { exit 1 }
+$R.GetEnumerator() | ForEach-Object {
+    if ($_.Value -is [bool]) { Write-Host ("  {0,-26} {1}" -f $_.Key, $(if ($_.Value) { "PASS" } else { "FAIL" })) }
+    else { Write-Host ("  {0,-26} {1}" -f $_.Key, $_.Value) }
+}
+if (@($R.Values | Where-Object { $_ -is [bool] -and -not $_ }).Count -gt 0) { exit 1 }
