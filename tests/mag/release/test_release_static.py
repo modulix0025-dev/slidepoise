@@ -185,3 +185,39 @@ def test_standard_user_proof_never_counts_1601_as_a_pass():
     assert '"not_provable_batch_logon"' in text
     assert "$ok = $ok -and ($Result.msi -eq \"ok\")" in text
     assert "setup_exit -eq 0" in text  # the Studio's own per-user install always decides
+
+
+@pytest.mark.skipif(not __import__("shutil").which("bash"), reason="needs bash")
+def test_signed_latest_json_step_runs_from_a_clean_checkout(tmp_path):
+    """Run the release job's real «Signed latest.json» script, as CI does: cwd = a checkout where mxstudio
+    is NOT importable through any path but the checkout itself (0.2.0's first publish failed exactly there)."""
+    import os
+    import subprocess
+    import yaml
+    from mxstudio.update import signing
+    workflow = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
+    step = next(s for s in workflow["jobs"]["release"]["steps"] if s.get("name", "").startswith("Signed latest.json"))
+    checkout = tmp_path / "checkout"
+    release = checkout / "workspace" / "release"
+    release.mkdir(parents=True)
+    (checkout / "mxstudio").symlink_to(ROOT / "mxstudio", target_is_directory=True)
+    (release / "ModuleX-MagazineStudio-Setup-9.9.9.exe").write_bytes(os.urandom(4096))
+    (release / "ModuleX-MagazineStudio-Setup-9.9.9-Full.exe").write_bytes(os.urandom(8192))
+    private, public = signing.generate_keypair()
+    env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+    env.update(GITHUB_WORKSPACE=str(checkout), MXS_UPDATE_SIGNING_KEY=private, MXS_UPDATE_PUBLIC_KEY=public,
+               REPO="o/r", TAG="mxs-v9.9.9", VERSION="9.9.9", RUNNER_TEMP=str(tmp_path))
+    done = subprocess.run(["bash", "-e", "-o", "pipefail", "-c", step["run"]], cwd=str(checkout), env=env,
+                          capture_output=True, text=True, timeout=120)
+    assert done.returncode == 0, done.stdout + done.stderr
+    assert '"ok": true' in done.stdout and "::error" not in done.stdout
+    assert private not in done.stdout + done.stderr  # annotations never carry the key
+    signed = json.loads((release / "latest.json").read_text(encoding="utf-8"))
+    assert signing.verify_manifest(signed, {signing.key_id(public): public}) == signing.key_id(public)
+    # a secret that is not the pinned key is named as such
+    other, _ = signing.generate_keypair()
+    (release / "latest.json").unlink()
+    env.update(MXS_UPDATE_SIGNING_KEY=other, MXS_UPDATE_PUBLIC_KEY="")
+    bad = subprocess.run(["bash", "-e", "-o", "pipefail", "-c", step["run"]], cwd=str(checkout), env=env,
+                         capture_output=True, text=True, timeout=120)
+    assert bad.returncode == 1 and "the secret is a different key" in bad.stdout
