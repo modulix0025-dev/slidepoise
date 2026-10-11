@@ -36,6 +36,7 @@ class AppState:
                     workspace=Workspace(settings.workspace()), queue=JobQueue(home / "queue.sqlite3"),
                     budget=BudgetGuard(home / "budget.sqlite3", budget_cfg["per_job_usd"], budget_cfg["per_day_usd"]),
                     tools=ToolRegistry(home / "agent.sqlite3"))
-        from mxstudio.agent.catalog import register_core_tools  # noqa: PLC0415 - avoids a cycle
+        from mxstudio.agent.catalog import register_core_tools, register_guarded_tools  # noqa: PLC0415
         register_core_tools(state)
+        register_guarded_tools(state)
         return state

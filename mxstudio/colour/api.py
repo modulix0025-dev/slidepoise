@@ -11,6 +11,10 @@ def register(app, state) -> None:
 
     def list_pal(args: dict) -> dict:
         found = palettes.list_palettes(args.get("theme"), args.get("age"), args.get("mood"), args.get("mode"))
+        if not found and args.get("theme"):  # "desert" → "desert_egypt", "nile" → "river_nile"
+            wanted = str(args["theme"]).lower()
+            found = [p for p in palettes.list_palettes(None, args.get("age"), args.get("mood"), args.get("mode"))
+                     if any(wanted in t or t in wanted for t in p.get("themes", []))]
         return {"count": len(found), "palettes": found[: int(args.get("limit", 20))]}
 
     def harmonies(args: dict) -> dict:
