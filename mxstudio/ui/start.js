@@ -15,6 +15,10 @@ window.MXS_START = (function () {
       qualify: "اختبر الموديل", qualifying: "بيختبر… (بيكلّم الموديل كام مرة)", mcp: "التحكم من Claude Desktop / Claude Code (MCP)",
       mcpHelp: "خلّي Claude Desktop يبني ويعدّل في الاستوديو باشتراكك العادي. أي خطوة مالهاش رجوع هتظهرلك هنا في «طلبات الموافقة».",
       mcpGo: "خطوات التوصيل ←",
+      prepTitle: "وضع «تحضير طلب لـClaude Desktop»", prepLead: "مفيش موديل متظبط في الاستوديو، وده عادي: اكتب طلبك هنا واسحب الصور، والطلب هيتحفظ. بعدين افتح Claude Desktop واكتب: «نفّذ طلبات الاستوديو». (الاستوديو مايقدرش يشغّل Claude Desktop لوحده.)",
+      saveReq: "احفظ الطلب لـClaude Desktop", saved: "اتحفظ ✓", requests: "طلبات Claude Desktop", noRequests: "مفيش طلبات لسه.",
+      st_new: "مستني Claude Desktop", st_claimed: "Claude Desktop شغّال عليه", st_done: "خلص", st_failed: "فشل",
+      inbox: "الوارد (صور لـClaude Desktop)", inboxLead: "اسحب الصور هنا (أو في اختصار «الوارد» على سطح المكتب). في Claude Desktop قول: «استخدم آخر صورة».", inboxEmpty: "لسه مفيش صور.",
       you: "انت", agent: "المساعد", plan: "الخطة", open: "افتح بالحجم الكامل", failed: "حصلت مشكلة",
     },
     en: {
@@ -28,6 +32,10 @@ window.MXS_START = (function () {
       qualify: "Check the model", qualifying: "Checking… (calls the model a few times)", mcp: "Control from Claude Desktop / Claude Code (MCP)",
       mcpHelp: "Let Claude Desktop build and revise in the Studio with your normal subscription. Irreversible steps show up here under Pending approvals.",
       mcpGo: "Connection steps →",
+      prepTitle: "“Prepare a request for Claude Desktop” mode", prepLead: "No model is configured in the Studio, and that is fine: write the request here and drop pictures; it is saved. Then in Claude Desktop write: “run the Studio requests”. (The Studio cannot start Claude Desktop by itself.)",
+      saveReq: "Save the request for Claude Desktop", saved: "Saved ✓", requests: "Claude Desktop requests", noRequests: "No requests yet.",
+      st_new: "waiting for Claude Desktop", st_claimed: "Claude Desktop is on it", st_done: "done", st_failed: "failed",
+      inbox: "Inbox (pictures for Claude Desktop)", inboxLead: "Drop pictures here (or into the «Inbox» desktop shortcut). In Claude Desktop say: “use the last picture”.", inboxEmpty: "No pictures yet.",
       you: "You", agent: "Assistant", plan: "Plan", open: "Open full size", failed: "Something went wrong",
     },
   };
@@ -38,15 +46,16 @@ window.MXS_START = (function () {
     const { api, esc, tile, view, lang } = ctx;
     const s = (key) => (S[lang] || S.ar)[key];
     const seq = ctx.seq();
-    const [settings, chats] = await Promise.all([api("/api/settings"), api("/api/agent/conversations")]);
+    const [settings, chats, check] = await Promise.all([api("/api/settings"), api("/api/agent/conversations"), api("/api/agent/model-check")]);
     if (seq !== ctx.seq()) return;
     const tv = (settings.providers || {}).text_vision || {};
     const mode = (settings.agent || {}).mode || "suggest_only";
+    const prepare = !tv.enabled; // no model here: requests are prepared for Claude Desktop (not an error)
     const list = chats.conversations || [];
     if (!state.conversation && list.length) state.conversation = list[0].id;
 
-    const banner = !tv.enabled ? `<div class="banner">${esc(s("noModel"))} <a href="#settings">⚙</a></div>`
-      : mode !== "full" ? `<div class="banner">${esc(s("suggest"))} <button class="xb ghost" id="qualify">${esc(s("qualify"))}</button></div>` : "";
+    const banner = prepare ? `<div class="note" id="prep-note"><b>${esc(s("prepTitle"))}</b><br>${esc(s("prepLead"))}</div>`
+      : mode !== "full" ? `<div class="banner">${esc((lang === "ar" ? check.ar : check.en) || s("suggest"))} <button class="xb ghost" id="qualify">${esc(s("qualify"))}</button></div>` : "";
 
     view().innerHTML = `<div class="start">
       <div class="chat-col">
@@ -58,11 +67,13 @@ window.MXS_START = (function () {
             <textarea id="chat-text" rows="4" placeholder="${esc(s("placeholder"))}"></textarea>
             <div id="attached" class="attached"></div>
             <div class="row"><label class="xb ghost filebtn">${esc(s("attach"))}<input id="chat-files" type="file" accept="image/png,image/jpeg,image/webp,image/gif" multiple hidden></label>
-              <button class="xb" id="chat-send">${esc(s("send"))}</button><span id="chat-status" class="status"></span></div>
+              <button class="xb" id="chat-send">${esc(prepare ? s("saveReq") : s("send"))}</button><span id="chat-status" class="status"></span></div>
           </div>`)}
       </div>
       <div class="side-col">
         ${tile(s("preview"), `<div id="preview">${esc(s("noPreview"))}</div>`)}
+        ${tile(s("inbox"), `<div id="inbox-drop" class="dropzone"><p class="lead">${esc(s("inboxLead"))}</p><code dir="ltr" id="inbox-folder"></code><ul id="inbox-list" class="steps"></ul></div>`)}
+        ${tile(s("requests"), `<div id="requests"></div>`)}
         ${tile(s("pending"), `<div id="pending"></div>`)}
         ${tile(s("mcp"), `<p class="lead">${esc(s("mcpHelp"))}</p><a class="xb ghost linkbtn" href="#mcp">${esc(s("mcpGo"))}</a>`)}
       </div></div>`;
@@ -110,8 +121,27 @@ window.MXS_START = (function () {
         reader.onerror = reject;
         reader.readAsDataURL(file);
       });
-      const result = await api("/api/uploads", { method: "POST", body: { name: file.name, data_b64: data } });
-      if (result.ok) { state.attached.push(result.reference); renderAttached(); } else status(`${s("failed")}: ${JSON.stringify(result.detail || result).slice(0, 200)}`);
+      const result = await api("/api/inbox", { method: "POST", body: { name: file.name, data_b64: data } });
+      if (result.ok) { state.attached.push({ ...result.reference, inbox: result.name }); renderAttached(); renderInbox(); } else status(`${s("failed")}: ${JSON.stringify(result.detail || result).slice(0, 200)}`);
+    };
+    const renderInbox = async () => {
+      const data = await api("/api/inbox");
+      document.getElementById("inbox-folder").textContent = data.folder || "";
+      const items = data.pictures || [];
+      document.getElementById("inbox-list").innerHTML = items.length ? items.slice(0, 8).map((p) => `<li><span dir="ltr">${esc(p.name)}</span> · <span class="num">${esc(p.modified)}</span>${p.width ? ` · <span class="num">${esc(p.width)}×${esc(p.height)}</span>` : ""}</li>`).join("") : `<li>${esc(s("inboxEmpty"))}</li>`;
+    };
+    let requestsTimer = null;
+    const renderRequests = async () => {
+      const data = await api("/api/requests");
+      const items = data.requests || [];
+      const box = document.getElementById("requests");
+      if (!box) return;
+      box.innerHTML = items.length ? items.slice(0, 10).map((r) => `<div class="pend"><div><b class="num">${esc(r.id)}</b> · ${esc(s(`st_${r.status}`) || r.status)}${r.story_key ? ` · <span dir="ltr">${esc(r.story_key)}</span>` : ""}</div>
+        <div>${esc(String(r.text || "").slice(0, 160))}</div>${r.preview_sha ? `<a href="/api/blobs/${esc(r.preview_sha)}" target="_blank" rel="noopener"><img class="preview-img" src="/api/blobs/${esc(r.preview_sha)}" alt=""></a>` : ""}</div>`).join("") : esc(s("noRequests"));
+      const latestDone = items.find((r) => r.status === "done" && r.preview_sha);
+      if (latestDone) showPreview(latestDone.preview_sha);
+      clearTimeout(requestsTimer);
+      if (items.some((r) => r.status === "new" || r.status === "claimed")) requestsTimer = setTimeout(() => { if (seq === ctx.seq()) renderRequests(); }, 5000);
     };
 
     document.getElementById("chat-files").onchange = async (event) => { for (const f of event.target.files) await upload(f); event.target.value = ""; };
@@ -119,6 +149,10 @@ window.MXS_START = (function () {
     composer.ondragover = (e) => { e.preventDefault(); composer.classList.add("drop"); };
     composer.ondragleave = () => composer.classList.remove("drop");
     composer.ondrop = async (e) => { e.preventDefault(); composer.classList.remove("drop"); for (const f of e.dataTransfer.files) if (f.type.startsWith("image/")) await upload(f); };
+    const drop = document.getElementById("inbox-drop");
+    drop.ondragover = (e) => { e.preventDefault(); drop.classList.add("drop"); };
+    drop.ondragleave = () => drop.classList.remove("drop");
+    drop.ondrop = async (e) => { e.preventDefault(); drop.classList.remove("drop"); for (const f of e.dataTransfer.files) if (f.type.startsWith("image/")) await upload(f); };
     document.getElementById("chat-select").onchange = (e) => { state.conversation = e.target.value; renderMessages(); };
     document.getElementById("new-chat").onclick = async () => { state.conversation = (await api("/api/agent/conversations", { method: "POST", body: {} })).id; ctx.rerender(); };
     const qualifyButton = document.getElementById("qualify");
@@ -128,6 +162,16 @@ window.MXS_START = (function () {
       if (!text && !state.attached.length) return;
       if (!state.conversation) state.conversation = (await api("/api/agent/conversations", { method: "POST", body: { title: text.slice(0, 60) } })).id;
       const button = document.getElementById("chat-send");
+      if (prepare) {
+        button.disabled = true;
+        const saved = await api("/api/requests", { method: "POST", body: { text, image_shas: state.attached.map((r) => r.sha) } });
+        button.disabled = false;
+        if (!saved.ok) { status(`${s("failed")}: ${JSON.stringify(saved.detail || saved).slice(0, 300)}`); return; }
+        document.getElementById("chat-text").value = ""; state.attached = []; renderAttached();
+        status(`${s("saved")} — ${lang === "ar" ? saved.ar : saved.en}`);
+        renderRequests();
+        return;
+      }
       button.disabled = true; status(s("working"));
       const result = await api(`/api/agent/conversations/${encodeURIComponent(state.conversation)}/messages`, { method: "POST", body: { text, references: state.attached.map((r) => r.sha) } });
       button.disabled = false;
@@ -137,6 +181,6 @@ window.MXS_START = (function () {
       if (result.preview_sha) showPreview(result.preview_sha);
       renderPending();
     };
-    await Promise.all([renderMessages(), renderPending()]);
+    await Promise.all([renderMessages(), renderPending(), renderInbox(), renderRequests()]);
   };
 })();

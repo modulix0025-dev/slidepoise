@@ -82,9 +82,14 @@ const VIEWS = {
     await window.MXS_MCP({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
   },
   async home() {
-    const [health, features, jobs, budget] = await Promise.all([api("/api/health"), api("/api/features"),
-      api("/api/jobs"), api("/api/budget")]);
-    view().innerHTML = tile(t("status"), `<div class="row ${health.ok ? "ok" : "bad"}">${esc(health.app)} <span class="num">${esc(health.version)}</span></div>`)
+    const [health, features, jobs, budget, mcp] = await Promise.all([api("/api/health"), api("/api/features"),
+      api("/api/jobs"), api("/api/budget"), api("/api/mcp/health")]);
+    const test = ((mcp.last_heal || {}).self_test) || null;
+    const claude = lang === "ar"
+      ? (test ? (test.ok ? `توصيل Claude Desktop: ${test.ar}` : `توصيل Claude Desktop: ${test.ar || "مش شغّال"}`) : "توصيل Claude Desktop: الاختبار لسه شغّال…")
+      : (test ? `Claude Desktop connection: ${test.ok ? "OK" : "failing"} (${test.tools || 0} tools, ${test.seconds ?? "?"} s)` : "Claude Desktop connection: test running…");
+    view().innerHTML = tile(t("status"), `<div class="row ${health.ok ? "ok" : "bad"}">${esc(health.app)} <span class="num">${esc(health.version)}</span></div>
+      <div class="row ${test ? (test.ok ? "ok" : "bad") : ""}" id="mcp-status-row">${esc(claude)} <a href="#mcp">→</a></div>`)
       + tile(t("features"), `<table>${Object.entries(features.features || {}).map(([k, v]) => `<tr><td>${esc(k)}</td><td>${esc(v)}</td></tr>`).join("")}</table>`)
       + tile(t("budget"), pre(budget)) + tile(t("jobs"), pre((jobs.jobs || []).slice(0, 20)));
   },
@@ -190,6 +195,7 @@ async function route() {
   } catch (error) {
     view().innerHTML = tile("⚠", esc(String(error)));
   }
+  try { if (window.MXS_MCP && window.MXS_MCP.restartBar) await window.MXS_MCP.restartBar({ api, esc, lang }); } catch { /* the bar is a hint, never a blocker */ }
 }
 
 async function boot() {

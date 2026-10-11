@@ -28,6 +28,15 @@
 ; Command line of the produced installer:
 ;   /S            silent (uninstall data question answers its default: No)
 ;   /RELAUNCH=1   start the Studio after a silent install (used by the updater and rollback)
+;
+; Claude Desktop connection (docs/mag/phase-16):
+;   * never inside a syncing folder (OneDrive / Dropbox / Google Drive / Files On-Demand): the directory page
+;     refuses it and offers the default; a silent update of such an install MOVES it to the default folder;
+;   * HKCU\Software\ModuleX\MagazineStudio InstallDir + Version = the real folder after every install/upgrade;
+;   * MCP_LAUNCHER (the 19 KB C launcher, installer/mcp_launcher) goes to $INSTDIR\mcp and to the app home
+;     (${DATA_DIR}\bin); "mxstudio-cli connect install" then points every Claude Desktop config at that fixed
+;     launcher (backup first, other servers kept), warms the tools cache and runs the handshake;
+;   * the uninstaller removes ONLY our entry ("connect remove", backup first).
 
 Unicode true
 ManifestDPIAware true
@@ -59,6 +68,8 @@ SetCompressor /SOLID lzma
 !define DATA_DIR "$LOCALAPPDATA\ModuleX\MagazineStudio"
 !define KEEP_DIR "${DATA_DIR}\update\installers"
 !define LO_MSI "libreoffice\LibreOffice_Win_x86-64.msi"
+!define MXS_KEY "Software\ModuleX\MagazineStudio"
+!define MCP_EXE "mxstudio-mcp.exe"
 
 !if "${FLAVOUR}" == "full"
   !ifndef OFFLINE_DIR
@@ -88,6 +99,8 @@ VIAddVersionKey /LANG=0 "LegalCopyright" "ModuleX"
 !include "MUI2.nsh"
 !include "LogicLib.nsh"
 !include "FileFunc.nsh"
+
+!include "WinMessages.nsh"
 
 !define MUI_ABORTWARNING
 ; App icon (installer/assets/app.ico, built from app.svg by tools/build_icon.py). makensis works from
@@ -148,8 +161,160 @@ Function CheckFolder
   Push $5
 FunctionEnd
 
+; Does $INSTDIR sit in a folder a sync client owns? Pushes "1"/"0". Checks the sync clients' own variables,
+; well-known folder names, and the cloud «Files On-Demand» attributes of the nearest existing folder
+; (RECALL_ON_DATA_ACCESS 0x400000 | RECALL_ON_OPEN 0x40000 | OFFLINE 0x1000) - same rules as mxstudio/winsys.py.
+Function IsSyncPath
+  Push $1
+  Push $2
+  Push $3
+  StrCpy $3 "0"
+  Push "OneDrive"
+  Call UnderEnvFolder
+  Pop $1
+  ${If} $1 == "1"
+    StrCpy $3 "1"
+  ${EndIf}
+  Push "OneDriveConsumer"
+  Call UnderEnvFolder
+  Pop $1
+  ${If} $1 == "1"
+    StrCpy $3 "1"
+  ${EndIf}
+  Push "OneDriveCommercial"
+  Call UnderEnvFolder
+  Pop $1
+  ${If} $1 == "1"
+    StrCpy $3 "1"
+  ${EndIf}
+  ${If} $3 == "0"
+    Push "$INSTDIR\"
+    Push "\OneDrive"
+    Call StrContains
+    Pop $1
+    ${If} $1 == "1"
+      StrCpy $3 "1"
+    ${EndIf}
+  ${EndIf}
+  ${If} $3 == "0"
+    Push "$INSTDIR\"
+    Push "\Dropbox\"
+    Call StrContains
+    Pop $1
+    ${If} $1 == "1"
+      StrCpy $3 "1"
+    ${EndIf}
+  ${EndIf}
+  ${If} $3 == "0"
+    Push "$INSTDIR\"
+    Push "\Google Drive\"
+    Call StrContains
+    Pop $1
+    ${If} $1 == "1"
+      StrCpy $3 "1"
+    ${EndIf}
+  ${EndIf}
+  ${If} $3 == "0"
+    Push "$INSTDIR\"
+    Push "\My Drive\"
+    Call StrContains
+    Pop $1
+    ${If} $1 == "1"
+      StrCpy $3 "1"
+    ${EndIf}
+  ${EndIf}
+  ${If} $3 == "0"
+    ; nearest existing folder: its cloud attributes
+    StrCpy $2 "$INSTDIR"
+    ${DoWhile} $2 != ""
+      ${If} ${FileExists} "$2\*.*"
+        System::Call 'kernel32::GetFileAttributesW(w r2) i .r1'
+        ${If} $1 != -1
+          IntOp $1 $1 & 0x441000
+          ${If} $1 != 0
+            StrCpy $3 "1"
+          ${EndIf}
+        ${EndIf}
+        ${Break}
+      ${EndIf}
+      ${GetParent} $2 $1
+      ${If} $1 == $2
+        ${Break}
+      ${EndIf}
+      StrCpy $2 $1
+    ${Loop}
+  ${EndIf}
+  StrCpy $1 $3
+  Pop $3
+  Pop $2
+  Exch $1
+FunctionEnd
+
+; Push <environment variable name>, Call UnderEnvFolder -> "1" when $INSTDIR is inside the folder it names
+Function UnderEnvFolder
+  Exch $R1
+  Push $R2
+  Push $R3
+  ReadEnvStr $R2 $R1
+  StrCpy $R1 "0"
+  ${If} $R2 != ""
+    StrLen $R3 $R2
+    StrCpy $R3 "$INSTDIR" $R3
+    ${If} $R3 == $R2
+      StrCpy $R1 "1"
+    ${EndIf}
+  ${EndIf}
+  Pop $R3
+  Pop $R2
+  Exch $R1
+FunctionEnd
+
+; Push haystack, Push needle, Call StrContains -> "1"/"0" (case-insensitive: NSIS StrCmp ignores case)
+Function StrContains
+  Exch $R1 ; needle
+  Exch
+  Exch $R2 ; haystack
+  Push $R0
+  Push $R3
+  Push $R4
+  Push $R5
+  StrLen $R3 $R1
+  StrCpy $R5 "0"
+  StrCpy $R4 0
+  ${Do}
+    StrCpy $R0 $R2 $R3 $R4
+    ${If} $R0 == ""
+      ${Break}
+    ${EndIf}
+    ${If} $R0 == $R1
+      StrCpy $R5 "1"
+      ${Break}
+    ${EndIf}
+    IntOp $R4 $R4 + 1
+  ${Loop}
+  StrCpy $R1 $R5
+  Pop $R5
+  Pop $R4
+  Pop $R3
+  Pop $R0
+  Pop $R2
+  Exch $R1
+FunctionEnd
+
 ; the operator's choice of program folder (directory page): refuse anything unsafe, say why in Arabic
 Function DirLeave
+  Call IsSyncPath
+  Pop $0
+  ${If} $0 == "1"
+    MessageBox MB_YESNO|MB_ICONEXCLAMATION|MB_DEFBUTTON1 "الفولدر ده بيتزامن مع OneDrive أو Dropbox أو Google Drive:$\r$\n$INSTDIR$\r$\n$\r$\nالملفات هناك ممكن تبقى «أونلاين بس»، فالبرنامج يتأخر أو مايفتحش وClaude Desktop يفصل، والمزامنة بتقفل الملفات وهي بترفعها.$\r$\n$\r$\nأرجّعك للمكان الافتراضي؟$\r$\n$LOCALAPPDATA\Programs\${APP_NAME}" /SD IDYES IDNO keep_sync_folder
+    StrCpy $INSTDIR "$LOCALAPPDATA\Programs\${APP_NAME}"
+    FindWindow $1 "#32770" "" $HWNDPARENT
+    GetDlgItem $1 $1 1019
+    SendMessage $1 ${WM_SETTEXT} 0 "STR:$INSTDIR"
+    Abort
+    keep_sync_folder:
+    DetailPrint "the operator kept a syncing folder: $INSTDIR (the Doctor shows it red)"
+  ${EndIf}
   Call CheckFolder
   Pop $0
   ${If} $0 == "root"
@@ -244,6 +409,16 @@ FunctionEnd
 
 Section "Install"
   ${If} ${Silent}  ; no directory page: /D= or the last folder; never install over other things
+    ; an install inside a syncing folder (e.g. the operator's OneDrive\Desktop) MOVES to the default folder
+    Call IsSyncPath
+    Pop $0
+    ${If} $0 == "1"
+      DetailPrint "sync folder refused: $INSTDIR -> $LOCALAPPDATA\Programs\${APP_NAME}"
+      ${If} ${FileExists} "$INSTDIR\uninstall.exe"
+        StrCpy $OldDir $INSTDIR
+      ${EndIf}
+      StrCpy $INSTDIR "$LOCALAPPDATA\Programs\${APP_NAME}"
+    ${EndIf}
     Call CheckFolder
     Pop $0
     ${If} $0 == "project"
@@ -282,6 +457,32 @@ Section "Install"
   WriteINIStr "$INSTDIR\install.ini" "install" "flavour" "${FLAVOUR}"
   WriteINIStr "$INSTDIR\install.ini" "install" "version" "${APP_VER}"
   WriteUninstaller "$INSTDIR\uninstall.exe"
+
+  ; where the program really is: the fixed MCP launcher finds it here after any install, upgrade or move
+  WriteRegStr HKCU "${MXS_KEY}" "InstallDir" "$INSTDIR"
+  WriteRegStr HKCU "${MXS_KEY}" "Version" "${APP_VER}"
+!ifdef MCP_LAUNCHER
+  SetOutPath "$INSTDIR\mcp"
+  File "/oname=${MCP_EXE}" "${MCP_LAUNCHER}"
+  SetOutPath "$INSTDIR"
+  ; the copy Claude Desktop starts lives in the app home, which survives uninstall/reinstall/move
+  CreateDirectory "${DATA_DIR}\bin"
+  ClearErrors
+  CopyFiles /SILENT "$INSTDIR\mcp\${MCP_EXE}" "${DATA_DIR}\bin\${MCP_EXE}"
+  ${If} ${Errors}
+    DetailPrint "the launcher in use (Claude Desktop is running); the Studio refreshes it on its next start"
+  ${EndIf}
+!endif
+  ; Claude Desktop: our entry in every config (backup first, other servers kept), tools cache, handshake
+  DetailPrint "بنوصّل Claude Desktop بالاستوديو…"
+  CreateDirectory "${DATA_DIR}\logs"
+  nsExec::Exec '"$INSTDIR\${CLI_EXE}" connect install --out "${DATA_DIR}\logs\mcp-connect.json"'
+  Pop $0
+  ${If} $0 == "0"
+    DetailPrint "Claude Desktop متوصّل (اقفله وافتحه لو كان مفتوح)."
+  ${Else}
+    DetailPrint "توصيل Claude Desktop ما كملش ($0) — الاستوديو هيصلّحه أول ما يتفتح."
+  ${EndIf}
 
   CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\${APP_EXE}" 0
   CreateShortCut "$SMPROGRAMS\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\${APP_EXE}" 0
@@ -358,6 +559,10 @@ Section "Uninstall"
   ${If} ${FileExists} "$INSTDIR\${CLI_EXE}"
     nsExec::Exec '"$INSTDIR\${CLI_EXE}" shutdown'
     Pop $0
+    ; ONLY our entry leaves Claude Desktop's configs (backup first); every other server stays
+    CreateDirectory "${DATA_DIR}\logs"
+    nsExec::Exec '"$INSTDIR\${CLI_EXE}" connect remove --out "${DATA_DIR}\logs\mcp-disconnect.json"'
+    Pop $0
   ${ElseIf} ${FileExists} "$INSTDIR\${APP_EXE}"
     nsExec::Exec '"$INSTDIR\${APP_EXE}" --shutdown'
     Pop $0
@@ -373,6 +578,12 @@ Section "Uninstall"
     RMDir "$INSTDIR"
   ${EndIf}
   DeleteRegKey HKCU "${UNINST_KEY}"
+  ; InstallDir must never name a folder that is gone (a move re-writes it right after)
+  ReadRegStr $0 HKCU "${MXS_KEY}" "InstallDir"
+  ${If} $0 == $INSTDIR
+    DeleteRegValue HKCU "${MXS_KEY}" "InstallDir"
+    DeleteRegValue HKCU "${MXS_KEY}" "Version"
+  ${EndIf}
   ${If} $RemoveData == "1"
     RMDir /r "${DATA_DIR}"
   ${EndIf}

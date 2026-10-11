@@ -140,7 +140,71 @@ def fix_free_disk(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
                          "Free disk space (e.g. old exports in the workspace), then check again.")
 
 
+def fix_mcp_heal(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
+    from mxstudio.mcp import clients  # noqa: PLC0415
+    from mxstudio.mcp.heal import heal_all  # noqa: PLC0415
+    report = heal_all(None, None, home=Path(ctx.home), system=getattr(ctx, "system", None),
+                      candidates=getattr(ctx, "claude_configs", None), shortcut=False,
+                      run_self_test=getattr(ctx, "mcp_self_test", None) is None)
+    configs = report.get("configs", {})
+    invalid = configs.get("invalid") if isinstance(configs, dict) else None
+    if invalid:
+        return {"ok": False, "ar": invalid[0]["ar"], "en": invalid[0]["en"], "report": report}
+    test = report.get("self_test") or {"ok": True}
+    pending = clients.restart_pending(Path(ctx.home), getattr(ctx, "system", None))
+    ar = f"التوصيل اتصلّح ({configs.get('fixed', 0)} ملف)." + (" اضغط «أعد تشغيل Claude Desktop»." if pending["pending"] else "")
+    return {"ok": bool(test.get("ok")), "ar": ar if test.get("ok") else "اتصلّحت الإعدادات بس الاختبار لسه فاشل: " + str(test.get("ar")),
+            "en": f"Connection repaired ({configs.get('fixed', 0)} config(s)).", "report": report,
+            "restart_pending": pending["pending"]}
+
+
+def fix_restart_claude(ctx: DoctorContext, *, consent: bool = False, **_: Any) -> dict[str, Any]:
+    if not consent:
+        return {"ok": False, "needs_consent": True,
+                "ar": "ده هيقفل Claude Desktop ويفتحه تاني — أي رد شغّال فيه هيقف. وافق علشان أكمّل.",
+                "en": "This quits and reopens Claude Desktop; confirm to continue."}
+    from mxstudio.mcp import clients  # noqa: PLC0415
+    return clients.restart_claude(getattr(ctx, "system", None), run=ctx.run)
+
+
+def fix_move_install(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
+    from mxstudio.winsys import default_install_dir  # noqa: PLC0415
+    target = default_install_dir(getattr(ctx, "system", None))
+    return _instructions(
+        f"شغّل المثبّت تاني واختار المكان الافتراضي ({target}). المثبّت هينقل البرنامج ويشيل النسخة القديمة، "
+        "وإعدادات Claude Desktop مش هتحتاج أي تعديل (بتشاور على المشغّل الثابت).",
+        f"Run the installer again and keep the default folder ({target}); Claude Desktop needs no change.")
+
+
+def fix_mcp_config_help(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
+    return _instructions(
+        "ملف إعدادات Claude Desktop فيه خطأ JSON. افتحه من Claude Desktop ← Settings ← Developer ← Edit Config وصلّح "
+        "الخطأ (أو رجّع نسخة احتياطية .bak جنبه)، وبعدين دوس «إصلاح» على «توصيل Claude Desktop». مش هنعدّله بنفسنا "
+        "علشان مايضيعش أي سيرفر تاني.",
+        "Claude Desktop's config is not valid JSON. Fix it (or restore a .bak next to it), then repair again. "
+        "It is never edited automatically.")
+
+
+def fix_restart_powerpoint(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
+    from mxstudio.fonts.install import RESTART_PPT_AR, RESTART_PPT_EN  # noqa: PLC0415
+    return _instructions(RESTART_PPT_AR, RESTART_PPT_EN)
+
+
+def fix_single_instance(ctx: DoctorContext, **_: Any) -> dict[str, Any]:
+    from mxstudio.shell.single import clear_stale_server_lock  # noqa: PLC0415
+    cleared = clear_stale_server_lock(Path(ctx.home))
+    return {"ok": True, "cleared_stale_lock": cleared,
+            "ar": "اتمسح ملف القفل القديم." if cleared else "اقفل نسخ الاستوديو الزيادة وسيب واحدة بس.",
+            "en": "Stale lock removed." if cleared else "Close the extra Studio windows."}
+
+
 FIXERS: dict[str, Fixer] = {
+    "mcp_heal": fix_mcp_heal,
+    "restart_claude": fix_restart_claude,
+    "move_install": fix_move_install,
+    "mcp_config_help": fix_mcp_config_help,
+    "restart_powerpoint": fix_restart_powerpoint,
+    "single_instance": fix_single_instance,
     "install_libreoffice": fix_install_libreoffice,
     "create_workspace": fix_create_workspace,
     "fetch_fonts": fix_fetch_fonts,

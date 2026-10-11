@@ -85,3 +85,8 @@ nav.xb-nav a.nav-bottom { margin-top: auto; border-top: 1px solid var(--xb-line)
 .steps { margin: 0; padding-inline-start: 22px; line-height: 1.9; }
 .linkbtn { display: inline-block; text-decoration: none; border: 1px solid var(--xb-ink); padding: 7px 14px; color: var(--xb-ink); }
 code { font-family: var(--xb-num); word-break: break-all; }
+/* Claude Desktop connection: prepared requests, inbox, restart bar */
+.note { border: 1px solid var(--xb-edge); background: var(--xb-chip); padding: 8px 10px; margin: 8px 0; line-height: 1.7; }
+.dropzone { border: 2px dashed var(--xb-line); padding: 10px; min-height: 90px; }
+.dropzone.drop { border-color: var(--xb-edge); background: var(--xb-chip); }
+.restart-bar { border: 2px solid var(--xb-ink); padding: 10px 12px; margin: 0 0 12px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }

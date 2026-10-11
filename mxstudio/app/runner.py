@@ -53,6 +53,8 @@ def serve(home: Path | None = None, port: int | None = None, block: bool = True)
     from mxstudio.app.state import AppState  # noqa: PLC0415
 
     home = Path(home or app_home())
+    from mxstudio.shell.single import clear_stale_server_lock  # noqa: PLC0415
+    clear_stale_server_lock(home)
     existing = running_instance(home)
     if existing:
         raise RuntimeError(f"the Studio is already running on port {existing['port']}")
@@ -90,6 +92,9 @@ def serve(home: Path | None = None, port: int | None = None, block: bool = True)
             remove_lock()
 
     threading.Thread(target=watch, daemon=True).start()
+    if self_heal_enabled():
+        from mxstudio.mcp.heal import start_background  # noqa: PLC0415
+        start_background(state, app)
     if block:
         run_and_clean()
         return None
@@ -100,6 +105,14 @@ def serve(home: Path | None = None, port: int | None = None, block: bool = True)
             break
         time.sleep(0.05)
     return server, thread, port
+
+
+def self_heal_enabled() -> bool:
+    """The Claude Desktop self-heal runs in the installed app (or when MXS_SELF_HEAL=1); a source checkout or a test
+    server never rewrites the developer's own Claude Desktop config."""
+    from mxstudio.runtime_paths import frozen  # noqa: PLC0415
+    flag = os.environ.get("MXS_SELF_HEAL")
+    return flag == "1" if flag is not None else frozen()
 
 
 def shutdown(home: Path | None = None) -> bool:

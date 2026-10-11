@@ -154,13 +154,83 @@ def register(app, state) -> None:
     def mcp_self_test(request: Request):
         from mxstudio.mcp import clients  # noqa: PLC0415
         app.state.human(request)
-        return clients.self_test(_entry())
+        result = clients.self_test(_entry())
+        clients.write_state(state.home, last_self_test=result)
+        return result
+
+    @app.get("/api/mcp/health")
+    def mcp_health():
+        from mxstudio.mcp.heal import health  # noqa: PLC0415
+        return health(state.home)
+
+    @app.post("/api/mcp/heal")
+    def mcp_heal(request: Request):
+        from mxstudio.mcp.heal import heal_all  # noqa: PLC0415
+        app.state.human(request)
+        return heal_all(state, app, workspace=state.workspace.root)
+
+    @app.post("/api/mcp/restart-claude")
+    async def mcp_restart_claude(request: Request):
+        from mxstudio.mcp import clients  # noqa: PLC0415
+        app.state.human(request)
+        body = await request.json() if (await request.body()) else {}
+        if not body.get("confirm"):  # any conversation running in Claude Desktop is interrupted: ask first
+            return {"needs_confirm": True, "ar": "ده هيقفل Claude Desktop ويفتحه تاني — أي رد شغّال فيه هيقف. أكمّل؟",
+                    "en": "This quits and reopens Claude Desktop; a reply in progress there stops. Continue?"}
+        return clients.restart_claude()
+
+    # -- «الوارد»: pictures for Claude Desktop ---------------------------------------------------------
+    @app.get("/api/inbox")
+    def inbox_list():
+        from mxstudio.agent import inbox  # noqa: PLC0415
+        return {"folder": str(inbox.inbox_dir(state.workspace.root)), "pictures": inbox.list_inbox(state.workspace.root)}
+
+    @app.post("/api/inbox")
+    async def inbox_add(request: Request):
+        from mxstudio.agent import inbox  # noqa: PLC0415
+        body = await request.json()
+        try:
+            data = base64.b64decode(str(body.get("data_b64", "")), validate=True)
+            path = inbox.save_to_inbox(state.workspace.root, data, str(body.get("name", "")))
+            reference = studio.add_reference(state, data, path.name, "inbox")
+        except (binascii.Error, ImageRejected) as exc:
+            raise HTTPException(400, {"code": "BAD_IMAGE", "ar": "الملف ده مش صورة سليمة (PNG/JPEG/WebP/GIF).",
+                                      "en": str(exc)}) from exc
+        return {"ok": True, "name": path.name, "reference": reference}
+
+    # -- requests prepared here, run from Claude Desktop --------------------------------------------
+    def _requests():
+        from mxstudio.agent.inbox import RequestStore  # noqa: PLC0415
+        return RequestStore(state.home / "requests.sqlite3")
+
+    @app.get("/api/requests")
+    def requests_list(status: str = "all"):
+        return {"requests": _requests().list(None if status == "all" else status)}
+
+    @app.post("/api/requests")
+    async def requests_add(request: Request):
+        from mxstudio.agent.inbox import InboxError  # noqa: PLC0415
+        app.state.human(request)
+        body = await request.json()
+        try:
+            item = _requests().add(str(body.get("text", "")), [str(s) for s in body.get("image_shas") or []][:6],
+                                   [str(n) for n in body.get("inbox_names") or []][:6])
+        except InboxError as exc:
+            raise HTTPException(400, exc.as_dict()) from exc
+        return {"ok": True, "request": item,
+                "ar": f"الطلب {item['id']} اتحفظ. افتح Claude Desktop واكتب: «نفّذ طلبات الاستوديو».",
+                "en": f"Request {item['id']} saved. In Claude Desktop write: “run the Studio requests”."}
 
     # -- model qualification (a human click; it calls the configured model) ---------------
     @app.post("/api/agent/qualify")
     def qualify_model():
         from mxstudio.agent.evals.cli import qualify  # noqa: PLC0415
         return qualify(_provider(state), state.settings)
+
+    @app.get("/api/agent/model-check")
+    def model_check_state():
+        from mxstudio.agent import model_check  # noqa: PLC0415
+        return model_check.explain(state) | {"check": model_check.read(state.home)}
 
     # -- manual, one-shot run, eval summary ---------------------------------------------
     @app.get("/api/agent/manual")

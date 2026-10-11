@@ -69,8 +69,12 @@ class TasteMemory:
         self.path = str(path or default_db_path())
         if self.path != ":memory:":
             Path(self.path).parent.mkdir(parents=True, exist_ok=True)
-        self._conn = sqlite3.connect(self.path)
+        self._conn = sqlite3.connect(self.path, timeout=30)
         self._conn.row_factory = sqlite3.Row
+        if self.path != ":memory:":  # shared with the MCP servers Claude Desktop starts
+            from mxstudio.sqlite_util import BUSY_TIMEOUT_MS, _wal  # noqa: PLC0415
+            self._conn.execute(f"PRAGMA busy_timeout={BUSY_TIMEOUT_MS}")
+            _wal(self._conn)
         with self._conn:
             self._conn.executescript(_SCHEMA)
             self._conn.execute("INSERT OR IGNORE INTO meta(key, value) VALUES ('schema_version', ?)",

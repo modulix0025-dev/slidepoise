@@ -37,6 +37,50 @@ def ok_run(cmd, env=None, timeout=None, **_):
     return SimpleNamespace(returncode=0, stdout=b"v22.23.3 function", stderr=b"")
 
 
+class FakeSystem:
+    """mxstudio.winsys.System stand-in: processes by image name, no registry, plain attributes."""
+    platform = "win32"
+
+    def __init__(self, processes=None, env=None):
+        self._processes, self._env = processes or {}, env or {}
+
+    def processes(self, image):
+        return list(self._processes.get(image.casefold(), []))
+
+    def env(self, name):
+        return self._env.get(name)
+
+    def file_attributes(self, path):
+        return 0
+
+    def reg_get(self, name, key=None):
+        return None
+
+    def reg_set(self, name, value, key=None):
+        return True
+
+
+def connected_pc(tmp_path, home) -> dict:
+    """A PC where Claude Desktop is installed and connected through the fixed launcher, every theme font registered."""
+    from mxstudio.doctor import connection
+    from mxstudio.fonts.install import MemoryBackend
+    from mxstudio.mcp import clients
+    config = tmp_path / "Roaming" / "Claude" / "claude_desktop_config.json"
+    config.parent.mkdir(parents=True)
+    entry = clients.expected_entry(home)  # source checkout: this Python
+    config.write_text(json.dumps({"mcpServers": {"modulex-studio": entry, "other": {"command": "npx"}}}), encoding="utf-8")
+    log = config.parent / "logs" / "mcp-server-modulex-studio.log"
+    log.parent.mkdir()
+    log.write_text("2026-10-11T10:00:00.000Z [modulex-studio] [info] Initializing server...\n"
+                   "2026-10-11T10:00:01.000Z [modulex-studio] [info] Server started and connected successfully\n",
+                   encoding="utf-8")
+    fonts = MemoryBackend(tmp_path / "win")
+    for family in connection._theme_families():
+        fonts.registry["user"][f"{family} Regular (TrueType)"] = str(tmp_path / f"{family}.ttf")
+    return dict(system=FakeSystem(), claude_configs=[config], claude_logs=[log], font_backend=fonts,
+                mcp_self_test=lambda entry: {"ok": True, "seconds": 0.4, "tools": 56, "ar": "شغّال"})
+
+
 def make_ctx(tmp_path, **over) -> DoctorContext:
     app = tmp_path / "Programs" / "ModuleX Magazine Studio"
     (app / "node" / "node_modules" / "pptxgenjs").mkdir(parents=True)
@@ -59,7 +103,7 @@ def make_ctx(tmp_path, **over) -> DoctorContext:
     values = dict(settings=settings, workspace=ws, home=home, app_dir=app, platform="win32", frozen=False, run=ok_run,
                   connect=lambda host, port, timeout: True, http_get=lambda url, timeout: 200,
                   reg_read=lambda hive, key, value="": registry.get((hive, key)) if value in ("", "pv") else None,
-                  disk_free=lambda path: 200 * 1024**3, which=lambda name: None)
+                  disk_free=lambda path: 200 * 1024**3, which=lambda name: None, **connected_pc(tmp_path, home))
     values.update(over)
     return DoctorContext(**values)
 

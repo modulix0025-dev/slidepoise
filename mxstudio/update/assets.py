@@ -261,27 +261,27 @@ def font_files(folders: list[Path]) -> list[Path]:
 
 
 def install_vault_fonts(files: list[Path], backend=None) -> dict[str, Any]:
-    """Install vault fonts for the current Windows user (no admin): copy + HKCU registry + load."""
-    from mxstudio.fonts.install import install_fonts  # noqa: PLC0415
+    """Install vault fonts for the current Windows user (no admin): copy + HKCU registry + AddFontResourceExW +
+    WM_FONTCHANGE. File by file: one failure never stops the others; identical files are not copied again."""
+    from mxstudio.fonts.install import install_fonts_each  # noqa: PLC0415
 
     if backend is None:
         if sys.platform != "win32":
             return {"ok": True, "skipped": "not windows", "installed": 0, "files": len(files)}
         from mxstudio.fonts.install import WindowsBackend  # noqa: PLC0415
         backend = WindowsBackend()
-    installed, failed = 0, []
-    # one batch per 25 files: a broken file is named, the rest still install
-    for start in range(0, len(files), 25):
-        batch = files[start:start + 25]
-        try:
-            installed += len(install_fonts(batch, "user", backend))
-        except Exception:  # noqa: BLE001 - retry the batch file by file to name the culprit
-            for one in batch:
-                try:
-                    installed += len(install_fonts([one], "user", backend))
-                except Exception as exc:  # noqa: BLE001
-                    failed.append({"file": one.name, "error": type(exc).__name__})
-    return {"ok": not failed, "installed": installed, "files": len(files), "failed": failed[:20]}
+    outcome = install_fonts_each(files, "user", backend)
+    failed = outcome["failed"]
+    powerpoint_running = False
+    try:
+        powerpoint_running = bool(backend.process_running("POWERPNT.EXE"))
+    except Exception:  # noqa: BLE001 - only a hint
+        pass
+    import time  # noqa: PLC0415
+    return {"ok": not failed, "installed": len(outcome["results"]), "files": len(files),
+            "identical_skipped": outcome["identical_skipped"], "failed": failed[:20], "failed_count": len(failed),
+            "registered": sorted({r.registry_value for r in outcome["results"]})[:2000],
+            "installed_at": time.time(), "powerpoint_running_at_install": powerpoint_running}
 
 
 # ------------------------------------------------------------------ CLI

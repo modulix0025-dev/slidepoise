@@ -89,6 +89,11 @@ class DoctorContext:
     self_command: Callable[..., list[str]] = self_command
     transport: Any = None  # mxstudio.update.download transport for fixers (None → urllib)
     timeout: float = 3.0
+    system: Any = None  # mxstudio.winsys.System (None → the real one); tests inject a fake
+    claude_configs: Any = None  # list of claude_desktop_config.json paths (None → every one on this PC)
+    claude_logs: Any = None  # list of Claude Desktop MCP log paths (None → the real ones)
+    font_backend: Any = None  # mxstudio.fonts.install backend (None → WindowsBackend on Windows)
+    mcp_self_test: Any = None  # callable(entry) -> dict (None → mxstudio.mcp.clients.self_test)
 
     @classmethod
     def default(cls) -> DoctorContext:

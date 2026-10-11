@@ -152,8 +152,12 @@ class ShapeLibrary:
     def __init__(self, path: str | Path = ":memory:") -> None:
         if path != ":memory:":
             Path(path).parent.mkdir(parents=True, exist_ok=True)
-        self.db = sqlite3.connect(str(path))
+        self.db = sqlite3.connect(str(path), timeout=30)
         self.db.row_factory = sqlite3.Row
+        if path != ":memory:":  # the window and MCP servers open this file at the same time
+            from mxstudio.sqlite_util import BUSY_TIMEOUT_MS, _wal  # noqa: PLC0415
+            self.db.execute(f"PRAGMA busy_timeout={BUSY_TIMEOUT_MS}")
+            _wal(self.db)
         self.db.executescript(_SCHEMA)
         try:
             self.db.execute("CREATE VIRTUAL TABLE IF NOT EXISTS assets_fts USING fts5(id UNINDEXED, body)")

@@ -22,6 +22,8 @@ def window_options(url: str) -> dict:
 
 
 def ensure_server(home: Path | None = None, background_process: bool = True) -> dict:
+    from mxstudio.shell.single import clear_stale_server_lock  # noqa: PLC0415
+    clear_stale_server_lock(home)  # a crash / power cut must not leave a lock naming a dead process
     lock = running_instance(home)
     if lock:
         return lock
@@ -43,6 +45,11 @@ def ensure_server(home: Path | None = None, background_process: bool = True) -> 
 
 
 def open_window(home: Path | None = None) -> None:  # pragma: no cover - needs a desktop
+    from mxstudio.shell import single  # noqa: PLC0415
+
+    if single.acquire(home) is None:  # a Studio window is already open: bring it forward, open nothing new
+        single.bring_to_front(APP_NAME)
+        return
     import webview  # noqa: PLC0415 - pywebview is Windows-only in the bundle
 
     lock = ensure_server(home)

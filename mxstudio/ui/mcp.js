@@ -21,7 +21,11 @@ window.MXS_MCP = (function () {
       t1: "اتأكد إنك قفلت Claude Desktop من أيقونة جنب الساعة مش من الشباك بس.",
       t2: "دوس «اختبر التوصيل»: لو قال شغّال، المشكلة في Claude Desktop مش في الاستوديو.",
       t3: "لوج Claude Desktop: %APPDATA%\\Claude\\logs\\mcp-server-modulex-studio.log",
-      t4: "لو اتنقل البرنامج لمكان تاني، دوس «وصّل تلقائيًا» تاني علشان المسار يتحدّث.",
+      t4: "الإعدادات بتشاور على مشغّل ثابت (mxstudio-mcp.exe في بيانات البرنامج)، فنقل البرنامج أو إعادة تسطيبه مش محتاجين توصيل من جديد.",
+      restartNeeded: "Claude Desktop لازم يتقفل ويتفتح علشان يشوف الاستوديو.", restart: "أعد تشغيل Claude Desktop",
+      restartAsk: "ده هيقفل Claude Desktop ويفتحه تاني — أي رد شغّال فيه هيقف. أكمّل؟",
+      log: "آخر حالة في لوج Claude Desktop", logStates: { connected: "متوصّل ✓", error: "خطأ", starting: "بيبدأ", unknown: "مش واضح", no_log: "مفيش لوج لسه (Claude Desktop ماحاولش يشغّل الاستوديو)" },
+      selfTest: "اختبار التوصيل الأخير", launcher: "المشغّل الثابت", heal: "صلّح التوصيل", perConfig: "ملفات الإعدادات",
     },
     en: {
       title: "Connect Claude Desktop to the Studio (MCP)",
@@ -40,16 +44,41 @@ window.MXS_MCP = (function () {
       t1: "Make sure you quit Claude Desktop from the tray icon, not just the window.",
       t2: "Press «Test the connection»: if it works, the problem is on Claude Desktop's side.",
       t3: "Claude Desktop log: %APPDATA%\\Claude\\logs\\mcp-server-modulex-studio.log",
-      t4: "If the program moved, press «Connect automatically» again to update the path.",
+      t4: "The config points at a fixed launcher (mxstudio-mcp.exe in the app data), so moving or reinstalling the program needs no reconnecting.",
+      restartNeeded: "Claude Desktop must be quit and reopened to see the Studio.", restart: "Restart Claude Desktop",
+      restartAsk: "This quits and reopens Claude Desktop; a reply in progress there stops. Continue?",
+      log: "Last state in Claude Desktop's log", logStates: { connected: "connected ✓", error: "error", starting: "starting", unknown: "unclear", no_log: "no log yet (Claude Desktop has not tried to start the Studio)" },
+      selfTest: "Last connection test", launcher: "Fixed launcher", heal: "Repair the connection", perConfig: "Config files",
     },
   };
 
-  return async function mcp(ctx) {
+  async function restartBar(ctx) {
+    const { api, esc, lang } = ctx;
+    const s = (key) => (S[lang] || S.ar)[key];
+    const bar = document.getElementById("restart-bar");
+    if (!bar) return;
+    const health = await api("/api/mcp/health");
+    const pending = health && health.restart && health.restart.pending;
+    bar.hidden = !pending;
+    if (!pending) { bar.innerHTML = ""; return; }
+    bar.innerHTML = `<b>${esc(s("restartNeeded"))}</b><button class="xb" id="restart-claude">${esc(s("restart"))}</button><span class="status" id="restart-status"></span>`;
+    document.getElementById("restart-claude").onclick = async () => {
+      if (!window.confirm(s("restartAsk"))) return;
+      document.getElementById("restart-status").textContent = s("working");
+      const r = await api("/api/mcp/restart-claude", { method: "POST", body: { confirm: true } });
+      document.getElementById("restart-status").textContent = (lang === "ar" ? r.ar : r.en) || JSON.stringify(r).slice(0, 200);
+      setTimeout(() => restartBar(ctx), 8000);
+    };
+  }
+
+  async function mcp(ctx) {
     const { api, esc, tile, view, lang } = ctx;
     const s = (key) => (S[lang] || S.ar)[key];
     const seq = ctx.seq();
-    const [st, cfg] = await Promise.all([api("/api/mcp/claude-desktop"), api("/api/mcp/config")]);
+    const [st, cfg, health] = await Promise.all([api("/api/mcp/claude-desktop"), api("/api/mcp/config"), api("/api/mcp/health")]);
     if (seq !== ctx.seq()) return;
+    const logState = (health.claude_log || {});
+    const lastTest = ((health.last_heal || {}).self_test) || null;
     const problem = st.problem || (st.detail && st.detail.ar ? st.detail : null);
     const snippet = JSON.stringify(cfg.config || {}, null, 2);
     view().innerHTML = tile(s("title"), `<p class="lead">${esc(s("lead"))}</p>`)
@@ -59,8 +88,13 @@ window.MXS_MCP = (function () {
         <div class="row"><label>${esc(s("file"))}</label><code dir="ltr">${esc(st.path || "")}</code></div>
         ${(st.other_servers || []).length ? `<div class="row"><label>${esc(s("others"))}</label>${esc(st.other_servers.join(", "))}</div>` : ""}
         ${problem ? `<div class="banner">${esc(problem.ar || problem.en || "")}</div>` : ""}
+        <div class="row"><label>${esc(s("launcher"))}</label><code dir="ltr">${esc((health.entry || {}).command || "")}</code> ${health.launcher_present ? "✓" : "✗"}</div>
+        <div class="row"><label>${esc(s("perConfig"))}</label><ul class="steps">${(health.configs || []).map((c) => `<li><code dir="ltr">${esc(c.path)}</code> — ${c.connected ? "✓" : esc((c.problem && (c.problem.ar || c.problem.en)) || c.reason || "✗")}</li>`).join("")}</ul></div>
+        <div class="row ${logState.state === "connected" ? "ok" : logState.state === "error" ? "bad" : ""}"><label>${esc(s("log"))}</label>${esc((s("logStates") || {})[logState.state] || logState.state || "")} <code dir="ltr">${esc(logState.line || "")}</code></div>
+        ${lastTest ? `<div class="row ${lastTest.ok ? "ok" : "bad"}"><label>${esc(s("selfTest"))}</label>${esc(lastTest.ar || "")}</div>` : ""}
         <div class="row"><button class="xb" id="mcp-install">${esc(s("install"))}</button>
           <button class="xb ghost" id="mcp-test">${esc(s("test"))}</button>
+          <button class="xb ghost" id="mcp-heal">${esc(s("heal"))}</button>
           <button class="xb ghost" id="mcp-remove">${esc(s("remove"))}</button></div>
         <div id="mcp-result" class="status"></div>`)
       + tile(s("steps"), `<ol class="steps">${["s1", "s2", "s3", "s4", "s5", "s6"].map((k) => `<li>${esc(s(k))}</li>`).join("")}</ol>`)
@@ -85,8 +119,18 @@ window.MXS_MCP = (function () {
       result(s("working"));
       say(await api("/api/mcp/self-test", { method: "POST", body: {} }));
     };
+    document.getElementById("mcp-heal").onclick = async () => {
+      result(s("working"));
+      const r = await api("/api/mcp/heal", { method: "POST", body: {} });
+      say(r.self_test || r);
+      setTimeout(ctx.rerender, 1500);
+    };
     document.getElementById("mcp-copy").onclick = async () => {
       try { await navigator.clipboard.writeText(snippet); result(s("copied")); } catch { result(snippet); }
     };
-  };
+    restartBar(ctx);
+  }
+
+  mcp.restartBar = restartBar;
+  return mcp;
 })();

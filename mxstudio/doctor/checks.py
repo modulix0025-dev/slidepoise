@@ -331,15 +331,24 @@ CHECKS: list[Callable[[DoctorContext], CheckResult]] = [
 ]
 
 
+def _connection():
+    from mxstudio.doctor import connection  # noqa: PLC0415 - imports this module's helpers
+    return connection
+
+
 def check_ids() -> list[str]:
     return ["python", "node", "office", "pypdfium2", "fonts", "shapes", "webview2", "providers",
-            *[spec[0] for spec in OPERATOR_SYSTEMS], "workspace", "disk", "arabic_path"]
+            *[spec[0] for spec in OPERATOR_SYSTEMS], "workspace", "disk", "arabic_path", *_connection().IDS]
+
+
+def all_checks() -> list[Callable[[DoctorContext], CheckResult]]:
+    return [*CHECKS, *_connection().CHECKS]
 
 
 def run_all(ctx: DoctorContext | None = None, only: list[str] | None = None) -> list[dict[str, Any]]:
     ctx = ctx or DoctorContext.default()
     results = []
-    for check, cid in zip(CHECKS, check_ids()):
+    for check, cid in zip(all_checks(), check_ids()):
         if only and cid not in only:
             continue
         try:

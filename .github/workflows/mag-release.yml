@@ -30,11 +30,14 @@ on:
       - "mxs-v*"
     branches:
       - "claude/adoring-mccarthy-zgg4ek"
+      - "claude/mcp-stable-connection"
     paths:
       - ".github/workflows/mag-release.yml"
       - "installer/**"
       - "mxstudio/config.py"
       - "mxstudio/update/assets.py"
+      - "mxstudio/mcp/**"
+      - "mxstudio/shell/**"
       - "catalog/shapes/packs.json"
   workflow_dispatch:
     inputs:
@@ -171,7 +174,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: sudo apt-get update && sudo apt-get install -y nsis
+      - run: sudo apt-get update && sudo apt-get install -y nsis gcc-mingw-w64-x86-64
+      - name: Fixed MCP launcher (C, 19 KB; Claude Desktop always starts this one)
+        run: sh installer/mcp_launcher/build.sh workspace/mcp/mxstudio-mcp.exe
       - uses: actions/download-artifact@v4
         with:
           name: app-onefolder
@@ -186,8 +191,10 @@ jobs:
           test -f "workspace/app/$APP_DIR_NAME.exe" && test -f workspace/app/mxstudio-cli.exe
           vi_ver="$(echo "$VERSION" | sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/').0"
           makensis -V2 -WX -INPUTCHARSET UTF8 -DAPP_VER="$VERSION" -DVI_VER="$vi_ver" \
+            -DMCP_LAUNCHER="$PWD/workspace/mcp/mxstudio-mcp.exe" \
             -DSRC_DIR="$PWD/workspace/app" -DOUT_DIR="$PWD/workspace/installers" installer/nsis/MagazineStudio.nsi
           makensis -V2 -WX -INPUTCHARSET UTF8 -DAPP_VER="$VERSION" -DVI_VER="$vi_ver" -DFLAVOUR=full \
+            -DMCP_LAUNCHER="$PWD/workspace/mcp/mxstudio-mcp.exe" \
             -DOFFLINE_DIR="$PWD/workspace/offline" \
             -DSRC_DIR="$PWD/workspace/app" -DOUT_DIR="$PWD/workspace/installers" installer/nsis/MagazineStudio.nsi
           ls -la workspace/installers
@@ -249,6 +256,10 @@ jobs:
         if: ${{ !cancelled() }}
         shell: pwsh
         run: ./installer/windows_sandbox/custom_dir_proof.ps1 -In "$env:GITHUB_WORKSPACE\workspace\installers" -Out "$env:GITHUB_WORKSPACE\workspace\smoke"
+      - name: Claude Desktop always finds the Studio (fixed launcher, self-heal, 20x handshake, move, OneDrive, one window)
+        if: ${{ !cancelled() }}
+        shell: pwsh
+        run: ./installer/windows_sandbox/mcp_connection_proof.ps1 -In "$env:GITHUB_WORKSPACE\workspace\installers" -Out "$env:GITHUB_WORKSPACE\workspace\smoke\mcp"
       - uses: actions/upload-artifact@v4
         if: always()
         with:

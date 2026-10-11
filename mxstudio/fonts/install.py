@@ -278,6 +278,38 @@ def install_fonts(files: list[Path], scope: str, backend: FontBackend) -> list[I
     return results
 
 
+def install_fonts_each(files: list[Path], scope: str, backend: FontBackend) -> dict:
+    """Like :func:`install_fonts`, one file at a time: a file that fails (locked, broken, unreadable) is named and the
+    REST STILL INSTALL; a target that already holds the same bytes (sha256) is never copied again — copying over a
+    font that something has open was what stopped the whole install before. One WM_FONTCHANGE at the end."""
+    if scope not in SCOPES:
+        raise ValueError(f"unknown scope {scope!r}")
+    if scope == "machine" and not backend.is_admin():
+        raise NeedsElevation(backend.current_account().name)
+    target_dir = backend.fonts_dir(scope)
+    target_dir.mkdir(parents=True, exist_ok=True)
+    results, failed, identical = [], [], 0
+    for source in files:
+        source = Path(source)
+        try:
+            value_name, _full = registry_value_name(source)
+            target = target_dir / source.name
+            if target.exists() and _sha256(target) == _sha256(source):
+                identical += 1
+            else:
+                shutil.copyfile(source, target)
+            backend.registry_set(scope, value_name, str(target) if scope == "user" else target.name)
+            loaded = backend.add_font_resource(target)
+            results.append(InstallResult(file=source.name, windows_reported_name=reported_name(value_name),
+                                         scope=scope, path=str(target), sha256=_sha256(target),
+                                         registry_value=value_name, add_font_resource=loaded))
+        except Exception as exc:  # noqa: BLE001 - named, and the next file goes on
+            failed.append({"file": source.name, "error": f"{type(exc).__name__}: {str(exc)[:160]}"})
+    if results:
+        backend.broadcast_font_change()
+    return {"results": results, "failed": failed, "identical_skipped": identical}
+
+
 def verify_installed(results: list[InstallResult], backend: FontBackend) -> list[dict]:
     """Named findings for anything that is not registered or whose bytes changed on disk."""
     problems = []

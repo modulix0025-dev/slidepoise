@@ -122,7 +122,11 @@ def create_app(state: AppState) -> FastAPI:
     @app.post("/api/secrets/{name}")
     async def set_secret(name: str, request: Request):
         body = await request.json()
-        return state.secrets.set(name, str(body.get("value", "")))
+        saved = state.secrets.set(name, str(body.get("value", "")))
+        if name == "provider.text_vision" and state.settings.load()["providers"]["text_vision"].get("enabled"):
+            from mxstudio.agent import model_check  # noqa: PLC0415 - «اختبر الموديل» runs by itself
+            saved = dict(saved) | {"model_check_started": model_check.start_check(state)}
+        return saved
 
     @app.delete("/api/secrets/{name}")
     def delete_secret(name: str):
