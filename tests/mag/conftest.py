@@ -8,7 +8,7 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
-for extra in (ROOT, ROOT / "slidepoise" / "runtime" / "src"):
+for extra in (ROOT, ROOT / "slidepoise" / "runtime" / "src", ROOT / "mxlibs"):
     if str(extra) not in sys.path:
         sys.path.insert(0, str(extra))
 
