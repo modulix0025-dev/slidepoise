@@ -65,6 +65,53 @@ def extract_text_marked(pdf: Path) -> str:
     return "\n".join(pages)
 
 
+def extract_text_geometric(pdf: Path) -> str:
+    """The PDF's real characters with word gaps decided by geometry along each glyph's own baseline (rotated text:
+    pdfium invents a break after every glyph and loses the spaces). A space where the advance gap exceeds 0.18 em,
+    a new line where the baseline jumps more than 0.6 em."""
+    import ctypes  # noqa: PLC0415
+    import math  # noqa: PLC0415
+    try:
+        import pypdfium2 as pdfium  # noqa: PLC0415
+        import pypdfium2.raw as raw  # noqa: PLC0415
+    except ImportError:
+        return extract_text(pdf)
+    document = pdfium.PdfDocument(str(pdf))
+    pages = []
+    try:
+        for page in document:
+            textpage = page.get_textpage()
+            out, prev = [], None
+            for index in range(textpage.count_chars()):
+                if raw.FPDFText_IsGenerated(textpage.raw, index):
+                    continue
+                char = chr(raw.FPDFText_GetUnicode(textpage.raw, index))
+                if char in "\r\n":
+                    continue
+                x, y = ctypes.c_double(), ctypes.c_double()
+                raw.FPDFText_GetCharOrigin(textpage.raw, index, ctypes.byref(x), ctypes.byref(y))
+                size = raw.FPDFText_GetFontSize(textpage.raw, index) or 12.0
+                angle = raw.FPDFText_GetCharAngle(textpage.raw, index)
+                dx, dy = math.cos(angle), math.sin(angle)
+                if char.strip():
+                    left, bottom, right, top = textpage.get_charbox(index)
+                    width = abs((right - left) * dx + (top - bottom) * dy)
+                    if prev is not None:
+                        px, py, pw, psize = prev
+                        vx, vy = x.value - px, y.value - py
+                        along, across, em = vx * dx + vy * dy, -vx * dy + vy * dx, max(size, psize)
+                        if abs(across) > 0.6 * em:
+                            out.append("\n")
+                        elif along - pw > 0.18 * em or along < -0.3 * em:
+                            out.append(" ")
+                    prev = (x.value, y.value, width, size)
+                out.append(char)
+            pages.append("".join(out))
+    finally:
+        document.close()
+    return "\n".join(pages)
+
+
 def extract_text(pdf: Path) -> str:
     """pypdfium2 first (permissive licence, logical order); Poppler's pdftotext only as a fallback."""
     try:
@@ -223,9 +270,116 @@ def _heal_pass(expected: Counter, groups: list, sizes, cross_real: bool) -> int:
     return healed
 
 
-def text_proof(expected_texts: list[str], pdf: Path, names: list[str] | None = None) -> dict:
+def _classify(text: str) -> tuple[Counter, Counter, Counter]:
+    """Letters/digits, marks and punctuation of a text as multisets (whitespace, tatweel and bidi controls ignored)."""
+    letters, marks, punct = Counter(), Counter(), Counter()
+    for char in unicodedata.normalize("NFD", unicodedata.normalize("NFC", (text or "").translate(BIDI_CONTROLS))):
+        category = unicodedata.category(char)
+        if category == "Mn":
+            marks[char] += 1
+        elif char.isspace() or char == TATWEEL or char == GENERATED:
+            continue
+        elif category[0] in "LN":
+            letters[char] += 1
+        else:
+            punct[MIRROR_PAIRS.get(char, char)] += 1
+    return letters, marks, punct
+
+
+def boxes_from_spec(spec: dict) -> list[dict]:
+    """Where each text box prints, as FRACTIONS of its page (origin top-left), for box_proof — mapped onto each PDF
+    page's real size, so it holds whatever physical size the deck was given. One entry per textbox, slide order."""
+    out = []
+    for page, slide in enumerate(spec["slides"]):
+        dims = slide.get("dimensions_px") or spec["slides"][0]["dimensions_px"]
+        for obj in slide["objects"]:
+            if obj.get("kind") != "textbox":
+                continue
+            x, y, w, h = obj["bbox_px"]
+            text = "".join(run["text"] for run in obj.get("runs", [])) or obj.get("text", "")
+            out.append({"page": page, "text": text, "fx": (x + w / 2) / dims[0], "fy": (y + h / 2) / dims[1],
+                        "fw": w / dims[0], "fh": h / dims[1],
+                        "rotate": float((obj.get("fx") or {}).get("rotate", 0) or 0)})
+    return out
+
+
+def box_proof(boxes: list[dict], pdf: Path, margin_pt: float = 6.0) -> dict:
+    """Order-free proof: the letters, marks and punctuation the PDF draws inside each text box equal that box's text,
+    and nothing (but whitespace) is drawn outside every box. Extraction order and word gaps play no part, so PDFium's
+    line regrouping of stacked Arabic glyphs cannot break it; a missing, extra or changed word in a box still changes
+    that box's multiset."""
+    import math  # noqa: PLC0415
+
+    import pypdfium2 as pdfium  # noqa: PLC0415
+    import pypdfium2.raw as raw  # noqa: PLC0415
+    found = [[Counter(), Counter(), Counter()] for _ in boxes]
+    stray = Counter()
+    document = pdfium.PdfDocument(str(pdf))
+    try:
+        for page_index, page in enumerate(document):
+            textpage = page.get_textpage()
+            width, height = page.get_size()
+            mine = [i for i, b in enumerate(boxes) if b["page"] == page_index]
+            placed = {i: (boxes[i]["fx"] * width, height - boxes[i]["fy"] * height, boxes[i]["fw"] * width,
+                          boxes[i]["fh"] * height) for i in mine}
+            for index in range(textpage.count_chars()):
+                if raw.FPDFText_IsGenerated(textpage.raw, index):
+                    continue
+                char = chr(raw.FPDFText_GetUnicode(textpage.raw, index))
+                if char.isspace():
+                    continue
+                left, bottom, right, top = textpage.get_charbox(index)
+                cx, cy = (left + right) / 2, (bottom + top) / 2
+                home = None
+                for i in mine:
+                    bx, by, bw, bh = placed[i]
+                    a = math.radians(boxes[i]["rotate"])
+                    dx, dy = cx - bx, cy - by
+                    u = dx * math.cos(a) - dy * math.sin(a)  # into the box's own axes (PDF y up, rotation clockwise)
+                    v = dx * math.sin(a) + dy * math.cos(a)
+                    if abs(u) <= bw / 2 + margin_pt and abs(v) <= bh / 2 + margin_pt:
+                        home = i
+                        break
+                letters, marks, punct = _classify(char)
+                if home is None:
+                    stray += letters + punct
+                    continue
+                found[home][0] += letters
+                found[home][1] += marks
+                found[home][2] += punct
+    finally:
+        document.close()
+    bad = []
+    for i, box in enumerate(boxes):
+        want = _classify(box["text"])
+        if tuple(want) != tuple(found[i]):
+            bad.append({"page": box["page"] + 1, "text": box["text"][:60],
+                        "missing": "".join((want[0] - found[i][0]).elements())[:40],
+                        "extra": "".join((found[i][0] - want[0]).elements())[:40],
+                        "marks_equal": want[1] == found[i][1], "punct_equal": want[2] == found[i][2]})
+    return {"ok": not bad and not stray, "boxes": len(boxes), "mismatched_boxes": bad[:10],
+            "stray_outside_boxes": "".join(stray.elements())[:60]}
+
+
+def text_proof(expected_texts: list[str], pdf: Path, names: list[str] | None = None,
+               boxes: list[dict] | None = None) -> dict:
     """`names`: the deck's child-name runs (each its own run), used only to undo the glued-name extraction."""
-    return compare_texts(expected_texts, extract_text(pdf), names, marked_text=extract_text_marked(pdf))
+    text = extract_text(pdf)
+    result = compare_texts(expected_texts, text, names, marked_text=extract_text_marked(pdf))
+    result["view"] = "pdfium"
+    if not result["ok"]:  # rotated text: words rebuilt from glyph geometry (same characters, other word gaps)
+        geometric = compare_texts(expected_texts, text, names, marked_text=extract_text_geometric(pdf))
+        if geometric["ok"]:
+            geometric["view"] = "geometry"
+            return geometric
+    boxes_cover = bool(boxes) and Counter(b["text"] for b in boxes) == Counter(expected_texts)
+    if not result["ok"] and boxes_cover and result["marks_equal"] and result["punct_equal"]:
+        # PDFium regroups stacked/decorative Arabic glyphs into other "lines": prove per box, order-free
+        located = box_proof(boxes, pdf)
+        result["box_proof"] = located
+        if located["ok"]:
+            result.update(ok=True, view="boxes")
+    return result
 
 
 def compare_texts(expected_texts: list[str], actual_text: str, names: list[str] | None = None,

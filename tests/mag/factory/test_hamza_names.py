@@ -125,7 +125,13 @@ def test_every_title_font_with_every_hamza_name_in_every_position_passes_the_rea
     render({"title": font, "language": "ar-EG", "slides": slides}, deck, python=sys.executable)
     pdf = base / "titles.pdf"
     record = _pptx_to_pdf().convert(deck, pdf, expect_pages=len(slides), engines=["soffice"])
-    proof = text_proof(texts, pdf, names=list(HAMZA_NAMES))
+    from mxstudio.validators.pdf_text import boxes_from_spec
+    spec = {"slides": slides}
+    boxes = boxes_from_spec(spec)
+    proof = text_proof(texts, pdf, names=list(HAMZA_NAMES), boxes=boxes)
     assert proof["ok"], (font, proof)
-    assert not text_proof(texts + ["كلمة ناقصة"], pdf, names=list(HAMZA_NAMES))["ok"]  # negative control
+    assert not text_proof(texts + ["كلمة ناقصة"], pdf, names=list(HAMZA_NAMES), boxes=boxes)["ok"]  # negative control
+    broken = [dict(b) for b in boxes]
+    broken[4]["text"] = broken[4]["text"].replace("الهرم", "البحر")  # a changed word in one box
+    assert not text_proof([b["text"] for b in broken], pdf, names=list(HAMZA_NAMES), boxes=broken)["ok"]
     assert record["pages"] == len(slides)

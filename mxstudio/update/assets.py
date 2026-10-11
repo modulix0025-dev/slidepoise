@@ -250,8 +250,13 @@ def office_builds(target: Path, files: list[dict[str, Any]]) -> list[dict[str, A
         expected = {f["file"]: f["sha256"] for f in plan["files"]}
         for item in built:
             if expected.get(item.file) != item.sha256:
+                try:
+                    import uharfbuzz  # noqa: F401,PLC0415 - fontTools packs GSUB/GPOS with HarfBuzz's repacker if present
+                    hint = ""
+                except ImportError:
+                    hint = " (uharfbuzz is not installed: fontTools then packs GSUB/GPOS differently)"
                 raise UpdateError("office_build_mismatch", f"نسخة الأوفيس من خط {fam['family']} طلعت مختلفة عن المثبّتة.",
-                                  f"office build {item.file} differs from the pinned sha256")
+                                  f"office build {item.file} differs from the pinned sha256{hint}")
             added.append({"path": f"{out_rel}/{item.file}", "sha256": item.sha256, "source": "office_build",
                           "from": source_rel, "licence": by_path[source_rel]["licence"], "family": plan["install_family"],
                           "catalog_family": fam["family"]})

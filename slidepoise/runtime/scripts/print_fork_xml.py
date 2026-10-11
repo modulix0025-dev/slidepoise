@@ -122,11 +122,13 @@ def apply_picture_placeholders(root: etree._Element, hints: dict, slide_number: 
         raise ValueError(f"picture placeholders missing from the slide: {sorted(missing)}")
     placed = []
     for number, (_order, _position, object_id, shape) in enumerate(sorted(markers, key=lambda m: (m[0], m[1])), 1):
-        idx = PLACEHOLDER_IDX_BASE + slide_number * 20 + number
+        fixed = hints[object_id].get("idx")  # a fixed index (e.g. 100 for the full-page scene) the operator's
+        idx = int(fixed) if fixed else PLACEHOLDER_IDX_BASE + slide_number * 20 + number  # tools address by idx
         cnv = shape.find("p:nvSpPr/p:cNvPr", NS)
         xfrm = shape.find("p:spPr/a:xfrm", NS)
         label = hints[object_id].get("label") or object_id
-        replacement = _placeholder_sp(cnv.get("id"), f"Picture Placeholder {number}", idx, xfrm, descr=label)
+        name = f"Picture Placeholder {idx}" if fixed else f"Picture Placeholder {number}"
+        replacement = _placeholder_sp(cnv.get("id"), name, idx, xfrm, descr=label)
         shape.getparent().replace(shape, replacement)
         placed.append({"id": object_id, "idx": idx, "xfrm": copy.deepcopy(xfrm) if xfrm is not None else None})
     return placed

@@ -140,7 +140,8 @@ function addPicturePlaceholder(slide, object, dimensions, slideSize, pptx, postp
   // marker rectangle is drawn here and the post-processor turns it into the placeholder
   // (plus a matching layout placeholder) that the Console's slot counter reads.
   if (!Array.isArray(object.bbox_px) || object.bbox_px.length !== 4) throw new Error(`Picture placeholder ${object.id} requires bbox_px`);
-  postprocessHints.picture_placeholders[object.id] = { order: Number.isFinite(Number(object.order)) ? Number(object.order) : null, label: object.label ?? null };
+  postprocessHints.picture_placeholders[object.id] = { order: Number.isFinite(Number(object.order)) ? Number(object.order) : null, label: object.label ?? null,
+    idx: Number.isInteger(object.ph_idx) && object.ph_idx > 0 ? object.ph_idx : null };
   slide.addShape(pptx.ShapeType.rect, {
     objectName: `SC_PICPH__${object.id}`,
     ...geometry(object.bbox_px, dimensions, slideSize),

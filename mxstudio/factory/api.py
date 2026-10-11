@@ -32,7 +32,8 @@ def resolve_theme(spec: dict | None, registry=None) -> dict | None:
                             "unknown type theme; see fonts.list_themes")
         from mxstudio.fonts.office_build import deck_family  # noqa: PLC0415 - RFN-renamed Office builds
         theme["name"], theme["fonts"] = found["name_ar"], {"title": deck_family(found["ar_title"]),
-                                                           "body": deck_family(found["ar_body"])}
+                                                           "body": deck_family(found["ar_body"]),
+                                                           "name": deck_family(found["ar_name"])}
     theme["colours"].update(spec.get("colours") or {})
     if registry is None:
         from slidepoise.arabic.fonts import default_registry  # noqa: PLC0415
@@ -49,6 +50,17 @@ def register(app, state) -> None:
 
     def build(args: dict) -> dict:
         story = moon_star_story() if args.get("demo") else Story.from_dict(args["story"])
+        if args.get("page"):
+            story.page = args["page"]
+        if args.get("layout"):
+            story.layout = args["layout"]
+        for page in story.pages:  # sample art by reference sha → the stored file (contrast is measured on it)
+            if page.art and len(page.art) == 64 and all(c in "0123456789abcdef" for c in page.art):
+                try:
+                    path = state.workspace.blob_path(page.art)
+                except ValueError:
+                    path = None
+                page.art = str(path) if path and path.is_file() else ""
         problems = story.validate()
         if problems:
             raise ToolError("STORY_NOT_READY", "القصة لسه مش جاهزة.", "story is not ready", {"problems": problems})
@@ -77,7 +89,10 @@ def register(app, state) -> None:
         description_en="Build every template variant (story JSON + optional theme) and run all validators. "
                        "Returns preview_sha: the rendered contact sheet of every page.",
         schema={"type": "object", "properties": {"demo": {"type": "boolean"}, "story": {"type": "object"},
-                                                 "theme": THEME_SCHEMA, "export": {"type": "boolean"}},
+                                                 "theme": THEME_SCHEMA, "export": {"type": "boolean"},
+                                                 "page": {"type": "string", "enum": ["portrait", "landscape_169"]},
+                                                 "layout": {"type": "string",
+                                                            "enum": ["classic", "overlay", "storybook"]}},
                 "additionalProperties": False},
         handler=build, tags=["factory"]))
     state.tools.register(Tool(

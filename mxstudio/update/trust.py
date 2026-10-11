@@ -25,6 +25,19 @@ class Trust:
     allowed_hosts: tuple[str, ...] = DEFAULT_ALLOWED_HOSTS
     release_repo: str = ""
 
+    @property
+    def auto_update_enabled(self) -> bool:
+        """No embedded public key ⇒ nothing can be verified ⇒ automatic update is OFF (not merely failing later)."""
+        return bool(self.public_keys) and bool(self.manifest_url)
+
+    def why_disabled(self) -> dict[str, str] | None:
+        if self.auto_update_enabled:
+            return None
+        return {"ar": "التحديث التلقائي مقفول: النسخة دي مافيهاش مفتاح التوقيع العام، فمش هنقدر نتأكد إن أي تحديث جاي "
+                      "منك. حدّث بتنزيل المثبّت الجديد يدويًا (بياناتك مش بتتلمس).",
+                "en": "Automatic update is off: this build embeds no update-signing public key, so no update can be "
+                      "verified. Update by running the new installer by hand (your data is kept)."}
+
     def to_dict(self) -> dict[str, Any]:
         return {"public_keys": dict(self.public_keys), "manifest_url": self.manifest_url,
                 "allowed_hosts": list(self.allowed_hosts), "release_repo": self.release_repo}

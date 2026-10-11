@@ -20,7 +20,10 @@ from .state import UpdateManager
 def launch_hook() -> bool:
     """Settle the last apply/rollback and start a consented staged update. True → exit now."""
     try:
-        return UpdateManager().launch_hook()
+        manager = UpdateManager()
+        if not manager.trust.auto_update_enabled:
+            return False  # no embedded key: nothing staged can be verified, so nothing is ever started
+        return manager.launch_hook()
     except UpdateError:
         return False
 

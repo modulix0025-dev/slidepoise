@@ -22,15 +22,24 @@ def register(app, state) -> None:
                 pass  # the state machine records the failure in its state file
         threading.Thread(target=run, daemon=True).start()
 
+    def auto_update() -> dict:
+        from mxstudio.update import trust as trust_mod  # noqa: PLC0415
+        trust = trust_mod.load()
+        return {"enabled": trust.auto_update_enabled, "reason": trust.why_disabled(),
+                "key_ids": sorted(trust.public_keys)}
+
     @app.get("/api/update/state")
     def update_state():
         progress = state.home / "update" / "progress.json"
-        return {"state": manager().state(), "progress": json.loads(progress.read_text("utf-8"))
-                if progress.is_file() else None}
+        return {"auto_update": auto_update(), "state": manager().state(),
+                "progress": json.loads(progress.read_text("utf-8")) if progress.is_file() else None}
 
     @app.post("/api/update/{action}")
     async def update_action(action: str, request: Request):
         body = await request.json() if (await request.body()) else {}
+        gate = auto_update()
+        if action in ("check", "consent") and not gate["enabled"]:
+            raise HTTPException(409, {"code": "AUTO_UPDATE_OFF", **gate["reason"]})
         m = manager()
         if action == "check":
             background(lambda: (m.check(), m.download(), m.verify() and m.stage()))

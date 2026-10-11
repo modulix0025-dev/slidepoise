@@ -27,6 +27,16 @@ class Page:
     figure: bool = True        # does the child's figure appear on this page
     extra_characters: list[str] = field(default_factory=list)
     title: dict[str, str] = field(default_factory=dict)  # optional page title per variant
+    # landscape storybook/overlay pages (fractions of the trimmed page; defaults per layout when omitted)
+    text_box: list[float] | None = None   # [x, y, w, h] of the story text
+    name_box: list[float] | None = None   # [x, y, w, h] of the big «name art» (storybook); None = layout default
+    name_art: bool | None = None          # show the child's name as art on this page (default: cover + scenes)
+    rotate: float | None = None           # degrees, story text («مايل سنة»)
+    name_rotate: float | None = None      # degrees, name art
+    name_style: str | None = None         # gold | ice | pink
+    text_side: str | None = None          # overlay: right | left (dark gradient under the text)
+    ink: bool | None = None               # dark text on a light area of the art instead of white text
+    art: str = ""                         # sample scene art (workspace sha or file path): contrast check + preview
 
     def validate(self, variants: tuple[str, ...]) -> list[str]:
         problems = []
@@ -63,11 +73,25 @@ class Story:
     characters_count: int = 1
     extra_characters: list[str] = field(default_factory=list)
     theme: str = "مرح كلاسيكي"
+    page: str = "portrait"     # portrait (A4/A5) | landscape_169 (297×167.06 mm + bleed, and its A5 half)
+    layout: str = "classic"    # classic | overlay (full scene, gradient under the text) | storybook (scene + name art)
 
     def validate(self) -> list[str]:
         problems = []
         if not STORY_KEY.match(self.key):
             problems.append("story key must be ascii lowercase (e.g. moon_trip)")
+        if self.page not in ("portrait", "landscape_169"):
+            problems.append("page must be portrait or landscape_169")
+        if self.layout not in ("classic", "overlay", "storybook"):
+            problems.append("layout must be classic, overlay or storybook")
+        for number, page in enumerate(self.pages, 1):
+            for name in ("text_box", "name_box"):
+                box = getattr(page, name)
+                if box is not None and (len(box) != 4 or not all(0 <= v <= 1 for v in box) or box[2] <= 0
+                                        or box[3] <= 0 or box[0] + box[2] > 1.0001 or box[1] + box[3] > 1.0001):
+                    problems.append(f"page {number}: {name} must be [x, y, w, h] fractions of the page")
+            if page.name_style not in (None, "gold", "ice", "pink"):
+                problems.append(f"page {number}: name_style must be gold, ice or pink")
         for variant in self.variants:
             if variant not in VARIANTS:
                 problems.append(f"unknown variant {variant}")

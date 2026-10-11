@@ -30,6 +30,12 @@ MESSAGES = {
     "pages": ("عدد صفحات الـPDF غير عدد الشرائح.", "PDF page count differs from the slides"),
     "text_proof": ("الكلام اللي في الـPDF مش هو اللي في القالب.", "the PDF words differ from the deck"),
     "fonts": ("فيه خط مش متسطّب على الجهاز.", "a font used by the deck is not installed"),
+    "text_outside_safe": ("فيه نص طالع برّه المنطقة الآمنة (بعد الميل) — ممكن يتقص في الطباعة.",
+                          "a text box (as rotated) leaves the safe zone"),
+    "scene_placeholder": ("صفحة المشهد مافيهاش Picture Placeholder 100 حقيقي (أو فيها صورة متثبّتة).",
+                          "a scene page lacks the idx=100 picture placeholder (or has a baked picture)"),
+    "low_contrast": ("الكلام مش باين كفاية على الصورة اللي تحته — شوف الاقتراح (تغميق التدرّج أو تحريك الكلام).",
+                     "the words do not stand out from the art under them"),
     "font_substituted": ("الـPDF اتطبع بخط بديل مكان خط القالب — الخط مش متسجّل في ويندوز أو PowerPoint مفتوح من قبل "
                          "تسطيبه.", "the PDF uses a substitute font instead of a deck typeface"),
 }
@@ -112,6 +118,18 @@ def validate_variant(entry: dict, out_dir: Path, registry: FontRegistry | None =
     if long_name:
         findings.append(_finding("long_name", long_name))
 
+    if spec.get("page", {}).get("format") == "landscape_169":
+        from mxstudio.validators import landscape as checks  # noqa: PLC0415
+        outside = checks.safe_zone_findings(spec)
+        if outside:
+            findings.append(_finding("text_outside_safe", outside))
+        placeholders = checks.scene_placeholder_findings(deck, spec)
+        if placeholders:
+            findings.append(_finding("scene_placeholder", placeholders))
+        low, facts["contrast"] = checks.contrast_findings(spec, entry.get("resolve_art"))
+        if low:
+            findings.append(_finding("low_contrast", low))
+
     missing_fonts = sorted(face for face in deck_typefaces(spec) if not registry.has(face))
     facts["typefaces"] = sorted(deck_typefaces(spec))
     if missing_fonts:
@@ -130,7 +148,9 @@ def validate_variant(entry: dict, out_dir: Path, registry: FontRegistry | None =
                 findings.append(_finding("pages", {"pdf": record["pages"], "slides": len(spec["slides"])}))
             texts = ["".join(run["text"] for run in obj.get("runs", [])) for slide in spec["slides"]
                      for obj in slide["objects"] if obj.get("kind") == "textbox"]
-            proof = text_proof(texts, pdf, names=[entry["base_name"], LONGEST_NAMES[language], *HAMZA_NAMES])
+            from mxstudio.validators.pdf_text import boxes_from_spec  # noqa: PLC0415
+            proof = text_proof(texts, pdf, names=[entry["base_name"], LONGEST_NAMES[language], *HAMZA_NAMES],
+                               boxes=boxes_from_spec(spec))
             facts["text_proof"] = proof
             if not proof["ok"]:
                 findings.append(_finding("text_proof", proof))

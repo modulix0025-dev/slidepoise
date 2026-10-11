@@ -24,3 +24,19 @@ Story JSON shape (`factory.build.story`):
   {"kind": "back", "figure": false}]}
 ```
 Page kinds: cover, scene, dedication, back, certificate (needs `title` per language), about_me, qr_back, coloring, bilingual, class_page. Theme (`factory.build.theme`): `{"type_theme": "<id>", "colours": {"text": "#RRGGBB", "panel": "#RRGGBB", "outline": "#RRGGBB", "background": "#RRGGBB"}}`.
+
+## صفحة بالعرض 16:9 وصورة مالية الصفحة · Landscape 16:9, full-page scene
+
+**AR:** لو المشغّل عايز الشكل بالعرض (الصورة مالية الصفحة): في القصة حط `"page": "landscape_169"` و`"layout"`:
+`"overlay"` (تدرّج غامق ناحية النص — الافتراضي يمين — والكلام فوقه) أو `"storybook"` (كلام في نص السطر ومايل سنة في الحتة الفاضية، واسم الطفل كبير «name art» جوه المشهد). المشهد دايمًا Picture Placeholder 100 فاضي في القالب.
+لكل صفحة تقدر تحدد (كنِسَب من الصفحة 0..1): `text_box: [x, y, w, h]`، `name_box`، `rotate` و`name_rotate` (درجات)، `name_style`: `gold` | `ice` | `pink`، `text_side`: `right` | `left` (overlay)، `ink: true` لكلام غامق على حتة فاتحة، `name_art: false` لصفحة من غير اسم كبير، و`art`: بصمة صورة المشهد (من `studio_inbox_use`) علشان فحص التباين يتحسب على الصورة الحقيقية. لو طلع `low_contrast` اتبع الاقتراح (تغميق التدرّج أو تحريك الكلام). لو `text_outside_safe` صغّر أو حرّك المربع.
+
+**EN:** `"page": "landscape_169"` + `"layout": "overlay" | "storybook"`; per page: `text_box`, `name_box` (fractions), `rotate`, `name_rotate`, `name_style` (gold|ice|pink), `text_side`, `ink`, `name_art`, `art` (sha of the scene art from `studio_inbox_use`, used for the contrast check on the real pixels).
+```json
+{"key": "pyramid_secret", "page": "landscape_169", "layout": "storybook",
+ "title": {"ar": "{NAME} وسرّ الهرم الكبير", "en": "{NAME} and the Pyramid's Secret"},
+ "pages": [
+  {"kind": "cover", "texts": {"ar_boy": "{NAME} وسرّ الهرم الكبير", "…": "…"}, "name_style": "gold", "art": "<sha>"},
+  {"kind": "scene", "texts": {"…": "…"}, "text_box": [0.55, 0.06, 0.40, 0.30], "rotate": -2,
+   "name_box": [0.04, 0.05, 0.36, 0.22], "name_rotate": 3, "name_style": "ice", "art": "<sha>"}]}
+```

@@ -15,6 +15,9 @@ MM_PER_INCH = 25.4
 ISO216_A4_TO_A5 = 1 / math.sqrt(2)  # 0.70710678… A5 is A4 halved; every length scales by 1/sqrt(2)
 
 TRIM_SIZES_MM = {"A4": (210.0, 297.0), "A5": (148.0, 210.0)}
+# 16:9 landscape storybook pages: A4 width (297 mm) at 16:9, and its exact ISO-216 half (A5 wide).
+LANDSCAPE_169_MM = {"A4": (297.0, 167.06), "A5": (210.01, 118.13)}
+PAGE_FORMATS = ("portrait", "landscape_169")
 
 
 @dataclass(frozen=True)
@@ -26,11 +29,15 @@ class PageSpec:
     name: str = ""
 
     @classmethod
-    def preset(cls, name: str, bleed_mm: float = 3.0, safe_mm: float = 5.0, dpi: int = 300) -> "PageSpec":
+    def preset(cls, name: str, bleed_mm: float = 3.0, safe_mm: float = 5.0, dpi: int = 300,
+               page_format: str = "portrait") -> "PageSpec":
         key = name.upper()
-        if key not in TRIM_SIZES_MM:
-            raise ValueError(f"unknown page size {name!r}; known: {sorted(TRIM_SIZES_MM)}")
-        return cls(TRIM_SIZES_MM[key], bleed_mm, safe_mm, dpi, key)
+        sizes = LANDSCAPE_169_MM if page_format == "landscape_169" else TRIM_SIZES_MM
+        if page_format not in PAGE_FORMATS:
+            raise ValueError(f"unknown page format {page_format!r}; known: {PAGE_FORMATS}")
+        if key not in sizes:
+            raise ValueError(f"unknown page size {name!r}; known: {sorted(sizes)}")
+        return cls(sizes[key], bleed_mm, safe_mm, dpi, key)
 
     def __post_init__(self):
         width, height = self.trim_mm

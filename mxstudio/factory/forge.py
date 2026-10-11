@@ -15,7 +15,9 @@ import copy
 import math
 from pathlib import Path
 
+from mxstudio.factory.landscape import landscape_kinds, layout_landscape_page
 from mxstudio.factory.layouts import DEFAULT_THEME, MIN_SIZES_PT, layout_page
+from mxstudio.factory.textfx import apply as apply_fx
 from mxstudio.factory.names import LONGEST_NAMES, language_of
 from mxstudio.factory.payloads import VARIANTS, resolve_spec
 from mxstudio.factory.story import Story, runs_for
@@ -48,7 +50,8 @@ def page_payloads(story: Story, page) -> dict:
                 out[variant] = payload
         return {"payloads": out}
 
-    roles = {"body": payloads(page.texts)}
+    roles = {"body": payloads(page.texts),
+             "name": payloads({v: "{NAME}" for v in story.variants})}  # the child's name alone (name art)
     if page.title:
         roles["title"] = payloads({v: page.title.get(v.split("_")[0], "") for v in story.variants})
     if page.kind == "bilingual":
@@ -60,16 +63,25 @@ def build_master(story: Story, size: str = "A4", theme: dict | None = None, blee
                  safe_mm: float = 5.0) -> dict:
     """The semantic page map with payloads for every variant (geometry at the master size)."""
     theme = theme or DEFAULT_THEME
-    spec_page = PageSpec.preset(size, bleed_mm=bleed_mm, safe_mm=safe_mm)
+    page_format = getattr(story, "page", "portrait")
+    layout = getattr(story, "layout", "classic")
+    spec_page = PageSpec.preset(size, bleed_mm=bleed_mm, safe_mm=safe_mm, page_format=page_format)
+    landscape = page_format == "landscape_169" and layout in ("overlay", "storybook")
     slides = []
     for number, page in enumerate(story.pages, 1):
         page_id = f"p{number}"
-        objects = layout_page(page.kind, spec_page, page_id, page_payloads(story, page), theme)
+        if landscape and page.kind in landscape_kinds():
+            objects = layout_landscape_page(page, page.kind, spec_page, page_id, page_payloads(story, page), theme,
+                                            layout)
+            background = "#0C1022"  # the empty scene placeholder reads as night sky; white words stay legible
+        else:
+            objects = layout_page(page.kind, spec_page, page_id, page_payloads(story, page), theme)
+            background = theme["colours"]["background"]
         slides.append({"id": page_id, "kind": page.kind, "dimensions_px": list(spec_page.canvas_px),
-                       "background": theme["colours"]["background"], "objects": objects})
+                       "background": background, "objects": objects, "art": getattr(page, "art", "")})
     return {"title": story.title.get("ar", story.key), "language": "ar-EG", "size": size,
             "page": {"canvas_mm": list(spec_page.canvas_mm), "trim_mm": list(spec_page.trim_mm), "bleed_mm": bleed_mm,
-                     "safe_mm": safe_mm},
+                     "safe_mm": safe_mm, "format": page_format, "layout": layout},
             "slides": slides, "story_key": story.key, "theme": theme.get("name")}
 
 
@@ -80,8 +92,9 @@ def scale_spec(master: dict, to_size: str) -> dict:
         return copy.deepcopy(master)
     factor = iso216_scale(from_size, to_size)
     bleed, safe = master["page"]["bleed_mm"], master["page"]["safe_mm"]
-    src = PageSpec.preset(from_size, bleed_mm=bleed, safe_mm=safe)
-    dst = PageSpec.preset(to_size, bleed_mm=bleed, safe_mm=safe)
+    page_format = master["page"].get("format", "portrait")
+    src = PageSpec.preset(from_size, bleed_mm=bleed, safe_mm=safe, page_format=page_format)
+    dst = PageSpec.preset(to_size, bleed_mm=bleed, safe_mm=safe, page_format=page_format)
     scw, sch = src.canvas_mm
     dcw, dch = dst.canvas_mm
     out = copy.deepcopy(master)
@@ -143,8 +156,9 @@ def renderer_spec(spec: dict) -> dict:
     out = copy.deepcopy(spec)
     for slide in out["slides"]:
         slide.pop("kind", None)
+        slide.pop("art", None)
         for obj in slide["objects"]:
-            for key in ("box_mm", "text_role"):
+            for key in ("box_mm", "text_role", "fx"):
                 obj.pop(key, None)
             if obj.get("kind") == "textbox":
                 obj["style"].setdefault("margins_px", [0, 0, 0, 0])
@@ -172,8 +186,9 @@ def forge(story: Story, out_dir: Path, sizes=("A4", "A5"), master_size: str = "A
             fitted, facts = fit_spec(resolved, registry)
             path = out_dir / variant_filename(story.key, variant, size)
             render(renderer_spec(fitted), path)
+            fx = apply_fx(path, fitted)
             built[f"{variant}_{size}"] = {"file": path.name, "path": str(path), "size": size, "variant": variant,
-                                          "base_name": story.base_names[variant], "fit": facts,
+                                          "base_name": story.base_names[variant], "fit": facts, "fx": fx,
                                           "spec": fitted}
     return {"story_key": story.key, "master_size": master_size, "variants": built}
 
