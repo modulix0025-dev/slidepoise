@@ -45,6 +45,22 @@ class Theme:
                             "outline": self.palette["outline"], "background": self.palette.get("background", "#FFFFFF")}}
 
 
+def theme_from_type_theme(type_theme_id: str, palette: dict, *, language: str = "ar", key: str | None = None,
+                          frame_set: str = "rounded_panel") -> Theme:
+    """A factory Theme whose fonts come from a Phase-4 type theme (catalog/fonts/type_themes.json).
+
+    Only themes that pass the fonts validator are shipped there, so every family is certified_print.
+    """
+    from mxstudio.fonts.themes import load_themes  # noqa: PLC0415
+    found = next((t for t in load_themes()["themes"] if t["id"] == type_theme_id), None)
+    if found is None:
+        raise ValueError(f"unknown type theme {type_theme_id!r}")
+    prefix = "ar" if language == "ar" else "en"
+    fonts = {"title": found[f"{prefix}_title"], "body": found[f"{prefix}_body"],
+             "name": found["ar_name"] if prefix == "ar" else found["en_title"]}
+    return Theme(key=key or type_theme_id, name_ar=found["name_ar"], name_en=found["name_en"], type_theme=fonts,
+                 palette=palette, frame_set=frame_set, tags=["type_theme:" + type_theme_id])
+
 def m3_candidate(kind: str, story_key: str | None = None, theme: Theme | None = None,
                  previews: list[str] | None = None) -> dict:
     """Store product candidate: presentation + previews + a SUGGESTED price (the Store decides)."""

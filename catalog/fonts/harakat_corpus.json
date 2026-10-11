@@ -1,0 +1,28 @@
+{
+ "schema": "mx.fonts.harakat_corpus/1",
+ "purpose": "Vowelized lines rasterised by the font QA to measure mark/base, mark/mark and inter-line ink collisions and the per-font minimum safe line spacing. Includes shadda+haraka stacks, tanween, sukun, superscript alef, hamza seats and the long compound names.",
+ "lines_ar": [
+  "ذَهَبَ أَحْمَدُ إِلَى المَدْرَسَةِ مُبَكِّرًا",
+  "مُحَمَّدٌ وَفَاطِمَةُ يَلْعَبَانِ فِي الحَدِيقَةِ",
+  "قَالَتِ الأُمُّ: رَبَّنَا يَحْفَظُكَ يَا حَبِيبِي",
+  "الشَّمْسُ مُشْرِقَةٌ وَالسَّمَاءُ صَافِيَةٌ",
+  "عَبْدُ الرَّحْمَنِ يُحِبُّ القِرَاءَةَ كَثِيرًا",
+  "فَاطِمَةُ الزَّهْرَاءُ تَرْسُمُ قِطَّةً جَمِيلَةً",
+  "الصِّدْقُ مَنْجَاةٌ وَالكَذِبُ مَهْلَكَةٌ",
+  "شَدَّ زِيَادٌ الحَبْلَ بِقُوَّةٍ",
+  "هٰذَا كِتَابٌ مُفِيدٌ لِكُلِّ طِفْلٍ",
+  "يَا لَيْتَنِي أَطِيرُ مِثْلَ العُصْفُورِ",
+  "سَيَّارَةٌ حَمْرَاءُ سَرِيعَةٌ جِدًّا",
+  "أَكَلَ الأَرْنَبُ جَزَرَةً لَذِيذَةً",
+  "رَبِّ زِدْنِي عِلْمًا وَمُتَّحِدُونَ دَائِمًا",
+  "سُؤَالٌ وَمَسْؤُولٌ وَشَيْءٌ وَبِئْرٌ",
+  "ظَلَّ غَسَّانُ يَضْحَكُ ثُمَّ خَرَجَ",
+  "مِنَّةُ اللهِ وَنُورُ الهُدَى صَدِيقَتَانِ"
+ ],
+ "lines_latin": [
+  "The quick brown fox jumps over the lazy dog.",
+  "Happy Birthday, Abdelrahman & Fatma Elzahraa!",
+  "Jolly giraffes queue (gently) by 1234567890 yaks?",
+  "Pip & Gus said: Wow! Sky, jelly, quiz; (yes)"
+ ]
+}

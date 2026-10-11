@@ -1,0 +1,6354 @@
+{
+ "commit": "bd8f81ddb5c74d5c8897b36ad88b440266245103",
+ "counts": {
+  "not_installed": 8,
+  "office_build_families": 43,
+  "office_build_files": 100,
+  "renamed_families": 6,
+  "upstream_static_families": 163
+ },
+ "determinism": {
+  "mismatched": [],
+  "rebuilt_and_compared": 43
+ },
+ "families": [
+  {
+   "family": "Baloo Bhaijaan 2",
+   "files": [
+    {
+     "bytes": 182304,
+     "family": "Baloo Bhaijaan 2",
+     "file": "BalooBhaijaan2-Regular.ttf",
+     "from_file": "BalooBhaijaan2[wght].ttf",
+     "full_name": "Baloo Bhaijaan 2 Regular",
+     "italic": false,
+     "postscript_name": "BalooBhaijaan2-Regular",
+     "sha256": "9273ea6c0af588b186cb6c59411701e726f2c908a2b89ba36e71bab23be58aac",
+     "source": "office_build",
+     "source_sha256": "3e9f07fbc796c0ddcb3e6e0aa26f9c86741d9f5b7f5cb72f4ed3c06e55a19336",
+     "subfamily": "Regular",
+     "typographic_family": "Baloo Bhaijaan 2",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 182552,
+     "family": "Baloo Bhaijaan 2",
+     "file": "BalooBhaijaan2-Bold.ttf",
+     "from_file": "BalooBhaijaan2[wght].ttf",
+     "full_name": "Baloo Bhaijaan 2 Bold",
+     "italic": false,
+     "postscript_name": "BalooBhaijaan2-Bold",
+     "sha256": "5b0ec3d168b66695a00da49dc6f993193341e476537a36239658082534f6afbe",
+     "source": "office_build",
+     "source_sha256": "3e9f07fbc796c0ddcb3e6e0aa26f9c86741d9f5b7f5cb72f4ed3c06e55a19336",
+     "subfamily": "Bold",
+     "typographic_family": "Baloo Bhaijaan 2",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 182376,
+     "family": "Baloo Bhaijaan 2 ExtraBold",
+     "file": "BalooBhaijaan2-ExtraBold.ttf",
+     "from_file": "BalooBhaijaan2[wght].ttf",
+     "full_name": "Baloo Bhaijaan 2 ExtraBold",
+     "italic": false,
+     "postscript_name": "BalooBhaijaan2-ExtraBold",
+     "sha256": "c75f09ec3c455d0849584c64def4a58798627788931e23ccdca629c738df4e02",
+     "source": "office_build",
+     "source_sha256": "3e9f07fbc796c0ddcb3e6e0aa26f9c86741d9f5b7f5cb72f4ed3c06e55a19336",
+     "subfamily": "Regular",
+     "typographic_family": "Baloo Bhaijaan 2",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "BalooBhaijaan2[wght].ttf",
+   "from_sha256": "3e9f07fbc796c0ddcb3e6e0aa26f9c86741d9f5b7f5cb72f4ed3c06e55a19336",
+   "id": "F001",
+   "install_family": "Baloo Bhaijaan 2",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Lemonada",
+   "files": [
+    {
+     "bytes": 93984,
+     "family": "Lemonada",
+     "file": "Lemonada-Regular.ttf",
+     "from_file": "Lemonada[wght].ttf",
+     "full_name": "Lemonada Regular",
+     "italic": false,
+     "postscript_name": "Lemonada-Regular",
+     "sha256": "29445c89089a4430b64eb6eb57a7135b0f4237a8ca9c70f0007efd8868fc2ce7",
+     "source": "office_build",
+     "source_sha256": "84134e9e1da7d593839073157980a4d38296d2be10b61469a8f3169204959ad9",
+     "subfamily": "Regular",
+     "typographic_family": "Lemonada",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 93844,
+     "family": "Lemonada",
+     "file": "Lemonada-Bold.ttf",
+     "from_file": "Lemonada[wght].ttf",
+     "full_name": "Lemonada Bold",
+     "italic": false,
+     "postscript_name": "Lemonada-Bold",
+     "sha256": "d16be383391de19d33e309dc98745d2d655e06a2342f12a90e97af48692ecec0",
+     "source": "office_build",
+     "source_sha256": "84134e9e1da7d593839073157980a4d38296d2be10b61469a8f3169204959ad9",
+     "subfamily": "Bold",
+     "typographic_family": "Lemonada",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Lemonada[wght].ttf",
+   "from_sha256": "84134e9e1da7d593839073157980a4d38296d2be10b61469a8f3169204959ad9",
+   "id": "F002",
+   "install_family": "Lemonada",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Marhey",
+   "files": [
+    {
+     "bytes": 132608,
+     "family": "Marhey",
+     "file": "Marhey-Regular.ttf",
+     "from_file": "Marhey[wght].ttf",
+     "full_name": "Marhey Regular",
+     "italic": false,
+     "postscript_name": "Marhey-Regular",
+     "sha256": "10c4d27d4d08d82a7f2fae1d1f05b02ca9b6113c8e829b9964302f6d353e1115",
+     "source": "office_build",
+     "source_sha256": "19c30686157ec965797fae8c8feb7bb142b082217227562d1a809c067df447e9",
+     "subfamily": "Regular",
+     "typographic_family": "Marhey",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 132072,
+     "family": "Marhey",
+     "file": "Marhey-Bold.ttf",
+     "from_file": "Marhey[wght].ttf",
+     "full_name": "Marhey Bold",
+     "italic": false,
+     "postscript_name": "Marhey-Bold",
+     "sha256": "f85fed57daa4495a46caa4f3bd01e5397ab6d94b2e785a5730da1cd945677f92",
+     "source": "office_build",
+     "source_sha256": "19c30686157ec965797fae8c8feb7bb142b082217227562d1a809c067df447e9",
+     "subfamily": "Bold",
+     "typographic_family": "Marhey",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Marhey[wght].ttf",
+   "from_sha256": "19c30686157ec965797fae8c8feb7bb142b082217227562d1a809c067df447e9",
+   "id": "F003",
+   "install_family": "Marhey",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Cairo Play",
+   "files": [],
+   "id": "F004",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Cairo",
+   "files": [
+    {
+     "bytes": 164440,
+     "family": "Cairo",
+     "file": "Cairo-Regular.ttf",
+     "from_file": "Cairo[slnt,wght].ttf",
+     "full_name": "Cairo Regular",
+     "italic": false,
+     "postscript_name": "Cairo-Regular",
+     "sha256": "8c83a604ad9170a1964c3e2ee4ab6d5fc1101a37bf8aee9ca73ecf72ba6c4a64",
+     "source": "office_build",
+     "source_sha256": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
+     "subfamily": "Regular",
+     "typographic_family": "Cairo",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 164552,
+     "family": "Cairo",
+     "file": "Cairo-Bold.ttf",
+     "from_file": "Cairo[slnt,wght].ttf",
+     "full_name": "Cairo Bold",
+     "italic": false,
+     "postscript_name": "Cairo-Bold",
+     "sha256": "5b145292260f9c4f2661caaadccca5ae524890ead870210fbb61e7cc0d6a0396",
+     "source": "office_build",
+     "source_sha256": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
+     "subfamily": "Bold",
+     "typographic_family": "Cairo",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Cairo[slnt,wght].ttf",
+   "from_sha256": "667c987182391c91f4e57a2f455b1794fb5e3ee6ca4ef3383e86bb690fa9c964",
+   "id": "F005",
+   "install_family": "Cairo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Jomhuria",
+   "files": [
+    {
+     "family": "Jomhuria",
+     "file": "Jomhuria-Regular.ttf",
+     "italic": false,
+     "sha256": "17b4b0453acdaafb940a8be8acccc968713e223e5d03942347f6562ca3b1dec3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F006",
+   "install_family": "Jomhuria",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Lalezar",
+   "files": [
+    {
+     "family": "Lalezar",
+     "file": "Lalezar-Regular.ttf",
+     "italic": false,
+     "sha256": "7b80807bc831f141de0f7dcf6816412bf0c548968d548c5156ca388733390ea9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F007",
+   "install_family": "Lalezar",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rakkas",
+   "files": [
+    {
+     "family": "Rakkas",
+     "file": "Rakkas-Regular.ttf",
+     "italic": false,
+     "sha256": "54278882e4774c14d50c3b555f127d0fe586366d5b787316ebbcbd8108829e60",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F008",
+   "install_family": "Rakkas",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Katibeh",
+   "files": [
+    {
+     "family": "Katibeh",
+     "file": "Katibeh-Regular.ttf",
+     "italic": false,
+     "sha256": "334eeadb58eb442734fe7dea87412cbbd8c3fd00294252723aadf19a850cf11f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F009",
+   "install_family": "Katibeh",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Blaka",
+   "files": [
+    {
+     "family": "Blaka",
+     "file": "Blaka-Regular.ttf",
+     "italic": false,
+     "sha256": "5cd0ff67dcfbc371c6450afffe10f6e7027ffada0c31f436beb8865e57b781a3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F010",
+   "install_family": "Blaka",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Blaka Hollow",
+   "files": [
+    {
+     "family": "Blaka Hollow",
+     "file": "BlakaHollow-Regular.ttf",
+     "italic": false,
+     "sha256": "59cb30824e6023d454b4b44038cf44cdc9a4ad67f9795171c646c98ceb2bd542",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F011",
+   "install_family": "Blaka Hollow",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Blaka Ink",
+   "files": [],
+   "id": "F012",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Badeen Display",
+   "files": [
+    {
+     "family": "Badeen Display",
+     "file": "BadeenDisplay-Regular.ttf",
+     "italic": false,
+     "sha256": "274805b3ee44f9b45a99bdcecf25cd44944c0a81f6cf8086b5cf30d00e860537",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F013",
+   "install_family": "Badeen Display",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Handjet",
+   "files": [
+    {
+     "bytes": 222128,
+     "family": "Handjet",
+     "file": "Handjet-Regular.ttf",
+     "from_file": "Handjet[ELGR,ELSH,wght].ttf",
+     "full_name": "Handjet Regular",
+     "italic": false,
+     "postscript_name": "Handjet-Regular",
+     "sha256": "cd2005f5dea3e36ba2a3486bdbd42ab2b26251636298f9d1a4801dc018f01f3b",
+     "source": "office_build",
+     "source_sha256": "9262749e8bb0b73ebcae0e20428689c3c59576eebeb6c4e1020300d2d41bdf4d",
+     "subfamily": "Regular",
+     "typographic_family": "Handjet",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 222140,
+     "family": "Handjet",
+     "file": "Handjet-Bold.ttf",
+     "from_file": "Handjet[ELGR,ELSH,wght].ttf",
+     "full_name": "Handjet Bold",
+     "italic": false,
+     "postscript_name": "Handjet-Bold",
+     "sha256": "55e5bcedb787e06650592f4600fdf20458d28fb3f7a55f69500b509020874d19",
+     "source": "office_build",
+     "source_sha256": "9262749e8bb0b73ebcae0e20428689c3c59576eebeb6c4e1020300d2d41bdf4d",
+     "subfamily": "Bold",
+     "typographic_family": "Handjet",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 222212,
+     "family": "Handjet ExtraBold",
+     "file": "Handjet-ExtraBold.ttf",
+     "from_file": "Handjet[ELGR,ELSH,wght].ttf",
+     "full_name": "Handjet ExtraBold",
+     "italic": false,
+     "postscript_name": "Handjet-ExtraBold",
+     "sha256": "f2027c349db562d206034906bfe8b36523b08f037685f18cfe0cc00799af2876",
+     "source": "office_build",
+     "source_sha256": "9262749e8bb0b73ebcae0e20428689c3c59576eebeb6c4e1020300d2d41bdf4d",
+     "subfamily": "Regular",
+     "typographic_family": "Handjet",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    },
+    {
+     "bytes": 222176,
+     "family": "Handjet Black",
+     "file": "Handjet-Black.ttf",
+     "from_file": "Handjet[ELGR,ELSH,wght].ttf",
+     "full_name": "Handjet Black",
+     "italic": false,
+     "postscript_name": "Handjet-Black",
+     "sha256": "754c4d2f90638c88a62b08178241489af9fdb8c2b01a959bf0944cf577e2037d",
+     "source": "office_build",
+     "source_sha256": "9262749e8bb0b73ebcae0e20428689c3c59576eebeb6c4e1020300d2d41bdf4d",
+     "subfamily": "Regular",
+     "typographic_family": "Handjet",
+     "typographic_subfamily": "Black",
+     "weight": 900
+    }
+   ],
+   "from_file": "Handjet[ELGR,ELSH,wght].ttf",
+   "from_sha256": "9262749e8bb0b73ebcae0e20428689c3c59576eebeb6c4e1020300d2d41bdf4d",
+   "id": "F014",
+   "install_family": "Handjet",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800,
+    900
+   ]
+  },
+  {
+   "family": "Vibes",
+   "files": [
+    {
+     "family": "Vibes",
+     "file": "Vibes-Regular.ttf",
+     "italic": false,
+     "sha256": "297d9c8499e7383ac7675932741625ab12d9bb3abd1c31d2659b385d965a7ab7",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F015",
+   "install_family": "Vibes",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Oi",
+   "files": [
+    {
+     "family": "Oi",
+     "file": "Oi-Regular.ttf",
+     "italic": false,
+     "sha256": "a406eece17ef2416ffefd6f57e4d5272ab2fa226c001ccf6aee7838231175203",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F016",
+   "install_family": "Oi",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Playpen Sans Arabic",
+   "files": [
+    {
+     "bytes": 359172,
+     "family": "Playpen Sans Arabic",
+     "file": "PlaypenSansArabic-Regular.ttf",
+     "from_file": "PlaypenSansArabic[wght].ttf",
+     "full_name": "Playpen Sans Arabic Regular",
+     "italic": false,
+     "postscript_name": "PlaypenSansArabic-Regular",
+     "sha256": "06fe0ad554e7f5c7cf8aa755450c4f8787cae08f4525e66ed64d18c0091bc4e4",
+     "source": "office_build",
+     "source_sha256": "31122f11b6aa8a36a283f95797663a575afffbe2d52b69e496f3a2440942a226",
+     "subfamily": "Regular",
+     "typographic_family": "Playpen Sans Arabic",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 359456,
+     "family": "Playpen Sans Arabic",
+     "file": "PlaypenSansArabic-Bold.ttf",
+     "from_file": "PlaypenSansArabic[wght].ttf",
+     "full_name": "Playpen Sans Arabic Bold",
+     "italic": false,
+     "postscript_name": "PlaypenSansArabic-Bold",
+     "sha256": "c87eb59c6092b171e370c3a3c2ce821c1639cb21fcedc8c0ab4d24401778e3d6",
+     "source": "office_build",
+     "source_sha256": "31122f11b6aa8a36a283f95797663a575afffbe2d52b69e496f3a2440942a226",
+     "subfamily": "Bold",
+     "typographic_family": "Playpen Sans Arabic",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "PlaypenSansArabic[wght].ttf",
+   "from_sha256": "31122f11b6aa8a36a283f95797663a575afffbe2d52b69e496f3a2440942a226",
+   "id": "F017",
+   "install_family": "Playpen Sans Arabic",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Reem Kufi Fun",
+   "files": [],
+   "id": "F018",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Reem Kufi",
+   "files": [
+    {
+     "bytes": 89244,
+     "family": "MX Kids F019 Reem Kufi",
+     "file": "MXKidsF019ReemKufi-Regular.ttf",
+     "from_file": "ReemKufi[wght].ttf",
+     "full_name": "MX Kids F019 Reem Kufi Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF019ReemKufi-Regular",
+     "sha256": "ec24b8e51cd3e835831ad8d93c1dda2acb941d091e293ead98f91756bd31447c",
+     "source": "office_build",
+     "source_sha256": "33ead1986cd48c138c4d906c9e5a6341877268461f97623409a2014de1cd4aa4",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F019 Reem Kufi",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 89216,
+     "family": "MX Kids F019 Reem Kufi",
+     "file": "MXKidsF019ReemKufi-Bold.ttf",
+     "from_file": "ReemKufi[wght].ttf",
+     "full_name": "MX Kids F019 Reem Kufi Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF019ReemKufi-Bold",
+     "sha256": "28b0942084585eb6fae3856e10d0675106e2c1d0530a9441d72d5c1c5efa4199",
+     "source": "office_build",
+     "source_sha256": "33ead1986cd48c138c4d906c9e5a6341877268461f97623409a2014de1cd4aa4",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F019 Reem Kufi",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "ReemKufi[wght].ttf",
+   "from_sha256": "33ead1986cd48c138c4d906c9e5a6341877268461f97623409a2014de1cd4aa4",
+   "id": "F019",
+   "install_family": "MX Kids F019 Reem Kufi",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Reem Kufi Ink",
+   "files": [],
+   "id": "F020",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "El Messiri",
+   "files": [
+    {
+     "bytes": 86620,
+     "family": "El Messiri",
+     "file": "ElMessiri-Regular.ttf",
+     "from_file": "ElMessiri[wght].ttf",
+     "full_name": "El Messiri Regular",
+     "italic": false,
+     "postscript_name": "ElMessiri-Regular",
+     "sha256": "c89a4cbfe2286b47f459f887b10ac60015ffa47488ad09854607f7f1a2e08115",
+     "source": "office_build",
+     "source_sha256": "5d58d5259d2accccba39cffe12e1226e88b6afc5150e3605eb2a9c2fe06ccab0",
+     "subfamily": "Regular",
+     "typographic_family": "El Messiri",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 86892,
+     "family": "El Messiri",
+     "file": "ElMessiri-Bold.ttf",
+     "from_file": "ElMessiri[wght].ttf",
+     "full_name": "El Messiri Bold",
+     "italic": false,
+     "postscript_name": "ElMessiri-Bold",
+     "sha256": "0add7bfe628d93870cecbab13baf7a7dd09c0042a96162a8d42743a8d095b13e",
+     "source": "office_build",
+     "source_sha256": "5d58d5259d2accccba39cffe12e1226e88b6afc5150e3605eb2a9c2fe06ccab0",
+     "subfamily": "Bold",
+     "typographic_family": "El Messiri",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "ElMessiri[wght].ttf",
+   "from_sha256": "5d58d5259d2accccba39cffe12e1226e88b6afc5150e3605eb2a9c2fe06ccab0",
+   "id": "F021",
+   "install_family": "El Messiri",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Mada",
+   "files": [
+    {
+     "bytes": 98276,
+     "family": "MX Kids F022 Mada",
+     "file": "MXKidsF022Mada-Regular.ttf",
+     "from_file": "Mada[wght].ttf",
+     "full_name": "MX Kids F022 Mada Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF022Mada-Regular",
+     "sha256": "faebad3e4779d598ba77b1b0180bc3e2898ca730295e5797a6b7a6d80ff3ccd6",
+     "source": "office_build",
+     "source_sha256": "bf4d193ee78cea2fd8bdc9e64e5cb7e8a19ff76ab74f97a9a4a0e80f8f4cefde",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F022 Mada",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 98392,
+     "family": "MX Kids F022 Mada",
+     "file": "MXKidsF022Mada-Bold.ttf",
+     "from_file": "Mada[wght].ttf",
+     "full_name": "MX Kids F022 Mada Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF022Mada-Bold",
+     "sha256": "1a01db4ffa92ba61218d177fb3ba142de9329f9eaf640ec7609cd6886c38507d",
+     "source": "office_build",
+     "source_sha256": "bf4d193ee78cea2fd8bdc9e64e5cb7e8a19ff76ab74f97a9a4a0e80f8f4cefde",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F022 Mada",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Mada[wght].ttf",
+   "from_sha256": "bf4d193ee78cea2fd8bdc9e64e5cb7e8a19ff76ab74f97a9a4a0e80f8f4cefde",
+   "id": "F022",
+   "install_family": "MX Kids F022 Mada",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Harmattan",
+   "files": [
+    {
+     "family": "Harmattan",
+     "file": "Harmattan-Bold.ttf",
+     "italic": false,
+     "sha256": "eb9de49ecb72d34e14c768bea6f9a7831f6bd2c15b062fcc2bb17b0ac967bc67",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Harmattan Medium",
+     "file": "Harmattan-Medium.ttf",
+     "italic": false,
+     "sha256": "e83a209c87145152dcc4df18ffdd50aad8407fb563135392e168c896e932d2d5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Harmattan",
+     "file": "Harmattan-Regular.ttf",
+     "italic": false,
+     "sha256": "5fbaafc51ad21663729b168afaff5f28d3e3087f1fc736ada32d7cd99674c0e0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Harmattan SemiBold",
+     "file": "Harmattan-SemiBold.ttf",
+     "italic": false,
+     "sha256": "83479450450a50da78412f2f48b274883095a23a01d6bf36db54e769cb09b11d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    }
+   ],
+   "id": "F023",
+   "install_family": "Harmattan",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Zain",
+   "files": [
+    {
+     "family": "Zain Black",
+     "file": "Zain-Black.ttf",
+     "italic": false,
+     "sha256": "fb9146db13654b0e75003e8db55508167782d70bb64d85c0b4a0e689f016939f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 900
+    },
+    {
+     "family": "Zain",
+     "file": "Zain-Bold.ttf",
+     "italic": false,
+     "sha256": "4dc98e7b1a9cac93bde1907271472ba9cf43ae5212e942cafe59a6d341f052e3",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Zain ExtraBold",
+     "file": "Zain-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "1f28878c4fd73456c1b2fc0fe334767f397c51cd227376b30dc9412732e74abf",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 800
+    },
+    {
+     "family": "Zain ExtraLight",
+     "file": "Zain-ExtraLight.ttf",
+     "italic": false,
+     "sha256": "0fed2aeaa4a13676ee9a8b518804d4ce904a0b812a85bcbf35ea657cd2d308ac",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 200
+    },
+    {
+     "family": "Zain",
+     "file": "Zain-Italic.ttf",
+     "italic": true,
+     "sha256": "ed2fd21e100b067530478c2c71229cca9e7213f905c6f8736deadc999bd2a9bb",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Zain Light",
+     "file": "Zain-Light.ttf",
+     "italic": false,
+     "sha256": "21ac8d8c63f1d037d7922a7e1343ad07d9fc60cc922f5c267d12cd75d93f1037",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Zain Light",
+     "file": "Zain-LightItalic.ttf",
+     "italic": true,
+     "sha256": "0681b370f399f997f62e0ed782e41fe80ef224afeb995e27f43e440b691b878e",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 300
+    },
+    {
+     "family": "Zain",
+     "file": "Zain-Regular.ttf",
+     "italic": false,
+     "sha256": "2a2b8af3804039c7f500c43f581a4145012728bc3109ef15d48371700f5e1f63",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F024",
+   "install_family": "Zain",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Almarai",
+   "files": [
+    {
+     "family": "Almarai Bold",
+     "file": "Almarai-Bold.ttf",
+     "italic": false,
+     "sha256": "06401391b5b39fbcf2bc0c6a6e03faf992435e7b011183a1861737e913af8613",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 700
+    },
+    {
+     "family": "Almarai ExtraBold",
+     "file": "Almarai-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "9f8f72f1cb06db787a5b32e314a109267e53c505c9f9ab0dad5aa8ff8b219a07",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 800
+    },
+    {
+     "family": "Almarai Light",
+     "file": "Almarai-Light.ttf",
+     "italic": false,
+     "sha256": "a57bca270340202a28899f7488ee76ed9b93115b89d7a81db92d68e29993da5a",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Almarai",
+     "file": "Almarai-Regular.ttf",
+     "italic": false,
+     "sha256": "5b5cad33c8e5922083728d271cdcda91f96ba291f1307eccc4f4ef732dc19622",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F025",
+   "install_family": "Almarai",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Beiruti",
+   "files": [
+    {
+     "bytes": 290856,
+     "family": "Beiruti",
+     "file": "Beiruti-Regular.ttf",
+     "from_file": "Beiruti[wght].ttf",
+     "full_name": "Beiruti Regular",
+     "italic": false,
+     "postscript_name": "Beiruti-Regular",
+     "sha256": "7d204da276e4653419154fbfe52e75d19b95b5b991b300bf49e86b998770dce2",
+     "source": "office_build",
+     "source_sha256": "c31f26b93e90ac916757de63c060370c5382457f85d50f64f930b96e5477f222",
+     "subfamily": "Regular",
+     "typographic_family": "Beiruti",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 290472,
+     "family": "Beiruti",
+     "file": "Beiruti-Bold.ttf",
+     "from_file": "Beiruti[wght].ttf",
+     "full_name": "Beiruti Bold",
+     "italic": false,
+     "postscript_name": "Beiruti-Bold",
+     "sha256": "a0f5d8e1f2e9903abe12b00252cf3a161d43958b16b31ba817be6887d6581050",
+     "source": "office_build",
+     "source_sha256": "c31f26b93e90ac916757de63c060370c5382457f85d50f64f930b96e5477f222",
+     "subfamily": "Bold",
+     "typographic_family": "Beiruti",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 290776,
+     "family": "Beiruti ExtraBold",
+     "file": "Beiruti-ExtraBold.ttf",
+     "from_file": "Beiruti[wght].ttf",
+     "full_name": "Beiruti ExtraBold",
+     "italic": false,
+     "postscript_name": "Beiruti-ExtraBold",
+     "sha256": "8d4972e676c8cf874bf7b49ca4ff99e2824acebdaba8fcf88881dd264e12c84b",
+     "source": "office_build",
+     "source_sha256": "c31f26b93e90ac916757de63c060370c5382457f85d50f64f930b96e5477f222",
+     "subfamily": "Regular",
+     "typographic_family": "Beiruti",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Beiruti[wght].ttf",
+   "from_sha256": "c31f26b93e90ac916757de63c060370c5382457f85d50f64f930b96e5477f222",
+   "id": "F026",
+   "install_family": "Beiruti",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Qahiri",
+   "files": [
+    {
+     "family": "Qahiri",
+     "file": "Qahiri-Regular.ttf",
+     "italic": false,
+     "sha256": "9c4d8cfba7b663dad7eeeeb52a625749f3e1f5ec472a0a6333e1684a2f43dbdf",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F027",
+   "install_family": "Qahiri",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Tajawal",
+   "files": [
+    {
+     "family": "Tajawal Black",
+     "file": "Tajawal-Black.ttf",
+     "italic": false,
+     "sha256": "da582a579d3200869535dc994d2349608a8582042f8776b3679b157015db287c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 900
+    },
+    {
+     "family": "Tajawal",
+     "file": "Tajawal-Bold.ttf",
+     "italic": false,
+     "sha256": "0342ab6b74b6bd1b4b5bf7beda45a9734a2b3147a31e8a3a45b6a3417a52d9d7",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Tajawal ExtraBold",
+     "file": "Tajawal-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "3d1298b747c22579f9e1bdeb0d4165064cb17f7e66145e2f43f9deb12ad7a2cf",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 800
+    },
+    {
+     "family": "Tajawal ExtraLight",
+     "file": "Tajawal-ExtraLight.ttf",
+     "italic": false,
+     "sha256": "a12ffbfaaec30ab8142edc60fa4727b104a90eb54c6a200a76988a1ec2ec11dc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 275
+    },
+    {
+     "family": "Tajawal Light",
+     "file": "Tajawal-Light.ttf",
+     "italic": false,
+     "sha256": "ab26ed3e0c5af2c71b469b5780decff8088d290ab91aa29b07321580136e813a",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Tajawal Medium",
+     "file": "Tajawal-Medium.ttf",
+     "italic": false,
+     "sha256": "1ff8bd943a261c9dd7906bdb1993cab87b6d925a7fb5f848cdb51ed301531090",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Tajawal",
+     "file": "Tajawal-Regular.ttf",
+     "italic": false,
+     "sha256": "6882892da3e03527d5db2bbab3b48bde6ef2e878a43f522d1a4eebda90010a19",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F028",
+   "install_family": "Tajawal",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Estedad",
+   "files": [
+    {
+     "bytes": 161840,
+     "family": "Estedad",
+     "file": "Estedad-Regular.ttf",
+     "from_file": "Estedad[wght].ttf",
+     "full_name": "Estedad Regular",
+     "italic": false,
+     "postscript_name": "Estedad-Regular",
+     "sha256": "2293ee82bda6e5069f3d200d61258116e6a2bcfa449d711c8c1c4030ebdf67a8",
+     "source": "office_build",
+     "source_sha256": "6e745beeeb0cae5eea7f38d3132597089548a622d87997b58944e5b1edfec5a1",
+     "subfamily": "Regular",
+     "typographic_family": "Estedad",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 161964,
+     "family": "Estedad",
+     "file": "Estedad-Bold.ttf",
+     "from_file": "Estedad[wght].ttf",
+     "full_name": "Estedad Bold",
+     "italic": false,
+     "postscript_name": "Estedad-Bold",
+     "sha256": "ecf4e4f84472452557d3c4ae75a2ae227b81f52a4102bf15607869350f6c9240",
+     "source": "office_build",
+     "source_sha256": "6e745beeeb0cae5eea7f38d3132597089548a622d87997b58944e5b1edfec5a1",
+     "subfamily": "Bold",
+     "typographic_family": "Estedad",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Estedad[wght].ttf",
+   "from_sha256": "6e745beeeb0cae5eea7f38d3132597089548a622d87997b58944e5b1edfec5a1",
+   "id": "F029",
+   "install_family": "Estedad",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Noto Sans Arabic",
+   "files": [
+    {
+     "bytes": 194256,
+     "family": "Noto Sans Arabic",
+     "file": "NotoSansArabic-Regular.ttf",
+     "from_file": "NotoSansArabic[wdth,wght].ttf",
+     "full_name": "Noto Sans Arabic Regular",
+     "italic": false,
+     "postscript_name": "NotoSansArabic-Regular",
+     "sha256": "f76600ab40fb654e9d40c4fd692676886fe2b0532fc777dc6e75cd5ad134615e",
+     "source": "office_build",
+     "source_sha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+     "subfamily": "Regular",
+     "typographic_family": "Noto Sans Arabic",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 194444,
+     "family": "Noto Sans Arabic",
+     "file": "NotoSansArabic-Bold.ttf",
+     "from_file": "NotoSansArabic[wdth,wght].ttf",
+     "full_name": "Noto Sans Arabic Bold",
+     "italic": false,
+     "postscript_name": "NotoSansArabic-Bold",
+     "sha256": "3695df55bccea3e4d13071ee4e13f16ec00f5e12048e84fc44e208916e0fd188",
+     "source": "office_build",
+     "source_sha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+     "subfamily": "Bold",
+     "typographic_family": "Noto Sans Arabic",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "NotoSansArabic[wdth,wght].ttf",
+   "from_sha256": "63111b5b2e074dd48cc67692e0a2726d86ee94c1c37fe8598257b7b4e87e869e",
+   "id": "F030",
+   "install_family": "Noto Sans Arabic",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Noto Kufi Arabic",
+   "files": [
+    {
+     "bytes": 180384,
+     "family": "Noto Kufi Arabic",
+     "file": "NotoKufiArabic-Regular.ttf",
+     "from_file": "NotoKufiArabic[wght].ttf",
+     "full_name": "Noto Kufi Arabic Regular",
+     "italic": false,
+     "postscript_name": "NotoKufiArabic-Regular",
+     "sha256": "32f8d7b7bb3313993819de03ef3a7b00fdacac79ecb505bc8585d873decbfec6",
+     "source": "office_build",
+     "source_sha256": "494f6b61469d7a02a2d63f0fc4930bb007388d8cfe551de5eb98354e100889f3",
+     "subfamily": "Regular",
+     "typographic_family": "Noto Kufi Arabic",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 180512,
+     "family": "Noto Kufi Arabic",
+     "file": "NotoKufiArabic-Bold.ttf",
+     "from_file": "NotoKufiArabic[wght].ttf",
+     "full_name": "Noto Kufi Arabic Bold",
+     "italic": false,
+     "postscript_name": "NotoKufiArabic-Bold",
+     "sha256": "5660461e116a5a6c27a24ee072f7ac1d7db35cc24bbab2247f1d975db248f3db",
+     "source": "office_build",
+     "source_sha256": "494f6b61469d7a02a2d63f0fc4930bb007388d8cfe551de5eb98354e100889f3",
+     "subfamily": "Bold",
+     "typographic_family": "Noto Kufi Arabic",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 180868,
+     "family": "Noto Kufi Arabic ExtraBold",
+     "file": "NotoKufiArabic-ExtraBold.ttf",
+     "from_file": "NotoKufiArabic[wght].ttf",
+     "full_name": "Noto Kufi Arabic ExtraBold",
+     "italic": false,
+     "postscript_name": "NotoKufiArabic-ExtraBold",
+     "sha256": "8bbbbd1794cb9055586cb537f2b11fe7961a1ff92712a55e7278fb04ae415741",
+     "source": "office_build",
+     "source_sha256": "494f6b61469d7a02a2d63f0fc4930bb007388d8cfe551de5eb98354e100889f3",
+     "subfamily": "Regular",
+     "typographic_family": "Noto Kufi Arabic",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "NotoKufiArabic[wght].ttf",
+   "from_sha256": "494f6b61469d7a02a2d63f0fc4930bb007388d8cfe551de5eb98354e100889f3",
+   "id": "F031",
+   "install_family": "Noto Kufi Arabic",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Alexandria",
+   "files": [
+    {
+     "bytes": 177432,
+     "family": "Alexandria",
+     "file": "Alexandria-Regular.ttf",
+     "from_file": "Alexandria[wght].ttf",
+     "full_name": "Alexandria Regular",
+     "italic": false,
+     "postscript_name": "Alexandria-Regular",
+     "sha256": "97197a86bf5babdbb4c5af5c8f7c80bb6873d569dd3b4880b5f5cc4dff397af8",
+     "source": "office_build",
+     "source_sha256": "db8ae03b62d55a65aa4e04307878df8c00d6e5388e4800635cbe0e22b6411b64",
+     "subfamily": "Regular",
+     "typographic_family": "Alexandria",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 178256,
+     "family": "Alexandria",
+     "file": "Alexandria-Bold.ttf",
+     "from_file": "Alexandria[wght].ttf",
+     "full_name": "Alexandria Bold",
+     "italic": false,
+     "postscript_name": "Alexandria-Bold",
+     "sha256": "c1c54a5da1942891619e5077a7e4a16a785e1812823950dbc0fda552a0aab322",
+     "source": "office_build",
+     "source_sha256": "db8ae03b62d55a65aa4e04307878df8c00d6e5388e4800635cbe0e22b6411b64",
+     "subfamily": "Bold",
+     "typographic_family": "Alexandria",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 178276,
+     "family": "Alexandria ExtraBold",
+     "file": "Alexandria-ExtraBold.ttf",
+     "from_file": "Alexandria[wght].ttf",
+     "full_name": "Alexandria ExtraBold",
+     "italic": false,
+     "postscript_name": "Alexandria-ExtraBold",
+     "sha256": "53a03a6cbb80bae44c75d1df264cba60ea63dbbeeaa020225665452c587ff525",
+     "source": "office_build",
+     "source_sha256": "db8ae03b62d55a65aa4e04307878df8c00d6e5388e4800635cbe0e22b6411b64",
+     "subfamily": "Regular",
+     "typographic_family": "Alexandria",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Alexandria[wght].ttf",
+   "from_sha256": "db8ae03b62d55a65aa4e04307878df8c00d6e5388e4800635cbe0e22b6411b64",
+   "id": "F032",
+   "install_family": "Alexandria",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Readex Pro",
+   "files": [
+    {
+     "bytes": 100460,
+     "family": "MX Kids F033 Readex Pro",
+     "file": "MXKidsF033ReadexPro-Regular.ttf",
+     "from_file": "ReadexPro[HEXP,wght].ttf",
+     "full_name": "MX Kids F033 Readex Pro Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF033ReadexPro-Regular",
+     "sha256": "0de6df77b9076ef3f33fc1ad6589f50f45b52eba8ff06dddb03014e7a6c92ef3",
+     "source": "office_build",
+     "source_sha256": "268bba7e1e8f3b14d798b3fb0e40ebaa3fc39308c9ac0020e2faf6df181cc30e",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F033 Readex Pro",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 101132,
+     "family": "MX Kids F033 Readex Pro",
+     "file": "MXKidsF033ReadexPro-Bold.ttf",
+     "from_file": "ReadexPro[HEXP,wght].ttf",
+     "full_name": "MX Kids F033 Readex Pro Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF033ReadexPro-Bold",
+     "sha256": "f37c692a9dbee396d1f73a61cc6fa09a4eb6aef520cdf48be01da9e931344b7d",
+     "source": "office_build",
+     "source_sha256": "268bba7e1e8f3b14d798b3fb0e40ebaa3fc39308c9ac0020e2faf6df181cc30e",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F033 Readex Pro",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "ReadexPro[HEXP,wght].ttf",
+   "from_sha256": "268bba7e1e8f3b14d798b3fb0e40ebaa3fc39308c9ac0020e2faf6df181cc30e",
+   "id": "F033",
+   "install_family": "MX Kids F033 Readex Pro",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Changa",
+   "files": [
+    {
+     "bytes": 70108,
+     "family": "Changa",
+     "file": "Changa-Regular.ttf",
+     "from_file": "Changa[wght].ttf",
+     "full_name": "Changa Regular",
+     "italic": false,
+     "postscript_name": "Changa-Regular",
+     "sha256": "cf731596df03aa9aaca52f552ef79bfd703d12d4414558b86562578ce60a625b",
+     "source": "office_build",
+     "source_sha256": "7c4f7a14d4b70ac8816ea8df3a0b127aee4c5f5af7239aca2afecc84ddc7f4d3",
+     "subfamily": "Regular",
+     "typographic_family": "Changa",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 70412,
+     "family": "Changa",
+     "file": "Changa-Bold.ttf",
+     "from_file": "Changa[wght].ttf",
+     "full_name": "Changa Bold",
+     "italic": false,
+     "postscript_name": "Changa-Bold",
+     "sha256": "4d1fb87db0b1607979fd138c01d663c50a960508729aece87f7002a5b813c40f",
+     "source": "office_build",
+     "source_sha256": "7c4f7a14d4b70ac8816ea8df3a0b127aee4c5f5af7239aca2afecc84ddc7f4d3",
+     "subfamily": "Bold",
+     "typographic_family": "Changa",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 70152,
+     "family": "Changa ExtraBold",
+     "file": "Changa-ExtraBold.ttf",
+     "from_file": "Changa[wght].ttf",
+     "full_name": "Changa ExtraBold",
+     "italic": false,
+     "postscript_name": "Changa-ExtraBold",
+     "sha256": "6c6a7ed9c92a9810ccdc7d5d2a94387bab61a08dd8174577e760ee6f77fa850d",
+     "source": "office_build",
+     "source_sha256": "7c4f7a14d4b70ac8816ea8df3a0b127aee4c5f5af7239aca2afecc84ddc7f4d3",
+     "subfamily": "Regular",
+     "typographic_family": "Changa",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Changa[wght].ttf",
+   "from_sha256": "7c4f7a14d4b70ac8816ea8df3a0b127aee4c5f5af7239aca2afecc84ddc7f4d3",
+   "id": "F034",
+   "install_family": "Changa",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Vazirmatn",
+   "files": [
+    {
+     "bytes": 126276,
+     "family": "Vazirmatn",
+     "file": "Vazirmatn-Regular.ttf",
+     "from_file": "Vazirmatn[wght].ttf",
+     "full_name": "Vazirmatn Regular",
+     "italic": false,
+     "postscript_name": "Vazirmatn-Regular",
+     "sha256": "ffe0fad79d64545e382eab68659185b3d388bcb288ae98656ef5d8a7c8f73ad0",
+     "source": "office_build",
+     "source_sha256": "696249a2c74b39ffdef55de4df2809c5b639d3ff80d618d8160a095d2fd49dca",
+     "subfamily": "Regular",
+     "typographic_family": "Vazirmatn",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 126920,
+     "family": "Vazirmatn",
+     "file": "Vazirmatn-Bold.ttf",
+     "from_file": "Vazirmatn[wght].ttf",
+     "full_name": "Vazirmatn Bold",
+     "italic": false,
+     "postscript_name": "Vazirmatn-Bold",
+     "sha256": "0893a44a58dcf27a4a781bcaa24325c2a2557c1c343ccc532e89dcddf408fa44",
+     "source": "office_build",
+     "source_sha256": "696249a2c74b39ffdef55de4df2809c5b639d3ff80d618d8160a095d2fd49dca",
+     "subfamily": "Bold",
+     "typographic_family": "Vazirmatn",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Vazirmatn[wght].ttf",
+   "from_sha256": "696249a2c74b39ffdef55de4df2809c5b639d3ff80d618d8160a095d2fd49dca",
+   "id": "F035",
+   "install_family": "Vazirmatn",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Fustat",
+   "files": [
+    {
+     "bytes": 96716,
+     "family": "Fustat",
+     "file": "Fustat-Regular.ttf",
+     "from_file": "Fustat[wght].ttf",
+     "full_name": "Fustat Regular",
+     "italic": false,
+     "postscript_name": "Fustat-Regular",
+     "sha256": "b59745af5ee3ac8f957a7356b49bcc3d9c7f954acd92e05c1301591f1e93918a",
+     "source": "office_build",
+     "source_sha256": "ba09d90e6180e79334aadd42ea1ed0e97a405fadcd34412c1d02a6b8f679d402",
+     "subfamily": "Regular",
+     "typographic_family": "Fustat",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 96880,
+     "family": "Fustat",
+     "file": "Fustat-Bold.ttf",
+     "from_file": "Fustat[wght].ttf",
+     "full_name": "Fustat Bold",
+     "italic": false,
+     "postscript_name": "Fustat-Bold",
+     "sha256": "848a747a4f1293db5391eb15dda74f4b18e16de4e17365e11734ede51168dd84",
+     "source": "office_build",
+     "source_sha256": "ba09d90e6180e79334aadd42ea1ed0e97a405fadcd34412c1d02a6b8f679d402",
+     "subfamily": "Bold",
+     "typographic_family": "Fustat",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 96652,
+     "family": "Fustat ExtraBold",
+     "file": "Fustat-ExtraBold.ttf",
+     "from_file": "Fustat[wght].ttf",
+     "full_name": "Fustat ExtraBold",
+     "italic": false,
+     "postscript_name": "Fustat-ExtraBold",
+     "sha256": "09b64a1459fd4fcba0a4abba11ed01c83f3a870a8160b9a4734b69aeca0a6680",
+     "source": "office_build",
+     "source_sha256": "ba09d90e6180e79334aadd42ea1ed0e97a405fadcd34412c1d02a6b8f679d402",
+     "subfamily": "Regular",
+     "typographic_family": "Fustat",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Fustat[wght].ttf",
+   "from_sha256": "ba09d90e6180e79334aadd42ea1ed0e97a405fadcd34412c1d02a6b8f679d402",
+   "id": "F036",
+   "install_family": "Fustat",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "IBM Plex Sans Arabic",
+   "files": [
+    {
+     "family": "IBM Plex Sans Arabic",
+     "file": "IBMPlexSansArabic-Bold.ttf",
+     "italic": false,
+     "sha256": "691e0c891a38637ae6bbdb69700f8042cb0724a137bee615068ffdb92244f61f",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "IBM Plex Sans Arabic ExtraLight",
+     "file": "IBMPlexSansArabic-ExtraLight.ttf",
+     "italic": false,
+     "sha256": "4d4137f37a1acd61f1b7eba47c08d0996789596b1e535f9220914ad5daf0a198",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 200
+    },
+    {
+     "family": "IBM Plex Sans Arabic Light",
+     "file": "IBMPlexSansArabic-Light.ttf",
+     "italic": false,
+     "sha256": "0af9d1effbb36ff74d13c64f752c771ecb9162a451cf151c5425f4d00d4daa7c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "IBM Plex Sans Arabic Medium",
+     "file": "IBMPlexSansArabic-Medium.ttf",
+     "italic": false,
+     "sha256": "b8363ab9f733dfa4f8e96b8b2102c24b5cf4110fb96d1d3d9a9412f6fb49cf74",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "IBM Plex Sans Arabic",
+     "file": "IBMPlexSansArabic-Regular.ttf",
+     "italic": false,
+     "sha256": "6f611412270a132bbac838da9259d4c68569b4175f3b3b8fa3fa36a30b56dab9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "IBM Plex Sans Arabic SemiBold",
+     "file": "IBMPlexSansArabic-SemiBold.ttf",
+     "italic": false,
+     "sha256": "597bd5502e5997be4414e4c9c88834b30ff3784250c84f20bce2b20e53ebd467",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    },
+    {
+     "family": "IBM Plex Sans Arabic Thin",
+     "file": "IBMPlexSansArabic-Thin.ttf",
+     "italic": false,
+     "sha256": "f8e1f556f815e3d29c531f79ff2bed276bec18d403fc6470b54900922cd91a79",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 100
+    }
+   ],
+   "id": "F037",
+   "install_family": "IBM Plex Sans Arabic",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik",
+   "files": [
+    {
+     "bytes": 212148,
+     "family": "Rubik",
+     "file": "Rubik-Regular.ttf",
+     "from_file": "Rubik[wght].ttf",
+     "full_name": "Rubik Regular",
+     "italic": false,
+     "postscript_name": "Rubik-Regular",
+     "sha256": "cbc579fc68765e0bff340695ceb5a21910bcbcf2bbd5a0c3de6d5aa5347d3a96",
+     "source": "office_build",
+     "source_sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+     "subfamily": "Regular",
+     "typographic_family": "Rubik",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 212192,
+     "family": "Rubik",
+     "file": "Rubik-Bold.ttf",
+     "from_file": "Rubik[wght].ttf",
+     "full_name": "Rubik Bold",
+     "italic": false,
+     "postscript_name": "Rubik-Bold",
+     "sha256": "11f43d4aed67522baf5ca60c1a6f74ada027a828a9e285902c2cca36b5a4701c",
+     "source": "office_build",
+     "source_sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+     "subfamily": "Bold",
+     "typographic_family": "Rubik",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 212064,
+     "family": "Rubik ExtraBold",
+     "file": "Rubik-ExtraBold.ttf",
+     "from_file": "Rubik[wght].ttf",
+     "full_name": "Rubik ExtraBold",
+     "italic": false,
+     "postscript_name": "Rubik-ExtraBold",
+     "sha256": "e1a408f2e07dd99cbd369df03aca91140d865b4cbc0b61ff7670af9f71cc1c04",
+     "source": "office_build",
+     "source_sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+     "subfamily": "Regular",
+     "typographic_family": "Rubik",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Rubik[wght].ttf",
+   "from_sha256": "1b3a7437ba2af80e465e773ed60c5036d1ba6ace492d89046dbcf18fb31e4e88",
+   "id": "F038",
+   "install_family": "Rubik",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "Rubik-Italic[wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Kufam",
+   "files": [
+    {
+     "bytes": 297864,
+     "family": "Kufam",
+     "file": "Kufam-Regular.ttf",
+     "from_file": "Kufam[wght].ttf",
+     "full_name": "Kufam Regular",
+     "italic": false,
+     "postscript_name": "Kufam-Regular",
+     "sha256": "c2801f8559ffd8c519acda82a6175df5ef90168f1211ecefa5f48d8113d8db35",
+     "source": "office_build",
+     "source_sha256": "f17a89b518c833de289598d0662bb9a07d09cc7d75b7079a15f1305f624bbcda",
+     "subfamily": "Regular",
+     "typographic_family": "Kufam",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 298520,
+     "family": "Kufam",
+     "file": "Kufam-Bold.ttf",
+     "from_file": "Kufam[wght].ttf",
+     "full_name": "Kufam Bold",
+     "italic": false,
+     "postscript_name": "Kufam-Bold",
+     "sha256": "b63b324ce03c599c0ce41ef9eff5fa2ad2545982dc3e33669fa11d2280469daa",
+     "source": "office_build",
+     "source_sha256": "f17a89b518c833de289598d0662bb9a07d09cc7d75b7079a15f1305f624bbcda",
+     "subfamily": "Bold",
+     "typographic_family": "Kufam",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 298392,
+     "family": "Kufam ExtraBold",
+     "file": "Kufam-ExtraBold.ttf",
+     "from_file": "Kufam[wght].ttf",
+     "full_name": "Kufam ExtraBold",
+     "italic": false,
+     "postscript_name": "Kufam-ExtraBold",
+     "sha256": "e4416cb9b45631c3e69dbd611872c312b27122d6cfd457389b44c92dadfbed83",
+     "source": "office_build",
+     "source_sha256": "f17a89b518c833de289598d0662bb9a07d09cc7d75b7079a15f1305f624bbcda",
+     "subfamily": "Regular",
+     "typographic_family": "Kufam",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Kufam[wght].ttf",
+   "from_sha256": "f17a89b518c833de289598d0662bb9a07d09cc7d75b7079a15f1305f624bbcda",
+   "id": "F039",
+   "install_family": "Kufam",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "Kufam-Italic[wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Alan Sans",
+   "files": [
+    {
+     "bytes": 117744,
+     "family": "Alan Sans",
+     "file": "AlanSans-Regular.ttf",
+     "from_file": "AlanSans[wght].ttf",
+     "full_name": "Alan Sans Regular",
+     "italic": false,
+     "postscript_name": "AlanSans-Regular",
+     "sha256": "5ae229d637583f7284a217126e5b60a3674277a70bf97bdf6194080d5f77a6d0",
+     "source": "office_build",
+     "source_sha256": "96e93ac16fd488698a88489e297a5de00b2c5dbd8f20c298ebd4d3acc4421b2a",
+     "subfamily": "Regular",
+     "typographic_family": "Alan Sans",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 117792,
+     "family": "Alan Sans",
+     "file": "AlanSans-Bold.ttf",
+     "from_file": "AlanSans[wght].ttf",
+     "full_name": "Alan Sans Bold",
+     "italic": false,
+     "postscript_name": "AlanSans-Bold",
+     "sha256": "5e9fcf279fe858a100ec082e57b200a88b07096e66040987be9e9bc20bd00d5d",
+     "source": "office_build",
+     "source_sha256": "96e93ac16fd488698a88489e297a5de00b2c5dbd8f20c298ebd4d3acc4421b2a",
+     "subfamily": "Bold",
+     "typographic_family": "Alan Sans",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "AlanSans[wght].ttf",
+   "from_sha256": "96e93ac16fd488698a88489e297a5de00b2c5dbd8f20c298ebd4d3acc4421b2a",
+   "id": "F040",
+   "install_family": "Alan Sans",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Thabit",
+   "files": [
+    {
+     "family": "Thabit-Bold",
+     "file": "Thabit-Bold.ttf",
+     "italic": false,
+     "sha256": "8dded564a1f6dc6a223112b66f20d12a221ad76a7f688dd570cef794940dd124",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Thabit-Bold-Oblique",
+     "file": "Thabit-BoldOblique.ttf",
+     "italic": true,
+     "sha256": "5375ed9d0d5ea6e9e9806bbddd1dc860b1857018d3229d10f944ca39e04318ff",
+     "source": "upstream",
+     "subfamily": "Bold Oblique",
+     "weight": 700
+    },
+    {
+     "family": "Thabit-Oblique",
+     "file": "Thabit-Oblique.ttf",
+     "italic": true,
+     "sha256": "dc8ca2cbcdd9d1925394b2261bb46897752b20a190ce7d108e20b56b465ce686",
+     "source": "upstream",
+     "subfamily": "Oblique",
+     "weight": 500
+    },
+    {
+     "family": "Thabit",
+     "file": "Thabit.ttf",
+     "italic": false,
+     "sha256": "3fe6f423d751919d6411b38d6de2ff823252292eef9e860c4a532faf779b674a",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    }
+   ],
+   "id": "F041",
+   "install_family": "Thabit",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Ruwudu",
+   "files": [
+    {
+     "family": "Ruwudu",
+     "file": "Ruwudu-Bold.ttf",
+     "italic": false,
+     "sha256": "7f7611d534aea674b960e0b586d1f594f3975b4db3fff5f55c1b92484a34cf78",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Ruwudu Medium",
+     "file": "Ruwudu-Medium.ttf",
+     "italic": false,
+     "sha256": "11688c54f825b293e6554c44a645ffa863a04331f3abee3dee18711a01719a8e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Ruwudu",
+     "file": "Ruwudu-Regular.ttf",
+     "italic": false,
+     "sha256": "ed5b134e7f389eecfdabc6bbbf9605177fa8b5b9984c8b24edbec908623d2c3b",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Ruwudu SemiBold",
+     "file": "Ruwudu-SemiBold.ttf",
+     "italic": false,
+     "sha256": "13f4e5c44f184bf9432cc4f4121e24853a3b81026a4223d113042710e361041d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    }
+   ],
+   "id": "F042",
+   "install_family": "Ruwudu",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Scheherazade New",
+   "files": [
+    {
+     "family": "Scheherazade New",
+     "file": "ScheherazadeNew-Bold.ttf",
+     "italic": false,
+     "sha256": "91363517a63dbc7448b5814226d33d845b26b32a461cd159ea0b3f23c7effd2d",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Scheherazade New Medium",
+     "file": "ScheherazadeNew-Medium.ttf",
+     "italic": false,
+     "sha256": "060b801307ec55d996d635578fffba0d95169f63e1d0f6061402185eaf4fa6af",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Scheherazade New",
+     "file": "ScheherazadeNew-Regular.ttf",
+     "italic": false,
+     "sha256": "794bac8dc9e83d1d620bc471ea694f5f31d0965ce8006490a79dfc51a2d283b3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Scheherazade New SemiBold",
+     "file": "ScheherazadeNew-SemiBold.ttf",
+     "italic": false,
+     "sha256": "155056d27ea5a34ab739170abeff8d45b44a494e39be329f0a4d1e6cbd173390",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    }
+   ],
+   "id": "F043",
+   "install_family": "Scheherazade New",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Noto Naskh Arabic",
+   "files": [
+    {
+     "bytes": 200352,
+     "family": "Noto Naskh Arabic",
+     "file": "NotoNaskhArabic-Regular.ttf",
+     "from_file": "NotoNaskhArabic[wght].ttf",
+     "full_name": "Noto Naskh Arabic Regular",
+     "italic": false,
+     "postscript_name": "NotoNaskhArabic-Regular",
+     "sha256": "6dd3a5aaac5016ac92a3251e19ed425f8073a229146ef5bd23e32da56f6f53ef",
+     "source": "office_build",
+     "source_sha256": "67b5a525a661b607971fbd3f96a81b89d3a768e74534fca84f18ac97e6fab72f",
+     "subfamily": "Regular",
+     "typographic_family": "Noto Naskh Arabic",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 200464,
+     "family": "Noto Naskh Arabic",
+     "file": "NotoNaskhArabic-Bold.ttf",
+     "from_file": "NotoNaskhArabic[wght].ttf",
+     "full_name": "Noto Naskh Arabic Bold",
+     "italic": false,
+     "postscript_name": "NotoNaskhArabic-Bold",
+     "sha256": "d8ca68405a6c749b4e7dbe06f8660b8de87ee1dd6fc8db27c1f45aa15597a069",
+     "source": "office_build",
+     "source_sha256": "67b5a525a661b607971fbd3f96a81b89d3a768e74534fca84f18ac97e6fab72f",
+     "subfamily": "Bold",
+     "typographic_family": "Noto Naskh Arabic",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "NotoNaskhArabic[wght].ttf",
+   "from_sha256": "67b5a525a661b607971fbd3f96a81b89d3a768e74534fca84f18ac97e6fab72f",
+   "id": "F044",
+   "install_family": "Noto Naskh Arabic",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Aref Ruqaa",
+   "files": [
+    {
+     "family": "Aref Ruqaa",
+     "file": "ArefRuqaa-Bold.ttf",
+     "italic": false,
+     "sha256": "247071015b7eefd63f94d6e47949c5d10294ed31bd432f809ba9a219d93f91bb",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Aref Ruqaa",
+     "file": "ArefRuqaa-Regular.ttf",
+     "italic": false,
+     "sha256": "ceb786d83ba92f35e96efcd8623c2858d288e0c543c8761ba35b1020989464f9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F045",
+   "install_family": "Aref Ruqaa",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Aref Ruqaa Ink",
+   "files": [],
+   "id": "F046",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Amiri",
+   "files": [
+    {
+     "family": "Amiri",
+     "file": "Amiri-Bold.ttf",
+     "italic": false,
+     "sha256": "cfccb794268e7d573d857e6d6a67f89cf8a053e8ffd85dfa0c8ec1bb36fc4827",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Amiri",
+     "file": "Amiri-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "241300e2dcb2c541ac3617872960d99683d261e4f526dc4691d0727e7bef130b",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Amiri",
+     "file": "Amiri-Italic.ttf",
+     "italic": true,
+     "sha256": "770e4da44d0459c0ddd6484483d475b95f2d088dd27ce472427624081eb68c70",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Amiri",
+     "file": "Amiri-Regular.ttf",
+     "italic": false,
+     "sha256": "ab391c4147d054c48976e98322ad0eefe1427aa0e0502a12a4c75d80a70cfcd7",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F047",
+   "install_family": "Amiri",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Lateef",
+   "files": [
+    {
+     "family": "Lateef",
+     "file": "Lateef-Bold.ttf",
+     "italic": false,
+     "sha256": "eee405eeb4e81491b0b659fb40dc016765292022d74406c616f72501e160afe2",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Lateef ExtraBold",
+     "file": "Lateef-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "ee6406b63af32993054b1f7e2d6ff0fd7c91c409b0d4818bb1d686f709f0cdff",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 800
+    },
+    {
+     "family": "Lateef ExtraLight",
+     "file": "Lateef-ExtraLight.ttf",
+     "italic": false,
+     "sha256": "d22920471ea9305e50b18674a285975cd9856059dd1dccb088becb101090c328",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 200
+    },
+    {
+     "family": "Lateef Light",
+     "file": "Lateef-Light.ttf",
+     "italic": false,
+     "sha256": "f5c18f8c66cc30a61cc009f86b31aeecc4d81804fe4ef847cef4d2288a1e6723",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Lateef Medium",
+     "file": "Lateef-Medium.ttf",
+     "italic": false,
+     "sha256": "b08e71723c6bdcc7855a1384ced2cc459f0fbbc65dfa0dfa0a94b9983d484ef1",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Lateef",
+     "file": "Lateef-Regular.ttf",
+     "italic": false,
+     "sha256": "fcbd9e0227a4d7238880defa5fd74c012d69351150709e559a8577446145c2fc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Lateef SemiBold",
+     "file": "Lateef-SemiBold.ttf",
+     "italic": false,
+     "sha256": "ac0ba34269c19062340d942c5ad4ecc41ab8b9d21df92973372a7e1d7a421ff2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    }
+   ],
+   "id": "F048",
+   "install_family": "Lateef",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mirza",
+   "files": [
+    {
+     "family": "Mirza",
+     "file": "Mirza-Bold.ttf",
+     "italic": false,
+     "sha256": "306b412a39d9f93ca840c13ca62300eb5c7712e2afa94bd7ef2272b51131be6d",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Mirza Medium",
+     "file": "Mirza-Medium.ttf",
+     "italic": false,
+     "sha256": "423532407cc832ef84cc8f08a3359f26b50e721c8aa0e00221e4215cc83440b3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Mirza",
+     "file": "Mirza-Regular.ttf",
+     "italic": false,
+     "sha256": "5b1ac6cb285ca3492e313a53d5252b9784bf7607f2835a2d44cb3cbad0168539",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Mirza SemiBold",
+     "file": "Mirza-SemiBold.ttf",
+     "italic": false,
+     "sha256": "4225215d0df4ad389c4ac29d48fddc531703776591ade64c23f6f995669d4078",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    }
+   ],
+   "id": "F049",
+   "install_family": "Mirza",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Gulzar",
+   "files": [
+    {
+     "family": "Gulzar",
+     "file": "Gulzar-Regular.ttf",
+     "italic": false,
+     "sha256": "246337973ac64e8b70fe611405dcf32a395a8885c4497dc45dbc4975d3ac0831",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F050",
+   "install_family": "Gulzar",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Alyamama",
+   "files": [
+    {
+     "bytes": 136748,
+     "family": "Alyamama",
+     "file": "Alyamama-Regular.ttf",
+     "from_file": "Alyamama[wght].ttf",
+     "full_name": "Alyamama Regular",
+     "italic": false,
+     "postscript_name": "Alyamama-Regular",
+     "sha256": "1c786421b3a0ca7b9ff57349e455430bbbd1e8d0410fe464bd4bc7bfcb3d62b4",
+     "source": "office_build",
+     "source_sha256": "f09eb4ad2eaf1b0a7c990cb9b3b7658414405804d74775269fdddc25efdb1883",
+     "subfamily": "Regular",
+     "typographic_family": "Alyamama",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 136816,
+     "family": "Alyamama",
+     "file": "Alyamama-Bold.ttf",
+     "from_file": "Alyamama[wght].ttf",
+     "full_name": "Alyamama Bold",
+     "italic": false,
+     "postscript_name": "Alyamama-Bold",
+     "sha256": "90b637fc1112f830dbcc14cf9cae2a2e0dbf6fa08fda376c6d93125711c69bf0",
+     "source": "office_build",
+     "source_sha256": "f09eb4ad2eaf1b0a7c990cb9b3b7658414405804d74775269fdddc25efdb1883",
+     "subfamily": "Bold",
+     "typographic_family": "Alyamama",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 136836,
+     "family": "Alyamama ExtraBold",
+     "file": "Alyamama-ExtraBold.ttf",
+     "from_file": "Alyamama[wght].ttf",
+     "full_name": "Alyamama ExtraBold",
+     "italic": false,
+     "postscript_name": "Alyamama-ExtraBold",
+     "sha256": "06eae6b3baa6bd1369b887225a556d0de817bd0e82094b8d88f4cd699ed2c6d8",
+     "source": "office_build",
+     "source_sha256": "f09eb4ad2eaf1b0a7c990cb9b3b7658414405804d74775269fdddc25efdb1883",
+     "subfamily": "Regular",
+     "typographic_family": "Alyamama",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Alyamama[wght].ttf",
+   "from_sha256": "f09eb4ad2eaf1b0a7c990cb9b3b7658414405804d74775269fdddc25efdb1883",
+   "id": "F051",
+   "install_family": "Alyamama",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Alkalami",
+   "files": [
+    {
+     "family": "Alkalami",
+     "file": "Alkalami-Regular.ttf",
+     "italic": false,
+     "sha256": "4410dfc591b918dd4360b0252b079855a8a00250de363c8c0163b29ddfc56434",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F052",
+   "install_family": "Alkalami",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Markazi Text",
+   "files": [
+    {
+     "bytes": 187364,
+     "family": "Markazi Text",
+     "file": "MarkaziText-Regular.ttf",
+     "from_file": "MarkaziText[wght].ttf",
+     "full_name": "Markazi Text Regular",
+     "italic": false,
+     "postscript_name": "MarkaziText-Regular",
+     "sha256": "e7b7d1b148c434a45c3377de1349cb4e80a4ef563bfb21c16865c349ca748aec",
+     "source": "office_build",
+     "source_sha256": "424b7331681160ff2a4b209bfc356ea9564d429a7daea43ee4dc28de8ff4f9fe",
+     "subfamily": "Regular",
+     "typographic_family": "Markazi Text",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 187616,
+     "family": "Markazi Text",
+     "file": "MarkaziText-Bold.ttf",
+     "from_file": "MarkaziText[wght].ttf",
+     "full_name": "Markazi Text Bold",
+     "italic": false,
+     "postscript_name": "MarkaziText-Bold",
+     "sha256": "25d7ac04a1cd86575311e18a6826d44eaeb718caf6dfd60fc9c563cab170a1a6",
+     "source": "office_build",
+     "source_sha256": "424b7331681160ff2a4b209bfc356ea9564d429a7daea43ee4dc28de8ff4f9fe",
+     "subfamily": "Bold",
+     "typographic_family": "Markazi Text",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "MarkaziText[wght].ttf",
+   "from_sha256": "424b7331681160ff2a4b209bfc356ea9564d429a7daea43ee4dc28de8ff4f9fe",
+   "id": "F053",
+   "install_family": "Markazi Text",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Parastoo",
+   "files": [
+    {
+     "bytes": 110168,
+     "family": "Parastoo",
+     "file": "Parastoo-Regular.ttf",
+     "from_file": "Parastoo[wght].ttf",
+     "full_name": "Parastoo Regular",
+     "italic": false,
+     "postscript_name": "Parastoo-Regular",
+     "sha256": "5e5dd81f0db2b5cbb5db9ab44c8eba2b73173e48213b52a4eedadea8cf4895df",
+     "source": "office_build",
+     "source_sha256": "f29efde7fbdc1ec5d2e2d009371103c6a06ec4f85ed1703306b5fa11d261a8e4",
+     "subfamily": "Regular",
+     "typographic_family": "Parastoo",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 109680,
+     "family": "Parastoo",
+     "file": "Parastoo-Bold.ttf",
+     "from_file": "Parastoo[wght].ttf",
+     "full_name": "Parastoo Bold",
+     "italic": false,
+     "postscript_name": "Parastoo-Bold",
+     "sha256": "bf35d99b34274fd45b4c7a49f7fa5d96bd94c15461ca8b5b5f43fe42ac29ad0a",
+     "source": "office_build",
+     "source_sha256": "f29efde7fbdc1ec5d2e2d009371103c6a06ec4f85ed1703306b5fa11d261a8e4",
+     "subfamily": "Bold",
+     "typographic_family": "Parastoo",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Parastoo[wght].ttf",
+   "from_sha256": "f29efde7fbdc1ec5d2e2d009371103c6a06ec4f85ed1703306b5fa11d261a8e4",
+   "id": "F054",
+   "install_family": "Parastoo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Andika",
+   "files": [
+    {
+     "family": "Andika",
+     "file": "Andika-Bold.ttf",
+     "italic": false,
+     "sha256": "4361126189a2d0e0da66999352db58aaf1b4ca940faf8a8239d725f8303d890d",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Andika",
+     "file": "Andika-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "2d000f8791a1827c0c4d411e9f4593c4fc2db0fdbb868bb1f863593b3d3968e6",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Andika",
+     "file": "Andika-Italic.ttf",
+     "italic": true,
+     "sha256": "6a4a0dd26d28f577b51dd6afb5acf6fd91ab21694e25649c270a32179bb52a62",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Andika",
+     "file": "Andika-Regular.ttf",
+     "italic": false,
+     "sha256": "202b96b1f174a4a43baefe885b40dacacb81786755efd08ed4b7704e79c45515",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F055",
+   "install_family": "Andika",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Lexend",
+   "files": [
+    {
+     "bytes": 78340,
+     "family": "MX Kids F056",
+     "file": "MXKidsF056-Regular.ttf",
+     "from_file": "Lexend[wght].ttf",
+     "full_name": "MX Kids F056 Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF056-Regular",
+     "sha256": "df534780028a3a6e9d463a1f87c00e242cf1842a63aacf876df2e7a9e2549c03",
+     "source": "office_build",
+     "source_sha256": "3add53e641fbc81da64da4bb254285e2831b52b029527bc0714e2b9610832ee6",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F056",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 78556,
+     "family": "MX Kids F056",
+     "file": "MXKidsF056-Bold.ttf",
+     "from_file": "Lexend[wght].ttf",
+     "full_name": "MX Kids F056 Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF056-Bold",
+     "sha256": "1e9dbd9e77156c3d6f16bf4b800af011e7df54a7a428f16daa55710f460de21f",
+     "source": "office_build",
+     "source_sha256": "3add53e641fbc81da64da4bb254285e2831b52b029527bc0714e2b9610832ee6",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F056",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Lexend[wght].ttf",
+   "from_sha256": "3add53e641fbc81da64da4bb254285e2831b52b029527bc0714e2b9610832ee6",
+   "id": "F056",
+   "install_family": "MX Kids F056",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Atkinson Hyperlegible",
+   "files": [
+    {
+     "family": "Atkinson Hyperlegible",
+     "file": "AtkinsonHyperlegible-Bold.ttf",
+     "italic": false,
+     "sha256": "5a3b0c8cc8ca545155150b4512a1fa248298df121c50d6557e651e61fbdab92f",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Atkinson Hyperlegible",
+     "file": "AtkinsonHyperlegible-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "7a46f1b0ef2f64b61065c1a6b5a11fcb9b019b44062d88ba121a083cc39e86bf",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Atkinson Hyperlegible",
+     "file": "AtkinsonHyperlegible-Italic.ttf",
+     "italic": true,
+     "sha256": "021beda4d3c6edfc78872e436d74009f9a1bcb294331908fe5747c61d3dcc514",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Atkinson Hyperlegible",
+     "file": "AtkinsonHyperlegible-Regular.ttf",
+     "italic": false,
+     "sha256": "7fb917c89019896d0b52ee84b7cbb3304c18cb90b19a62f5e32712bd23e97669",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F057",
+   "install_family": "Atkinson Hyperlegible",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Comic Neue",
+   "files": [
+    {
+     "family": "Comic Neue",
+     "file": "ComicNeue-Bold.ttf",
+     "italic": false,
+     "sha256": "3e7e5fccfd7e0788f317b43312151c1bd5cf058c9697a8d83eac3939050bd61e",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Comic Neue",
+     "file": "ComicNeue-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "5c312c2a2fa64eee82f3b87fcfab8f3b12a5e59b043124401d322eb323cfbf16",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Comic Neue",
+     "file": "ComicNeue-Italic.ttf",
+     "italic": true,
+     "sha256": "e06bfd1552f5c9464c5665733ffd69239b0593885dbb9e059688a5900f78cf98",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Comic Neue Light",
+     "file": "ComicNeue-Light.ttf",
+     "italic": false,
+     "sha256": "efb91c06dccc264f07f800c0691d40c94e8cfce6183daade0709268bec178f76",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Comic Neue Light",
+     "file": "ComicNeue-LightItalic.ttf",
+     "italic": true,
+     "sha256": "a6d36baee09c7025916ddb517835458d15ef890291507197a54875ccc096b927",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 300
+    },
+    {
+     "family": "Comic Neue",
+     "file": "ComicNeue-Regular.ttf",
+     "italic": false,
+     "sha256": "a0ee5a37c8b27c4db0700137d928598b1e23b0089e1546a8961909176b779360",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F058",
+   "install_family": "Comic Neue",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Edu SA Beginner",
+   "files": [
+    {
+     "bytes": 20508,
+     "family": "Edu SA Beginner",
+     "file": "EduSABeginner-Regular.ttf",
+     "from_file": "EduSABeginner[wght].ttf",
+     "full_name": "Edu SA Beginner Regular",
+     "italic": false,
+     "postscript_name": "EduSABeginner-Regular",
+     "sha256": "b8af4f30bbf14a75ee5d66d5e4747b954113cd68520066a2c38fc3308eb14d1a",
+     "source": "office_build",
+     "source_sha256": "1ec0d8b4f3a6fda018079fa284570d2c4a3a514e3687d139b25b05dbb86c7ff4",
+     "subfamily": "Regular",
+     "typographic_family": "Edu SA Beginner",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 20468,
+     "family": "Edu SA Beginner",
+     "file": "EduSABeginner-Bold.ttf",
+     "from_file": "EduSABeginner[wght].ttf",
+     "full_name": "Edu SA Beginner Bold",
+     "italic": false,
+     "postscript_name": "EduSABeginner-Bold",
+     "sha256": "d1d4381cd36611dd465fe58f8928078c9b1eb54dc93fbd2ed1baad4332af3340",
+     "source": "office_build",
+     "source_sha256": "1ec0d8b4f3a6fda018079fa284570d2c4a3a514e3687d139b25b05dbb86c7ff4",
+     "subfamily": "Bold",
+     "typographic_family": "Edu SA Beginner",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "EduSABeginner[wght].ttf",
+   "from_sha256": "1ec0d8b4f3a6fda018079fa284570d2c4a3a514e3687d139b25b05dbb86c7ff4",
+   "id": "F059",
+   "install_family": "Edu SA Beginner",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Edu NSW ACT Foundation",
+   "files": [
+    {
+     "bytes": 33648,
+     "family": "Edu NSW ACT Foundation",
+     "file": "EduNSWACTFoundation-Regular.ttf",
+     "from_file": "EduNSWACTFoundation[wght].ttf",
+     "full_name": "Edu NSW ACT Foundation Regular",
+     "italic": false,
+     "postscript_name": "EduNSWACTFoundation-Regular",
+     "sha256": "26deb948c613916d710189affb483140ca7f3484dcdd0190b638e7baa0118980",
+     "source": "office_build",
+     "source_sha256": "5a4b22cc39c04d97472bbe705b9700e864492b853b4941645da60202b796146a",
+     "subfamily": "Regular",
+     "typographic_family": "Edu NSW ACT Foundation",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 33864,
+     "family": "Edu NSW ACT Foundation",
+     "file": "EduNSWACTFoundation-Bold.ttf",
+     "from_file": "EduNSWACTFoundation[wght].ttf",
+     "full_name": "Edu NSW ACT Foundation Bold",
+     "italic": false,
+     "postscript_name": "EduNSWACTFoundation-Bold",
+     "sha256": "c259a053bc57c10b3481f0ab82d17c0938ac0fcbb78e96b8baacfe1d97f61a97",
+     "source": "office_build",
+     "source_sha256": "5a4b22cc39c04d97472bbe705b9700e864492b853b4941645da60202b796146a",
+     "subfamily": "Bold",
+     "typographic_family": "Edu NSW ACT Foundation",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "EduNSWACTFoundation[wght].ttf",
+   "from_sha256": "5a4b22cc39c04d97472bbe705b9700e864492b853b4941645da60202b796146a",
+   "id": "F060",
+   "install_family": "Edu NSW ACT Foundation",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Edu QLD Beginner",
+   "files": [
+    {
+     "bytes": 28340,
+     "family": "Edu QLD Beginner",
+     "file": "EduQLDBeginner-Regular.ttf",
+     "from_file": "EduQLDBeginner[wght].ttf",
+     "full_name": "Edu QLD Beginner Regular",
+     "italic": false,
+     "postscript_name": "EduQLDBeginner-Regular",
+     "sha256": "290adabf3bb9c816d91b00b50df59f0c9e87f946aa2a5159f48afdd77917a700",
+     "source": "office_build",
+     "source_sha256": "de937b07983c86f690a114d012c5d38cc607cb11cd75aa2cbfa638d5ae109c39",
+     "subfamily": "Regular",
+     "typographic_family": "Edu QLD Beginner",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 28304,
+     "family": "Edu QLD Beginner",
+     "file": "EduQLDBeginner-Bold.ttf",
+     "from_file": "EduQLDBeginner[wght].ttf",
+     "full_name": "Edu QLD Beginner Bold",
+     "italic": false,
+     "postscript_name": "EduQLDBeginner-Bold",
+     "sha256": "ae1f70c5dcce8c8c773e73d62d2efbf73a5c9a17f10c150d49c24c3327402a25",
+     "source": "office_build",
+     "source_sha256": "de937b07983c86f690a114d012c5d38cc607cb11cd75aa2cbfa638d5ae109c39",
+     "subfamily": "Bold",
+     "typographic_family": "Edu QLD Beginner",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "EduQLDBeginner[wght].ttf",
+   "from_sha256": "de937b07983c86f690a114d012c5d38cc607cb11cd75aa2cbfa638d5ae109c39",
+   "id": "F061",
+   "install_family": "Edu QLD Beginner",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Edu VIC WA NT Beginner",
+   "files": [
+    {
+     "bytes": 20904,
+     "family": "Edu VIC WA NT Beginner",
+     "file": "EduVICWANTBeginner-Regular.ttf",
+     "from_file": "EduVICWANTBeginner[wght].ttf",
+     "full_name": "Edu VIC WA NT Beginner Regular",
+     "italic": false,
+     "postscript_name": "EduVICWANTBeginner-Regular",
+     "sha256": "df3ea8170decb5f254052a0b4333d89001b3ed97240bdd0db6fb5f36c29a46a5",
+     "source": "office_build",
+     "source_sha256": "b5cbf509d245c56f0a42caa7fed8a8661ad5927d76d88bb2008c9037209154b3",
+     "subfamily": "Regular",
+     "typographic_family": "Edu VIC WA NT Beginner",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 20864,
+     "family": "Edu VIC WA NT Beginner",
+     "file": "EduVICWANTBeginner-Bold.ttf",
+     "from_file": "EduVICWANTBeginner[wght].ttf",
+     "full_name": "Edu VIC WA NT Beginner Bold",
+     "italic": false,
+     "postscript_name": "EduVICWANTBeginner-Bold",
+     "sha256": "3a1711d08fb795f7337f879cc44bd322a882920fdf98e13c75900f485e35ec8a",
+     "source": "office_build",
+     "source_sha256": "b5cbf509d245c56f0a42caa7fed8a8661ad5927d76d88bb2008c9037209154b3",
+     "subfamily": "Bold",
+     "typographic_family": "Edu VIC WA NT Beginner",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "EduVICWANTBeginner[wght].ttf",
+   "from_sha256": "b5cbf509d245c56f0a42caa7fed8a8661ad5927d76d88bb2008c9037209154b3",
+   "id": "F062",
+   "install_family": "Edu VIC WA NT Beginner",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Edu TAS Beginner",
+   "files": [
+    {
+     "bytes": 20808,
+     "family": "Edu TAS Beginner",
+     "file": "EduTASBeginner-Regular.ttf",
+     "from_file": "EduTASBeginner[wght].ttf",
+     "full_name": "Edu TAS Beginner Regular",
+     "italic": false,
+     "postscript_name": "EduTASBeginner-Regular",
+     "sha256": "cebaeac63428105ba291ca2636e3ca79f416b8aa1d169372347efd9f5bb0c5a7",
+     "source": "office_build",
+     "source_sha256": "17dc8a4e3e38442bd86e4bffbe34819b156cc64b9375057d21b3d0fbc3546ac6",
+     "subfamily": "Regular",
+     "typographic_family": "Edu TAS Beginner",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 20748,
+     "family": "Edu TAS Beginner",
+     "file": "EduTASBeginner-Bold.ttf",
+     "from_file": "EduTASBeginner[wght].ttf",
+     "full_name": "Edu TAS Beginner Bold",
+     "italic": false,
+     "postscript_name": "EduTASBeginner-Bold",
+     "sha256": "0b8a2c1b753da7a0b3c9375eba1b29eb639a2e6319b0ccbeadb08d2035ae0d0f",
+     "source": "office_build",
+     "source_sha256": "17dc8a4e3e38442bd86e4bffbe34819b156cc64b9375057d21b3d0fbc3546ac6",
+     "subfamily": "Bold",
+     "typographic_family": "Edu TAS Beginner",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "EduTASBeginner[wght].ttf",
+   "from_sha256": "17dc8a4e3e38442bd86e4bffbe34819b156cc64b9375057d21b3d0fbc3546ac6",
+   "id": "F063",
+   "install_family": "Edu TAS Beginner",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Nunito",
+   "files": [
+    {
+     "bytes": 132256,
+     "family": "Nunito",
+     "file": "Nunito-Regular.ttf",
+     "from_file": "Nunito[wght].ttf",
+     "full_name": "Nunito Regular",
+     "italic": false,
+     "postscript_name": "Nunito-Regular",
+     "sha256": "c86c40374fb6060800db43575b4d16c24f207aba1fa6b30a9645c080a92134d4",
+     "source": "office_build",
+     "source_sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207",
+     "subfamily": "Regular",
+     "typographic_family": "Nunito",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 132196,
+     "family": "Nunito",
+     "file": "Nunito-Bold.ttf",
+     "from_file": "Nunito[wght].ttf",
+     "full_name": "Nunito Bold",
+     "italic": false,
+     "postscript_name": "Nunito-Bold",
+     "sha256": "966bc5baf5ea4961891a578f0200b4a70045e406a8b0dfb43dc841ddeaf4ccff",
+     "source": "office_build",
+     "source_sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207",
+     "subfamily": "Bold",
+     "typographic_family": "Nunito",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Nunito[wght].ttf",
+   "from_sha256": "bb55a5ca5c2042335b3991af27c4d0705d0ef41cac6164ac737fd8f2a1e85207",
+   "id": "F064",
+   "install_family": "Nunito",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "Nunito-Italic[wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Quicksand",
+   "files": [
+    {
+     "bytes": 78900,
+     "family": "MX Kids F065",
+     "file": "MXKidsF065-Regular.ttf",
+     "from_file": "Quicksand[wght].ttf",
+     "full_name": "MX Kids F065 Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF065-Regular",
+     "sha256": "1c163f0f7099c1f7ce08c8d4b64924599934e71f5dc40ac0beb082c928d7670c",
+     "source": "office_build",
+     "source_sha256": "39c9b64223561f56aaff6062a6f04063c4fc86809ad6768722c06614d977e1cc",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F065",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 78496,
+     "family": "MX Kids F065",
+     "file": "MXKidsF065-Bold.ttf",
+     "from_file": "Quicksand[wght].ttf",
+     "full_name": "MX Kids F065 Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF065-Bold",
+     "sha256": "86eb10c94a76a9023c7f354025e10f5e0dc63831b570169a8c96cf1443288d2c",
+     "source": "office_build",
+     "source_sha256": "39c9b64223561f56aaff6062a6f04063c4fc86809ad6768722c06614d977e1cc",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F065",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Quicksand[wght].ttf",
+   "from_sha256": "39c9b64223561f56aaff6062a6f04063c4fc86809ad6768722c06614d977e1cc",
+   "id": "F065",
+   "install_family": "MX Kids F065",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Varela Round",
+   "files": [
+    {
+     "family": "Varela Round",
+     "file": "VarelaRound-Regular.ttf",
+     "italic": false,
+     "sha256": "e1e47eb66dbc2ddc106661338e712d9176c9e83c669a82fde155324823d03aa2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F066",
+   "install_family": "Varela Round",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fredoka",
+   "files": [
+    {
+     "bytes": 50124,
+     "family": "Fredoka",
+     "file": "Fredoka-Regular.ttf",
+     "from_file": "Fredoka[wdth,wght].ttf",
+     "full_name": "Fredoka Regular",
+     "italic": false,
+     "postscript_name": "Fredoka-Regular",
+     "sha256": "0aea3c2171fcf34636c414981e9c9e5166f5c9e63705ae88634b43449261730e",
+     "source": "office_build",
+     "source_sha256": "2ba02e68b152868aef9ba28e24b3648c7d457fe6f25c761f2c2c53fb61a73fc8",
+     "subfamily": "Regular",
+     "typographic_family": "Fredoka",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 49840,
+     "family": "Fredoka",
+     "file": "Fredoka-Bold.ttf",
+     "from_file": "Fredoka[wdth,wght].ttf",
+     "full_name": "Fredoka Bold",
+     "italic": false,
+     "postscript_name": "Fredoka-Bold",
+     "sha256": "c0f8de3a4f0dbd1084a703c85edf88db085640509b63286ffbdfb79c40904ba5",
+     "source": "office_build",
+     "source_sha256": "2ba02e68b152868aef9ba28e24b3648c7d457fe6f25c761f2c2c53fb61a73fc8",
+     "subfamily": "Bold",
+     "typographic_family": "Fredoka",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Fredoka[wdth,wght].ttf",
+   "from_sha256": "2ba02e68b152868aef9ba28e24b3648c7d457fe6f25c761f2c2c53fb61a73fc8",
+   "id": "F067",
+   "install_family": "Fredoka",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Baloo 2",
+   "files": [
+    {
+     "bytes": 422132,
+     "family": "Baloo 2",
+     "file": "Baloo2-Regular.ttf",
+     "from_file": "Baloo2[wght].ttf",
+     "full_name": "Baloo 2 Regular",
+     "italic": false,
+     "postscript_name": "Baloo2-Regular",
+     "sha256": "cf912e7206f133b8588cecd68220e6ee51557ac9aea8255e9dcd9c19dd0b7e05",
+     "source": "office_build",
+     "source_sha256": "d47a6852548059b1db49a1319d06d499d546c3fa2237cf9eee9c43c8abb025c2",
+     "subfamily": "Regular",
+     "typographic_family": "Baloo 2",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 422216,
+     "family": "Baloo 2",
+     "file": "Baloo2-Bold.ttf",
+     "from_file": "Baloo2[wght].ttf",
+     "full_name": "Baloo 2 Bold",
+     "italic": false,
+     "postscript_name": "Baloo2-Bold",
+     "sha256": "e144613eb65a420d5d925b49c0869d5d2b736b750e5c24703485f776c73fef64",
+     "source": "office_build",
+     "source_sha256": "d47a6852548059b1db49a1319d06d499d546c3fa2237cf9eee9c43c8abb025c2",
+     "subfamily": "Bold",
+     "typographic_family": "Baloo 2",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 421808,
+     "family": "Baloo 2 ExtraBold",
+     "file": "Baloo2-ExtraBold.ttf",
+     "from_file": "Baloo2[wght].ttf",
+     "full_name": "Baloo 2 ExtraBold",
+     "italic": false,
+     "postscript_name": "Baloo2-ExtraBold",
+     "sha256": "0c7162e6bf756fe492adfb9b1335dde9c697ca6bcaa37da33b8f2cf068a5e1fe",
+     "source": "office_build",
+     "source_sha256": "d47a6852548059b1db49a1319d06d499d546c3fa2237cf9eee9c43c8abb025c2",
+     "subfamily": "Regular",
+     "typographic_family": "Baloo 2",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Baloo2[wght].ttf",
+   "from_sha256": "d47a6852548059b1db49a1319d06d499d546c3fa2237cf9eee9c43c8abb025c2",
+   "id": "F068",
+   "install_family": "Baloo 2",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Balsamiq Sans",
+   "files": [
+    {
+     "family": "Balsamiq Sans",
+     "file": "BalsamiqSans-Bold.ttf",
+     "italic": false,
+     "sha256": "a3302bd8424e6a37704eb5e20d5c5a3a2fd80feaf57e48a19d261f8e0c583621",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Balsamiq Sans",
+     "file": "BalsamiqSans-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "4999588a66defbf39e718b3edb0b965b932157bd8d1321130de06bec0cdccc75",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Balsamiq Sans",
+     "file": "BalsamiqSans-Italic.ttf",
+     "italic": true,
+     "sha256": "0a287472035409f556acd66c1c926047ee9829a62f88b0fa273591332a8606df",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Balsamiq Sans",
+     "file": "BalsamiqSans-Regular.ttf",
+     "italic": false,
+     "sha256": "fcc9c00a9ad6e78673fa84653745569097241d99b5d1387a23f395858ed46b7e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F069",
+   "install_family": "Balsamiq Sans",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mali",
+   "files": [
+    {
+     "family": "Mali",
+     "file": "Mali-Bold.ttf",
+     "italic": false,
+     "sha256": "3e2f421036c3f91eb5ef34650a5cd2116c737a542147769437a9856a455d4462",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Mali",
+     "file": "Mali-BoldItalic.ttf",
+     "italic": true,
+     "sha256": "ed51d1fa721e4dc4a43dba34926442a007f8a300543c1171887810a547e5b23b",
+     "source": "upstream",
+     "subfamily": "Bold Italic",
+     "weight": 700
+    },
+    {
+     "family": "Mali ExtraLight",
+     "file": "Mali-ExtraLight.ttf",
+     "italic": false,
+     "sha256": "1ee5ea883fde78e4ec8b66ba3606348cd48171cc42072090df8f7500a82e3f33",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 275
+    },
+    {
+     "family": "Mali ExtraLight",
+     "file": "Mali-ExtraLightItalic.ttf",
+     "italic": true,
+     "sha256": "0295ac94b941c9ee00997aaf83459f100a99986b3f4e2f2c19d211961e3986b4",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 275
+    },
+    {
+     "family": "Mali",
+     "file": "Mali-Italic.ttf",
+     "italic": true,
+     "sha256": "feb2808bbd3827949b5eda93179d5820b0fbbb2bfd6154866b0d05e1b8f25f8c",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Mali Light",
+     "file": "Mali-Light.ttf",
+     "italic": false,
+     "sha256": "0cd365c361b4a394583746ae222b136ca627b344a35cf84c6a65c2cf4ba7a97c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Mali Light",
+     "file": "Mali-LightItalic.ttf",
+     "italic": true,
+     "sha256": "47e58abc37bbd0279d2e349956a529a069fc08866b2cdb97e17131aeb05d39a3",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 300
+    },
+    {
+     "family": "Mali Medium",
+     "file": "Mali-Medium.ttf",
+     "italic": false,
+     "sha256": "aa3320845e281de05d7076aed9be5a09df4bf11e6c46165027a0b57a0c8f5dc9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    },
+    {
+     "family": "Mali Medium",
+     "file": "Mali-MediumItalic.ttf",
+     "italic": true,
+     "sha256": "2c37d78ccf7e6095526f13ee020c7e48c15e91cf42a8b115a22467ff68fc2eca",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 500
+    },
+    {
+     "family": "Mali",
+     "file": "Mali-Regular.ttf",
+     "italic": false,
+     "sha256": "e3212f0f9be130743d32a4f174b7d79628daa5db0d72ca4c63c799ae465597bb",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Mali SemiBold",
+     "file": "Mali-SemiBold.ttf",
+     "italic": false,
+     "sha256": "0ba6d92b46369ec5040d119f87a17586be96364fac743fbf510b54a3ead1adcc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 600
+    },
+    {
+     "family": "Mali SemiBold",
+     "file": "Mali-SemiBoldItalic.ttf",
+     "italic": true,
+     "sha256": "3a83a53f2b88e8464a09f8788cd4ad4e96ae3008e3bb2128de34693bd2ad6ed1",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 600
+    }
+   ],
+   "id": "F070",
+   "install_family": "Mali",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Itim",
+   "files": [
+    {
+     "family": "Itim",
+     "file": "Itim-Regular.ttf",
+     "italic": false,
+     "sha256": "9164d7eb92ca717b53b07193e3445c96782222d24215151b8d2851b576b17645",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F071",
+   "install_family": "Itim",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Sour Gummy",
+   "files": [
+    {
+     "bytes": 57712,
+     "family": "Sour Gummy",
+     "file": "SourGummy-Regular.ttf",
+     "from_file": "SourGummy[wdth,wght].ttf",
+     "full_name": "Sour Gummy Regular",
+     "italic": false,
+     "postscript_name": "SourGummy-Regular",
+     "sha256": "0dee5f88c68d07fdad92fa801b7c14a109441329ef85577f23a86ee92ad07b91",
+     "source": "office_build",
+     "source_sha256": "a9a710e4a90795f006b83fcf2ff3e036fc851d32c3c65762228df3c825675fd6",
+     "subfamily": "Regular",
+     "typographic_family": "Sour Gummy",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 57684,
+     "family": "Sour Gummy",
+     "file": "SourGummy-Bold.ttf",
+     "from_file": "SourGummy[wdth,wght].ttf",
+     "full_name": "Sour Gummy Bold",
+     "italic": false,
+     "postscript_name": "SourGummy-Bold",
+     "sha256": "86c77cc2a5f961ff0bc160b356245815ea67d1cf2b0c5d620ba7e78d8a4c6d87",
+     "source": "office_build",
+     "source_sha256": "a9a710e4a90795f006b83fcf2ff3e036fc851d32c3c65762228df3c825675fd6",
+     "subfamily": "Bold",
+     "typographic_family": "Sour Gummy",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 57744,
+     "family": "Sour Gummy ExtraBold",
+     "file": "SourGummy-ExtraBold.ttf",
+     "from_file": "SourGummy[wdth,wght].ttf",
+     "full_name": "Sour Gummy ExtraBold",
+     "italic": false,
+     "postscript_name": "SourGummy-ExtraBold",
+     "sha256": "05634ab88a03c7f40cc3f0d50c4886b10219d696398b68975c13b52936ab24bb",
+     "source": "office_build",
+     "source_sha256": "a9a710e4a90795f006b83fcf2ff3e036fc851d32c3c65762228df3c825675fd6",
+     "subfamily": "Regular",
+     "typographic_family": "Sour Gummy",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "SourGummy[wdth,wght].ttf",
+   "from_sha256": "a9a710e4a90795f006b83fcf2ff3e036fc851d32c3c65762228df3c825675fd6",
+   "id": "F072",
+   "install_family": "Sour Gummy",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "SourGummy-Italic[wdth,wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Playpen Sans",
+   "files": [
+    {
+     "bytes": 739532,
+     "family": "Playpen Sans",
+     "file": "PlaypenSans-Regular.ttf",
+     "from_file": "PlaypenSans[wght].ttf",
+     "full_name": "Playpen Sans Regular",
+     "italic": false,
+     "postscript_name": "PlaypenSans-Regular",
+     "sha256": "a4d59f5b50ac0f80718658f4572805ca13b631db9490591cf0f6176633980eaa",
+     "source": "office_build",
+     "source_sha256": "e083f9da8be210e08ea982ab510894641aab37590e70620d6db73f8de881ec4a",
+     "subfamily": "Regular",
+     "typographic_family": "Playpen Sans",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 740388,
+     "family": "Playpen Sans",
+     "file": "PlaypenSans-Bold.ttf",
+     "from_file": "PlaypenSans[wght].ttf",
+     "full_name": "Playpen Sans Bold",
+     "italic": false,
+     "postscript_name": "PlaypenSans-Bold",
+     "sha256": "75f17b69ef91df2c368cadd30d72a50647d88cf126edc1440052365ebac392b2",
+     "source": "office_build",
+     "source_sha256": "e083f9da8be210e08ea982ab510894641aab37590e70620d6db73f8de881ec4a",
+     "subfamily": "Bold",
+     "typographic_family": "Playpen Sans",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "PlaypenSans[wght].ttf",
+   "from_sha256": "e083f9da8be210e08ea982ab510894641aab37590e70620d6db73f8de881ec4a",
+   "id": "F073",
+   "install_family": "Playpen Sans",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Shantell Sans",
+   "files": [
+    {
+     "bytes": 401368,
+     "family": "Shantell Sans",
+     "file": "ShantellSans-Regular.ttf",
+     "from_file": "ShantellSans[BNCE,INFM,SPAC,wght].ttf",
+     "full_name": "Shantell Sans Regular",
+     "italic": false,
+     "postscript_name": "ShantellSans-Regular",
+     "sha256": "9096ae7fae607555f20dd152e43aa6a8035fe93ddba272269c0577d0f797c68f",
+     "source": "office_build",
+     "source_sha256": "d98a7913853f78d71aa0b86daf66b5eddb5a3266c07bfd51ef70632b88c41084",
+     "subfamily": "Regular",
+     "typographic_family": "Shantell Sans",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 401480,
+     "family": "Shantell Sans",
+     "file": "ShantellSans-Bold.ttf",
+     "from_file": "ShantellSans[BNCE,INFM,SPAC,wght].ttf",
+     "full_name": "Shantell Sans Bold",
+     "italic": false,
+     "postscript_name": "ShantellSans-Bold",
+     "sha256": "48d018b6bef57e66e82041b78164de857a990ebbce45751447d1d1316c807709",
+     "source": "office_build",
+     "source_sha256": "d98a7913853f78d71aa0b86daf66b5eddb5a3266c07bfd51ef70632b88c41084",
+     "subfamily": "Bold",
+     "typographic_family": "Shantell Sans",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "ShantellSans[BNCE,INFM,SPAC,wght].ttf",
+   "from_sha256": "d98a7913853f78d71aa0b86daf66b5eddb5a3266c07bfd51ef70632b88c41084",
+   "id": "F074",
+   "install_family": "Shantell Sans",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "ShantellSans-Italic[BNCE,INFM,SPAC,wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Short Stack",
+   "files": [
+    {
+     "family": "Short Stack",
+     "file": "ShortStack-Regular.ttf",
+     "italic": false,
+     "sha256": "9f0e16e8683b2dce66edd7c3340362b554326739fbac594cabc1e9442cf5e8cc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F075",
+   "install_family": "Short Stack",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Comfortaa",
+   "files": [
+    {
+     "bytes": 111412,
+     "family": "MX Kids F076",
+     "file": "MXKidsF076-Regular.ttf",
+     "from_file": "Comfortaa[wght].ttf",
+     "full_name": "MX Kids F076 Regular",
+     "italic": false,
+     "postscript_name": "MXKidsF076-Regular",
+     "sha256": "f56af4d8debcb39549477a0f0b43685fa04df81f1c450d8c3b966e56f1a795d3",
+     "source": "office_build",
+     "source_sha256": "0fc3f45dc48b614db9c39181502544b37217ecbf8bee2fb35886992bc96c5bd3",
+     "subfamily": "Regular",
+     "typographic_family": "MX Kids F076",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 111308,
+     "family": "MX Kids F076",
+     "file": "MXKidsF076-Bold.ttf",
+     "from_file": "Comfortaa[wght].ttf",
+     "full_name": "MX Kids F076 Bold",
+     "italic": false,
+     "postscript_name": "MXKidsF076-Bold",
+     "sha256": "c208d91833023a1bbb401068070c45f92b301f82debb9f757feb01e8711b96e6",
+     "source": "office_build",
+     "source_sha256": "0fc3f45dc48b614db9c39181502544b37217ecbf8bee2fb35886992bc96c5bd3",
+     "subfamily": "Bold",
+     "typographic_family": "MX Kids F076",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "Comfortaa[wght].ttf",
+   "from_sha256": "0fc3f45dc48b614db9c39181502544b37217ecbf8bee2fb35886992bc96c5bd3",
+   "id": "F076",
+   "install_family": "MX Kids F076",
+   "qa_status": "certified_print",
+   "renamed": true,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Delius",
+   "files": [
+    {
+     "family": "Delius",
+     "file": "Delius-Regular.ttf",
+     "italic": false,
+     "sha256": "c0fd66626926b637d64eb13de013b3318dbd72cdf92c33e41a29a03828bab6f6",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F077",
+   "install_family": "Delius",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Delius Swash Caps",
+   "files": [
+    {
+     "family": "Delius Swash Caps",
+     "file": "DeliusSwashCaps-Regular.ttf",
+     "italic": false,
+     "sha256": "04c102448007265b8a0672590900919d35dfd26c624e543c8c3bfbab9535b642",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F078",
+   "install_family": "Delius Swash Caps",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Delius Unicase",
+   "files": [
+    {
+     "family": "Delius Unicase",
+     "file": "DeliusUnicase-Bold.ttf",
+     "italic": false,
+     "sha256": "2fc8f72a7257d837a5b710a8f6ca9e6b7a179f809243eef9380ba2185b8c2a67",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Delius Unicase",
+     "file": "DeliusUnicase-Regular.ttf",
+     "italic": false,
+     "sha256": "26fb53b7297281e4907dfe254cc23c206f28510f683eb726e5c5024ca36dc95d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F079",
+   "install_family": "Delius Unicase",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Patrick Hand",
+   "files": [
+    {
+     "family": "Patrick Hand",
+     "file": "PatrickHand-Regular.ttf",
+     "italic": false,
+     "sha256": "0f173b3e6cb6d1af25babf7f0057c5ac4ee11f9992b0469bb817e967ef4ad0fc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F080",
+   "install_family": "Patrick Hand",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Patrick Hand SC",
+   "files": [
+    {
+     "family": "Patrick Hand SC",
+     "file": "PatrickHandSC-Regular.ttf",
+     "italic": false,
+     "sha256": "83eff88cfa3c4e501e25f334c0a1a88eb4d4af1ea9d4c32900edf2fb178244dc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F081",
+   "install_family": "Patrick Hand SC",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Handlee",
+   "files": [
+    {
+     "family": "Handlee",
+     "file": "Handlee-Regular.ttf",
+     "italic": false,
+     "sha256": "7b99c0f291b5d52e06c66498a1d0dd6dff45a32e32d13be089c60d2d8dc00445",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F082",
+   "install_family": "Handlee",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Pangolin",
+   "files": [
+    {
+     "family": "Pangolin",
+     "file": "Pangolin-Regular.ttf",
+     "italic": false,
+     "sha256": "cf4f0a46704c7859d4943320fce6c6d06cc7dc450ef971c3676ef36f9f482299",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F083",
+   "install_family": "Pangolin",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Neucha",
+   "files": [
+    {
+     "family": "Neucha",
+     "file": "Neucha.ttf",
+     "italic": false,
+     "sha256": "7927bd6ce090fa032857dcbc3ad0e8b765c462d0a72a8779068132496b4e087d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F084",
+   "install_family": "Neucha",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mouse Memoirs",
+   "files": [
+    {
+     "family": "Mouse Memoirs",
+     "file": "MouseMemoirs-Regular.ttf",
+     "italic": false,
+     "sha256": "1bb7f4baccb46375c5692327af8313fdc242b9e6a584d43c637357a3de998834",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F085",
+   "install_family": "Mouse Memoirs",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Gochi Hand",
+   "files": [
+    {
+     "family": "Gochi Hand",
+     "file": "GochiHand-Regular.ttf",
+     "italic": false,
+     "sha256": "c46b029ab4846b2935e301af0b2cf85a1d74d2858e6a33636a3e64cf3cc4696b",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F086",
+   "install_family": "Gochi Hand",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Schoolbell",
+   "files": [
+    {
+     "family": "Schoolbell",
+     "file": "Schoolbell-Regular.ttf",
+     "italic": false,
+     "sha256": "00ff6655a5eb1eb70d32f2b7351d1bcf3f45f3f9ca40fd5c0d25da79f7f82a50",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F087",
+   "install_family": "Schoolbell",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Coming Soon",
+   "files": [
+    {
+     "family": "Coming Soon",
+     "file": "ComingSoon-Regular.ttf",
+     "italic": false,
+     "sha256": "cf81388f587ff6122de1a705d1070b8f00abccdba66108509908b5d10715068c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F088",
+   "install_family": "Coming Soon",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Indie Flower",
+   "files": [
+    {
+     "family": "Indie Flower",
+     "file": "IndieFlower-Regular.ttf",
+     "italic": false,
+     "sha256": "ccc94b22b156e9c5dfe50fd051f01b097600b252c24473e624bb43a143140a94",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F089",
+   "install_family": "Indie Flower",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Shadows Into Light",
+   "files": [
+    {
+     "family": "Shadows Into Light",
+     "file": "ShadowsIntoLight.ttf",
+     "italic": false,
+     "sha256": "1347863151acdc00fa281daaba1a3543dbce5870b55f9cf7479a15bb84007681",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F090",
+   "install_family": "Shadows Into Light",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Amatic SC",
+   "files": [
+    {
+     "family": "Amatic SC",
+     "file": "AmaticSC-Bold.ttf",
+     "italic": false,
+     "sha256": "d367beadee66efbb657d24d3d8f30f3b60633e9d5c8ded7385541cf775cabb4d",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Amatic SC",
+     "file": "AmaticSC-Regular.ttf",
+     "italic": false,
+     "sha256": "513a76f96d39a5366bd27c258674aaea35ee51c42b8f3060387f74649ee8c8aa",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F091",
+   "install_family": "Amatic SC",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Caveat",
+   "files": [
+    {
+     "bytes": 266004,
+     "family": "Caveat",
+     "file": "Caveat-Regular.ttf",
+     "from_file": "Caveat[wght].ttf",
+     "full_name": "Caveat Regular",
+     "italic": false,
+     "postscript_name": "Caveat-Regular",
+     "sha256": "08997ca9ae523ba3a60fd9b1874249752d7f76e4b7e8b8b2995f1ffd96945499",
+     "source": "office_build",
+     "source_sha256": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988",
+     "subfamily": "Regular",
+     "typographic_family": "Caveat",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "from_file": "Caveat[wght].ttf",
+   "from_sha256": "0bdb6b660482d31531b3945849fba5916b3ef8695da7024a9e6b9ee3c4157988",
+   "id": "F092",
+   "install_family": "Caveat",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400
+   ]
+  },
+  {
+   "family": "Caveat Brush",
+   "files": [
+    {
+     "family": "Caveat Brush",
+     "file": "CaveatBrush-Regular.ttf",
+     "italic": false,
+     "sha256": "e565bd7bffd895ca64f8d1cb77c816b9b38d9c010246386a07c9648592f6f282",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F093",
+   "install_family": "Caveat Brush",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Kalam",
+   "files": [
+    {
+     "family": "Kalam",
+     "file": "Kalam-Bold.ttf",
+     "italic": false,
+     "sha256": "2f6576601db015d4f6c08678120277fc8510b98c06e932ce7a6a9cbff4cbdded",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Kalam Light",
+     "file": "Kalam-Light.ttf",
+     "italic": false,
+     "sha256": "2b8f2c0208d397a1823688783da3317d6af18ea007a9a1b56ddb17e27820507e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Kalam",
+     "file": "Kalam-Regular.ttf",
+     "italic": false,
+     "sha256": "57cecb63d4608019371954274ae1d8c397764debd5b19d4a33c1efa4dc923c0b",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F094",
+   "install_family": "Kalam",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Gloria Hallelujah",
+   "files": [
+    {
+     "family": "Gloria Hallelujah",
+     "file": "GloriaHallelujah.ttf",
+     "italic": false,
+     "sha256": "eb59f2762ce8785a292bebb2af3b3e6aa21454913d791f5f25441d1d57ead9fc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F095",
+   "install_family": "Gloria Hallelujah",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Architects Daughter",
+   "files": [
+    {
+     "family": "Architects Daughter",
+     "file": "ArchitectsDaughter-Regular.ttf",
+     "italic": false,
+     "sha256": "6159718a08898e34bc1cb7354086141a5f9a70b73e54dbec27ead0d59a697359",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F096",
+   "install_family": "Architects Daughter",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rock Salt",
+   "files": [
+    {
+     "family": "Rock Salt",
+     "file": "RockSalt-Regular.ttf",
+     "italic": false,
+     "sha256": "c5421d1ced1949488f29d11b75b7ef967abe2d870f816246bf18fdc0f3e29c96",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F097",
+   "install_family": "Rock Salt",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Permanent Marker",
+   "files": [
+    {
+     "family": "Permanent Marker",
+     "file": "PermanentMarker-Regular.ttf",
+     "italic": false,
+     "sha256": "28f82c8a7943cb8e9d599f8554da1d4fc75dbcf69b9885ad6c0611d20c6946c5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F098",
+   "install_family": "Permanent Marker",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Sue Ellen Francisco",
+   "files": [
+    {
+     "family": "Sue Ellen Francisco",
+     "file": "SueEllenFrancisco-Regular.ttf",
+     "italic": false,
+     "sha256": "d6d72e046e8e92f659eacfb7457cf7e1f2142c112c3d8c43c0b5a3904a5c8621",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F099",
+   "install_family": "Sue Ellen Francisco",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Walter Turncoat",
+   "files": [
+    {
+     "family": "Walter Turncoat",
+     "file": "WalterTurncoat-Regular.ttf",
+     "italic": false,
+     "sha256": "ab7e9ca31710733211c5a938d2c851c84c0d21f6af4486f32bc6d374281b2da0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F100",
+   "install_family": "Walter Turncoat",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Covered By Your Grace",
+   "files": [
+    {
+     "family": "Covered By Your Grace",
+     "file": "CoveredByYourGrace.ttf",
+     "italic": false,
+     "sha256": "8a7e5687a4f9aad95243eb28cdc624009a335e0de5175113bc5f1348a4d67fd7",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F101",
+   "install_family": "Covered By Your Grace",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Just Another Hand",
+   "files": [
+    {
+     "family": "Just Another Hand",
+     "file": "JustAnotherHand-Regular.ttf",
+     "italic": false,
+     "sha256": "f1cd102ebacdb6388c879c9d481d63908ee0d5939a301415a78cdfdc752f79ea",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F102",
+   "install_family": "Just Another Hand",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mansalva",
+   "files": [
+    {
+     "family": "Mansalva",
+     "file": "Mansalva-Regular.ttf",
+     "italic": false,
+     "sha256": "613ca294f0a364fd282a06d5e8a65db5d8f2bb8b834f8b21437a53cf70dafb8a",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F103",
+   "install_family": "Mansalva",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Crafty Girls",
+   "files": [
+    {
+     "family": "Crafty Girls",
+     "file": "CraftyGirls-Regular.ttf",
+     "italic": false,
+     "sha256": "5f92fed441fc72e75fd520ee63b4785c9b657404c53e1f269c95a6016298ef45",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F104",
+   "install_family": "Crafty Girls",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Annie Use Your Telescope",
+   "files": [
+    {
+     "family": "Annie Use Your Telescope",
+     "file": "AnnieUseYourTelescope-Regular.ttf",
+     "italic": false,
+     "sha256": "221b54062adb0df36d4b8f0d2f98aef4f827fc34b974cae2ce232a5e233149b9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F105",
+   "install_family": "Annie Use Your Telescope",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Reenie Beanie",
+   "files": [
+    {
+     "family": "Reenie Beanie",
+     "file": "ReenieBeanie.ttf",
+     "italic": false,
+     "sha256": "0ea608aa325bf9e11c9590cc0b63dcf7cd215e270784f1ebbe6fad4927b31ff8",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    }
+   ],
+   "id": "F106",
+   "install_family": "Reenie Beanie",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Waiting for the Sunrise",
+   "files": [
+    {
+     "family": "Waiting for the Sunrise",
+     "file": "WaitingfortheSunrise.ttf",
+     "italic": false,
+     "sha256": "ac74e70390f5b1be6927c1e079bd6143821a362550b264c5eb7edde34f0899f4",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    }
+   ],
+   "id": "F107",
+   "install_family": "Waiting for the Sunrise",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fuzzy Bubbles",
+   "files": [
+    {
+     "family": "Fuzzy Bubbles",
+     "file": "FuzzyBubbles-Bold.ttf",
+     "italic": false,
+     "sha256": "f18fa58c66cf2540800f10ae4c9ae315c89149c41ace2a394c5efca7354c4ea8",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Fuzzy Bubbles",
+     "file": "FuzzyBubbles-Regular.ttf",
+     "italic": false,
+     "sha256": "407829f1e0b6b73a9482ffdfd22702bb149a020fad33f95eb30bc98bf9d471d5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F108",
+   "install_family": "Fuzzy Bubbles",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Dekko",
+   "files": [
+    {
+     "family": "Dekko",
+     "file": "Dekko-Regular.ttf",
+     "italic": false,
+     "sha256": "e6b151a5bdc521833ceb9a4f8010195515259e9416abfe055cfd16adb2e1af42",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F109",
+   "install_family": "Dekko",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Grape Nuts",
+   "files": [
+    {
+     "family": "Grape Nuts",
+     "file": "GrapeNuts-Regular.ttf",
+     "italic": false,
+     "sha256": "d4772724931dbafc507c610f10d8cffa4602f8b8e8abfc0bd384996875af4134",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F110",
+   "install_family": "Grape Nuts",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Sunshiney",
+   "files": [
+    {
+     "family": "Sunshiney",
+     "file": "Sunshiney-Regular.ttf",
+     "italic": false,
+     "sha256": "2f41cbc6263c033c18f1db7ae6523a89eb50cd5665b0b7635cc3a4c9c9a0fe4d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F111",
+   "install_family": "Sunshiney",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Butterfly Kids",
+   "files": [
+    {
+     "family": "Butterfly Kids",
+     "file": "ButterflyKids-Regular.ttf",
+     "italic": false,
+     "sha256": "4a131f49c3d90e816e6447d244090eb2c36cdbf26be53254271ccdf2d8d111b9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F112",
+   "install_family": "Butterfly Kids",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Princess Sofia",
+   "files": [
+    {
+     "family": "Princess Sofia",
+     "file": "PrincessSofia-Regular.ttf",
+     "italic": false,
+     "sha256": "2b5df30a7b866cd764cc4ff586dc8c28e16967099d50ab582f003ffbc7228ee5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F113",
+   "install_family": "Princess Sofia",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Ruge Boogie",
+   "files": [
+    {
+     "family": "Ruge Boogie",
+     "file": "RugeBoogie-Regular.ttf",
+     "italic": false,
+     "sha256": "affe25b2431ecd42cb8c6eeb2de56bb264d666e6a4b2b27b6ac3e2257436eed0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F114",
+   "install_family": "Ruge Boogie",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fuggles",
+   "files": [
+    {
+     "family": "Fuggles",
+     "file": "Fuggles-Regular.ttf",
+     "italic": false,
+     "sha256": "2e738fa143601d4415c858d8c844f12333b49c47ba5c12c787a0f6fa150e152a",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F115",
+   "install_family": "Fuggles",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Grechen Fuemen",
+   "files": [
+    {
+     "family": "Grechen Fuemen",
+     "file": "GrechenFuemen-Regular.ttf",
+     "italic": false,
+     "sha256": "0048d2ccb3f58ce8994804be5764e074771977f4add2f3dd12dfe9a658f1adc0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F116",
+   "install_family": "Grechen Fuemen",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Felipa",
+   "files": [
+    {
+     "family": "Felipa",
+     "file": "Felipa-Regular.ttf",
+     "italic": false,
+     "sha256": "d3f07e2669e046acc1030139a4b08046d7eca87c0b477a8cc99ac1c46af84edc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F117",
+   "install_family": "Felipa",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mynerve",
+   "files": [
+    {
+     "family": "Mynerve",
+     "file": "Mynerve-Regular.ttf",
+     "italic": false,
+     "sha256": "1844706b0020e74f1cc38810266f8c45741bd0d9b7beeb05a584caee11dbc63e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F118",
+   "install_family": "Mynerve",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Pacifico",
+   "files": [
+    {
+     "family": "Pacifico",
+     "file": "Pacifico-Regular.ttf",
+     "italic": false,
+     "sha256": "5b6c0d5334a7bf77dea52b975c5a0c408878c0f7115ed5b6fb151f634b7bf701",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F119",
+   "install_family": "Pacifico",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bubblegum Sans",
+   "files": [
+    {
+     "family": "Bubblegum Sans",
+     "file": "BubblegumSans-Regular.ttf",
+     "italic": false,
+     "sha256": "db8d1c71c398266ecabe9ae4923c4feb1323441a4f056a9339e41d8f847bd0c0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F120",
+   "install_family": "Bubblegum Sans",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Chewy",
+   "files": [
+    {
+     "family": "Chewy",
+     "file": "Chewy-Regular.ttf",
+     "italic": false,
+     "sha256": "7cf75ea288f82fd20badea8ab4da7a656a96a7277c170811e813b3d3d6294147",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F121",
+   "install_family": "Chewy",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Luckiest Guy",
+   "files": [
+    {
+     "family": "Luckiest Guy",
+     "file": "LuckiestGuy-Regular.ttf",
+     "italic": false,
+     "sha256": "cfbdd68a039f92df51cf3721506af6242e64594c6325fe0bedbeff3fe385d980",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F122",
+   "install_family": "Luckiest Guy",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bangers",
+   "files": [
+    {
+     "family": "Bangers",
+     "file": "Bangers-Regular.ttf",
+     "italic": false,
+     "sha256": "4160a7311de9342674cce9160cde9fcbb30f48190397d86ff1b70b455af65824",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F123",
+   "install_family": "Bangers",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Grandstander",
+   "files": [
+    {
+     "bytes": 105308,
+     "family": "Grandstander",
+     "file": "Grandstander-Regular.ttf",
+     "from_file": "Grandstander[wght].ttf",
+     "full_name": "Grandstander Regular",
+     "italic": false,
+     "postscript_name": "Grandstander-Regular",
+     "sha256": "aac172c5660b0b9b280de487073b3c7ebf3dcac3306d8dd8a04e7c39ee0f54a6",
+     "source": "office_build",
+     "source_sha256": "fbc7d1d934e6aa7842f7e8420cd833eca9eb123d61880075eec68751369e2f13",
+     "subfamily": "Regular",
+     "typographic_family": "Grandstander",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 105396,
+     "family": "Grandstander",
+     "file": "Grandstander-Bold.ttf",
+     "from_file": "Grandstander[wght].ttf",
+     "full_name": "Grandstander Bold",
+     "italic": false,
+     "postscript_name": "Grandstander-Bold",
+     "sha256": "ba86cdc480d3bff97d4384223a8554fea0c220dbf345512774578e9bdb92c6d7",
+     "source": "office_build",
+     "source_sha256": "fbc7d1d934e6aa7842f7e8420cd833eca9eb123d61880075eec68751369e2f13",
+     "subfamily": "Bold",
+     "typographic_family": "Grandstander",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 105420,
+     "family": "Grandstander ExtraBold",
+     "file": "Grandstander-ExtraBold.ttf",
+     "from_file": "Grandstander[wght].ttf",
+     "full_name": "Grandstander ExtraBold",
+     "italic": false,
+     "postscript_name": "Grandstander-ExtraBold",
+     "sha256": "4f1a02f7abb0540c180740a6df7ed3cac70c1a07772b9bc58729c9e76771503a",
+     "source": "office_build",
+     "source_sha256": "fbc7d1d934e6aa7842f7e8420cd833eca9eb123d61880075eec68751369e2f13",
+     "subfamily": "Regular",
+     "typographic_family": "Grandstander",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Grandstander[wght].ttf",
+   "from_sha256": "fbc7d1d934e6aa7842f7e8420cd833eca9eb123d61880075eec68751369e2f13",
+   "id": "F124",
+   "install_family": "Grandstander",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [
+    "Grandstander-Italic[wght].ttf"
+   ],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Sniglet",
+   "files": [
+    {
+     "family": "Sniglet",
+     "file": "Sniglet-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "fb92a118e14b4bde101a0143895f570a54b070a307b359510b7703b5a94bb18c",
+     "source": "upstream",
+     "subfamily": "ExtraBold",
+     "weight": 800
+    },
+    {
+     "family": "Sniglet",
+     "file": "Sniglet-Regular.ttf",
+     "italic": false,
+     "sha256": "2856a975b9c0ac0402e8402ac4bd126cd97d6c90490435b6198d77e6384ae4f0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F125",
+   "install_family": "Sniglet",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Gluten",
+   "files": [
+    {
+     "bytes": 99760,
+     "family": "Gluten",
+     "file": "Gluten-Regular.ttf",
+     "from_file": "Gluten[slnt,wght].ttf",
+     "full_name": "Gluten Regular",
+     "italic": false,
+     "postscript_name": "Gluten-Regular",
+     "sha256": "0476a1a4c0de4a4f2df6a23c303cc5d18f1efdef1f5422e93453e49fa7c09f84",
+     "source": "office_build",
+     "source_sha256": "cb4b01e4754e36615125e7cb16fe1ec8255d1db02d0b236d7c992438dc1a83e4",
+     "subfamily": "Regular",
+     "typographic_family": "Gluten",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 99876,
+     "family": "Gluten",
+     "file": "Gluten-Bold.ttf",
+     "from_file": "Gluten[slnt,wght].ttf",
+     "full_name": "Gluten Bold",
+     "italic": false,
+     "postscript_name": "Gluten-Bold",
+     "sha256": "a449005b602a8b78738b8241c18caa461f183482fa9df46cfffe5a7ad3867a26",
+     "source": "office_build",
+     "source_sha256": "cb4b01e4754e36615125e7cb16fe1ec8255d1db02d0b236d7c992438dc1a83e4",
+     "subfamily": "Bold",
+     "typographic_family": "Gluten",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "bytes": 99932,
+     "family": "Gluten ExtraBold",
+     "file": "Gluten-ExtraBold.ttf",
+     "from_file": "Gluten[slnt,wght].ttf",
+     "full_name": "Gluten ExtraBold",
+     "italic": false,
+     "postscript_name": "Gluten-ExtraBold",
+     "sha256": "05c902e0d26066c55b3e5cf4e57c5a7f41e303377d837ee3e4fa90b8f0e9e83e",
+     "source": "office_build",
+     "source_sha256": "cb4b01e4754e36615125e7cb16fe1ec8255d1db02d0b236d7c992438dc1a83e4",
+     "subfamily": "Regular",
+     "typographic_family": "Gluten",
+     "typographic_subfamily": "ExtraBold",
+     "weight": 800
+    }
+   ],
+   "from_file": "Gluten[slnt,wght].ttf",
+   "from_sha256": "cb4b01e4754e36615125e7cb16fe1ec8255d1db02d0b236d7c992438dc1a83e4",
+   "id": "F126",
+   "install_family": "Gluten",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700,
+    800
+   ]
+  },
+  {
+   "family": "Lilita One",
+   "files": [
+    {
+     "family": "Lilita One",
+     "file": "LilitaOne-Regular.ttf",
+     "italic": false,
+     "sha256": "f5b641c45c69d772ee4eda687bc9fda411d5cad6b0b45371491da4580cbc8d59",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F127",
+   "install_family": "Lilita One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Titan One",
+   "files": [
+    {
+     "family": "Titan One",
+     "file": "TitanOne-Regular.ttf",
+     "italic": false,
+     "sha256": "563ff6de179bbd44bcd7d2a6c448d6dc3bf935834237cf1250e506e65cd86ff1",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F128",
+   "install_family": "Titan One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Bubbles",
+   "files": [
+    {
+     "family": "Rubik Bubbles",
+     "file": "RubikBubbles-Regular.ttf",
+     "italic": false,
+     "sha256": "2171521dab2b1b3675bbb7aecd34b1c169167c360e3647dadb4939910490c974",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F129",
+   "install_family": "Rubik Bubbles",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Puddles",
+   "files": [
+    {
+     "family": "Rubik Puddles",
+     "file": "RubikPuddles-Regular.ttf",
+     "italic": false,
+     "sha256": "ac690b0790b890a24c54997cfc66bde14d4648cb1a914e9b8754e9023bb0d342",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F130",
+   "install_family": "Rubik Puddles",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Doodle Shadow",
+   "files": [
+    {
+     "family": "Rubik Doodle Shadow",
+     "file": "RubikDoodleShadow-Regular.ttf",
+     "italic": false,
+     "sha256": "cb8b89235d7a7e1eb3658ef42daaadc7c0c2e5ed41a92cf76211ee6987531358",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F131",
+   "install_family": "Rubik Doodle Shadow",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Wet Paint",
+   "files": [
+    {
+     "family": "Rubik Wet Paint",
+     "file": "RubikWetPaint-Regular.ttf",
+     "italic": false,
+     "sha256": "3f35d1c77219c5219826b23c2f0c72dd0eed46425a0d4fff21b8827cdce61693",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F132",
+   "install_family": "Rubik Wet Paint",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Moonrocks",
+   "files": [
+    {
+     "family": "Rubik Moonrocks",
+     "file": "RubikMoonrocks-Regular.ttf",
+     "italic": false,
+     "sha256": "39ff4d96b906e8cc2fd7a350aa13620d5eff18d776fedb5c98c12cbf6e1f2c1e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F133",
+   "install_family": "Rubik Moonrocks",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Beastly",
+   "files": [
+    {
+     "family": "Rubik Beastly",
+     "file": "RubikBeastly-Regular.ttf",
+     "italic": false,
+     "sha256": "854c5f4bd05aae76d7830e871e2c990ea309a436072d8f0b67a796a80ec1cb18",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F134",
+   "install_family": "Rubik Beastly",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Spray Paint",
+   "files": [
+    {
+     "family": "Rubik Spray Paint",
+     "file": "RubikSprayPaint-Regular.ttf",
+     "italic": false,
+     "sha256": "e608af93c514f2ba78c9ecfb08e90a206a6f5fd4fc3afbd2db1e65bc65129ca1",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F135",
+   "install_family": "Rubik Spray Paint",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rubik Gemstones",
+   "files": [
+    {
+     "family": "Rubik Gemstones",
+     "file": "RubikGemstones-Regular.ttf",
+     "italic": false,
+     "sha256": "3f308a5b3744c2727f87ffa29a1e6c8e63ad65eb5b4a36584bddec08a88468fa",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F136",
+   "install_family": "Rubik Gemstones",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bungee",
+   "files": [
+    {
+     "family": "Bungee",
+     "file": "Bungee-Regular.ttf",
+     "italic": false,
+     "sha256": "c4f5361ce120af3e6b9156d0bf379fa19cda2ea0cd18ac01fd99596c6bf66e3f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F137",
+   "install_family": "Bungee",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bungee Shade",
+   "files": [
+    {
+     "family": "Bungee Shade",
+     "file": "BungeeShade-Regular.ttf",
+     "italic": false,
+     "sha256": "665c626082682b462f4e696308eafa7071c114da8f8ff3fb73a289c7ff7df482",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F138",
+   "install_family": "Bungee Shade",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bungee Inline",
+   "files": [
+    {
+     "family": "Bungee Inline",
+     "file": "BungeeInline-Regular.ttf",
+     "italic": false,
+     "sha256": "5a07361627376971fa195e8500ec0fc5e0daf7df2f94ba8eb30d1b10ed7e0375",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F139",
+   "install_family": "Bungee Inline",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bungee Outline",
+   "files": [
+    {
+     "family": "Bungee Outline",
+     "file": "BungeeOutline-Regular.ttf",
+     "italic": false,
+     "sha256": "9232000ff85fdbb68987007305f2de877486d63d31450f81b403461bbe721f1f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F140",
+   "install_family": "Bungee Outline",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bungee Spice",
+   "files": [],
+   "id": "F141",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Fascinate",
+   "files": [
+    {
+     "family": "Fascinate",
+     "file": "Fascinate-Regular.ttf",
+     "italic": false,
+     "sha256": "2f3d4e1d3b1f58ba4700eba078c07d9f05d9f39513f6d29b0306ddc007bd7fec",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 900
+    }
+   ],
+   "id": "F142",
+   "install_family": "Fascinate",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Sigmar",
+   "files": [
+    {
+     "family": "Sigmar",
+     "file": "Sigmar-Regular.ttf",
+     "italic": false,
+     "sha256": "0597d733ed4722af36157f1e72d2415e123a9052655d67410c9ab8a0b223f54d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F143",
+   "install_family": "Sigmar",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Modak",
+   "files": [
+    {
+     "family": "Modak",
+     "file": "Modak-Regular.ttf",
+     "italic": false,
+     "sha256": "9a96ba056ddcbb7d0c937c52f744ff5d71004a97689b1fd2cdbd678f314db245",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F144",
+   "install_family": "Modak",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Knewave",
+   "files": [
+    {
+     "family": "Knewave",
+     "file": "Knewave-Regular.ttf",
+     "italic": false,
+     "sha256": "ed3bac761d755b89ab3082c844d4a623d63c7d6eef85d22ba1fb6c680e6a4436",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F145",
+   "install_family": "Knewave",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Boogaloo",
+   "files": [
+    {
+     "family": "Boogaloo",
+     "file": "Boogaloo-Regular.ttf",
+     "italic": false,
+     "sha256": "c38febf770bec2b8e30ea6bc1ddb39c9b0ce0e8625d94ceeafbe3af1c7096d9d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F146",
+   "install_family": "Boogaloo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Love Ya Like A Sister",
+   "files": [
+    {
+     "family": "Love Ya Like A Sister",
+     "file": "LoveYaLikeASister.ttf",
+     "italic": false,
+     "sha256": "4fbe2c1fa647de5a415acac7b2b6491542fe9767b6199719a3bd77a7cf35eb0d",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F147",
+   "install_family": "Love Ya Like A Sister",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Henny Penny",
+   "files": [
+    {
+     "family": "Henny Penny",
+     "file": "HennyPenny-Regular.ttf",
+     "italic": false,
+     "sha256": "9c8550665827dbd341e5d54ea2e686fa4f4a9de3f8b2ed202b96a41e27ab4e19",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F148",
+   "install_family": "Henny Penny",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mountains of Christmas",
+   "files": [
+    {
+     "family": "Mountains of Christmas",
+     "file": "MountainsofChristmas-Bold.ttf",
+     "italic": false,
+     "sha256": "4c6126f43c650c81d236fd04ffc2fccbc3f37438c304cafad6894a835c2250ef",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Mountains of Christmas",
+     "file": "MountainsofChristmas-Regular.ttf",
+     "italic": false,
+     "sha256": "3855303be6b88707c00bb271f9c95e996605e9a8e656b3a30686862352b1052e",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F149",
+   "install_family": "Mountains of Christmas",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Emilys Candy",
+   "files": [
+    {
+     "family": "Emilys Candy",
+     "file": "EmilysCandy-Regular.ttf",
+     "italic": false,
+     "sha256": "0cf3ca9dbe71b33596e8a1eb12b40deac2e6414fe5616dda50c554580b6e0c68",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F150",
+   "install_family": "Emilys Candy",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Griffy",
+   "files": [
+    {
+     "family": "Griffy",
+     "file": "Griffy-Regular.ttf",
+     "italic": false,
+     "sha256": "c889c3f8d169631386a297eae8b5bdefbf8d06aa9f4f325faec31b9b5f38eeb5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F151",
+   "install_family": "Griffy",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Spicy Rice",
+   "files": [
+    {
+     "family": "Spicy Rice",
+     "file": "SpicyRice-Regular.ttf",
+     "italic": false,
+     "sha256": "f339f9b0b3d585974ec22a374d7e0938b429c229dc0f3b3b16f34c650ab08068",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F152",
+   "install_family": "Spicy Rice",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Happy Monkey",
+   "files": [
+    {
+     "family": "Happy Monkey",
+     "file": "HappyMonkey-Regular.ttf",
+     "italic": false,
+     "sha256": "154d17efd5043e9f76ea4b8a15743fe19634c7adbe3531d6af68bec8a0c7fad3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F153",
+   "install_family": "Happy Monkey",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Freckle Face",
+   "files": [
+    {
+     "family": "Freckle Face",
+     "file": "FreckleFace-Regular.ttf",
+     "italic": false,
+     "sha256": "54b61a9f5bac3eb3a3d7f78f99d4d9c5d5688a9859e79bbf8704ae79c7f8f0fc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F154",
+   "install_family": "Freckle Face",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Gorditas",
+   "files": [
+    {
+     "family": "Gorditas",
+     "file": "Gorditas-Bold.ttf",
+     "italic": false,
+     "sha256": "26b8259c2f61ef10dfa2a2fe1d1e113dfb241d6f780ce15878d005f86c1465c5",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Gorditas",
+     "file": "Gorditas-Regular.ttf",
+     "italic": false,
+     "sha256": "95543aaa4c3e1dc22b220b29bcbd8618ff744d904ed4c23179ab5a911d554ee0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F155",
+   "install_family": "Gorditas",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Original Surfer",
+   "files": [
+    {
+     "family": "Original Surfer",
+     "file": "OriginalSurfer-Regular.ttf",
+     "italic": false,
+     "sha256": "ee4a42820b224a1934f2ba0997958d7965ad34762d88244fbffddb0b0ae488e4",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F156",
+   "install_family": "Original Surfer",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Wendy One",
+   "files": [
+    {
+     "family": "Wendy One",
+     "file": "WendyOne-Regular.ttf",
+     "italic": false,
+     "sha256": "2e2da0e8bb0a593656d38fc8e265c5b09b2c45b294bd23f39f135c2e36c89daf",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F157",
+   "install_family": "Wendy One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Galindo",
+   "files": [
+    {
+     "family": "Galindo",
+     "file": "Galindo-Regular.ttf",
+     "italic": false,
+     "sha256": "335a73def6a890d38e8793a81077a8e15987b1a4e5366847e138b5beb13bf0fe",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F158",
+   "install_family": "Galindo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Ribeye",
+   "files": [
+    {
+     "family": "Ribeye",
+     "file": "Ribeye-Regular.ttf",
+     "italic": false,
+     "sha256": "c384b009dba7b9c973402427716ccf2a57dc5e44b30cfda45fc0ecc5cf238bcb",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F159",
+   "install_family": "Ribeye",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Ribeye Marrow",
+   "files": [
+    {
+     "family": "Ribeye Marrow",
+     "file": "RibeyeMarrow-Regular.ttf",
+     "italic": false,
+     "sha256": "4b19d54b86a068bb5b8a060938d87d1e6028d566c8efb68fa9c7debaa19987d0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F160",
+   "install_family": "Ribeye Marrow",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Snowburst One",
+   "files": [
+    {
+     "family": "Snowburst One",
+     "file": "SnowburstOne-Regular.ttf",
+     "italic": false,
+     "sha256": "ede8110b5922b718c9b80717a4c5dcc2b4a862767d8319877983773c900bb00f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F161",
+   "install_family": "Snowburst One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Kavoon",
+   "files": [
+    {
+     "family": "Kavoon",
+     "file": "Kavoon-Regular.ttf",
+     "italic": false,
+     "sha256": "d9600e05c23bba0872171f094cffe98851f52d3ce1d343f1741d32bfcbcdffa2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F162",
+   "install_family": "Kavoon",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Margarine",
+   "files": [
+    {
+     "family": "Margarine",
+     "file": "Margarine-Regular.ttf",
+     "italic": false,
+     "sha256": "54043d3d857af45cfe40d243dfcf138bd45f7fb452364a70925989384198d7f3",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F163",
+   "install_family": "Margarine",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Paytone One",
+   "files": [
+    {
+     "family": "Paytone One",
+     "file": "PaytoneOne-Regular.ttf",
+     "italic": false,
+     "sha256": "1c07073b0b578199b54c7866d55e2b631d285e8aa4bb4fbc08809d980cd49b14",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F164",
+   "install_family": "Paytone One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "DynaPuff",
+   "files": [
+    {
+     "bytes": 91256,
+     "family": "DynaPuff",
+     "file": "DynaPuff-Regular.ttf",
+     "from_file": "DynaPuff[wdth,wght].ttf",
+     "full_name": "DynaPuff Regular",
+     "italic": false,
+     "postscript_name": "DynaPuff-Regular",
+     "sha256": "35dbe00069513e1224f924902f13175656ae24458520dacdfd78ffc2ed715a6e",
+     "source": "office_build",
+     "source_sha256": "c3752fc6dd8aaa46a88637f061a9a4e6ab44c02c5f0afd65528b91ae8ff6f948",
+     "subfamily": "Regular",
+     "typographic_family": "DynaPuff",
+     "typographic_subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "bytes": 91204,
+     "family": "DynaPuff",
+     "file": "DynaPuff-Bold.ttf",
+     "from_file": "DynaPuff[wdth,wght].ttf",
+     "full_name": "DynaPuff Bold",
+     "italic": false,
+     "postscript_name": "DynaPuff-Bold",
+     "sha256": "289309ce4145805fa195b8f566d11813ca45132436f567691328c316305a65be",
+     "source": "office_build",
+     "source_sha256": "c3752fc6dd8aaa46a88637f061a9a4e6ab44c02c5f0afd65528b91ae8ff6f948",
+     "subfamily": "Bold",
+     "typographic_family": "DynaPuff",
+     "typographic_subfamily": "Bold",
+     "weight": 700
+    }
+   ],
+   "from_file": "DynaPuff[wdth,wght].ttf",
+   "from_sha256": "c3752fc6dd8aaa46a88637f061a9a4e6ab44c02c5f0afd65528b91ae8ff6f948",
+   "id": "F165",
+   "install_family": "DynaPuff",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "skipped_files": [],
+   "source": "office_build",
+   "weights": [
+    400,
+    700
+   ]
+  },
+  {
+   "family": "Cherry Cream Soda",
+   "files": [
+    {
+     "family": "Cherry Cream Soda",
+     "file": "CherryCreamSoda-Regular.ttf",
+     "italic": false,
+     "sha256": "158577b383ce9798384580bd41c35cd0fb4ed550a32fe4a2e41f4f2594337385",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F166",
+   "install_family": "Cherry Cream Soda",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fontdiner Swanky",
+   "files": [
+    {
+     "family": "Fontdiner Swanky",
+     "file": "FontdinerSwanky-Regular.ttf",
+     "italic": false,
+     "sha256": "847229fbf58c7f7479f93fd7cf9fc269b54c0c9f6465abcb65a206fb261be41b",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F167",
+   "install_family": "Fontdiner Swanky",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Rammetto One",
+   "files": [
+    {
+     "family": "Rammetto One",
+     "file": "RammettoOne-Regular.ttf",
+     "italic": false,
+     "sha256": "0063c5480f7868be5dd95dd668575643ff953199541dce65fe5a88310bd7733f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F168",
+   "install_family": "Rammetto One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Chicle",
+   "files": [
+    {
+     "family": "Chicle",
+     "file": "Chicle-Regular.ttf",
+     "italic": false,
+     "sha256": "2c82494b86d3f03821284d60f2209a33218adde0dad7133ce3eb063b4363372b",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F169",
+   "install_family": "Chicle",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Lobster",
+   "files": [
+    {
+     "family": "Lobster",
+     "file": "Lobster-Regular.ttf",
+     "italic": false,
+     "sha256": "d6568e697fd50cedc0be04d8aae4127fe95add607e7bff954ca88604be80c205",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F170",
+   "install_family": "Lobster",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Kranky",
+   "files": [
+    {
+     "family": "Kranky",
+     "file": "Kranky-Regular.ttf",
+     "italic": false,
+     "sha256": "2b40548b2a84e3daa922f770657aefc86d4ce13d155b96912bea2d50bcb09cc4",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F171",
+   "install_family": "Kranky",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bagel Fat One",
+   "files": [
+    {
+     "family": "Bagel Fat One",
+     "file": "BagelFatOne-Regular.ttf",
+     "italic": false,
+     "sha256": "9286944032c5a9b20ad70940105417beae14013e0b4f5fc292425afdc4330245",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F172",
+   "install_family": "Bagel Fat One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Londrina Solid",
+   "files": [
+    {
+     "family": "Londrina Solid Black",
+     "file": "LondrinaSolid-Black.ttf",
+     "italic": false,
+     "sha256": "8c63a15e3fa34e0b362abeb903944a2bd45e71b1efa122486c0a47e295eae06f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 900
+    },
+    {
+     "family": "Londrina Solid Light",
+     "file": "LondrinaSolid-Light.ttf",
+     "italic": false,
+     "sha256": "fc6f2572d00807895ac2ffe2c5cffb9fb107ccb75cdb62b5d159d7c9c81591a1",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 300
+    },
+    {
+     "family": "Londrina Solid",
+     "file": "LondrinaSolid-Regular.ttf",
+     "italic": false,
+     "sha256": "e82b9b3ee21ccf153dcf67e5f4226a210474591a6ad31b5f17f2f14dc2524514",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    },
+    {
+     "family": "Londrina Solid Thin",
+     "file": "LondrinaSolid-Thin.ttf",
+     "italic": false,
+     "sha256": "77761d803e937ec42a7f4b3be80ca15212a7d592dc10022838dc11df8e15fdb5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 250
+    }
+   ],
+   "id": "F173",
+   "install_family": "Londrina Solid",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Londrina Shadow",
+   "files": [
+    {
+     "family": "Londrina Shadow",
+     "file": "LondrinaShadow-Regular.ttf",
+     "italic": false,
+     "sha256": "bdc4a66213c2bed3a0e58912bb2e47f7b0ea51b07d291a43896eed5c87e01a21",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F174",
+   "install_family": "Londrina Shadow",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Londrina Sketch",
+   "files": [
+    {
+     "family": "Londrina Sketch",
+     "file": "LondrinaSketch-Regular.ttf",
+     "italic": false,
+     "sha256": "1d3b7beeda7015014412c916e205016ed66d1f8298a97dce0ca3ae2d13271c9f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F175",
+   "install_family": "Londrina Sketch",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Irish Grover",
+   "files": [
+    {
+     "family": "Irish Grover",
+     "file": "IrishGrover-Regular.ttf",
+     "italic": false,
+     "sha256": "d894be4e904bbd08a9d46670b4f631e84b7de5d70ede2c89e8217958ca32eec4",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F176",
+   "install_family": "Irish Grover",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Jolly Lodger",
+   "files": [
+    {
+     "family": "Jolly Lodger",
+     "file": "JollyLodger-Regular.ttf",
+     "italic": false,
+     "sha256": "64d3e628ae2f3ebcb34eed029e90cb6674e9e74ed4e76e72effbf53b93b2dbf9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F177",
+   "install_family": "Jolly Lodger",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Mystery Quest",
+   "files": [
+    {
+     "family": "Mystery Quest",
+     "file": "MysteryQuest-Regular.ttf",
+     "italic": false,
+     "sha256": "fc3fba61be98d7de03964b41175ee5629bcc6958b251f8037ef13eabb5431eb2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F178",
+   "install_family": "Mystery Quest",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Piedra",
+   "files": [
+    {
+     "family": "Piedra",
+     "file": "Piedra-Regular.ttf",
+     "italic": false,
+     "sha256": "2e9d00f94d3d78f38618250d03d3e8bccca541c956d5e0a437c62d708ef6c1da",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F179",
+   "install_family": "Piedra",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Underdog",
+   "files": [
+    {
+     "family": "Underdog",
+     "file": "Underdog-Regular.ttf",
+     "italic": false,
+     "sha256": "33f9aee5b2aaeb85e1f433fb21916d0c6dbae74e23b94d978b8131bdbddc40c6",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F180",
+   "install_family": "Underdog",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Barriecito",
+   "files": [
+    {
+     "family": "Barriecito",
+     "file": "Barriecito-Regular.ttf",
+     "italic": false,
+     "sha256": "ff32a099b68e0eb5e236adcb9a58141d00fbdf196586e421d1c6a0d1859f75b8",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F181",
+   "install_family": "Barriecito",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Barrio",
+   "files": [
+    {
+     "family": "Barrio",
+     "file": "Barrio-Regular.ttf",
+     "italic": false,
+     "sha256": "6f86249fbed4d0d620bcfefda64a0081e15cf0c8c5fd2ad17db157b98b558bc5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F182",
+   "install_family": "Barrio",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Chela One",
+   "files": [
+    {
+     "family": "Chela One",
+     "file": "ChelaOne-Regular.ttf",
+     "italic": false,
+     "sha256": "a5633f28945f31a5e494683af2c1f99f9f91c96578bf47dc9c315ebe3050c8f5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F183",
+   "install_family": "Chela One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Concert One",
+   "files": [
+    {
+     "family": "Concert One",
+     "file": "ConcertOne-Regular.ttf",
+     "italic": false,
+     "sha256": "54e934724b90a9c20d53b25a8d17574a7631f8461e29c8462bd7b36d49fc1e78",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F184",
+   "install_family": "Concert One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fresca",
+   "files": [
+    {
+     "family": "Fresca",
+     "file": "Fresca-Regular.ttf",
+     "italic": false,
+     "sha256": "f64340016a820093202ca6af533f232ee7fe4c3d8448601ac42b4091236b5777",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F185",
+   "install_family": "Fresca",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Life Savers",
+   "files": [
+    {
+     "family": "Life Savers",
+     "file": "LifeSavers-Bold.ttf",
+     "italic": false,
+     "sha256": "cbcc2ded1b108aca167abc1a8d752b1deb975c445611c0fb725d32d21dcfb000",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Life Savers ExtraBold",
+     "file": "LifeSavers-ExtraBold.ttf",
+     "italic": false,
+     "sha256": "a7392b6a21ec8f22e5019d0adf9945fc4acba8761d4ff1e53eec65c9a230b454",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 800
+    },
+    {
+     "family": "Life Savers",
+     "file": "LifeSavers-Regular.ttf",
+     "italic": false,
+     "sha256": "9cfbf78067b2f17079be543d38bc614ddad23cc6e9c61f119b2ad96289236056",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F186",
+   "install_family": "Life Savers",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Oregano",
+   "files": [
+    {
+     "family": "Oregano",
+     "file": "Oregano-Italic.ttf",
+     "italic": true,
+     "sha256": "5e4df67997869d4e68dba1a38463a70c8679d29cb7ac678779631db9382f5538",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Oregano",
+     "file": "Oregano-Regular.ttf",
+     "italic": false,
+     "sha256": "0c2eaed981aeefa8445c4a937794fd1ec7dd5a5b40ff60307a59775cc239b187",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F187",
+   "install_family": "Oregano",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Salsa",
+   "files": [
+    {
+     "family": "Salsa",
+     "file": "Salsa-Regular.ttf",
+     "italic": false,
+     "sha256": "3e69c0731a5104d4f25477aa2cdf9d7e9c54b201c60e99c37380ebd05097930c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F188",
+   "install_family": "Salsa",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Slackey",
+   "files": [
+    {
+     "family": "Slackey",
+     "file": "Slackey-Regular.ttf",
+     "italic": false,
+     "sha256": "0be253cdeadcd1ea90ff5954e86641b3ccbef27152608e266af91619cd308eb2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F189",
+   "install_family": "Slackey",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Unkempt",
+   "files": [
+    {
+     "family": "Unkempt",
+     "file": "Unkempt-Bold.ttf",
+     "italic": false,
+     "sha256": "9dd344f69eb53372db32b5d7558f2addb3d159f4723b8b39364514d8e032a631",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Unkempt",
+     "file": "Unkempt-Regular.ttf",
+     "italic": false,
+     "sha256": "512ce8e7226e0009307f10d47c08ee9a9878690766579ff28c5b1dddfa179f4c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F190",
+   "install_family": "Unkempt",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Ranchers",
+   "files": [
+    {
+     "family": "Ranchers",
+     "file": "Ranchers-Regular.ttf",
+     "italic": false,
+     "sha256": "19568aba8965664d1bc6f5a48c24d269c97501eed87af26b912f42b6e6f22adc",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F191",
+   "install_family": "Ranchers",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Lacquer",
+   "files": [
+    {
+     "family": "Lacquer",
+     "file": "Lacquer-Regular.ttf",
+     "italic": false,
+     "sha256": "140c21f71907a16952926ee354c81081092c90d599c89fe8b4557baeaebbbe83",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F192",
+   "install_family": "Lacquer",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Coiny",
+   "files": [
+    {
+     "family": "Coiny",
+     "file": "Coiny-Regular.ttf",
+     "italic": false,
+     "sha256": "ef02d723a54abe4819bea54ea8b2ecf72d77d258010bb336cd4862a37705eac7",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F193",
+   "install_family": "Coiny",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Chango",
+   "files": [
+    {
+     "family": "Chango",
+     "file": "Chango-Regular.ttf",
+     "italic": false,
+     "sha256": "3e566f4b881f24198fe1b6525aae970f9200078136e3416abc7ba0272d2f80d9",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F194",
+   "install_family": "Chango",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Frijole",
+   "files": [
+    {
+     "family": "Frijole",
+     "file": "Frijole-Regular.ttf",
+     "italic": false,
+     "sha256": "e182bbad0e1ba7eb06d93edb1c97a71f5b7d56e27433fb375f5f7138399ab72c",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F195",
+   "install_family": "Frijole",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Flavors",
+   "files": [
+    {
+     "family": "Flavors",
+     "file": "Flavors-Regular.ttf",
+     "italic": false,
+     "sha256": "4e651bcdabe9753092ab8b1a85487c934d93650401853a591bbdb4658bf502d8",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F196",
+   "install_family": "Flavors",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Combo",
+   "files": [
+    {
+     "family": "Combo",
+     "file": "Combo-Regular.ttf",
+     "italic": false,
+     "sha256": "e714674117c2864bf7407e2ebfafb11e581e97480286fa01b419adda94d08686",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F197",
+   "install_family": "Combo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Aladin",
+   "files": [
+    {
+     "family": "Aladin",
+     "file": "Aladin-Regular.ttf",
+     "italic": false,
+     "sha256": "c7ee57e19b1b2c89f8d786115dc69225091ff7665f30fea7908bc2fb27d13398",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F198",
+   "install_family": "Aladin",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Almendra Display",
+   "files": [
+    {
+     "family": "Almendra Display",
+     "file": "AlmendraDisplay-Regular.ttf",
+     "italic": false,
+     "sha256": "04b543a9e7bfe39262e47d47ae7ec6a04166ce2d05383a911b256cfcb783383f",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F199",
+   "install_family": "Almendra Display",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Pirata One",
+   "files": [
+    {
+     "family": "Pirata One",
+     "file": "PirataOne-Regular.ttf",
+     "italic": false,
+     "sha256": "5347a2e155589ecf667d4b766613c8ee003edde9f83717fd24c09599a4b1ecc0",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F200",
+   "install_family": "Pirata One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Uncial Antiqua",
+   "files": [
+    {
+     "family": "Uncial Antiqua",
+     "file": "UncialAntiqua-Regular.ttf",
+     "italic": false,
+     "sha256": "33a5128b59d1c95d4f3788164f4ab3a1196f0a982263cb2cd278c47418366766",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F201",
+   "install_family": "Uncial Antiqua",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "MedievalSharp",
+   "files": [
+    {
+     "family": "MedievalSharp",
+     "file": "MedievalSharp.ttf",
+     "italic": false,
+     "sha256": "74cb2e6738bd7703adf120802f68fba0c9ddb9147a08e6847f1005b1e55df5a5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 500
+    }
+   ],
+   "id": "F202",
+   "install_family": "MedievalSharp",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Cinzel Decorative",
+   "files": [
+    {
+     "family": "Cinzel Decorative Black",
+     "file": "CinzelDecorative-Black.ttf",
+     "italic": false,
+     "sha256": "a6c1eb3e228f639a98aafd8a8e8a035582dd50ad5f8a84e9dcbc8664e7457114",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 900
+    },
+    {
+     "family": "Cinzel Decorative",
+     "file": "CinzelDecorative-Bold.ttf",
+     "italic": false,
+     "sha256": "e854e68a388aa50d742a4415c1ae5c17a617ef7956c95a70021d0a4a44f20518",
+     "source": "upstream",
+     "subfamily": "Bold",
+     "weight": 700
+    },
+    {
+     "family": "Cinzel Decorative",
+     "file": "CinzelDecorative-Regular.ttf",
+     "italic": false,
+     "sha256": "5b862be329103ad287a10f0a53e27a40e8cc519999253f1a0223e2dc330b10b8",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F203",
+   "install_family": "Cinzel Decorative",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Fondamento",
+   "files": [
+    {
+     "family": "Fondamento",
+     "file": "Fondamento-Italic.ttf",
+     "italic": true,
+     "sha256": "8303c76ccfaf81a065c3653a1d559f76e8223a3200a79451d5dedd33cebbef9e",
+     "source": "upstream",
+     "subfamily": "Italic",
+     "weight": 400
+    },
+    {
+     "family": "Fondamento",
+     "file": "Fondamento-Regular.ttf",
+     "italic": false,
+     "sha256": "ee03a7ccb3b7cdf3cd095d0cc34f9e70c16b1779cbc7c466bf9077323a6ea764",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F204",
+   "install_family": "Fondamento",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Macondo",
+   "files": [
+    {
+     "family": "Macondo",
+     "file": "Macondo-Regular.ttf",
+     "italic": false,
+     "sha256": "1910fe29b60588799474ea6281b59e131e33e96c77bfb80722a4c7f8133db4aa",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F205",
+   "install_family": "Macondo",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Macondo Swash Caps",
+   "files": [
+    {
+     "family": "Macondo Swash Caps",
+     "file": "MacondoSwashCaps-Regular.ttf",
+     "italic": false,
+     "sha256": "776c95ad520e4776a45add8d8693e693b566be9f26cd20505256c8e944dc07ea",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F206",
+   "install_family": "Macondo Swash Caps",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Bowlby One SC",
+   "files": [
+    {
+     "family": "Bowlby One SC",
+     "file": "BowlbyOneSC-Regular.ttf",
+     "italic": false,
+     "sha256": "dc9f2325fb6bab327c26619a752b274b8f0f4022756d896450911e885609f071",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F207",
+   "install_family": "Bowlby One SC",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Atomic Age",
+   "files": [
+    {
+     "family": "Atomic Age",
+     "file": "AtomicAge-Regular.ttf",
+     "italic": false,
+     "sha256": "5ea6111180af882b0799a1e1c04b7acc557807ff76e0cc24258b259a06f67ed2",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F208",
+   "install_family": "Atomic Age",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Monoton",
+   "files": [
+    {
+     "family": "Monoton",
+     "file": "Monoton-Regular.ttf",
+     "italic": false,
+     "sha256": "951c4cea65ffede784a7c9672feec5d329a7e1e12216c42d53ecf36c90d04dea",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F209",
+   "install_family": "Monoton",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Faster One",
+   "files": [
+    {
+     "family": "Faster One",
+     "file": "FasterOne-Regular.ttf",
+     "italic": false,
+     "sha256": "382877a3a497c42bfeadfbb6e1b939d5b0f3f5cfd6c1a566c0c0d3d1f9b4bcb5",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F210",
+   "install_family": "Faster One",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Jersey 10",
+   "files": [
+    {
+     "family": "Jersey 10",
+     "file": "Jersey10-Regular.ttf",
+     "italic": false,
+     "sha256": "db9cbd091617048a145d249daa2b815fe7083be6ab66ac26626e21a4e01c3e82",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F211",
+   "install_family": "Jersey 10",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Micro 5",
+   "files": [
+    {
+     "family": "Micro 5",
+     "file": "Micro5-Regular.ttf",
+     "italic": false,
+     "sha256": "08a08c0d10129d2ecd869ff2f8914fcbf32487d3cbee3568b2a2957866dfdac8",
+     "source": "upstream",
+     "subfamily": "Regular",
+     "weight": 400
+    }
+   ],
+   "id": "F212",
+   "install_family": "Micro 5",
+   "qa_status": "certified_print",
+   "renamed": false,
+   "source": "upstream_static"
+  },
+  {
+   "family": "Honk",
+   "files": [],
+   "id": "F213",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  },
+  {
+   "family": "Nabla",
+   "files": [],
+   "id": "F214",
+   "install_family": null,
+   "note": "not installed for print: screen_only",
+   "qa_status": "screen_only",
+   "source": "none"
+  }
+ ],
+ "fonttools": "4.66.1",
+ "schema": "mx.fonts.office_builds/1"
+}
