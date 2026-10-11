@@ -20,6 +20,19 @@ $env:MXS_WORKSPACE = "C:\$Mashrou\ModuleX_MagazineStudio_Data"
 New-Item -ItemType Directory -Force -Path $env:MXS_WORKSPACE | Out-Null
 $R = [ordered]@{}
 $Timings = @()
+# Results are also published as check-run annotations (readable through the GitHub API without downloading logs).
+function Publish() {
+    $flat = ($R.GetEnumerator() | ForEach-Object { "$($_.Key)=$($_.Value)" }) -join "; "
+    Write-Host "::notice title=mcp_connection_proof::$flat"
+    $failed = @($R.GetEnumerator() | Where-Object { $_.Value -is [bool] -and -not $_.Value } | ForEach-Object { $_.Key })
+    if ($failed.Count -gt 0) { Write-Host ("::error title=mcp_connection_proof FAIL::" + ($failed -join ", ")) }
+}
+trap {
+    $R.exception = "$($_.Exception.Message) @ line $($_.InvocationInfo.ScriptLineNumber): $($_.InvocationInfo.Line.Trim())"
+    Publish
+    $R | ConvertTo-Json | Set-Content -Path (Join-Path $Out "mcp_connection_proof.json") -Encoding UTF8
+    exit 1
+}
 
 function Install($arguments) { (Start-Process -FilePath $Setup -ArgumentList $arguments -Wait -PassThru).ExitCode }
 function Uninstall($dir) {
@@ -84,7 +97,11 @@ $cfg = ReadConfig
 $R.other_server_kept = ($cfg.mcpServers.filesystem.command -eq "npx") -and ($cfg.globalShortcut -eq "Ctrl+Space")
 $R.backup_written = @(Get-ChildItem $ClaudeDir -Filter "claude_desktop_config.json.bak-*").Count -ge 1
 $connect = Join-Path $Data "logs\mcp-connect.json"
-if (Test-Path $connect) { Copy-Item $connect (Join-Path $Out "mcp-connect.json") }
+if (Test-Path $connect) {
+    Copy-Item $connect (Join-Path $Out "mcp-connect.json")
+    $cj = Get-Content -Raw -Encoding UTF8 $connect | ConvertFrom-Json
+    $R.install_connect_self_test = "ok=$($cj.self_test.ok) tools=$($cj.self_test.tools) s=$($cj.self_test.seconds) cache=$($cj.tools_cache.tools)"
+} else { $R.install_connect_self_test = "no mcp-connect.json" }
 
 # 2. 20 handshakes in a row exactly as Claude Desktop starts the server (the window open), then 5 in parallel
 $window = Start-Process -FilePath (Join-Path $Default $Exe) -PassThru
@@ -94,7 +111,12 @@ $allFast = $true
 for ($i = 1; $i -le 20; $i++) {
     $h = Handshake $e.command @($e.args)
     $Timings += [pscustomobject]@{ run = $i; mode = "serial"; seconds = $h.seconds; tools = $h.tools; ok = $h.ok; junk = $h.junk }
-    if (-not $h.ok) { $allOk = $false; Add-Content (Join-Path $Out "handshake-stderr.txt") $h.stderr }
+    if (-not $h.ok) {
+        $allOk = $false; Add-Content (Join-Path $Out "handshake-stderr.txt") $h.stderr
+        if (-not $R.Contains("first_failed_handshake")) {
+            $R.first_failed_handshake = "run $i tools=$($h.tools) junk=$($h.junk) s=$($h.seconds) stderr=" + ($h.stderr -replace "[\r\n]+", " | ").Substring(0, [math]::Min(400, $h.stderr.Length))
+        }
+    }
     if ($h.seconds -ge 2) { $allFast = $false }
 }
 $parallel = @()
@@ -189,6 +211,7 @@ $R.onedrive_registry_default = ((RegDir) -eq $Default)
 Uninstall $Default
 
 $R | ConvertTo-Json | Set-Content -Path (Join-Path $Out "mcp_connection_proof.json") -Encoding UTF8
+Publish
 $R.GetEnumerator() | ForEach-Object {
     if ($_.Value -is [bool]) { Write-Host ("  {0,-36} {1}" -f $_.Key, $(if ($_.Value) { "PASS" } else { "FAIL" })) }
     else { Write-Host ("  {0,-36} {1}" -f $_.Key, $_.Value) }
