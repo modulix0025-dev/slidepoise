@@ -37,6 +37,10 @@ def layout_page(kind: str, spec: PageSpec, page_id: str, texts: dict, theme: dic
                         "round_rect_adjustment": 18000,
                         "style": {"fill": colours["panel"], "stroke": colours["outline"], "stroke_width_px": 3}})
 
+    def placeholder(oid, box, order, label):
+        objects.append({"id": oid, "kind": "picture_placeholder", "order": order, "label": label,
+                        "bbox_px": _px(spec, box), "box_mm": [round(v, 3) for v in box], "z": 0})
+
     def text(oid, box, payload, role, z=2, align=None):
         style = dict(base_style, font_size_pt=TYPE_SIZES_PT[size][role])
         if role == "title":
@@ -66,8 +70,44 @@ def layout_page(kind: str, spec: PageSpec, page_id: str, texts: dict, theme: dic
                         "bbox_px": _px(spec, (0, 0, cw, ch / 2)), "box_mm": [0, 0, cw, ch / 2], "z": 0})
         objects.append({"id": f"{page_id}_photo_b", "kind": "picture_placeholder", "order": 2, "label": "back_b",
                         "bbox_px": _px(spec, (0, ch / 2, cw, ch / 2)), "box_mm": [0, ch / 2, cw, ch / 2], "z": 0})
+    elif kind == "about_me":
+        # «أنا مين»: the customer's own photo (existing editor photo rules: centre-crop, 300/150/72 dpi, never AI)
+        side = min(sw * 0.7, sh * 0.48)
+        photo = (sx + (sw - side) / 2, sy + 6, side, side)
+        placeholder(f"{page_id}_customer_photo", photo, 1, "customer_photo")
+        panel(f"{page_id}_panel", (sx, sy + side + 12, sw, sh - side - 14))
+        text(f"{page_id}_body", (sx + 6, sy + side + 16, sw - 12, sh - side - 22), texts["body"], "body")
+    elif kind == "certificate":
+        panel(f"{page_id}_frame", (sx, sy, sw, sh), z=0)
+        text(f"{page_id}_title", (sx + 8, sy + sh * 0.12, sw - 16, sh * 0.16), texts["title"], "title", align="center")
+        text(f"{page_id}_body", (sx + 10, sy + sh * 0.34, sw - 20, sh * 0.4), texts["body"], "body", align="center")
+    elif kind == "qr_back":
+        # QR to the child's video / narrated audio (or the "make it a video" offer) is injected per order.
+        side = 34.0
+        placeholder(f"{page_id}_qr", (sx + (sw - side) / 2, sy + sh - side - 8, side, side), 1, "qr")
+        panel(f"{page_id}_panel", (sx, sy + sh * 0.25, sw, sh * 0.3))
+        text(f"{page_id}_body", (sx + 6, sy + sh * 0.27, sw - 12, sh * 0.26), texts["body"], "body", align="center")
+    elif kind == "coloring":
+        # coloring edition: the per-order scene is a line-art image; text stays native on an outline panel
+        art_h = ch * 0.7
+        placeholder(f"{page_id}_line_art", (0, 0, cw, art_h), 1, "line_art")
+        panel(f"{page_id}_panel", (sx, art_h + 2, sw, sy + sh - art_h - 2))
+        text(f"{page_id}_body", (sx + 6, art_h + 5, sw - 12, sy + sh - art_h - 9), texts["body"], "body")
+    elif kind == "bilingual":
+        art_h = ch * 0.48
+        placeholder(f"{page_id}_scene", (0, 0, cw, art_h), 1, "scene")
+        half = (sy + sh - art_h - 6) / 2
+        panel(f"{page_id}_panel_ar", (sx, art_h + 2, sw, half))
+        text(f"{page_id}_body_ar", (sx + 6, art_h + 4, sw - 12, half - 4), texts["body_ar"], "body")
+        panel(f"{page_id}_panel_en", (sx, art_h + 4 + half, sw, half))
+        text(f"{page_id}_body_en", (sx + 6, art_h + 6 + half, sw - 12, half - 4), texts["body_en"], "body")
+    elif kind == "class_page":
+        # school class magazine group page: one class photo + caption; per-child pages reuse about_me
+        placeholder(f"{page_id}_group_photo", (sx, sy, sw, sh * 0.62), 1, "group_photo")
+        panel(f"{page_id}_panel", (sx, sy + sh * 0.66, sw, sh * 0.34))
+        text(f"{page_id}_body", (sx + 6, sy + sh * 0.68, sw - 12, sh * 0.3), texts["body"], "body", align="center")
     else:
-        raise ValueError(f"no layout for page kind {kind!r} (page kinds are added in Phase 7)")
+        raise ValueError(f"no layout for page kind {kind!r}")
     return objects
 
 

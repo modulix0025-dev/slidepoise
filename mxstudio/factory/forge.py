@@ -31,6 +31,30 @@ def variant_filename(story_key: str, variant: str, size: str) -> str:
     return f"{story_key}_{language}_{gender}_{size.upper()}.pptx"
 
 
+def page_payloads(story: Story, page) -> dict:
+    """Payload dicts per text role. Bilingual pages carry both languages in every variant, both using the
+    variant's own base name (OM replaces one name per order)."""
+    def payloads(texts: dict, forced: str | None = None) -> dict:
+        out = {}
+        for variant in story.variants:
+            source = f"{forced}_{variant.split('_')[1]}" if forced else variant
+            if texts.get(source):
+                payload = {"runs": runs_for(texts[source], story.base_names[variant])}
+                if forced:
+                    payload["style"] = {"direction": "rtl" if forced == "ar" else "ltr",
+                                        "lang": "ar-EG" if forced == "ar" else "en-US",
+                                        "alignment": "right" if forced == "ar" else "left"}
+                out[variant] = payload
+        return {"payloads": out}
+
+    roles = {"body": payloads(page.texts)}
+    if page.title:
+        roles["title"] = payloads({v: page.title.get(v.split("_")[0], "") for v in story.variants})
+    if page.kind == "bilingual":
+        roles["body_ar"], roles["body_en"] = payloads(page.texts, "ar"), payloads(page.texts, "en")
+    return roles
+
+
 def build_master(story: Story, size: str = "A4", theme: dict | None = None, bleed_mm: float = 3.0,
                  safe_mm: float = 5.0) -> dict:
     """The semantic page map with payloads for every variant (geometry at the master size)."""
@@ -39,9 +63,7 @@ def build_master(story: Story, size: str = "A4", theme: dict | None = None, blee
     slides = []
     for number, page in enumerate(story.pages, 1):
         page_id = f"p{number}"
-        payloads = {variant: {"runs": runs_for(page.texts.get(variant, ""), story.base_names[variant])}
-                    for variant in story.variants if page.texts.get(variant)}
-        objects = layout_page(page.kind, spec_page, page_id, {"body": {"payloads": payloads}}, theme)
+        objects = layout_page(page.kind, spec_page, page_id, page_payloads(story, page), theme)
         slides.append({"id": page_id, "kind": page.kind, "dimensions_px": list(spec_page.canvas_px),
                        "background": theme["colours"]["background"], "objects": objects})
     return {"title": story.title.get("ar", story.key), "language": "ar-EG", "size": size,

@@ -15,7 +15,8 @@ from mxstudio.factory.payloads import VARIANTS
 STORY_KEY = re.compile(r"^[a-z][a-z0-9_]{2,40}$")
 NAME_TOKEN = "{NAME}"
 DEFAULT_BASE_NAMES = {"ar_boy": "إياد", "ar_girl": "جيداء", "en_boy": "Eyad", "en_girl": "Gaidaa"}
-PAGE_KINDS = ("cover", "scene", "dedication", "back", "certificate", "about_me", "qr_back", "coloring", "bilingual")
+PAGE_KINDS = ("cover", "scene", "dedication", "back", "certificate", "about_me", "qr_back", "coloring", "bilingual",
+              "class_page")
 
 
 @dataclass
@@ -31,10 +32,18 @@ class Page:
         problems = []
         if self.kind not in PAGE_KINDS:
             problems.append(f"unknown page kind {self.kind!r}")
-        if self.kind in {"scene", "dedication", "cover"}:
+        if self.kind in {"scene", "dedication", "cover", "about_me", "certificate", "qr_back", "coloring", "class_page"}:
             for variant in variants:
                 if not self.texts.get(variant, "").strip():
                     problems.append(f"{self.kind} page has no text for {variant}")
+        if self.kind == "certificate":
+            for language in {v.split("_")[0] for v in variants}:
+                if not self.title.get(language):
+                    problems.append(f"certificate needs a title in {language}")
+        if self.kind == "bilingual":
+            for gender in {v.split("_")[1] for v in variants}:
+                if not (self.texts.get(f"ar_{gender}") and self.texts.get(f"en_{gender}")):
+                    problems.append(f"bilingual page needs Arabic and English text for {gender}")
         if self.kind == "dedication":
             for variant in variants:
                 if NAME_TOKEN not in self.texts.get(variant, ""):
