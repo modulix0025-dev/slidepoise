@@ -43,6 +43,10 @@ if ($LASTEXITCODE -ne 0) { throw "PyInstaller failed" }
 foreach ($exe in @("$AppName.exe", "mxstudio-cli.exe")) {
     if (-not (Test-Path (Join-Path $App $exe))) { throw "missing $exe" }
 }
+# the exes must carry OUR icon (installer\assets\app.ico), not PyInstaller's default; pefile is build-only
+& $Py -m pip install pefile==2024.8.26 | Out-Null
+& $Py (Join-Path $Root "tools\check_exe_icon.py") (Join-Path $App "$AppName.exe") (Join-Path $App "mxstudio-cli.exe")
+if ($LASTEXITCODE -ne 0) { throw "the built exes do not carry installer\assets\app.ico" }
 
 # 3. portable Node runtime, pinned by sha256
 Step "Node runtime"

@@ -61,11 +61,22 @@ def test_negative_controls_do_not_compile(tmp_path, payload):
     assert bad.returncode != 0 and "SRC_DIR" in (bad.stdout + bad.stderr)
 
 
-def test_per_user_fixed_dir_outside_project():
+def test_per_user_default_dir_operator_may_choose_but_never_inside_project():
     assert re.search(r"^RequestExecutionLevel user$", TEXT, re.MULTILINE)
-    assert 'InstallDir "$LOCALAPPDATA\\Programs\\${APP_NAME}"' in TEXT
-    assert "MUI_PAGE_DIRECTORY" not in TEXT  # no directory page: the program location is fixed
+    assert 'InstallDir "$LOCALAPPDATA\\Programs\\${APP_NAME}"' in TEXT  # default: per-user, no admin
     assert "المشروع" not in TEXT.split('InstallDir')[1].splitlines()[0]
+    # the operator chooses the folder (operator request, 2026-10-11); updates go back to it
+    assert "!define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirLeave\n!insertmacro MUI_PAGE_DIRECTORY" in TEXT
+    assert 'InstallDirRegKey HKCU "${UNINST_KEY}" "InstallLocation"' in TEXT
+    check = TEXT.split("Function CheckFolder", 1)[1].split("FunctionEnd", 1)[0]
+    assert '"project"' in check and '"root"' in check and '"used"' in check and "C:\\المشروع" in check
+    leave = TEXT.split("Function DirLeave", 1)[1].split("FunctionEnd", 1)[0]
+    assert leave.count("Abort") >= 4 and ".mxs-write-test" in leave  # unsafe or unwritable folders refused
+    install = TEXT.split('Section "Install"', 1)[1].split("SectionEnd", 1)[0]
+    assert "${If} ${Silent}" in install and '"$INSTDIR\\${APP_NAME}"' in install  # /S never lands on other files
+    uninstall = TEXT.split('Section "Uninstall"', 1)[1].split("SectionEnd", 1)[0]
+    guarded = uninstall.split('RMDir /r "$INSTDIR"', 1)[0]
+    assert '${FileExists} "$INSTDIR\\install.ini"' in guarded  # only the program's own folder is removed
     assert 'MUI_LANGUAGE "Arabic"' in TEXT
 
 

@@ -50,3 +50,33 @@ def test_installer_carries_the_icon(tmp_path):
                     f"-DOUT_DIR={tmp_path}", str(ROOT / "installer" / "nsis" / "MagazineStudio.nsi")], check=True)
     exe = next(tmp_path.glob("*.exe")).read_bytes()
     assert b"IHDR" + struct.pack(">II", 256, 256) in exe  # our 256 px frame, not NSIS's default icon
+
+
+@pytest.mark.skipif(not shutil.which("makensis"), reason="makensis (NSIS 3) is not installed here; mag-ci installs it")
+def test_icon_check_reads_the_exe_and_catches_another_icon(tmp_path, monkeypatch):
+    import sys
+    sys.path.insert(0, str(ROOT / "tools"))
+    import build_icon
+    import check_exe_icon
+    app = tmp_path / "app"
+    app.mkdir()
+    for name in ("ModuleX Magazine Studio.exe", "mxstudio-cli.exe"):
+        (app / name).write_bytes(b"")
+    subprocess.run(["makensis", "-V1", "-WX", "-INPUTCHARSET", "UTF8", "-DAPP_VER=1.2.3", f"-DSRC_DIR={app}",
+                    f"-DOUT_DIR={tmp_path}", str(ROOT / "installer" / "nsis" / "MagazineStudio.nsi")], check=True)
+    exe = str(next(tmp_path.glob("*.exe")))
+    assert check_exe_icon.main([exe]) == 0
+    other = tmp_path / "other.ico"  # same drawing, another colour: every frame differs
+    other.write_bytes(build_icon.ico_bytes(SVG.read_text("utf-8").replace("#E9725B", "#2E86AB")))
+    monkeypatch.setattr(check_exe_icon, "ICO", other)
+    assert check_exe_icon.main([exe]) == 1
+
+
+def test_icon_frames_are_classic_bitmaps_below_256():
+    import struct as st
+    data = ICO.read_bytes()
+    count = st.unpack("<H", data[4:6])[0]
+    for i in range(count):
+        width, _, _, _, planes, bits, size, offset = st.unpack("<BBBBHHII", data[6 + 16 * i:22 + 16 * i])
+        is_png = data[offset:offset + 4] == b"\x89PNG"
+        assert planes == 1 and bits == 32 and is_png == (width == 0), (width, is_png)

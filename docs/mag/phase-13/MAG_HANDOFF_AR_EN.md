@@ -28,7 +28,7 @@
 | Pre-print QA gate | named blockers per order; AI checks advisory only | `phase-9/` |
 | Studio Agent | typed tools only, manual + playbooks, 331-scenario eval suite, model qualification | `phase-10/` |
 | Marketing & sales | watermarked flipbook, 4:5/1:1 carousels with consent gate, 16:9 Arabic sales deck | `phase-11/` |
-| Release | PyInstaller + NSIS (online/Full), Ed25519-signed updates + rollback, Doctor, first-run wizard | `phase-12/` |
+| Release | PyInstaller + NSIS (online/Full), Ed25519-signed updates + rollback, Doctor, first-run wizard. The operator chooses the program folder (default per-user; refused inside `C:\المشروع`, on a drive root, in a folder holding other files, or where it cannot write); updates stay in that folder; the uninstaller removes only the program's own folder. App icon «تاج على الغلاف», checked inside the built exes and installers | `phase-12/` |
 | **Start here + MCP** | the Studio's first page: write a request, attach design pictures, revise in plain words; the assistant looks at every build preview; irreversible steps wait in «طلبات الموافقة». MCP server (`mxstudio-cli.exe mcp`) lets Claude Desktop / Claude Code drive the Studio | `phase-14/` |
 
 **The Studio is never in the per-order path.** Orders stay on the operator's deterministic path (`generate_story()` → Console injection → `pptx_to_pdf`). The Studio contributes only pure libraries (`mxlibs/`, sha256-pinned) and signed packs.

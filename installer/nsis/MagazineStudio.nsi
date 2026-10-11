@@ -72,6 +72,8 @@ SetCompressor /SOLID lzma
 Name "${APP_NAME}"
 OutFile "${OUT_DIR}\${SETUP_NAME}"
 InstallDir "$LOCALAPPDATA\Programs\${APP_NAME}"
+; an update (silent, /S) goes back to the folder the operator chose last time
+InstallDirRegKey HKCU "${UNINST_KEY}" "InstallLocation"
 BrandingText "ModuleX"
 VIProductVersion "${VI_VER}"
 VIAddVersionKey /LANG=0 "ProductName" "${APP_NAME}"
@@ -97,6 +99,10 @@ VIAddVersionKey /LANG=0 "LegalCopyright" "ModuleX"
   !define MUI_WELCOMEPAGE_TEXT "هنثبّت «مديول إكس · استوديو المجلات» لحسابك بس، من غير صلاحيات مدير.$\r$\n$\r$\nالنسخة دي صغيرة (أونلاين): لو محتاجين LibreOffice أو الخطوط هننزّلهم بعدين من أول تشغيل، بملفات متثبّتة البصمة.$\r$\n$\r$\nالبرنامج بيتحط في فولدر برّه C:\المشروع، ومساحة العمل بتختارها في أول تشغيل."
 !endif
 !insertmacro MUI_PAGE_WELCOME
+!define MUI_DIRECTORYPAGE_TEXT_TOP "اختار الفولدر اللي هيتسطّب فيه البرنامج. الافتراضي جوه حسابك ومش محتاج صلاحيات مدير.$\r$\nالقصص والقوالب (مساحة العمل) ليها مكان تاني بتختاره في أول تشغيل، ومش بتتمسح مع البرنامج."
+!define MUI_DIRECTORYPAGE_TEXT_DESTINATION "فولدر البرنامج"
+!define MUI_PAGE_CUSTOMFUNCTION_LEAVE DirLeave
+!insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !define MUI_FINISHPAGE_RUN "$INSTDIR\${APP_EXE}"
 !define MUI_FINISHPAGE_RUN_TEXT "افتح مديول إكس · استوديو المجلات"
@@ -107,6 +113,73 @@ VIAddVersionKey /LANG=0 "LegalCopyright" "ModuleX"
 
 Var RemoveData
 Var Relaunch
+Var OldDir
+
+; Is $INSTDIR a safe program folder? Pushes "ok", "root", "project" or "used" (holds other things;
+; uninstalling removes the program folder, so it must be the program's own).
+Function CheckFolder
+  StrLen $1 "$INSTDIR"
+  ${If} $1 <= 3
+    Push "root"
+    Return
+  ${EndIf}
+  StrLen $1 "C:\المشروع"
+  StrCpy $2 "$INSTDIR" $1
+  ${If} $2 == "C:\المشروع"
+    Push "project"
+    Return
+  ${EndIf}
+  StrCpy $5 "ok"
+  ${If} ${FileExists} "$INSTDIR\*.*"
+  ${AndIfNot} ${FileExists} "$INSTDIR\install.ini"
+    FindFirst $3 $4 "$INSTDIR\*.*"
+    ${DoWhile} $4 != ""
+      ${If} $4 != "."
+      ${AndIf} $4 != ".."
+        StrCpy $5 "used"
+        ${Break}
+      ${EndIf}
+      FindNext $3 $4
+    ${Loop}
+    FindClose $3
+  ${EndIf}
+  Push $5
+FunctionEnd
+
+; the operator's choice of program folder (directory page): refuse anything unsafe, say why in Arabic
+Function DirLeave
+  Call CheckFolder
+  Pop $0
+  ${If} $0 == "root"
+    MessageBox MB_ICONEXCLAMATION|MB_OK "اختار فولدر مش القرص نفسه (زي D:\Programs\${APP_NAME})." /SD IDOK
+    Abort
+  ${ElseIf} $0 == "project"
+    MessageBox MB_ICONEXCLAMATION|MB_OK "البرنامج مايتسطّبش جوه C:\المشروع — الفولدر ده للشغل والأنظمة، والبرنامج لازم يفضل برّه علشان محدش يعدّله بالغلط. اختار مكان تاني." /SD IDOK
+    Abort
+  ${ElseIf} $0 == "used"
+    MessageBox MB_ICONEXCLAMATION|MB_OK "الفولدر ده فيه ملفات تانية. اختار فولدر فاضي، أو حط اسم البرنامج في آخره:$\r$\n$INSTDIR\${APP_NAME}" /SD IDOK
+    Abort
+  ${EndIf}
+  ; writable without admin rights?
+  ClearErrors
+  CreateDirectory "$INSTDIR"
+  FileOpen $3 "$INSTDIR\.mxs-write-test" w
+  ${If} ${Errors}
+    MessageBox MB_ICONEXCLAMATION|MB_OK "مش قادر أكتب في الفولدر ده من غير صلاحيات مدير (زي Program Files). اختار فولدر تاني، زي الافتراضي أو D:\Programs\${APP_NAME}." /SD IDOK
+    Abort
+  ${EndIf}
+  FileClose $3
+  Delete "$INSTDIR\.mxs-write-test"
+  ; moving from another folder: the old copy is removed after this install (the workspace is never touched)
+  StrCpy $OldDir ""
+  ReadRegStr $4 HKCU "${UNINST_KEY}" "InstallLocation"
+  ${If} $4 != ""
+  ${AndIf} $4 != $INSTDIR
+  ${AndIf} ${FileExists} "$4\uninstall.exe"
+    MessageBox MB_YESNO|MB_ICONQUESTION "فيه نسخة قديمة من البرنامج في:$\r$\n$4$\r$\nأشيلها وأخلّي البرنامج في المكان الجديد؟ (القصص والقوالب مش هتتلمس)" /SD IDYES IDNO +2
+    StrCpy $OldDir $4
+  ${EndIf}
+FunctionEnd
 
 Function WebView2Installed
   ; leaves "1" or "0" on the stack
@@ -168,6 +241,25 @@ Function .onInit
 FunctionEnd
 
 Section "Install"
+  ${If} ${Silent}  ; no directory page: /D= or the last folder; never install over other things
+    Call CheckFolder
+    Pop $0
+    ${If} $0 == "project"
+      SetErrorLevel 2
+      Abort "refused: the program folder must be outside C:\المشروع"
+    ${ElseIf} $0 != "ok"
+      StrCpy $INSTDIR "$INSTDIR\${APP_NAME}"
+    ${EndIf}
+  ${EndIf}
+  ${If} $OldDir != ""
+    ; the old copy's uninstaller first (silent: keeps all data), so its shortcuts/registry go before ours exist
+    nsExec::Exec '"$OldDir\${CLI_EXE}" shutdown'
+    Pop $0
+    nsExec::Exec '"$OldDir\uninstall.exe" /S _?=$OldDir'
+    Pop $0
+    Delete "$OldDir\uninstall.exe"
+    RMDir "$OldDir"
+  ${EndIf}
   SetOutPath "$INSTDIR"
   File /r "${SRC_DIR}\*.*"
 !if "${FLAVOUR}" == "full"
@@ -179,8 +271,8 @@ Section "Install"
   WriteINIStr "$INSTDIR\install.ini" "install" "version" "${APP_VER}"
   WriteUninstaller "$INSTDIR\uninstall.exe"
 
-  CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}"
-  CreateShortCut "$SMPROGRAMS\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}"
+  CreateShortCut "$DESKTOP\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\${APP_EXE}" 0
+  CreateShortCut "$SMPROGRAMS\${APP_NAME}.lnk" "$INSTDIR\${APP_EXE}" "" "$INSTDIR\${APP_EXE}" 0
 
   WriteRegStr HKCU "${UNINST_KEY}" "DisplayName" "${APP_NAME}"
   WriteRegStr HKCU "${UNINST_KEY}" "DisplayVersion" "${APP_VER}"
@@ -201,9 +293,11 @@ Section "Install"
   ${EndIf}
 !endif
 
-  ; icon cache refresh (same as MarketX: ie4uinit -show), hidden
+  ; icon cache refresh (same as MarketX: ie4uinit -show), hidden; then tell Explorer icons changed
   nsExec::Exec '"$SYSDIR\ie4uinit.exe" -show'
   Pop $0
+  System::Call 'shell32::SHChangeNotify(i 0x08000000, i 0, p 0, p 0)'
+
 SectionEnd
 
 Section "Office engine"
@@ -258,7 +352,14 @@ Section "Uninstall"
   ${EndIf}
   Delete "$DESKTOP\${APP_NAME}.lnk"
   Delete "$SMPROGRAMS\${APP_NAME}.lnk"
-  RMDir /r "$INSTDIR"
+  ; the whole folder only when it is ours (install.ini marker); never a folder the operator shares with other things
+  ${If} ${FileExists} "$INSTDIR\install.ini"
+  ${AndIf} ${FileExists} "$INSTDIR\${APP_EXE}"
+    RMDir /r "$INSTDIR"
+  ${Else}
+    Delete "$INSTDIR\uninstall.exe"
+    RMDir "$INSTDIR"
+  ${EndIf}
   DeleteRegKey HKCU "${UNINST_KEY}"
   ${If} $RemoveData == "1"
     RMDir /r "${DATA_DIR}"

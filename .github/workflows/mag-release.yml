@@ -148,6 +148,9 @@ jobs:
       VERSION: ${{ needs.version.outputs.version }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
       - run: sudo apt-get update && sudo apt-get install -y nsis
       - uses: actions/download-artifact@v4
         with:
@@ -168,6 +171,8 @@ jobs:
             -DOFFLINE_DIR="$PWD/workspace/offline" \
             -DSRC_DIR="$PWD/workspace/app" -DOUT_DIR="$PWD/workspace/installers" installer/nsis/MagazineStudio.nsi
           ls -la workspace/installers
+          python -m pip install pefile==2024.8.26
+          python tools/check_exe_icon.py workspace/installers/*.exe workspace/app/*.exe
       - id: unsigned
         uses: actions/upload-artifact@v4
         with:
@@ -220,6 +225,10 @@ jobs:
       - name: Installed-app smoke (silent install -> Doctor -> uninstall; both flavours)
         shell: pwsh
         run: ./installer/windows_sandbox/sandbox_proof.ps1 -In "$env:GITHUB_WORKSPACE\workspace\installers" -Out "$env:GITHUB_WORKSPACE\workspace\smoke" -Ci -SkipStandardUser
+      - name: Install location of the operator's choice (custom folder, update stays, shared folder safe)
+        if: ${{ !cancelled() }}
+        shell: pwsh
+        run: ./installer/windows_sandbox/custom_dir_proof.ps1 -In "$env:GITHUB_WORKSPACE\workspace\installers" -Out "$env:GITHUB_WORKSPACE\workspace\smoke"
       - uses: actions/upload-artifact@v4
         if: always()
         with:
