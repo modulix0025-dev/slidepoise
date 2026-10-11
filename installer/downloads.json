@@ -6,10 +6,10 @@
   "libreoffice_msi": {
    "label_ar": "LibreOffice (محرّك التصدير المجاني)",
    "label_en": "LibreOffice (free export engine)",
-   "version": "TO-PIN",
-   "url": "https://download.documentfoundation.org/libreoffice/stable/TO-PIN/win/x86_64/LibreOffice_TO-PIN_Win_x86-64.msi",
-   "sha256": "TO-PIN",
-   "size": null,
+   "version": "25.8.7",
+   "url": "https://download.documentfoundation.org/libreoffice/stable/25.8.7/win/x86_64/LibreOffice_25.8.7_Win_x86-64.msi",
+   "sha256": "ecdb65e76f5e91dc198b8c8dce5b5d6e1eb12fea6023553e52b591afd10b619d",
+   "size": 366170112,
    "licence": "MPL-2.0",
    "licence_url": "https://www.libreoffice.org/about-us/licenses",
    "file_name": "LibreOffice_Win_x86-64.msi",
@@ -46,7 +46,8 @@
      "{log}"
     ]
    },
-   "how_to_pin": "Pick the current stable version on https://www.libreoffice.org/download/download-libreoffice/ ; replace TO-PIN in version/url; take sha256 from the official '<file>.mirrorlist' page or compute it after download; set size in bytes. CI job 'libreoffice-standard-user' prints the computed sha256 when run with allow_unpinned."
+   "how_to_pin": "Run 'python installer/pin_libreoffice.py --write' where download.documentfoundation.org is reachable (the release workflow does this on branch builds while TO-PIN): it picks the newest patch of the 'still' series, takes the sha256 TDF publishes next to the MSI, downloads and verifies it, and stores version/url/sha256/size here. Bump by re-running it.",
+   "pinned_from": "https://download.documentfoundation.org/libreoffice/stable/25.8.7/win/x86_64/LibreOffice_25.8.7_Win_x86-64.msi.sha256 (retrieved 2026-10-11)"
   },
   "node_runtime": {
    "label_ar": "Node.js (لتشغيل PptxGenJS)",

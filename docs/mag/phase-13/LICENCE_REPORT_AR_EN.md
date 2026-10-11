@@ -41,7 +41,7 @@ npm (19 runtime packages, dev excluded):
 Installer payloads:
 
 * font_vault google/fonts@bd8f81ddb5c7: OFL-1.1 / Apache-2.0 (per-family licence file shipped next to the fonts) — pinned: True
-* libreoffice_msi TO-PIN: MPL-2.0 — pinned: False
+* libreoffice_msi 25.8.7: MPL-2.0 — pinned: True
 * node_runtime 22.23.3: MIT — pinned: True
 * shape_packs iconify-json@2026-10-11: per set: Apache-2.0, MIT, CC-BY-4.0 (credits page) — see catalog/shapes/packs.json — pinned: True
 * webview2_bootstrapper evergreen: UNKNOWN — pinned: True

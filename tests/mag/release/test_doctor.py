@@ -10,6 +10,7 @@ from types import SimpleNamespace
 
 import pytest
 
+from mxstudio.update import payloads
 from mxstudio.doctor import FIXERS, DoctorContext, checks, fixers, run_all, summary
 from mxstudio.doctor.checks import child_roundtrip
 from mxstudio.firstrun import office
@@ -206,14 +207,29 @@ def test_fixer_create_workspace(tmp_path):
     assert (ctx.workspace / "stories").is_dir() and checks.check_workspace(ctx).ok
 
 
-def test_fixer_libreoffice_refuses_unpinned_download(tmp_path):
+def _lo_manifest(monkeypatch, sha="TO-PIN", size=None):
+    """The real downloads.json with the LibreOffice entry set to ``sha`` (TO-PIN = the unpinned state)."""
+    import copy
+    real = payloads.load()
+    data = copy.deepcopy(real)
+    data["entries"]["libreoffice_msi"].update(sha256=sha, size=size)
+    if sha == "TO-PIN":
+        data["entries"]["libreoffice_msi"]["version"] = "TO-PIN"
+    monkeypatch.setattr(payloads, "load", lambda path=None: data)
+    return data
+
+
+def test_fixer_libreoffice_refuses_unpinned_download(tmp_path, monkeypatch):
+    _lo_manifest(monkeypatch)
     ctx = make_ctx(tmp_path, reg_read=lambda *a, **k: None)
     result = fixers.run_fix("install_libreoffice", ctx)
     assert result["ok"] is False and result["code"] == "unpinned" and "TO-PIN" in result["ar"]
 
 
-def _offline_msi(ctx, data=b"msi"):
+def _offline_msi(ctx, data=b"msi", monkeypatch=None):
     import hashlib
+    if monkeypatch is not None:  # pin the entry to these bytes, as a pinned Full build would
+        _lo_manifest(monkeypatch, hashlib.sha256(data).hexdigest(), len(data))
     msi = ctx.app_dir / "offline" / "libreoffice" / "LibreOffice_Win_x86-64.msi"
     msi.parent.mkdir(parents=True)
     msi.write_bytes(data)
@@ -222,7 +238,7 @@ def _offline_msi(ctx, data=b"msi"):
     return msi
 
 
-def test_fixer_libreoffice_admin_extract_without_admin(tmp_path):
+def test_fixer_libreoffice_admin_extract_without_admin(tmp_path, monkeypatch):
     calls = []
 
     def run(cmd, env=None, timeout=None, **_):
@@ -232,17 +248,17 @@ def test_fixer_libreoffice_admin_extract_without_admin(tmp_path):
         (target / "PFiles" / "LibreOffice" / "program" / "soffice.exe").write_bytes(b"MZ")
         return SimpleNamespace(returncode=0, stdout=b"", stderr=b"")
     ctx = make_ctx(tmp_path, reg_read=lambda *a, **k: None, run=run)
-    msi = _offline_msi(ctx)
+    msi = _offline_msi(ctx, monkeypatch=monkeypatch)
     result = fixers.run_fix("install_libreoffice", ctx)
     assert result["ok"] and result["method"] == "msi_admin_extract"
     assert calls[0][:4] == ["msiexec", "/a", str(msi), "/qn"]
     assert checks.check_office(ctx).ok
 
 
-def test_fixer_libreoffice_asks_before_uac_and_elevates_only_with_consent(tmp_path):
+def test_fixer_libreoffice_asks_before_uac_and_elevates_only_with_consent(tmp_path, monkeypatch):
     ctx = make_ctx(tmp_path, reg_read=lambda *a, **k: None,
                    run=lambda *a, **k: SimpleNamespace(returncode=1603, stdout=b"", stderr=b""))
-    _offline_msi(ctx)
+    _offline_msi(ctx, monkeypatch=monkeypatch)
     elevated = []
     result = office.install_libreoffice(ctx, elevate=elevated.append)
     assert result["ok"] is False and result["needs_consent"] and result["consent_kind"] == "uac"

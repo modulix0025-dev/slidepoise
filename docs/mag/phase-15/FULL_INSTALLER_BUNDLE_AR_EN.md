@@ -59,3 +59,25 @@
 **AR:** مكان الشغل اللي بنبني منه مش قادر يوصل لموقع LibreOffice، فالتثبيت بيتعمل على GitHub. بناء الفرع بيشغّل `installer/pin_libreoffice.py`، ويطبع سطر `LIBREOFFICE_PIN {...}` فيه النسخة والبصمة اللي TDF نشرتها. القيمة دي بتتحفظ في `installer/downloads.json`، وبعد كده أي إصدار بـtag بيستخدمها ومش بيقبل أي ملف غيرها.
 
 **EN:** The cloud workspace cannot reach TDF, so the pin is taken on GitHub's runner. A branch build runs `installer/pin_libreoffice.py`, which prints `LIBREOFFICE_PIN {...}` with the TDF-published sha256. That value is committed to `installer/downloads.json`, so tag builds stay strict.
+
+## ٥ · نتيجة البناء على ويندوز · Windows result (release run `38153363164`, commit `c399b32`)
+
+* `LIBREOFFICE_PIN`: LibreOffice **25.8.7** («still»), sha256 `ecdb65e7…b619d` from `…msi.sha256` on download.documentfoundation.org, 366,170,112 bytes; now committed in `installer/downloads.json`.
+* Offline payload:
+  * LibreOffice 350 MB;
+  * fonts 76 MB (525 files from 525 pinned inputs);
+  * shapes 49 MB (15 files from 5 pinned inputs).
+* Installers:
+  * Full: 501,566,442 bytes;
+  * Online: 122,604,447 bytes;
+  * icon 9/9 frames in both.
+* smoke-windows, everything PASS:
+  * online install / doctor / uninstall;
+  * full install / shape packs / fonts installed / doctor / uninstall.
+* Full Doctor:
+  * `office ok` (LibreOffice found);
+  * `fonts ok` (311 fonts, 104 with Arabic);
+  * `shapes ok` (5 sets);
+  * fonts installed for this user: 311.
+* Custom install folder proof: all PASS.
+* **Open (honest):** the throw-away standard-user proof (non-blocking job) ran the pinned MSI for the first time and got `msiexec` exit **1601** ("Windows Installer service could not be accessed") inside its scheduled-task session. The per-user Setup in the same proof succeeded. The same MSI extracted fine in the real Full install above. Still to investigate with that proof's `msi.log`.

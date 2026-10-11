@@ -6859,7 +6859,7 @@
   {
    "type": "application",
    "name": "libreoffice_msi",
-   "version": "TO-PIN",
+   "version": "25.8.7",
    "licenses": [
     {
      "license": {
@@ -6870,11 +6870,11 @@
    "properties": [
     {
      "name": "mxs:sha256",
-     "value": "TO-PIN"
+     "value": "ecdb65e76f5e91dc198b8c8dce5b5d6e1eb12fea6023553e52b591afd10b619d"
     },
     {
      "name": "mxs:pinned",
-     "value": "False"
+     "value": "True"
     }
    ]
   },
