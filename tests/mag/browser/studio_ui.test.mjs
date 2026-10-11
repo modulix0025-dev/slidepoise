@@ -1,7 +1,7 @@
 // Drives the real Studio UI in Chromium against a real local server.
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -13,6 +13,12 @@ const PYTHON = process.env.PYTHON || process.env.PYTHON3 || "python3";
 async function startServer() {
   const home = fs.mkdtempSync(path.join(os.tmpdir(), "mxs-ui-"));
   const env = { ...process.env, MXS_HOME: home, MXS_WORKSPACE: path.join(home, "المشروع", "data"), PYTHONPATH: `${ROOT}:${ROOT}/slidepoise/runtime/src` };
+  // one landscape storybook template on the stage, so the page cards and «عدّل» are exercised
+  const seed = `import json, sys\nfrom pathlib import Path\nfrom mxstudio.workspace import Workspace\n`
+    + `pages = [{"kind": k, "texts": {"ar_girl": t}, "name_style": "ice" if k == "cover" else None} for k, t in [("cover", "رحلة {name} للبحر"), ("scene", "{name} شافت السمك"), ("back", "النهاية")]]\n`
+    + `Workspace(Path(sys.argv[1])).save("template_set", "sea-trip", {"story": {"title": {"ar": "رحلة البحر"}, "page": "landscape_169", "layout": "storybook", "pages": pages}, "validation": {"ok": True, "variants": {"a": {"ok": True}, "b": {"ok": True}}}})\n`;
+  const seeded = spawnSync(PYTHON, ["-c", seed, env.MXS_WORKSPACE], { cwd: ROOT, env, encoding: "utf8" });
+  assert.equal(seeded.status, 0, seeded.stderr);
   const child = spawn(PYTHON, ["-m", "mxstudio", "serve"], { cwd: ROOT, env, stdio: "ignore" });
   const lock = path.join(home, "server.lock");
   for (let i = 0; i < 100 && !fs.existsSync(lock); i += 1) await new Promise((r) => setTimeout(r, 100));
@@ -35,9 +41,22 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     await page.goto(`http://127.0.0.1:${port}/`);
     assert.equal(await page.getAttribute("html", "dir"), "rtl");
     assert.equal(await page.getAttribute("html", "lang"), "ar");
-    // «ابدأ هنا» is the first page: chat, picture upload (stored and shown), honest "no model" answer
+    // the pages are the stage; «التنفيذ والتعديل» floats beside them on «اطلب»; the control centre is closed
     await page.waitForSelector("#chat-text");
-    assert.equal(await page.getAttribute('#nav a[href="#start"]', "class"), "active");
+    assert.equal(await page.evaluate(() => document.body.classList.contains("control-open")), false);
+    assert.equal(await page.getAttribute("#control", "aria-hidden"), "true");
+    assert.equal(await page.getAttribute('#work-tabs [data-work="ask"]', "aria-selected"), "true");
+    await page.waitForSelector("#pages .mx-page");
+    assert.equal(await page.locator("#pages .mx-page").count(), 3);
+    assert.equal(await page.textContent("#current-title"), "رحلة البحر");
+    assert.ok((await page.textContent("#stage-facts")).includes("2/2"));
+    // clicking a page selects it and opens «عدّل» on that page
+    await page.click('#pages .mx-page[data-index="1"]');
+    assert.equal(await page.getAttribute('#pages .mx-page[data-index="1"]', "aria-pressed"), "true");
+    assert.equal(await page.getAttribute('#work-tabs [data-work="edit"]', "aria-selected"), "true");
+    await page.waitForSelector("#pane-edit.is-on #edit-text");
+    await page.click('#work-tabs [data-work="ask"]');
+    await page.waitForSelector("#pane-ask.is-on");
     const png = Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAIAAABLbSncAAAAFElEQVR4nGP8tNiKARtgwio6aCUAbekB3/mw8Q8AAAAASUVORK5CYII=", "base64");
     await page.setInputFiles("#chat-files", { name: "design.png", mimeType: "image/png", buffer: png });
     await page.waitForSelector("#attached .thumb img");
@@ -51,17 +70,30 @@ test("Arabic RTL UI: every tab renders, settings save, language toggles, irrever
     const saved = await page.evaluate(async () => (await fetch("/api/requests")).json());
     assert.equal(saved.requests[0].status, "new");
     assert.equal(saved.requests[0].image_shas.length, 1);
-    // «توصيل Claude Desktop» at the bottom of the menu: status, steps, config snippet, self-test of the real command
-    await page.click('#nav a[href="#mcp"]');
+    // the Claude chip in the top bar opens «توصيل Claude Desktop» inside the control centre
+    await page.click("#claude-chip");
+    await page.waitForFunction(() => document.body.classList.contains("control-open"));
+    assert.equal(await page.getAttribute("#control-toggle", "aria-expanded"), "true");
     await page.waitForSelector("#mcp-snippet");
     assert.ok((await page.textContent("#mcp-snippet")).includes("modulex-studio"));
     await page.click("#mcp-test");
     await page.waitForFunction(() => document.querySelector("#mcp-result").textContent.includes("✓"), null, { timeout: 90000 });
-    for (const hash of ["start", "home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "mcp", "doctor", "settings", "audit"]) {
+    for (const hash of ["home", "stories", "fonts", "shapes", "colour", "kit", "qa", "marketing", "agent", "mcp", "doctor", "settings", "audit"]) {
       await page.click(`#nav a[href="#${hash}"]`);
       await page.waitForFunction((h) => document.querySelector(`#nav a[href="#${h}"]`).classList.contains("active"), hash);
       await page.waitForFunction(() => document.querySelector("#view").innerHTML.length > 0);
+      assert.equal(await page.textContent("#control-title"), await page.textContent(`#nav a[href="#${hash}"]`));
     }
+    // Escape closes the control centre back to the pages; the toggle reopens the last section
+    await page.keyboard.press("Escape");
+    await page.waitForFunction(() => !document.body.classList.contains("control-open"));
+    assert.equal(await page.getAttribute("#control", "aria-hidden"), "true");
+    await page.click("#control-toggle");
+    await page.waitForFunction(() => document.querySelector('#nav a[href="#audit"]').classList.contains("active"));
+    await page.click("#control-close");
+    await page.waitForFunction(() => !document.body.classList.contains("control-open"));
+    await page.click("#control-toggle");
+    await page.waitForFunction(() => document.body.classList.contains("control-open"));
     await page.click('#nav a[href="#settings"]');
     await page.waitForSelector("#tv-url");
     await page.fill("#tv-url", "http://gpu-host:8000");

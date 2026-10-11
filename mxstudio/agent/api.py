@@ -179,6 +179,30 @@ def register(app, state) -> None:
                     "en": "This quits and reopens Claude Desktop; a reply in progress there stops. Continue?"}
         return clients.restart_claude()
 
+    # -- the stage: the template being worked on ----------------------------------------------------------
+    @app.get("/api/studio/current")
+    def studio_current(key: str = ""):
+        record = state.workspace.get("template_set", key) if key else state.workspace.latest("template_set")
+        if record is None:
+            return {"story_key": None, "pages": []}
+        body = record["body"]
+        story = body.get("story") or {}
+        validation = body.get("validation") or {}
+        variants = validation.get("variants") or {}
+        pages = []
+        for index, page in enumerate(story.get("pages") or []):
+            texts = page.get("texts") or {}
+            text = texts.get("ar_girl") or texts.get("ar_boy") or next(iter(texts.values()), "")
+            pages.append({"index": index, "number": index + 1, "kind": page.get("kind"), "text": text[:220],
+                          "name_style": page.get("name_style"), "rotate": page.get("rotate"),
+                          "text_box": page.get("text_box"), "has_art": bool(page.get("art"))})
+        return {"story_key": record["key"], "version": record["version"], "approved": record["approved"],
+                "title": (story.get("title") or {}).get("ar") or record["key"], "page": story.get("page", "portrait"),
+                "layout": story.get("layout", "classic"), "ok": validation.get("ok"),
+                "variants_ok": sum(1 for v in variants.values() if v.get("ok")), "variants": len(variants),
+                "preview_sha": record["blobs"].get("contact_sheet.png"), "pages": pages,
+                "keys": state.workspace.keys("template_set")}
+
     # -- «الوارد»: pictures for Claude Desktop ---------------------------------------------------------
     @app.get("/api/inbox")
     def inbox_list():

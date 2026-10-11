@@ -8,6 +8,9 @@ const I18N = {
     app: "استوديو المجلات", "nav.start": "ابدأ هنا", "nav.mcp": "توصيل Claude Desktop", "nav.home": "حالة البرنامج", "nav.stories": "القصص والقوالب", "nav.fonts": "الخطوط",
     "nav.shapes": "الأشكال والرسم", "nav.colour": "الألوان والذوق", "nav.kit": "ربط أنظمتي", "nav.qa": "فحص قبل الطباعة", "nav.marketing": "التسويق والمبيعات",
     "nav.agent": "المساعد", "nav.doctor": "الفحص الشامل", "nav.settings": "الإعدادات", "nav.audit": "السجل",
+    control: "مركز التحكم", pages: "الصفحات", work: "التنفيذ والتعديل", "tab.ask": "اطلب", "tab.edit": "عدّل", "tab.approve": "وافق",
+    "group.make": "الإنتاج", "group.quality": "الجودة", "group.connect": "الاتصال", "group.business": "الشغل", "group.system": "النظام",
+    claudeOk: "Claude متوصّل", claudeBad: "Claude مش متوصّل", claudeWait: "Claude: بيختبر…",
     "confirm.title": "تأكيد خطوة مالهاش رجوع", "confirm.yes": "أيوه، نفّذ", "confirm.no": "لأ",
     status: "حالة الاستوديو", features: "الأجزاء", jobs: "المهام", budget: "مصاريف الذكاء الاصطناعي النهارده",
     providers: "مزوّدي الذكاء الاصطناعي", keys: "المفاتيح (بتتحفظ مشفّرة ومش بتظهر تاني)", save: "حفظ",
@@ -21,7 +24,9 @@ const I18N = {
     app: "Magazine Studio", "nav.start": "Start here", "nav.mcp": "Connect Claude Desktop", "nav.home": "Status", "nav.stories": "Stories & templates", "nav.fonts": "Fonts",
     "nav.shapes": "Shapes & drawing", "nav.colour": "Colour & taste", "nav.kit": "Connect my systems",
     "nav.qa": "Pre-print QA", "nav.marketing": "Marketing & sales", "nav.agent": "Assistant", "nav.doctor": "Doctor", "nav.settings": "Settings",
-    "nav.audit": "Audit log", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
+    "nav.audit": "Audit log", control: "Control centre", pages: "Pages", work: "Make & edit", "tab.ask": "Ask", "tab.edit": "Edit",
+    "tab.approve": "Approve", "group.make": "Production", "group.quality": "Quality", "group.connect": "Connection", "group.business": "Business",
+    "group.system": "System", claudeOk: "Claude connected", claudeBad: "Claude not connected", claudeWait: "Claude: testing…", "confirm.title": "Confirm an irreversible step", "confirm.yes": "Yes, do it",
     "confirm.no": "No", status: "Studio status", features: "Feature areas", jobs: "Jobs", budget: "AI spend today",
     providers: "AI providers", keys: "Keys (stored encrypted, never shown again)", save: "Save", test: "Test connection",
     workspace: "Workspace folder", tools: "Assistant tools", run: "Run", unavailable: "This area is not available in this build.",
@@ -75,9 +80,6 @@ function tile(title, inner) { return `<div class="tile"><h2>${esc(title)}</h2>${
 function pre(data) { return `<pre>${esc(JSON.stringify(data, null, 1))}</pre>`; }
 
 const VIEWS = {
-  async start() {
-    await window.MXS_START({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
-  },
   async mcp() {
     await window.MXS_MCP({ api, esc, tile, view, lang, seq: () => routeSeq, rerender: route });
   },
@@ -153,7 +155,7 @@ const VIEWS = {
     };
   },
   async shapes() {
-    if ((await featureView("shapes")) === false) return;
+    if ((await featureView("shapes", "shapes")) === false) return;
     view().insertAdjacentHTML("beforeend", tile(t("openCanvas"),
       `<div class="row"><a class="xb" href="/ui/canvas/index.html" target="_blank" rel="noopener">${t("openCanvas")}</a></div>
       <iframe src="/ui/canvas/index.html" title="${t("openCanvas")}" style="width:100%;height:70vh;border:0"></iframe>`));
@@ -167,13 +169,13 @@ const VIEWS = {
 
 let routeSeq = 0; // a late answer from a tab the operator already left must not overwrite the current tab
 
-async function featureView(area) {
+async function featureView(area, name = area) {
   const seq = routeSeq;
   const summary = await api(`/api/${area}/summary`);
   if (seq !== routeSeq) return false;
-  if (summary.status === 404 || summary.ok === false && summary.status) { view().innerHTML = tile(t(`nav.${area}`), t("unavailable")); return; }
+  if (summary.status === 404 || summary.ok === false && summary.status) { view().innerHTML = tile(t(`nav.${name}`), t("unavailable")); return; }
   const actions = summary.actions || [];
-  view().innerHTML = tile(t(`nav.${area}`), pre(summary.facts || summary))
+  view().innerHTML = tile(t(`nav.${name}`), pre(summary.facts || summary))
     + tile(t("actions"), actions.map((a, i) => `<div class="row"><button class="xb ghost" data-action="${i}">${esc(lang === "ar" ? a.label_ar : a.label_en)}</button></div>`).join("") + `<div id="action-result"></div>`);
   view().querySelectorAll("[data-action]").forEach((button) => {
     button.onclick = async () => {
@@ -183,18 +185,56 @@ async function featureView(area) {
   });
 }
 
+const AREAS = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", marketing: "marketing", doctor: "doctor" };
+let lastArea = "stories";
+const work = { lang, panes: {}, api, esc, stage: null }; // the context the work panel (start.js) reads
+
+function setControl(open) {
+  document.body.classList.toggle("control-open", open);
+  document.getElementById("control").setAttribute("aria-hidden", String(!open));
+  document.getElementById("control-toggle").setAttribute("aria-expanded", String(open));
+}
+
+/* «اطلب / عدّل / وافق»: one tab is on; the panel height does not jump */
+function setWork(name) {
+  document.querySelectorAll("#work-tabs [data-work]").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.work === name)));
+  ["ask", "edit", "approve"].forEach((n) => document.getElementById(`pane-${n}`).classList.toggle("is-on", n === name));
+}
+
 async function route() {
   routeSeq += 1;
   const name = (location.hash || "#start").slice(1);
-  document.querySelectorAll("#nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === `#${name}`));
-  const area = { stories: "factory", fonts: "fonts", shapes: "shapes", colour: "colour", kit: "kit", qa: "qa", marketing: "marketing", doctor: "doctor" }[name];
+  if (!VIEWS[name] && !AREAS[name]) { setControl(false); refreshChip(); return; } // «#start» and unknown hashes: back to the pages
+  lastArea = name;
+  setControl(true);
+  document.querySelectorAll("#nav a").forEach((a) => {
+    const on = a.getAttribute("href") === `#${name}`;
+    a.classList.toggle("active", on);
+    if (on) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  document.getElementById("control-title").textContent = t(`nav.${name}`);
+  const box = view();
+  box.classList.remove("is-entering");
+  void box.offsetWidth; // restart the entrance animation on every section change
+  box.classList.add("is-entering");
   try {
     if (VIEWS[name]) await VIEWS[name]();
-    else if (area) await featureView(area);
-    else await VIEWS.start();
+    else await featureView(AREAS[name], name);
   } catch (error) {
     view().innerHTML = tile("⚠", esc(String(error)));
   }
+  refreshChip();
+}
+
+/* the small status chip in the top bar replaces the old «حالة البرنامج» landing page */
+async function refreshChip() {
+  const chip = document.getElementById("claude-chip"), text = document.getElementById("claude-chip-text");
+  let health = null;
+  try { health = await api("/api/mcp/health"); } catch { health = null; }
+  const test = health && ((health.last_heal || {}).self_test || null);
+  chip.classList.toggle("is-ok", Boolean(test && test.ok));
+  chip.classList.toggle("is-bad", Boolean(test && !test.ok) || !health);
+  text.textContent = !health ? t("claudeBad") : !test ? t("claudeWait") : test.ok ? t("claudeOk") : t("claudeBad");
   try { if (window.MXS_MCP && window.MXS_MCP.restartBar) await window.MXS_MCP.restartBar({ api, esc, lang }); } catch { /* the bar is a hint, never a blocker */ }
 }
 
@@ -202,18 +242,48 @@ async function boot() {
   const session = await api("/api/session");
   csrf = session.csrf || "";
   try { lang = localStorage.getItem("mxs.lang") || "ar"; } catch { lang = "ar"; }
-  let theme = "day";
-  try { theme = localStorage.getItem("mxs.theme") || "day"; } catch { theme = "day"; }
+  let theme = "night";
+  try { theme = localStorage.getItem("mxs.theme") || "night"; } catch { theme = "night"; }
   document.documentElement.dataset.theme = theme;
-  document.getElementById("lang-toggle").onclick = () => { lang = lang === "ar" ? "en" : "ar"; try { localStorage.setItem("mxs.lang", lang); } catch {} applyLanguage(); route(); };
+  document.getElementById("theme-toggle").textContent = theme === "night" ? "☀" : "☾";
+  document.getElementById("lang-toggle").onclick = async () => {
+    lang = lang === "ar" ? "en" : "ar";
+    try { localStorage.setItem("mxs.lang", lang); } catch {}
+    applyLanguage();
+    work.lang = lang;
+    window.MXS_STAGE.rerender();
+    route();
+    await window.MXS_START.rerender();
+  };
   document.getElementById("theme-toggle").onclick = () => {
     const next = document.documentElement.dataset.theme === "day" ? "night" : "day";
     document.documentElement.dataset.theme = next;
+    document.getElementById("theme-toggle").textContent = next === "night" ? "☀" : "☾";
     try { localStorage.setItem("mxs.theme", next); } catch {}
   };
+  document.getElementById("control-toggle").onclick = () => {
+    location.hash = document.body.classList.contains("control-open") ? "#start" : `#${lastArea}`;
+  };
+  document.getElementById("control-close").onclick = () => { location.hash = "#start"; };
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && document.body.classList.contains("control-open") && !document.getElementById("confirm-dialog").open) location.hash = "#start";
+  });
+  document.querySelectorAll("#work-tabs [data-work]").forEach((b) => {
+    b.onclick = () => { setWork(b.dataset.work); if (b.dataset.work === "edit") window.MXS_START.renderEdit(); };
+  });
   window.addEventListener("hashchange", route);
   applyLanguage();
   route();
+
+  work.lang = lang;
+  work.panes = { ask: document.getElementById("pane-ask"), edit: document.getElementById("pane-edit"), approve: document.getElementById("pane-approve") };
+  work.stage = window.MXS_STAGE;
+  await window.MXS_STAGE.init({
+    api, esc, lang: () => lang,
+    onSelect: () => { setWork("edit"); window.MXS_START.renderEdit(); },
+    onChange: () => window.MXS_START.renderEdit(),
+  });
+  await window.MXS_START(work);
 }
 
 if (typeof window !== "undefined" && typeof document !== "undefined") boot();

@@ -104,6 +104,13 @@ class Workspace:
             rows = db.execute("SELECT * FROM records WHERE kind=? AND key=? ORDER BY version", (kind, key)).fetchall()
         return [self._row(row) for row in rows]
 
+    def latest(self, kind: str) -> dict | None:
+        """The most recently saved record of a kind (any key), or None."""
+        with self._connect() as db:
+            row = db.execute("SELECT * FROM records WHERE kind=? ORDER BY created_at DESC, version DESC LIMIT 1",
+                             (kind,)).fetchone()
+        return self._row(row) if row else None
+
     def keys(self, kind: str) -> list[str]:
         with self._connect() as db:
             return [r["key"] for r in db.execute("SELECT DISTINCT key FROM records WHERE kind=? ORDER BY key", (kind,))]
