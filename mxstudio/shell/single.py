@@ -50,6 +50,11 @@ def acquire(home: Path | None = None):
     return handle
 
 
+def held() -> bool:
+    """True when this process already owns the one-window guard."""
+    return bool(_held)
+
+
 def release_all() -> None:
     while _held:
         item = _held.pop()

@@ -31,6 +31,11 @@ def main(argv: list[str] | None = None) -> int:
         serve()
         return 0
     if command == "open":
+        from mxstudio.shell import single  # noqa: PLC0415
+        if single.acquire() is None:  # a window is already open: focus it before anything else (no update work)
+            from mxstudio.config import APP_NAME  # noqa: PLC0415
+            single.bring_to_front(APP_NAME)
+            return 0
         try:
             from mxstudio.update import launch_hook  # noqa: PLC0415
         except ImportError:

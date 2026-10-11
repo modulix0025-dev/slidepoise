@@ -47,7 +47,7 @@ def ensure_server(home: Path | None = None, background_process: bool = True) -> 
 def open_window(home: Path | None = None) -> None:  # pragma: no cover - needs a desktop
     from mxstudio.shell import single  # noqa: PLC0415
 
-    if single.acquire(home) is None:  # a Studio window is already open: bring it forward, open nothing new
+    if not single.held() and single.acquire(home) is None:  # a window is already open: bring it forward
         single.bring_to_front(APP_NAME)
         return
     import webview  # noqa: PLC0415 - pywebview is Windows-only in the bundle

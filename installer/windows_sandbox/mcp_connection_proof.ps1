@@ -153,8 +153,15 @@ $R.handshake_max_seconds = ($Timings | Measure-Object -Property seconds -Maximum
 # 3. single instance: two more starts while the window is open -> still one window process
 Start-Process -FilePath (Join-Path $Default $Exe) | Out-Null
 Start-Process -FilePath (Join-Path $Default $Exe) | Out-Null
-Start-Sleep -Seconds 15
-$R.single_instance_count = @(Get-Process -Name $App -ErrorAction SilentlyContinue).Count
+# the second start must exit by itself; poll instead of a fixed sleep and record how long it took
+$t0 = Get-Date
+Start-Sleep -Seconds 5
+do {
+    $R.single_instance_count = @(Get-Process -Name $App -ErrorAction SilentlyContinue).Count
+    if ($R.single_instance_count -eq 1) { break }
+    Start-Sleep -Seconds 2
+} while (((Get-Date) - $t0).TotalSeconds -lt 45)
+$R.single_instance_seconds = [math]::Round(((Get-Date) - $t0).TotalSeconds, 1)
 $R.single_instance = ($R.single_instance_count -eq 1)
 
 # 4. self-heal on open: delete our entry by hand, open the Studio again -> the entry is back, other server kept

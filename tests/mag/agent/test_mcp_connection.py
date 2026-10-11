@@ -576,3 +576,16 @@ def test_window_launcher_checks_the_single_instance_before_anything():
     body = source[source.index("def open_window"):]
     assert body.index("single.acquire") < body.index("import webview") and "bring_to_front" in body
     assert "Local\\\\ModuleX.MagazineStudio.Window" in (ROOT / "mxstudio" / "shell" / "single.py").read_text("utf-8")
+
+
+def test_second_open_exits_before_any_update_work(monkeypatch):
+    """A second start must focus the open window and exit at once — never run the update hook first."""
+    import mxstudio.update as update
+    from mxstudio import __main__ as entry
+    from mxstudio.shell import single
+    focused = []
+    monkeypatch.setattr(single, "acquire", lambda home=None: None)
+    monkeypatch.setattr(single, "bring_to_front", lambda title: focused.append(title) or True)
+    monkeypatch.setattr(update, "launch_hook", lambda: (_ for _ in ()).throw(AssertionError("update hook ran")))
+    assert entry.main(["open"]) == 0
+    assert focused == ["ModuleX Magazine Studio"]
