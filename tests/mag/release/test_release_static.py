@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 
 import pytest
@@ -187,16 +188,29 @@ def test_standard_user_proof_never_counts_1601_as_a_pass():
     assert "setup_exit -eq 0" in text  # the Studio's own per-user install always decides
 
 
-@pytest.mark.skipif(not __import__("shutil").which("bash"), reason="needs bash")
+def _step_script(job: str, name: str) -> str:
+    """The `run: |` block of the step whose name starts with `name` (no PyYAML: the project avoids it)."""
+    lines = job.splitlines()
+    start = next(i for i, line in enumerate(lines) if line.strip().startswith(f"- name: {name}"))
+    run = next(i for i in range(start + 1, len(lines)) if lines[i].strip() == "run: |")
+    indent = len(lines[run + 1]) - len(lines[run + 1].lstrip())
+    script = []
+    for line in lines[run + 1:]:
+        if line.strip() and len(line) - len(line.lstrip()) < indent:
+            break
+        script.append(line[indent:])
+    return "\n".join(script) + "\n"
+
+
+@pytest.mark.skipif(sys.platform == "win32" or not __import__("shutil").which("bash"),
+                    reason="the release job runs this bash step on ubuntu")
 def test_signed_latest_json_step_runs_from_a_clean_checkout(tmp_path):
     """Run the release job's real «Signed latest.json» script, as CI does: cwd = a checkout where mxstudio
     is NOT importable through any path but the checkout itself (0.2.0's first publish failed exactly there)."""
     import os
     import subprocess
-    import yaml
     from mxstudio.update import signing
-    workflow = yaml.safe_load(WORKFLOW.read_text(encoding="utf-8"))
-    step = next(s for s in workflow["jobs"]["release"]["steps"] if s.get("name", "").startswith("Signed latest.json"))
+    step = {"run": _step_script(_jobs(WORKFLOW)["release"], "Signed latest.json")}
     checkout = tmp_path / "checkout"
     release = checkout / "workspace" / "release"
     release.mkdir(parents=True)
